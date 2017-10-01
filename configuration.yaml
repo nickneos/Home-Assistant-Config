@@ -91,7 +91,6 @@ input_select:
   harmony:
     name: Current Activity
     options:
-      # - Select Input
       - Watch TV
       - Watch TV with Surround
       - Watch TV via PVR
@@ -132,11 +131,17 @@ zone 2:
   longitude: !secret long2
   icon: mdi:briefcase
 
+notify:
+  platform: html5
+  gcm_api_key: !secret gcm-sender-key
+  gcm_sender_id: !secret gcm-sender-id  
+  
 group: !include groups.yaml
 automation: !include_dir_merge_list automations/
-sensor: !include sensors.yaml
+sensor: ! !include_dir_merge_list sensors/
 script: !include_dir_merge_named scripts/
 switch: !include switches.yaml
+
   
 # ios:
 
@@ -148,7 +153,3 @@ switch: !include switches.yaml
     # input: -rtsp_transport tcp -i rtsp://192.168.0.101/unicast
     # name: CAM_1_RTSP
 
-# notify:
-  # platform: html5
-  # gcm_api_key: !secret gcm-sender-key
-  # gcm_sender_id: !secret gcm-sender-id

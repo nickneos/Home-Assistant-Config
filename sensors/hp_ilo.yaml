@@ -1,0 +1,19 @@
+- platform: hp_ilo
+  host: !secret hpilo_ip
+  username: !secret hpilo_user
+  password: !secret hpilo_pw
+  monitored_variables:
+    - name: Server Power
+      sensor_type: server_power_status
+    - name: CPU fanspeed
+      sensor_type: server_health
+      unit_of_measurement: '%'
+      value_template: '{{ ilo_data.fans["Fan 1"].speed[0] }}'
+    - name: Inlet Temperature
+      sensor_type: server_health
+      unit_of_measurement: '°C'
+      value_template: '{{ ilo_data.temperature["01-Inlet Ambient"].currentreading[0] }}'
+    - name: CPU Temperature
+      sensor_type: server_health
+      unit_of_measurement: '°C'
+      value_template: '{{ ilo_data.temperature["02-CPU"].currentreading[0] }}'
