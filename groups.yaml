@@ -1,13 +1,13 @@
-#####################################
+#######################################################
 # S01: Default View                 #
 # S02: Views                        #
 # S03: Light Groups                 #
 # S04: Media/Remote Groups          #
 # S05: Server/PC Groups             #  
-#####################################
+#######################################################
 
 
-###### S01: Default View ######
+############ S01: Default View ############
 default_view:
   view: yes
   icon: mdi:home 
@@ -26,20 +26,21 @@ default_view:
     - group.server
     # - group.server1
     # - group.samsung_tv
-    - media_player.google_home
-    - group.ps4
+    # - media_player.google_home
+    # - group.ps4
     - group.fujitsu
     - group.broadlink_switches
     # - camera.CAM_1_RTSP
 
     
-###### S02: Views ######
+############ S02: Views #########
 family_room_view:
   name: Family Area
   view: yes
   entities:
     - group.family_lights
     - group.harmony
+    - media_player.sony_bravia_tv
     - group.server
     - group.server1
     - media_player.sony_tv
@@ -80,7 +81,7 @@ system_view:
     - group.pi_monitor
 
     
-###### S03: Light Groups ######
+######### S03: Light Groups #########
 house_lights:
   name: All Lights
   entities:
@@ -125,7 +126,7 @@ bedroom_lights:
     # - light.Spare_Room
 
 
-###### S04: Media/Remote Groups ######    
+######### S04: Media/Remote Groups #########    
 harmony:
   name: Harmony Hub
   control: hidden
@@ -133,7 +134,7 @@ harmony:
     - remote.living_room
     # - sensor.harmony_activity
     - input_select.harmony
-    - media_player.sony_bravia_tv
+    # - media_player.sony_bravia_tv
     
 samsung_tv:
   name: Samsung TV
@@ -158,7 +159,7 @@ broadlink_switches:
     - script.amp_yas106_power
     
     
-###### S05: Server/PC Groups ######     
+######### S05: Server/PC Groups #########     
 server:
   name: Windows Home Server
   entities:
