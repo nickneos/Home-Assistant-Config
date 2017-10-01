@@ -1,0 +1,191 @@
+#####################################
+# S01: Default View                 #
+# S02: Views                        #
+# S03: Light Groups                 #
+# S04: Media/Remote Groups          #
+# S05: Server/PC Groups             #  
+#####################################
+
+
+###### S01: Default View ######
+default_view:
+  view: yes
+  icon: mdi:home 
+  entities:
+    - device_tracker.huawei_mate9
+    - device_tracker.iphone_6_plus
+    - sensor.bom_air_temp_c
+    - sensor.bom_relative_humidity
+    - sensor.bom_rain_today
+    - group.house_lights
+    - group.family_lights
+    - group.harmony
+    - group.hallway_lights
+    - group.other_lights
+    - group.bedroom_lights
+    - group.server
+    # - group.server1
+    # - group.samsung_tv
+    - media_player.google_home
+    - group.ps4
+    - group.fujitsu
+    - group.broadlink_switches
+    # - camera.CAM_1_RTSP
+
+    
+###### S02: Views ######
+family_room_view:
+  name: Family Area
+  view: yes
+  entities:
+    - group.family_lights
+    - group.harmony
+    - group.server
+    - group.server1
+    - media_player.sony_tv
+    - media_player.playstation_4
+    - group.fujitsu
+
+hallway_view:
+  name: Hallway Area
+  view: yes
+  entities:
+    - group.hallway_lights
+    - group.other_lights
+    - group.broadlink_switches
+    - media_player.samsung_tv
+
+bedroom_view:
+  name: Bedroom
+  view: yes
+  entities:
+    - group.bedroom_lights
+    - media_player.bedroom_tv
+    - script.everything_off
+    
+system_view:
+  name: System
+  view: yes
+  entities:
+    - sun.sun
+    - device_tracker.galaxys8
+    - device_tracker.lg_g4
+    - automation.daytime_away_mode
+    - automation.evening_away_mode
+    - automation.arrival_lights_on
+    - automation.hallway_light_on_at_sunset
+    - input_boolean.holiday_mode
+    - input_boolean.lights_notifications
+    # - group.ssl
+    - group.pi_monitor
+
+    
+###### S03: Light Groups ######
+house_lights:
+  name: All Lights
+  entities:
+    - switch.house_lights
+    
+family_lights:
+  name: Family Area Lights
+  entities:
+    - light.1_Kitchen
+    - light.2_Dining
+    - light.3_Living_Room
+    - light.4_lamp
+
+hallway_lights:
+  name: Hallway Lights
+  entities:
+    - light.Hallway_1
+    - light.Hallway_2
+
+other_lights:
+  name: Other Lights
+  entities:
+    - light.Study
+    - light.Spare_Room
+
+bedroom_lights:
+  name: Bedroom Lights
+  entities:
+    - light.Bedroom
+    
+# my_home_lights:
+  # name: All Lights
+  # entities:
+    # - light.1_Kitchen
+    # - light.2_Dining
+    # - light.3_Living_Room
+    # - light.4_lamp
+    # - light.Bedroom
+    # - light.Hallway_1
+    # - light.Hallway_2
+    # - light.Study
+    # - light.Spare_Room
+
+
+###### S04: Media/Remote Groups ######    
+harmony:
+  name: Harmony Hub
+  control: hidden
+  entities:
+    - remote.living_room
+    # - sensor.harmony_activity
+    - input_select.harmony
+    - media_player.sony_bravia_tv
+    
+samsung_tv:
+  name: Samsung TV
+  entities:
+    - media_player.samsung_tv
+
+ps4:
+  name: Playstation 4
+  entities:
+    - media_player.playstation_4
+
+fujitsu:
+  name: Fujitsu Air Conditioning
+  entities:
+    - input_select.aircon
+
+broadlink_switches:
+  name: Samsung TV & Sound Bar
+  control: hidden
+  entities:
+    - switch.samsung_tv_power
+    - script.amp_yas106_power
+    
+    
+###### S05: Server/PC Groups ######     
+server:
+  name: Windows Home Server
+  entities:
+    - sensor.hp_ilo_server_power
+    - switch.home_server
+
+server1:
+  name: Server Health
+  entities:
+    - sensor.hp_ilo_CPU_Temperature
+    - sensor.hp_ilo_Inlet_Temperature
+    - sensor.hp_ilo_CPU_fanspeed
+
+pi_monitor:
+  name: Raspberry Pi
+  entities:
+    - sensor.cpu_use
+    - sensor.ram_use
+    - sensor.ram_free
+    - sensor.ram_use_2
+    - sensor.disk_use__2
+    - sensor.disk_free_
+    - sensor.disk_use_
+
+# ssl:
+  # name: SSL Certificate
+  # entities:
+    # - sensor.ssl_cert_expiry
+
+    

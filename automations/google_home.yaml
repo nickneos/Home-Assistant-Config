@@ -1,0 +1,14 @@
+### If Google Home gets triggered when no one is home...turn off
+- alias: 'Google Home Away Mode'
+  trigger:
+    platform: state
+    entity_id: media_player.google_home
+    from: 'off'
+  condition:
+    condition: state
+    entity_id: group.all_devices
+    state: not_home
+  action:
+    - delay: 00:01:00
+    - service: media_player.turn_off
+      entity_id: media_player.google_home

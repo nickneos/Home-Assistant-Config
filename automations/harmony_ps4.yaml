@@ -1,0 +1,33 @@
+#### PS4 Activity
+- alias: PS4 On with activity
+  hide_entity: True
+  trigger:
+    - platform: template
+      value_template: "{% if is_state_attr('remote.living_room', 'current_activity', 'Play PS4') %}true{% endif %}"
+  condition:
+    - condition: state
+      entity_id: media_player.playstation_4
+      state: 'off'
+  action:
+    - service: media_player.turn_on
+      entity_id: media_player.playstation_4
+      
+#### PS4 Activity
+- alias: PS4 Off with activity
+  hide_entity: True
+  trigger:
+    - platform: template
+      value_template: "{% if is_state_attr('remote.living_room', 'current_activity', 'Watch TV') %}true{% endif %}"
+    - platform: template
+      value_template: "{% if is_state_attr('remote.living_room', 'current_activity', 'TV and surround') %}true{% endif %}"
+    - platform: template
+      value_template: "{% if is_state_attr('remote.living_room', 'current_activity', 'Watch TV via PVR') %}true{% endif %}"
+    - platform: template
+      value_template: "{% if is_state_attr('remote.living_room', 'current_activity', 'PowerOff') %}true{% endif %}"
+  # condition:
+    # - condition: state
+      # entity_id: media_player.playstation_4
+      # state: 'off'
+  action:
+    - service: media_player.turn_off
+      entity_id: media_player.playstation_4

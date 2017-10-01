@@ -1,0 +1,82 @@
+- platform: bom
+  station: !secret bom_station
+  monitored_conditions:
+    #- apparent_t
+    #- cloud
+    #- cloud_base_m
+    #- cloud_oktas
+    #- cloud_type_id
+    #- cloud_type
+    #- delta_t
+    #- gust_kmh
+    #- gust_kt
+    - air_temp
+    #- dewpt
+    #- press
+    #- press_qnh
+    #- press_msl
+    #- press_tend
+    - rain_trace
+    - rel_hum
+    #- sea_state
+    #- swell_dir_worded
+    #- swell_height
+    #- swell_period
+    #- vis_km
+    #- weather
+    - wind_dir
+    - wind_spd_kmh
+    #- wind_spd_kt
+- platform: hp_ilo
+  host: !secret hpilo_ip
+  username: !secret hpilo_user
+  password: !secret hpilo_pw
+  monitored_variables:
+    - name: Server Power
+      sensor_type: server_power_status
+    - name: CPU fanspeed
+      sensor_type: server_health
+      unit_of_measurement: '%'
+      value_template: '{{ ilo_data.fans["Fan 1"].speed[0] }}'
+    - name: Inlet Temperature
+      sensor_type: server_health
+      unit_of_measurement: '°C'
+      value_template: '{{ ilo_data.temperature["01-Inlet Ambient"].currentreading[0] }}'
+    - name: CPU Temperature
+      sensor_type: server_health
+      unit_of_measurement: '°C'
+      value_template: '{{ ilo_data.temperature["02-CPU"].currentreading[0] }}'
+- platform: template
+  sensors:
+    harmony_activity:
+      friendly_name: 'Current Activity'
+      value_template: '{{ states.remote.living_room.attributes.current_activity }}'
+- platform: systemmonitor
+  resources:
+    - type: disk_use
+      arg: /
+    - type: disk_free
+      arg: /
+    - type: disk_use_percent
+      arg: /
+    - type: memory_use
+    - type: memory_free    
+    - type: memory_use_percent
+    - type: processor_use
+    - type: network_in
+      arg: wlan0
+    - type: network_out
+      arg: wlan0
+    - type: packets_in
+      arg: wlan0
+    - type: packets_out
+      arg: wlan0
+    - type: ipv4_address
+      arg: wlan0
+    - type: last_boot     
+    - type: since_last_boot
+# - platform: command_line
+  # name: SSL cert expiry
+  # unit_of_measurement: days
+  # scan_interval: 10800
+  # command: !secret ssl_command

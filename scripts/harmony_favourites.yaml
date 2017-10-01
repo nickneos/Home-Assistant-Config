@@ -1,0 +1,48 @@
+fav_24:        
+  sequence:
+    # - service: remote.turn_on
+      # entity_id: remote.living_room
+      # data_template:
+        # activity: >
+          # {% if is_state_attr('remote.living_room', 'current_activity', 'Watch TV') %}
+            # 21450129
+          # {% else %}
+            # 13915533
+          # {% endif %}
+    - service: remote.send_command
+      data:
+        entity_id: remote.living_room
+        command: InputTv
+        device: 37937380
+    # - delay: 00:00:02
+    - service: remote.send_command
+      data:
+        entity_id: remote.living_room
+        command: [0, 2, 4]
+        device: 37937380
+fav_31:        
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.living_room
+        command: InputTv
+        device: 37937380
+    # - delay: 00:00:02
+    - service: remote.send_command
+      data:
+        entity_id: remote.living_room
+        command: [0, 3, 1]
+        device: 37937380
+fav_94:        
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.living_room
+        command: InputTv
+        device: 37937380
+    # - delay: 00:00:02
+    - service: remote.send_command
+      data:
+        entity_id: remote.living_room
+        command: [0, 9, 4]
+        device: 37937380

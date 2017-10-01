@@ -1,0 +1,40 @@
+- alias: 'Holiday - Lights On'
+  trigger:
+    platform: sun
+    event: sunset
+    offset: "-00:30:00"
+  condition:
+    condition: state
+    entity_id: input_boolean.holiday_mode
+    state: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.hallway_2 
+      data:
+        brightness_pct: 60
+        kelvin: 3200
+        transition: 150   
+    - delay: '{{ (range(0, 2)|random|int) }}:{{ (range(1, 59)|random|int) }}:00'
+    - service: light.turn_on
+      entity_id: light.1_kitchen
+    - service: light.turn_on
+      entity_id: light.4_lamp
+
+- alias: 'Holiday - Lights Off'
+  trigger:
+    - platform: time
+      at: '21:05:00'
+  condition:
+    condition: state
+    entity_id: input_boolean.holiday_mode
+    state: 'on'
+  action:
+    - delay: '{{ (range(0, 2)|random|int) }}:{{ (range(1, 59)|random|int) }}:00'
+    - service: light.turn_off
+      entity_id: group.all_lights
+    - delay: '0:00:{{ (range(10, 59)|random|int) }}'
+    - service: light.turn_on
+      entity_id: light.bedroom
+    - delay: '0:{{ (range(5, 20)|random|int) }}:00'
+    - service: light.turn_off
+      entity_id: group.all_lights

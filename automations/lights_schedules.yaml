@@ -1,0 +1,93 @@
+### Turn off lights in morning when everyone leaves home
+- alias: 'Daytime Away Mode'
+  trigger:
+    platform: state
+    entity_id: group.all_devices
+    to: 'not_home'
+  condition:
+    condition: and
+    conditions:
+      - condition: sun
+        after: sunrise
+        after_offset: "-00:15:00"
+      # - condition: time
+        # before: '11:30:00'
+      - condition: sun
+        before: sunset
+        before_offset: "-00:40:00"
+      # - condition: state
+        # entity_id: group.all_lights
+        # state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: group.all_lights
+    # - service: notify.notify
+      # data_template:
+        # message: "Lights turned off"
+
+### Leave only Hallway Light on when everyone leaves home at night
+- alias: 'Evening Away Mode'
+  trigger:
+    platform: state
+    entity_id: group.all_devices
+    to: 'not_home'
+  condition:
+    condition: sun
+    after: sunset
+    after_offset: "-00:30:00"
+  action:
+    - service: light.turn_off
+      entity_id: group.all_lights
+      data:
+        transition: 60  
+    - service: light.turn_on
+      entity_id: light.hallway_2
+      data:
+        transition: 15
+        
+### Turn on kitchen light in evening when someone enters home
+- alias: 'Arrival Lights On'
+  trigger:
+    platform: state
+    entity_id: group.all_devices
+    to: 'home'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: light.1_kitchen
+        state: 'off'
+      - condition: or
+        conditions:
+        - condition: sun
+          after: sunset
+          after_offset: "-00:30:00"
+        - condition: state
+          entity_id: sun.sun
+          state: below_horizon
+  action:
+    - service: light.turn_on
+      entity_id: light.1_kitchen
+    - service: light.turn_on
+      entity_id: light.4_lamp
+    # - service: notify.notify
+      # data_template:
+        # message: "Kitchen Light turned on"
+
+### Turn Hallway Light on at Sunset
+- alias: 'Hallway Light On at Sunset'
+  trigger:
+    platform: sun
+    event: sunset
+    offset: "-00:30:00"
+  condition:
+    condition: state
+    entity_id: group.all_devices
+    state: not_home
+  action:
+    service: light.turn_on
+    entity_id: light.hallway_2 
+    data:
+      brightness_pct: 60
+      kelvin: 3200
+      transition: 150      

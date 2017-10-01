@@ -1,0 +1,27 @@
+- platform: wake_on_lan
+  mac_address: !secret wol_mac
+  name: Home Server
+  host: !secret wol_ip
+  turn_off:
+    service: shell_command.server_shutdown
+    
+- platform: template
+  switches:
+    house_lights:
+      friendly_name: 'House Lights'
+      value_template: "{{ is_state('group.all_lights', 'on') }}"
+      turn_on:
+        service: light.turn_on
+        entity_id: group.all_lights
+      turn_off:
+        service: light.turn_off
+        entity_id: group.all_lights
+        
+- platform: broadlink
+  host: !secret broadlink_host
+  mac: !secret broadlink_mac
+  switches:
+    tv_samsung:
+      friendly_name: "Samsung TV Power"
+      command_on: 'JgDSAJGWETgSOBI4EhISExISEhISEhE4EjgSOBITERITEhISERMROBISEhMROBI4EhMSEhE4EhISOBI4EhMREhI3EzcTEhIABkiSlRI3EzcTOBISEhISEhISEhMRNxM3EzcTEhMREhISExATETgTEhISEjgSOBISEhIROBITETgTNxMSExESNxI4EhITAAZIkZYROBI4EjgSExESEhMTERETETgSOBI4EhMREhQREhIRExE4EhISExE4EjgSEhISEjgTERI4EzcSEhITETcSOBITEwANBQAAAAAAAA=='
+      command_off: 'JgDSAJOUFTUVNRU1EhMREhQQFBAUEBU1FTUVNRISEhIUEBQQFBAUEBUQFBAUNRU1FRASEhI3FDYUNhQ2EhEVEBQ1FTUVEBQABkWUkxU1FTUVNRMSEhEVDxUQFBAUNRU1FTUTEhIRFBAVEBQQFBAUEBQQFDYUNhISEhIUNRU1FTUVNRMRFBAUNhQ2FBAVAAZElJQUNhU1FTUSEhISExEUEBQQFDYUNhQ2EhIUEBQQFBAUEBQQFQ8VEBQ1FTUTEhIRFDYUNhQ2FDUUEBUQFDUVNRUQFAANBQAAAAAAAA=='

@@ -1,0 +1,43 @@
+### Flash lights when Ashlei arrives home
+- alias: 'Ashlei Home - Flash Lights'
+  trigger:
+    platform: state
+    entity_id: device_tracker.iphone_6_plus
+    to: 'home'
+  condition:
+    condition: state
+    entity_id: input_boolean.lights_notifications
+    state: 'on'
+  action:
+    - service: light.lifx_effect_pulse
+      entity_id: group.all_lights
+      data:
+        brightness: 180
+        color_name: pink
+        period: 0.5
+        cycles: 2
+    # - service: notify.notify
+      # data_template:
+        # message: "Ashlei has arrived home"
+
+### Flash lights when Nick arrives home
+- alias: 'Nick Home - Flash Lights'
+  trigger:
+    platform: state
+    entity_id: device_tracker.huawei_mate9
+    to: 'home'
+  condition:
+    condition: state
+    entity_id: input_boolean.lights_notifications
+    state: 'on'
+  action:
+    - service: light.lifx_effect_pulse
+      entity_id: group.all_lights
+      data:
+        brightness: 180
+        color_name: blue
+        period: 0.5
+        cycles: 2
+    # - service: notify.notify
+      # data_template:
+        # message: "Nick has arrived home"

@@ -1,0 +1,154 @@
+homeassistant:
+  name: !secret name
+  latitude: !secret lat
+  longitude: !secret long
+  elevation: !secret elevation
+  unit_system: metric
+  time_zone: !secret timezone
+  customize: !include customize.yaml
+
+# logger:
+      
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  api_password: !secret http_pw
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  base_url: !secret url
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+
+# Discover some devices automatically
+# discovery:
+hassio:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+# Text to speech
+tts:
+  platform: google
+
+light:
+  - platform: lifx
+    #server: !secret lifx_ip
+    
+shell_command:
+  server_shutdown: !secret server_shutdown
+    
+device_tracker:
+  - platform: netgear
+    host: !secret netgear_ip
+    username: !secret netgear_user
+    password: !secret netgear_pw
+    interval_seconds: 10
+    consider_home: 180
+    track_new_devices: no
+    
+remote:
+  - platform: harmony
+    name: Living Room
+    host: !secret harmony_ip
+    activity: 13915533
+      
+media_player:
+  - platform: cast
+  - platform: samsungtv
+    host: !secret samsungtv_ip
+    name: Samsung TV
+    mac: !secret samsungtv_mac
+  - platform: braviatv
+    host: !secret bravia_host
+  - platform: ps4
+    host: !secret ps4_host
+    ps4_ip: !secret ps4_ip
+    name: PlayStation 4
+    local_store: games
+
+input_select:
+  harmony:
+    name: Current Activity
+    options:
+      # - Select Input
+      - Watch TV
+      - Watch TV with Surround
+      - Watch TV via PVR
+      - Watch Netflix
+      - Play PS4
+      - Power Off
+    icon: mdi:remote
+  aircon:
+    name: Mode
+    options:
+      - Select...
+      - Cool Auto 20
+      - 'Off'
+    icon: mdi:snowflake    
+    
+input_boolean:
+  holiday_mode:
+    name: Holiday Mode
+    initial: off
+    icon: mdi:airplane
+  lights_notifications:
+    name: Lights Notifications
+    initial: off
+    icon: mdi:flash  
+    
+ifttt:
+  key: !secret ifttt_key
+
+zone:
+  name: Work
+  latitude: !secret lat1
+  longitude: !secret long1
+  icon: mdi:briefcase
+
+zone 2:
+  name: Work
+  latitude: !secret lat2
+  longitude: !secret long2
+  icon: mdi:briefcase
+
+group: !include groups.yaml
+automation: !include_dir_merge_list automations/
+sensor: !include sensors.yaml
+script: !include_dir_merge_named scripts/
+switch: !include switches.yaml
+  
+# ios:
+
+# ffmpeg:
+  # ffmpeg_bin: /usr/bin/avconv
+  
+# camera:
+  # - platform: ffmpeg
+    # input: -rtsp_transport tcp -i rtsp://192.168.0.101/unicast
+    # name: CAM_1_RTSP
+
+# notify:
+  # platform: html5
+  # gcm_api_key: !secret gcm-sender-key
+  # gcm_sender_id: !secret gcm-sender-id
