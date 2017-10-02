@@ -23,3 +23,5 @@ ip_bans.yaml
 /icloud/*
 ps4-games.json
 /custom_components/*
+gitupdate.sh
+
