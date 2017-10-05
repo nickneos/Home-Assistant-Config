@@ -18,8 +18,8 @@
         entity_id: group.all_lights
         
 - platform: broadlink
-  host: !secret broadlink_host
-  mac: !secret broadlink_mac
+  host: !secret broadlink_host2
+  mac: !secret broadlink_mac2
   switches:
     tv_samsung:
       friendly_name: "Samsung TV Power"

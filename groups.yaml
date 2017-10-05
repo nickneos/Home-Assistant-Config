@@ -14,6 +14,7 @@ default_view:
   entities:
     - device_tracker.huawei_mate9
     - device_tracker.iphone_6_plus
+    - sensor.broadlink_sensor_temperature
     - sensor.bom_air_temp_c
     - sensor.bom_relative_humidity
     - sensor.bom_rain_today
