@@ -1,0 +1,27 @@
+- alias: 'Mum Home'
+  trigger:
+    platform: state
+    entity_id: device_tracker.lg_g4
+    to: 'home'
+  # condition:
+    # condition: state
+    # entity_id: input_boolean.lights_notifications
+    # state: 'on'
+  action:
+    - service: notify.notify
+      data_template:
+        message: "{{now().strftime('%H:%M')}}: Mum has arrived"
+
+- alias: 'Mum Not Home'
+  trigger:
+    platform: state
+    entity_id: device_tracker.lg_g4
+    to: 'home'
+  # condition:
+    # condition: state
+    # entity_id: input_boolean.lights_notifications
+    # state: 'on'
+  action:
+    - service: notify.notify
+      data_template:
+        message: "{{now().strftime('%H:%M')}}: Mum has left"

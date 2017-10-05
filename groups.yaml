@@ -30,7 +30,8 @@ default_view:
     # - media_player.google_home
     # - group.ps4
     - group.fujitsu
-    - group.broadlink_switches
+    - group.samsung_tv_rm_switches
+    - group.arlec_rm_switches
     # - camera.CAM_1_RTSP
 
     
@@ -54,7 +55,7 @@ hallway_view:
   entities:
     - group.hallway_lights
     - group.other_lights
-    - group.broadlink_switches
+    - group.samsung_tv_rm_switches
     - media_player.samsung_tv
 
 bedroom_view:
@@ -152,13 +153,20 @@ fujitsu:
   entities:
     - input_select.aircon
 
-broadlink_switches:
+samsung_tv_rm_switches:
   name: Samsung TV & Sound Bar
   control: hidden
   entities:
     - switch.samsung_tv_power
     - script.amp_yas106_power
     
+arlec_rm_switches:
+  name: Power Switches
+  entities:
+    - switch.power_switch_1
+    - switch.power_switch_2
+    - switch.power_switch_3
+
     
 ######### S05: Server/PC Groups #########     
 server:
