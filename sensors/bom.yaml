@@ -24,6 +24,6 @@
     #- swell_period
     #- vis_km
     #- weather
-    - wind_dir
-    - wind_spd_kmh
+    #- wind_dir
+    #- wind_spd_kmh
     #- wind_spd_kt

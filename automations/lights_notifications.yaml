@@ -16,7 +16,7 @@
         color_name: pink
         period: 0.5
         cycles: 2
-    # - service: notify.notify
+    # - service: notify.html5
       # data_template:
         # message: "Ashlei has arrived home"
 
@@ -38,6 +38,6 @@
         color_name: blue
         period: 0.5
         cycles: 2
-    # - service: notify.notify
+    # - service: notify.html5
       # data_template:
         # message: "Nick has arrived home"

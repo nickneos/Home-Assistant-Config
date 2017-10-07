@@ -8,7 +8,7 @@
     # entity_id: input_boolean.lights_notifications
     # state: 'on'
   action:
-    - service: notify.notify
+    - service: notify.html5
       data_template:
         message: "{{now().strftime('%H:%M')}}: Mum has arrived"
 
@@ -22,6 +22,6 @@
     # entity_id: input_boolean.lights_notifications
     # state: 'on'
   action:
-    - service: notify.notify
+    - service: notify.html5
       data_template:
         message: "{{now().strftime('%H:%M')}}: Mum has left"
