@@ -1,0 +1,18 @@
+harmony:
+  name: Current Activity
+  options:
+    - Watch TV
+    - Watch TV with Surround
+    - Watch TV via PVR
+    - Watch Netflix
+    - Play PS4
+    - Power Off
+  icon: mdi:remote
+aircon:
+  name: Mode
+  options:
+    - Select...
+    - Cool Auto 20
+    - 'Off'
+  icon: mdi:snowflake    
+  

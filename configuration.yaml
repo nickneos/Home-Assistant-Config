@@ -24,27 +24,47 @@ http:
   ssl_key: /ssl/privkey.pem
   base_url: !secret url
 
-# Checks for available updates
-# Note: This component will send some information about your system to
-# the developers to assist with development of Home Assistant.
-# For more information, please see:
-# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+  
 updater:
-
-# Discover some devices automatically
 # discovery:
 hassio:
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
 
-# Enables support for tracking state changes over time.
 history:
+  exclude:
+    domains:
+      - automation
+      - weblink
+      - updater
+      - script
+    entities:
+      - sensor.last_boot
+      - sensor.since_last_boot
+      - sensor.date
 
-# View all events in a logbook
 logbook:
+  exclude:
+    entities:
+      - sensor.last_boot
+      - sensor.since_last_boot
+      - sensor.date
+      - automation.home_server_on
+      - automation.home_server_off
+      - automation.samsung_tv_on
+      - automation.samsung_tv_off
+      - automation.ps4_on
+      - automation.ps4_off
+      - automation.harmony_input_selection
+      - automation.harmony_off
+      - automation.harmony_activity_sync
+      - automation.fujitsu_selection_cool_20
+      - automation.fujitsu_selection_off
+    domains:
+      - sun
+      - weblink
 
-# Track the sun
 sun:
 
 # Text to speech
@@ -54,95 +74,24 @@ tts:
 light:
   - platform: lifx
     #server: !secret lifx_ip
-    
-shell_command:
-  server_shutdown: !secret server_shutdown
-    
-device_tracker:
-  - platform: netgear
-    host: !secret netgear_ip
-    username: !secret netgear_user
-    password: !secret netgear_pw
-    interval_seconds: 10
-    consider_home: 180
-    track_new_devices: no
-    
-remote:
-  - platform: harmony
-    name: Living Room
-    host: !secret harmony_ip
-    activity: 13915533
-      
-media_player:
-  - platform: cast
-  - platform: samsungtv
-    host: !secret samsungtv_ip
-    name: Samsung TV
-    mac: !secret samsungtv_mac
-  - platform: braviatv
-    host: !secret bravia_host
-  - platform: ps4
-    host: !secret ps4_host
-    ps4_ip: !secret ps4_ip
-    name: PlayStation 4
-    local_store: games
-
-input_select:
-  harmony:
-    name: Current Activity
-    options:
-      - Watch TV
-      - Watch TV with Surround
-      - Watch TV via PVR
-      - Watch Netflix
-      - Play PS4
-      - Power Off
-    icon: mdi:remote
-  aircon:
-    name: Mode
-    options:
-      - Select...
-      - Cool Auto 20
-      - 'Off'
-    icon: mdi:snowflake    
-    
-input_boolean:
-  holiday_mode:
-    name: Holiday Mode
-    initial: off
-    icon: mdi:airplane
-  lights_notifications:
-    name: Lights Notifications
-    initial: off
-    icon: mdi:flash  
-    
+             
 ifttt:
   key: !secret ifttt_key
 
-zone:
-  name: Work
-  latitude: !secret lat1
-  longitude: !secret long1
-  icon: mdi:briefcase
-
-zone 2:
-  name: Work
-  latitude: !secret lat2
-  longitude: !secret long2
-  icon: mdi:briefcase
-
-notify:
-  platform: html5
-  gcm_api_key: !secret gcm-sender-key
-  gcm_sender_id: !secret gcm-sender-id  
-  
-group: !include groups.yaml
-automation: !include_dir_merge_list automations/
+device_tracker: !include_dir_merge_list device_trackers/
+remote: !include_dir_merge_list remotes/      
+media_player: !include_dir_merge_list media_players/    
+input_select: !include_dir_merge_named input_select/
+input_boolean: !include_dir_merge_named input_boolean/
+shell_command: !include_dir_merge_named shell_command/
 sensor: !include_dir_merge_list sensors/
+switch: !include_dir_merge_list switches/
 script: !include_dir_merge_named scripts/
-switch: !include switches.yaml
+automation: !include_dir_merge_list automations/
+notify: !include_dir_merge_list notify/
+zone: !include_dir_merge_list zones/
+group: !include groups.yaml
 
-  
 # ios:
 
 # ffmpeg:
