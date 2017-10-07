@@ -30,7 +30,8 @@ default_view:
     # - media_player.google_home
     # - group.ps4
     - group.fujitsu
-    - group.samsung_tv_rm_switches
+    - group.samsung_tv_rm_switches_compact
+    - group.soniq_tv_rm_switches_compact
     - group.arlec_rm_switches
     # - camera.CAM_1_RTSP
 
@@ -55,7 +56,7 @@ hallway_view:
   entities:
     - group.hallway_lights
     - group.other_lights
-    - group.samsung_tv_rm_switches
+    - group.samsung_tv_rm_switches_full
     - media_player.samsung_tv
 
 bedroom_view:
@@ -63,6 +64,7 @@ bedroom_view:
   view: yes
   entities:
     - group.bedroom_lights
+    - group.soniq_tv_rm_switches_full
     - media_player.bedroom_tv
     - script.everything_off
     
@@ -153,12 +155,37 @@ fujitsu:
   entities:
     - input_select.aircon
 
-samsung_tv_rm_switches:
+samsung_tv_rm_switches_compact:
   name: Samsung TV & Sound Bar
   control: hidden
   entities:
     - switch.samsung_tv_power
     - script.amp_yas106_power
+
+samsung_tv_rm_switches_full:
+  name: Samsung TV & Sound Bar
+  control: hidden
+  entities:
+    - switch.samsung_tv_power
+    - script.amp_yas106_power
+    - script.amp_yas106_vol_up
+    - script.amp_yas106_vol_down
+        
+soniq_tv_rm_switches_compact:
+  name: Soniq TV
+  control: hidden
+  entities:
+    - script.soniq_tv_power
+
+soniq_tv_rm_switches_full:
+  name: Soniq TV
+  control: hidden
+  entities:
+    - script.soniq_tv_power
+    - script.soniq_tv_ch_up
+    - script.soniq_tv_ch_down
+    - script.soniq_tv_vol_up
+    - script.soniq_tv_vol_down
     
 arlec_rm_switches:
   name: Power Switches

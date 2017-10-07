@@ -29,3 +29,17 @@ script.amp_yas106_power:
   icon: mdi:speaker
 sensor.broadlink_sensor_temperature:
   friendly_name: Inside Temp
+script.soniq_tv_power:
+  icon: mdi:television
+script.soniq_tv_vol_up:
+  icon: mdi:volume-plus
+script.soniq_tv_vol_down:
+  icon: mdi:volume-minus
+script.soniq_tv_ch_up:
+  icon: mdi:arrow-up-drop-circle-outline
+script.soniq_tv_ch_down:
+  icon: mdi:arrow-down-drop-circle-outline
+script.amp_yas106_vol_up:
+  icon: mdi:volume-plus
+script.amp_yas106_vol_down:
+  icon: mdi:volume-minus
