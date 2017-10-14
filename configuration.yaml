@@ -73,10 +73,15 @@ tts:
 
 light:
   - platform: lifx
-    #server: !secret lifx_ip
+    #server: !secret hass_ip
              
 ifttt:
   key: !secret ifttt_key
+  
+emulated_hue:
+  host_ip: !secret hass_ip
+  listen_port: 80
+  expose_by_default: false
 
 device_tracker: !include_dir_merge_list device_trackers/
 remote: !include_dir_merge_list remotes/      
@@ -99,6 +104,6 @@ group: !include groups.yaml
   
 # camera:
   # - platform: ffmpeg
-    # input: -rtsp_transport tcp -i rtsp://192.168.0.101/unicast
-    # name: CAM_1_RTSP
+    # input: -rtsp_transport tcp -i rtsp://192.168.0.32/unicast
+    # name: Cam_Study
 

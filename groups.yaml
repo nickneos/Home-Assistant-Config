@@ -32,8 +32,9 @@ default_view:
     - group.fujitsu
     - group.samsung_tv_rm_switches_compact
     - group.soniq_tv_rm_switches_compact
+    - group.radio_rm_switches_compact
     - group.arlec_rm_switches
-    # - camera.CAM_1_RTSP
+    # - camera.Cam_Study
 
     
 ############ S02: Views #########
@@ -58,6 +59,7 @@ hallway_view:
     - group.other_lights
     - group.samsung_tv_rm_switches_full
     - media_player.samsung_tv
+    - group.radio_rm_switches_full
 
 bedroom_view:
   name: Bedroom
@@ -110,6 +112,7 @@ other_lights:
   entities:
     - light.Study
     - light.Spare_Room
+    - switch.table_lamp
 
 bedroom_lights:
   name: Bedroom Lights
@@ -186,12 +189,25 @@ soniq_tv_rm_switches_full:
     - script.soniq_tv_ch_down
     - script.soniq_tv_vol_up
     - script.soniq_tv_vol_down
+
+radio_rm_switches_compact:
+  name: DAB Radio
+  control: hidden
+  entities:
+    - script.radio_power
+
+radio_rm_switches_full:
+  name: DAB Radio
+  control: hidden
+  entities:
+    - script.radio_power
+    - script.radio_vol_up
+    - script.radio_vol_down
     
 arlec_rm_switches:
   name: Power Switches
   entities:
     - switch.power_switch_1
-    - switch.power_switch_2
     - switch.power_switch_3
 
     

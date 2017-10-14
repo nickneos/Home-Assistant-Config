@@ -21,6 +21,7 @@ switch.house_lights:
 script.everything_off:
   icon: mdi:power
 switch.samsung_tv_power:
+  assumed_state: false
   icon: mdi:television
 remote.living_room:
   icon: mdi:television
@@ -42,4 +43,20 @@ script.soniq_tv_ch_down:
 script.amp_yas106_vol_up:
   icon: mdi:volume-plus
 script.amp_yas106_vol_down:
+  icon: mdi:volume-minus
+switch.table_lamp:
+  assumed_state: false
+  emulated_hue_hidden: false
+  icon: mdi:lightbulb
+switch.power_switch_1:
+  assumed_state: false
+  icon: mdi:power-plug
+switch.power_switch_3:
+  assumed_state: false
+  icon: mdi:power-plug
+script.radio_power:
+  icon: mdi:radio
+script.radio_vol_up:
+  icon: mdi:volume-plus
+script.radio_vol_down:
   icon: mdi:volume-minus
