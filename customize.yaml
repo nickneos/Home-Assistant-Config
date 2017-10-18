@@ -21,7 +21,7 @@ switch.house_lights:
 script.everything_off:
   icon: mdi:power
 switch.samsung_tv_power:
-  assumed_state: false
+  assumed_state: true
   icon: mdi:television
 remote.living_room:
   icon: mdi:television
