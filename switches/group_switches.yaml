@@ -41,6 +41,6 @@
           entity_id: remote.living_room
         - service: switch.turn_off
           entity_id: switch.samsung_tv_power
-        - service: switch.turn_on
+        - service: switch.turn_off
           entity_id: switch.home_server
           
