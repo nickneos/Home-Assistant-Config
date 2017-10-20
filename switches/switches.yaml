@@ -23,6 +23,35 @@
         - service: switch.turn_off
           entity_id: switch.table_lamp
 
+### Master Switch ###
+- platform: template
+  switches:
+    master_switch:
+      friendly_name: 'Master Switch'
+      value_template: "{{ is_state('group.all_lights', 'on') or is_state('switch.table_lamp', 'on') or is_state('remote.living_room', 'on') or is_state('switch.samsung_tv_power', 'on') or is_state('switch.home_server', 'on') }}"
+      turn_on:
+        - service: light.turn_on
+          entity_id: group.all_lights
+        - service: switch.turn_on
+          entity_id: switch.table_lamp
+        - service: remote.turn_on
+          entity_id: remote.living_room
+        - service: switch.turn_on
+          entity_id: switch.samsung_tv_power
+        - service: switch.turn_on
+          entity_id: switch.home_server
+      turn_off:
+        - service: light.turn_off
+          entity_id: group.all_lights
+        - service: switch.turn_off
+          entity_id: switch.table_lamp          
+        - service: remote.turn_off
+          entity_id: remote.living_room
+        - service: switch.turn_off
+          entity_id: switch.samsung_tv_power
+        - service: switch.turn_on
+          entity_id: switch.home_server
+          
 ### RM Mini ###
 - platform: broadlink
   host: !secret broadlink_host1
