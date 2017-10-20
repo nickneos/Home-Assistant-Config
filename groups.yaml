@@ -68,7 +68,7 @@ bedroom_view:
     - group.bedroom_lights
     - group.soniq_tv_rm_switches_full
     - media_player.bedroom_tv
-    - script.everything_off
+    - switch.master_switch
     
 system_view:
   name: System
