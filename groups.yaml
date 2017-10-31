@@ -118,6 +118,7 @@ other_lights:
     - light.Study
     - light.Spare_Room
     - switch.table_lamp
+    - light.gateway_light_34ce0088ebdb
 
 bedroom_lights:
   name: Bedroom Lights
