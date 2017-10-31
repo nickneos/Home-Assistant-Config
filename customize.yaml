@@ -66,3 +66,5 @@ sensor.humidity_158d000170bded:
   friendly_name: Inside Humidity
 sensor.illumination_34ce0088ebdb:
   friendly_name: Inside Brightness
+light.gateway_light_34ce0088ebdb:
+  friendly_name: Night Light

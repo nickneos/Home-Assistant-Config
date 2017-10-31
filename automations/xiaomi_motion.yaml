@@ -1,0 +1,33 @@
+- alias: Turn on gateway light with motion
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d0001d6721c
+    from: 'off'
+    to: 'on'
+  condition:
+    condition: numeric_state
+    entity_id: sensor.illumination_34ce0088ebdb
+    below: 300
+  action:
+    - service: light.turn_on
+      entity_id: light.gateway_light_34ce0088ebdb
+      data:
+        brightness: 5
+    # - service: automation.turn_on
+      # data:
+        # entity_id: automation.MOTION_OFF
+        
+- alias: Turn off gateway light after 5 minutes of no motion
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d0001d6721c
+    from: 'on'
+    to: 'off'
+    for:
+      minutes: 5
+  action:
+    - service: light.turn_off
+      entity_id: light.gateway_light_34ce0088ebdb
+    # - service: automation.turn_off
+      # data:
+        # entity_id: automation.Motion_off
