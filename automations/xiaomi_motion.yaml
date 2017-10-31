@@ -5,9 +5,12 @@
     from: 'off'
     to: 'on'
   condition:
-    condition: numeric_state
-    entity_id: sensor.illumination_34ce0088ebdb
-    below: 300
+    - condition: numeric_state
+      entity_id: sensor.illumination_34ce0088ebdb
+      below: 200
+    - condition: state
+      entity_id: light.gateway_light_34ce0088ebdb
+      state: 'off'      
   action:
     - service: light.turn_on
       entity_id: light.gateway_light_34ce0088ebdb
@@ -25,6 +28,10 @@
     to: 'off'
     for:
       minutes: 5
+  condition:
+    - condition: state
+      entity_id: light.gateway_light_34ce0088ebdb
+      state: 'on'
   action:
     - service: light.turn_off
       entity_id: light.gateway_light_34ce0088ebdb
