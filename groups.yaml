@@ -14,7 +14,12 @@ default_view:
   entities:
     - device_tracker.huawei_mate9
     - device_tracker.iphone_6_plus
+    - binary_sensor.door_window_sensor_158d00019da791
+    - binary_sensor.motion_sensor_158d0001d6721c
     - sensor.broadlink_sensor_temperature
+    - sensor.temperature_158d000170bded
+    - sensor.humidity_158d000170bded
+    - sensor.illumination_34ce0088ebdb
     - sensor.bom_air_temp_c
     - sensor.bom_relative_humidity
     - sensor.bom_rain_today

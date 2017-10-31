@@ -82,6 +82,13 @@ emulated_hue:
   host_ip: !secret hass_ip
   listen_port: 80
   expose_by_default: false
+  
+xiaomi_aqara:
+  discovery_retry: 5
+  gateways:
+    - host: !secret aqara_ip
+      mac: !secret aqara_mac
+      key: !secret aqara_key
 
 device_tracker: !include_dir_merge_list device_trackers/
 remote: !include_dir_merge_list remotes/      

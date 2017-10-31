@@ -1,0 +1,32 @@
+- alias: Toggle Bedroom Light on Single Press
+  trigger:
+    - platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.switch_158d00016d7468
+        click_type: single
+  action:
+    service: light.toggle
+    entity_id: light.Bedroom
+
+- alias: Turn Off Everything on Long Press
+  trigger:
+    - platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.switch_158d00016d7468
+        click_type: long_click_press
+  action:
+    service: switch.turn_off
+    entity_id: switch.master_switch
+    
+# - alias: Toggle couch light on double click
+  # trigger:
+    # platform: event
+    # event_type: click
+    # event_data:
+      # entity_id: binary_sensor.switch_158d00016d7468
+      # click_type: double
+  # action:
+    # service: switch.toggle
+    # entity_id: switch.wall_switch_right_158d000xxxxx01
