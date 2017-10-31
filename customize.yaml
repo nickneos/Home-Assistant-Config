@@ -29,7 +29,7 @@ input_select.harmony: {}
 script.amp_yas106_power:
   icon: mdi:speaker
 sensor.broadlink_sensor_temperature:
-  friendly_name: Inside Temp
+  friendly_name: Inside Temp 2
 script.soniq_tv_power:
   icon: mdi:television
 script.soniq_tv_vol_up:
@@ -60,3 +60,9 @@ script.radio_vol_up:
   icon: mdi:volume-plus
 script.radio_vol_down:
   icon: mdi:volume-minus
+sensor.temperature_158d000170bded:
+  friendly_name: Inside Temp 2
+sensor.humidity_158d000170bded:
+  friendly_name: Inside Humidity
+sensor.illumination_34ce0088ebdb:
+  friendly_name: Inside Brightness
