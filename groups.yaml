@@ -1,10 +1,10 @@
-#######################################################
+#####################################
 # S01: Default View                 #
 # S02: Views                        #
 # S03: Light Groups                 #
 # S04: Media/Remote Groups          #
 # S05: Server/PC Groups             #  
-#######################################################
+#####################################
 
 
 ############ S01: Default View ############
@@ -13,13 +13,13 @@ default_view:
   icon: mdi:home 
   entities:
     - device_tracker.huawei_mate9
-    - device_tracker.iphone_6_plus
-    - binary_sensor.door_window_sensor_158d00019da791
-    - binary_sensor.motion_sensor_158d0001d6721c
-    - sensor.broadlink_sensor_temperature
+    - device_tracker.galaxy_s8_plus
+    # - binary_sensor.door_window_sensor_158d00019da791
+    # - binary_sensor.motion_sensor_158d0001d6721c
     - sensor.temperature_158d000170bded
     - sensor.humidity_158d000170bded
     - sensor.illumination_34ce0088ebdb
+    - sensor.broadlink_sensor_temperature
     - sensor.bom_air_temp_c
     - sensor.bom_relative_humidity
     - sensor.bom_rain_today
@@ -80,7 +80,7 @@ system_view:
   view: yes
   entities:
     - sun.sun
-    - device_tracker.galaxys8
+    - device_tracker.galaxy_s8
     - device_tracker.lg_g4
     - automation.daytime_away_mode
     - automation.evening_away_mode

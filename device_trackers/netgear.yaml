@@ -1,7 +1,7 @@
-- platform: netgear
-  host: !secret netgear_ip
-  username: !secret netgear_user
-  password: !secret netgear_pw
-  interval_seconds: 10
-  consider_home: 180
-  track_new_devices: no
+# - platform: netgear
+  # host: !secret netgear_ip
+  # username: !secret netgear_user
+  # password: !secret netgear_pw
+  # interval_seconds: 10
+  # consider_home: 180
+  # track_new_devices: no

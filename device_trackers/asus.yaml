@@ -1,0 +1,6 @@
+- platform: asuswrt
+  host: !secret asus_ip
+  username: !secret asus_user
+  password: !secret asus_pw
+  protocol: ssh
+  port: 22

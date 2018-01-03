@@ -15,7 +15,9 @@
     - service: light.turn_on
       entity_id: light.gateway_light_34ce0088ebdb
       data:
-        brightness: 5
+        brightness_pct: 10
+        kelvin: 3200
+        # brightness: 5
     # - service: automation.turn_on
       # data:
         # entity_id: automation.MOTION_OFF
