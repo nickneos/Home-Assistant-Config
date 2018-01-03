@@ -118,6 +118,7 @@ other_lights:
     - light.Study
     - light.Spare_Room
     - switch.table_lamp
+    - switch.fairy_lights
     - light.gateway_light_34ce0088ebdb
 
 bedroom_lights:
@@ -214,7 +215,6 @@ arlec_rm_switches:
   name: Power Switches
   entities:
     - switch.power_switch_1
-    - switch.power_switch_3
 
     
 ######### S05: Server/PC Groups #########     
