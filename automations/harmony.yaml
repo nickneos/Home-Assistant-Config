@@ -10,7 +10,7 @@
       to: 'Watch TV with Surround'
     - platform: state
       entity_id: input_select.harmony
-      to: 'Watch TV via PVR'
+      to: 'Watch Fetch'
     - platform: state
       entity_id: input_select.harmony
       to: 'Watch Netflix'
@@ -26,7 +26,7 @@
             21450129
           {% elif is_state("input_select.harmony", "Watch TV with Surround") %}
             13915533
-          {% elif is_state("input_select.harmony", "Watch TV via PVR") %}
+          {% elif is_state("input_select.harmony", "Watch Fetch") %}
             13474528
           {% elif is_state("input_select.harmony", "Watch Netflix") %}
             28400181
@@ -55,7 +55,7 @@
     - platform: template
       value_template: "{% if is_state_attr('remote.living_room', 'current_activity', 'TV and surround') %}true{% endif %}"
     - platform: template
-      value_template: "{% if is_state_attr('remote.living_room', 'current_activity', 'Watch TV via PVR') %}true{% endif %}"
+      value_template: "{% if is_state_attr('remote.living_room', 'current_activity', 'Watch Fetch') %}true{% endif %}"
     - platform: template
       value_template: "{% if is_state_attr('remote.living_room', 'current_activity', 'Watch Netflix') %}true{% endif %}"
     - platform: template
@@ -71,8 +71,8 @@
             Watch TV
           {% elif is_state_attr('remote.living_room', 'current_activity', 'TV and surround') %}
             Watch TV with Surround
-          {% elif is_state_attr('remote.living_room', 'current_activity', 'Watch TV via PVR') %}
-            Watch TV via PVR
+          {% elif is_state_attr('remote.living_room', 'current_activity', 'Watch Fetch') %}
+            Watch Fetch
           {% elif is_state_attr('remote.living_room', 'current_activity', 'Watch Netflix') %}
             Watch Netflix
           {% elif is_state_attr('remote.living_room', 'current_activity', 'Play PS4') %}
