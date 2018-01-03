@@ -48,6 +48,10 @@ switch.table_lamp:
   assumed_state: false
   emulated_hue_hidden: false
   icon: mdi:lightbulb
+switch.fairy_lights:
+  assumed_state: false
+  emulated_hue_hidden: false
+  icon: mdi:lightbulb
 switch.power_switch_1:
   assumed_state: false
   icon: mdi:power-plug
