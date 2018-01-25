@@ -1,7 +1,7 @@
 samsung_tv_power_on_to_tv:
   alias: Samsung TV Power-On
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgDSAJOUFDYSOBM3ExETERMRExETERQ2EjgTNxMRExETERMRExETNxISExETNxM3ExETERM3ERIT
@@ -9,7 +9,7 @@ NxQ2FBETERM3ETgTERMABkiSlRM3ETgTNxMRExEUERMRExETNxE4EzcTERMRExITERMREzYTERMR
 EzcTNxMRExITNxESEzcTNxMRExETNxE4FBETAAZHk5QUNhI3FDcTERMRExETERMREzYUNhQ2FBET
 ERMRExETERM2FBETERM3EzcTERMREzYTERM3EzcTERQREzcROBMREwANBQAAAAAAAA=='
     - delay: 00:00:05
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgDSAJKVEzcTNxE4ExETERMSExETERM3EzcSNxMRExETERQRExETNxM3ERITNxM3ExETERQRExET
@@ -22,7 +22,7 @@ ERMRExITERM3EzYTERM3EzcTERMRExEUERMREzYTERMREzcTNxM3EQANBQAAAAAAAA=='
 samsung_tv_tvdtv:
   alias: Samsung TV TV/DTV
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgDSAJOVEzcTNxM2ExETERMRExEUERM3EzcTNhMRExETERMRExITNxM3ExATEhMQExETNxMSExET
@@ -32,7 +32,7 @@ ERMRExETERQ2FDYSExIRExETERM3ExETEhMREzcTNhM3EzcTERM3EQANBQAAAAAAAA=='
 samsung_tv_hdmi1:
   alias: Samsung TV HDMI1
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgAYAZKVETgTNxM3ExISEhISEhISEhE4EjgTNxMSEhISEhISERMROBITERMSOBISEjgSNxI4EhIS
@@ -43,7 +43,7 @@ EhMRExE4EjgSOBISEhISExETEBMSOBISEhISOBITETgROBI4EhMSNxM3EhITNxMREhITERIADQU='
 samsung_tv_hdmi2:
   alias: Samsung TV HDMI2
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgDSAJKVEzcTNxI3FBETERMRExETERM3EzcROBQRExETERMRExETERM3EzYUNhQ2FDYUERM2EzcT
@@ -53,7 +53,7 @@ ERMRExETERMREzcTNhM3FDYUNhQREzYTNxMRExETERMRExEUNhITEQANBQAAAAAAAA=='
 samsung_tv_hdmi3:
   alias: Samsung TV HDMI3
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgDqAZOUEzcSNxQ2FBETERMRExETERM3ETgUNhQRExETERMRExETERM2FBETERMRExETNxM3EzYT
@@ -68,7 +68,7 @@ ExETERI3ExETERQRExETNxM3EzYTERM3EzcTNxE4ExEUERMADQUTERMRFBETERM3ETgTNw=='
 samsung_tv_hdmi4:
   alias: Samsung TV HDMI4
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgDSAJOUFTUVNRU0FRAUEBQQFBAVDxM3FTUSNxUQFBAUEBMRFBAUNhUPFDYSEhQQFBAUNhQ2FBAU
@@ -78,7 +78,7 @@ ERQQFBAUEBM3FQ8TNhUQExEUEBQ1FTYUEBQ2EhEVNRU1FTUVEBQQEwANBQAAAAAAAA=='
 samsung_tv_inputtv:
   alias: Samsung TV InputTV
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgDSAJKVEzcTNxE4ExETERMSExETERM3EzcSNxMRExETERQRExETNxM3ERITNxM3ExETERQRExET
@@ -88,7 +88,7 @@ ERMRExITERM3EzYTERM3EzcTERMRExEUERMREzYTERMREzcTNxM3EQANBQAAAAAAAA=='
 samsung_tv_power_on:
   alias: Samsung TV Power-On
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgDSAJOUFDYSOBM3ExETERMRExETERQ2EjgTNxMRExETERMRExETNxISExETNxM3ExETERM3ERIT
@@ -98,7 +98,7 @@ ERMRExETERM2FBETERM3EzcTERMREzYTERM3EzcTERQREzcROBMREwANBQAAAAAAAA=='
 samsung_tv_power_off:
   alias: Samsung TV Power-Off
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgDSAJOUEzcTNxM3ExETERMRExESExE4EzcTNxMRExETERISEhITERMRExETNxM3ExETERM2FDYU
@@ -108,7 +108,7 @@ ERETEhISERQRExETERM3EzcTERMREzYUNhQ2FDYUERETETgTNxMREwANBQAAAAAAAA=='
 samsung_tv_info:
   alias: Samsung TV Info
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgCMAJOWEDoQOhA5ERQRFBEUEBUQFRA6EDkROREUEBUQFRAVEBQRORE5EDoQORE5ERQRFBEUEBUQ
@@ -117,7 +117,7 @@ ETkRORAVEBUQFRAUERQRFBEUERQQOhA5ETkRAA0FAAAAAAAAAAAAAAAA'
 samsung_tv_guide:
   alias: Samsung TV Guide
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgCMAJWUEjgSNxM3ExISExITEhMSExI3EzcTNxITEhMSEhMSExITNxI4EjcTNxMSExISOBITEhIT
@@ -126,7 +126,7 @@ ETkRFBEUEDoQFRAUERQRFBEUETkQOhAVEDkRAA0FAAAAAAAAAAAAAAAA'
 samsung_tv_channel_list:
   alias: Samsung TV Channel List
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgCMAJOWETkRORA6EBUQFBEUERQRFBE5EDoQOREUERQRFBEUEBUQOhA5ERQROREUEDoQOREUERQR
