@@ -1,35 +1,35 @@
 soniq_tv_power:
   alias: Soniq TV Power
   sequence:
-    - service: broadlink.send_packet_192_168_0_30
+    - service: switch.broadlink_send_packet_192_168_0_30
       data:
         packet:
           - 'JgBYAAABJ5USFBE5ERQSFBE5ETkSOBIUETkRFBI5ETkROREUEjgSOREUETkSOBI5ERQRFBIUERQSOBIUERQRFBI5ETkRORE5EgAE1AABJ0sRAAxiAAEnSxEADQU='
 soniq_tv_vol_up:
   alias: Soniq TV Volume Up
   sequence:
-    - service: broadlink.send_packet_192_168_0_30
+    - service: switch.broadlink_send_packet_192_168_0_30
       data:
         packet:
           - 'JgBYAAABKJURFBI5ERQRFBI4EjkROREUEjgSFBE5ETkRORIUETkRORE5EhQRFBE5ERQSFBE5ERQSFBE5ETkRFRE5ETkRFBI4EgAE1gABJ0sRAAxjAAEnSxEADQU='
 soniq_tv_vol_down:
   alias: Soniq TV Volume Down
   sequence:
-    - service: broadlink.send_packet_192_168_0_30
+    - service: switch.broadlink_send_packet_192_168_0_30
       data:
         packet:
           - 'JgBQAAABJ5YRFBE5ERQSFBE5ETkSOBIUETkRFBI4EjkROREUEjgSORE5ETkRFBIUERQRFBI5ERQRFBIUETkRORE5EjgSFBE5EQAE1gABJ0sSAA0FAAAAAAAAAAA='
 soniq_tv_ch_up:
   alias: Soniq TV Channel Up
   sequence:
-    - service: broadlink.send_packet_192_168_0_30
+    - service: switch.broadlink_send_packet_192_168_0_30
       data:
         packet:
           - 'JgBQAAABJ5USFBE5ERQRFBI5ETkROREUEjkRFBE5ETkSOBIUETkRORI4EhQRFBIUETkRFBE5EhQRFBE5ETkSOBIUETkRFBI5EQAE1gABJ0wRAA0FAAAAAAAAAAA='
 soniq_tv_ch_down:
   alias: Soniq TV Channel Down
   sequence:
-    - service: broadlink.send_packet_192_168_0_30
+    - service: switch.broadlink_send_packet_192_168_0_30
       data:
         packet:
           - 'JgBQAAABJ5USFBE5ERQSFBE5ETkRORIUETkRFBI4EjkROREUEjgSORE5ERQSOBI5ERQRFBI4EhQRFBI4EhQRFBI4EjgSFBE5EQAE1wABJ0sRAA0FAAAAAAAAAAA='

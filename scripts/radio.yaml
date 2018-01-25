@@ -1,7 +1,7 @@
 radio_power:
   alias: Radio Power 
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgBYAAABJ5MTEhQQFRETEhQQFRATEhQRFTUUNRM3FTMWNRQ2FTUUNhMSFDUTEhQ2ExIUEBUQExIU
@@ -9,7 +9,7 @@ NhMSFDUUERU1EzYVNhQ1EwAFHAABJ0oUAAxNAAEnShQADQU='
 radio_mute:
   alias: Radio Mute
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgBQAAABKZEVEBMSFBAVERMSFBAVEBMSFDYTNhU1FTUTNhU2FDUTNhU2FDUTNxUQExIUEBUQExIU
@@ -17,7 +17,7 @@ ERUQExIUNRQ2FTUUNRQ2FQAFGgABK0UUAA0FAAAAAAAAAAA='
 radio_vol_up:
   alias: Radio Volume Up
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgBIAAABKpEVEBMSFBAVEBQRFRAVEBMSFDYTNhU1FDYTNhU1FDYTNhU1FRAVNRQ1FBIUEBUQExIU
@@ -25,7 +25,7 @@ EBU2FBAVEBM3FTMWNRQ2FQANBQ=='
 radio_vol_down:
   alias: Radio Volume Down
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgBIAAABKJIUEhQQFRATEhQQFRETEhQQFTUUNhM2FTUVNRM2FTYUNRMSFBAVNhQ1EzcVEBMSFBAV
@@ -33,7 +33,7 @@ NRQ2ExIUEBUQFDYVNRQ1FAANBQ=='
 # radio_:
   # alias: Radio 
   # sequence:
-    # - service: broadlink.send_packet_192_168_0_31
+    # - service: switch.broadlink_send_packet_192_168_0_31
       # data:
         # packet:
           # - 'JgBQAAABKJMUEBUQExIUERQRExIUEBUQFDYVNRQ1FDYVNRQ1FDYVNRQ2ExIUEBQRFBEVEBUQExIU
@@ -41,7 +41,7 @@ NRQ2ExIUEBUQFDYVNRQ1FAANBQ=='
 # radio_:
   # alias: Radio 
   # sequence:
-    # - service: broadlink.send_packet_192_168_0_31
+    # - service: switch.broadlink_send_packet_192_168_0_31
       # data:
         # packet:
           # - 'JgBQAAABKpEUERMSFBAVEBMSFBEVEBMSFDUUNhU1FDUUNhU1FDYTNhU1FBEVEBM2FRAUERUQFRAT
@@ -49,7 +49,7 @@ NRQ2ExIUEBUQFDYVNRQ1FAANBQ=='
 # radio_:
   # alias: Radio 
   # sequence:
-    # - service: broadlink.send_packet_192_168_0_31
+    # - service: switch.broadlink_send_packet_192_168_0_31
       # data:
         # packet:
           # - 'JgBQAAABKpATEhQRFRATEhQQFRAWDxUQFDYUNRY0FTUUNhU0FTUUNhMSFQ8WDxYPFg8WDxYPFQ8W
@@ -57,7 +57,7 @@ NRQ2ExIUEBUQFDYVNRQ1FAANBQ=='
 # radio_:
   # alias: Radio 
   # sequence:
-    # - service: broadlink.send_packet_192_168_0_31
+    # - service: switch.broadlink_send_packet_192_168_0_31
       # data:
         # packet:
           # - 'JgBQAAABKZEUERQRExITERUQExIUERQREzYUNxM2EzYWMxU2EzcUNhUPFDYVEBQRExITERQRFBIT
@@ -65,7 +65,7 @@ NRQ2ExIUEBUQFDYVNRQ1FAANBQ=='
 # radio_:
   # alias: Radio 
   # sequence:
-    # - service: broadlink.send_packet_192_168_0_31
+    # - service: switch.broadlink_send_packet_192_168_0_31
       # data:
         # packet:
           # - 'JgBIAAABJ5MUEBQSExITERQRExIUERUQEzYVNRQ2EzYVNRU1EzYVNhQ1EzcUERMSFBAUERMSFBEU
@@ -73,7 +73,7 @@ NRQ2ExIUEBUQFDYVNRQ1FAANBQ=='
 # radio_:
   # alias: Radio 
   # sequence:
-    # - service: broadlink.send_packet_192_168_0_31
+    # - service: switch.broadlink_send_packet_192_168_0_31
       # data:
         # packet:
           # - 'JgBQAAABKJMTEhQQFRATEhQRFRATEhMRFDYVNRM2FTUVNRM1FjYTNhMSFDYTNhQRFBEUERQRExIT
@@ -81,7 +81,7 @@ NRQ2ExIUEBUQFDYVNRQ1FAANBQ=='
 # radio_:
   # alias: Radio 
   # sequence:
-    # - service: broadlink.send_packet_192_168_0_31
+    # - service: switch.broadlink_send_packet_192_168_0_31
       # data:
         # packet:
           # - 'JgBQAAABKZEZDBUQExITERUQFBIUEBUQEzcVNRQ1EzcVNRM2FDYVNRMRFRAUEhM2ExITEhQRExIT
@@ -89,7 +89,7 @@ NRQ2ExIUEBUQFDYVNRQ1FAANBQ=='
 radio_source:
   alias: Radio Source
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgBQAAABKJITEhQRFBETEhMRFRAUEhMRFDYTNhQ2FDYVNRM2FDYUNhM2FjUVDxQ2ExEWDxQSExEU
@@ -97,7 +97,7 @@ ERMSEzcTEhM2EzcUNhU0FAAFGwABKEkUAA0FAAAAAAAAAAA='
 radio_favourite:
   alias: Radio Favourite
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgBQAAABKJMTEhQQFBEUERQRFBETEhQQFTYUNRM2FTYUNRM3FTUTNhQRFDYTNhU2FDUTEhQRFBET
@@ -105,7 +105,7 @@ NhUQExIUERUQEzYVNRU1EwAFHAABJ0oUAA0FAAAAAAAAAAA='
 radio_shuffle:
   alias: Radio Shuffle
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgBQAAABKZEVDxUSFBAVEBMSFBEUERMSEzYTNxU1EzYUNhU1FDUUNhQ2FBEUNhMRFBETEhQRFRAT
@@ -113,7 +113,7 @@ EhQ1FBEVNRM2FTYUNRM2FQAFGgABKkcTAA0FAAAAAAAAAAA='
 radio_snooze:
   alias: Radio Snooze
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgBQAAABKJMTEhQQFBITEhQQFBETEhMSFDYUNRM3FTUUNRM3FTUUNRQSExEVNRM3ExIUEBUQExIU
@@ -121,7 +121,7 @@ NhM2FRAUERQ2EzYVMhg1EwAFHAABJ0oUAA0FAAAAAAAAAAA='
 radio_sleep:
   alias: Radio Sleep
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgBIAAABJ5MTEhQRFBETEhQQFRATEhQRFTUUNRQ2FTUTNhQ2FTUUNhMSExEVEBMSFDYTEhQQFBEU
@@ -129,7 +129,7 @@ NhU1FDUUNhUQEzcUNRQ2EwANBQ=='
 radio_alarm:
   alias: Radio Alarm
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgBQAAABKpAVEBQSFBAVEBMSFBEUERMSFDUTNxU1EzYUNhQ2FDUUNhQRExIUNhMSFBAUERMSFRAV
@@ -137,7 +137,7 @@ NRQ1FBITNhM2FDcUNRM3FAAFGgABKUgTAA0FAAAAAAAAAAA='
 radio_select:
   alias: Radio Select
   sequence:
-    - service: broadlink.send_packet_192_168_0_31
+    - service: switch.broadlink_send_packet_192_168_0_31
       data:
         packet:
           - 'JgBQAAABKpMUEBUQExIUERQRExITERUQEzcUNhQ1FDYVNRQ1FDYVNRQ2EzYUNhQ2EzYVEBQRFBEV
