@@ -5,6 +5,11 @@ soniq_tv_power:
       data:
         packet:
           - 'JgBYAAABJ5USFBE5ERQSFBE5ETkSOBIUETkRFBI5ETkROREUEjgSOREUETkSOBI5ERQRFBIUERQSOBIUERQRFBI5ETkRORE5EgAE1AABJ0sRAAxiAAEnSxEADQU='
+    ### FETCH MINI
+    - service: switch.broadlink_send_packet_192_168_0_30
+      data:
+        packet:
+          - 'JgBQAAABK5MUERQSEzcUERQSEzcUNhQSFBEUNxM3FBEUEhMSEzcUEhQ2ExIUNhQ3FDYUEhM3FBITEhM3FBEUEhMSEzcUERQ3FAAFXgABKkkUAA0FAAAAAAAAAAA='
 soniq_tv_vol_up:
   alias: Soniq TV Volume Up
   sequence:

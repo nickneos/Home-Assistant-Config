@@ -78,10 +78,25 @@ light:
 ifttt:
   key: !secret ifttt_key
   
-emulated_hue:
-  host_ip: !secret hass_ip
-  listen_port: 80
+# emulated_hue:
+  # host_ip: !secret hass_ip
+  # listen_port: 80
+  # expose_by_default: false
+
+google_assistant:
+  project_id: !secret ga_proj
+  client_id: !secret ga_client
+  access_token: !secret ga_token
+  agent_user_id: !secret ga_user
+  api_key: !secret ga_api
   expose_by_default: false
+  entity_config:
+    switch.table_lamp:
+      expose: true
+    switch.fairy_lights:
+      expose: true
+    light.gateway_light_34ce0088ebdb:
+      expose: true
   
 xiaomi_aqara:
   discovery_retry: 5
@@ -114,3 +129,5 @@ group: !include groups.yaml
     # input: -rtsp_transport tcp -i rtsp://192.168.0.32/unicast
     # name: Cam_Study
 
+
+  
