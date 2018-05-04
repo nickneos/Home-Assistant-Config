@@ -1,4 +1,5 @@
 - alias: Turn on gateway light with motion
+  hide_entity: True
   trigger:
     platform: state
     entity_id: binary_sensor.motion_sensor_158d0001d6721c
@@ -23,6 +24,7 @@
         # entity_id: automation.MOTION_OFF
         
 - alias: Turn off gateway light after 5 minutes of no motion
+  hide_entity: True
   trigger:
     platform: state
     entity_id: binary_sensor.motion_sensor_158d0001d6721c

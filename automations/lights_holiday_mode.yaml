@@ -1,4 +1,5 @@
 - alias: 'Holiday - Lights On'
+  hide_entity: True
   trigger:
     platform: sun
     event: sunset
@@ -21,6 +22,7 @@
       entity_id: light.4_lamp
 
 - alias: 'Holiday - Lights Off'
+  hide_entity: True
   trigger:
     - platform: time
       at: '21:05:00'
