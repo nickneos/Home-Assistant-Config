@@ -78,3 +78,11 @@ media_player.home_group:
   name:
   platform: cast
   unique_id: df16535c-9951-42a4-b787-3012563709d9
+media_player.bedroom_tv:
+  name:
+  platform: cast
+  unique_id: 784e67fe-b6f2-9e68-b3f6-03b8a0191544
+media_player.samsung_tv_2:
+  name:
+  platform: cast
+  unique_id: aaa13786-0435-65d6-ece0-4006b350cb1e

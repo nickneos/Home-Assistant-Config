@@ -1,4 +1,5 @@
 - alias: 'Mum Home'
+  hide_entity: True
   trigger:
     platform: state
     entity_id: device_tracker.lg_g4
@@ -13,6 +14,7 @@
         message: "{{now().strftime('%H:%M')}}: Mum has arrived"
 
 - alias: 'Mum Not Home'
+  hide_entity: True
   trigger:
     platform: state
     entity_id: device_tracker.lg_g4
