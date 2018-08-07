@@ -1,16 +1,16 @@
-- name: html5
-  platform: html5
-  gcm_api_key: !secret gcm-sender-key
-  gcm_sender_id: !secret gcm-sender-id
-- name: gmail
-  platform: smtp
-  server: smtp.gmail.com
-  port: 587
-  timeout: 15
-  sender: !secret smtp_email
-  encryption: starttls
-  username: !secret smtp_email
-  password: !secret smtp_pw
-  recipient:
-    - !secret smtp_recipient1
-  sender_name: My Home Assistant 
+# - name: html5
+  # platform: html5
+  # gcm_api_key: !secret gcm-sender-key
+  # gcm_sender_id: !secret gcm-sender-id
+# - name: gmail
+  # platform: smtp
+  # server: smtp.gmail.com
+  # port: 587
+  # timeout: 15
+  # sender: !secret smtp_email
+  # encryption: starttls
+  # username: !secret smtp_email
+  # password: !secret smtp_pw
+  # recipient:
+    # - !secret smtp_recipient1
+  # sender_name: My Home Assistant 
