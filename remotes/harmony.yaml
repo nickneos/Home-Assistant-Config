@@ -1,5 +1,5 @@
-- platform: harmony
-  name: Living Room
-  host: !secret harmony_ip
-  activity: 13474528
+# - platform: harmony
+  # name: Living Room
+  # host: !secret harmony_ip
+  # activity: 13474528
   
