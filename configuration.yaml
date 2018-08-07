@@ -97,7 +97,7 @@ google_assistant:
       expose: true
     light.gateway_light_34ce0088ebdb:
       expose: true
-  
+
 xiaomi_aqara:
   discovery_retry: 5
   gateways:

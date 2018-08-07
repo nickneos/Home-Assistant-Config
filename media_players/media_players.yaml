@@ -5,8 +5,8 @@
   mac: !secret samsungtv_mac
 - platform: braviatv
   host: !secret bravia_host
-- platform: ps4
-  host: !secret ps4_host
-  ps4_ip: !secret ps4_ip
-  name: PlayStation 4
-  local_store: games
+# - platform: ps4
+  # host: !secret ps4_host
+  # ps4_ip: !secret ps4_ip
+  # name: PlayStation 4
+  # local_store: games
