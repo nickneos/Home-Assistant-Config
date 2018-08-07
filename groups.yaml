@@ -234,13 +234,16 @@ server1:
 pi_monitor:
   name: Raspberry Pi
   entities:
-    - sensor.cpu_use
-    - sensor.ram_use
-    - sensor.ram_free
-    - sensor.ram_use_2
-    - sensor.disk_use__2
-    - sensor.disk_free_
+    - sensor.processor_use
+    - sensor.memory_use
+    - sensor.memory_free
+    - sensor.memory_use_percent
     - sensor.disk_use_
+    - sensor.disk_free_
+    - sensor.disk_use_percent_
+    # - sensor.speedtest_ping
+    # - sensor.speedtest_download
+    # - sensor.speedtest_upload
 
 # ssl:
   # name: SSL Certificate
