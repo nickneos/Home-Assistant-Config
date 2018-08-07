@@ -1,5 +1,5 @@
 - platform: harmony
   name: Living Room
   host: !secret harmony_ip
-  activity: 13915533
+  activity: 13474528
   

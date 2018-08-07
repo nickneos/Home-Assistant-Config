@@ -25,3 +25,5 @@ ps4-games.json
 /custom_components/*
 gitupdate.sh
 *.json
+/ssh/*
+

@@ -1,7 +1,8 @@
 - platform: asuswrt
   host: !secret asus_ip
   username: !secret asus_user
-  password: !secret asus_pw
+  # password: !secret asus_pw
+  ssh_key: !secret asus_key
   protocol: ssh
   port: 22
   consider_home: 300
