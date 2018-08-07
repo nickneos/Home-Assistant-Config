@@ -116,7 +116,7 @@ switch: !include_dir_merge_list switches/
 script: !include_dir_merge_named scripts/
 automation: !include_dir_merge_list automations/
 notify: !include_dir_merge_list notify/
-zone: !include_dir_merge_list zones/
+#zone: !include_dir_merge_list zones/
 group: !include groups.yaml
 
 # ios:
