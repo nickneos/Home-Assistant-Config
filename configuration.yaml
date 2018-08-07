@@ -105,19 +105,104 @@ xiaomi_aqara:
       mac: !secret aqara_mac
       key: !secret aqara_key
 
-device_tracker: !include_dir_merge_list device_trackers/
-remote: !include_dir_merge_list remotes/      
-media_player: !include_dir_merge_list media_players/    
-input_select: !include_dir_merge_named input_select/
-input_boolean: !include_dir_merge_named input_boolean/
-shell_command: !include_dir_merge_named shell_command/
+input_boolean:      
+  holiday_mode:
+    name: Holiday Mode
+    initial: off
+    icon: mdi:airplane
+  lights_notifications:
+    name: Lights Notifications
+    initial: off
+    icon: mdi:flash
+
+input_select:
+  harmony:
+    name: Current Activity
+    options:
+      - Watch TV
+      - Watch TV with Surround
+      - Watch Fetch
+      - Watch Netflix
+      - Play PS4
+      - Power Off
+    icon: mdi:remote
+  aircon:
+    name: Mode
+    options:
+      - Select...
+      - Cool Auto 20
+      - 'Off'
+    icon: mdi:snowflake
+
+remote:
+  - platform: harmony
+    name: Living Room
+    host: !secret harmony_ip
+    activity: 13474528
+
+media_player:
+  - platform: cast
+  - platform: samsungtv
+    host: !secret samsungtv_ip
+    name: Samsung TV
+    mac: !secret samsungtv_mac
+  - platform: braviatv
+    host: !secret bravia_host
+  # - platform: ps4
+    # host: !secret ps4_host
+    # ps4_ip: !secret ps4_ip
+    # name: PlayStation 4
+    # local_store: games
+
+notify:
+  - name: html5
+    platform: html5
+    gcm_api_key: !secret gcm-sender-key
+    gcm_sender_id: !secret gcm-sender-id
+  - name: gmail
+    platform: smtp
+    server: smtp.gmail.com
+    port: 587
+    timeout: 15
+    sender: !secret smtp_email
+    encryption: starttls
+    username: !secret smtp_email
+    password: !secret smtp_pw
+    recipient:
+      - !secret smtp_recipient1
+    sender_name: My Home Assistant    
+
+device_tracker:
+  - platform: asuswrt
+    host: !secret asus_ip
+    username: !secret asus_user
+    # password: !secret asus_pw
+    ssh_key: !secret asus_key
+    protocol: ssh
+    port: 22
+    consider_home: 300
+    new_device_defaults:
+      track_new_devices: False
+      hide_if_away: False
+
+shell_command:
+  server_shutdown: !secret server_shutdown
+
+#other folders/files to merge with this configuration
 sensor: !include_dir_merge_list sensors/
 switch: !include_dir_merge_list switches/
 script: !include_dir_merge_named scripts/
 automation: !include_dir_merge_list automations/
-notify: !include_dir_merge_list notify/
-zone: !include_dir_merge_list zones/
 group: !include groups.yaml
+# device_tracker: !include_dir_merge_list device_trackers/
+# shell_command: !include_dir_merge_named shell_command/
+# remote: !include_dir_merge_list remotes/
+# media_player: !include_dir_merge_list media_players/    
+# input_select: !include_dir_merge_named input_select/
+# input_boolean: !include_dir_merge_named input_boolean/
+# zone: !include_dir_merge_list zones/
+# notify: !include_dir_merge_list notify/
+
 
 # ios:
 
@@ -129,5 +214,12 @@ group: !include groups.yaml
     # input: -rtsp_transport tcp -i rtsp://192.168.0.32/unicast
     # name: Cam_Study
 
-
-  
+# zone:
+  # - name: Nicks Work
+   # latitude: !secret lat1
+   # longitude: !secret long1
+   # icon: mdi:briefcase
+  # - name: Ashleis Work
+   # latitude: !secret lat2
+   # longitude: !secret long2
+   # icon: mdi:briefcase
