@@ -1,1 +1,1 @@
-server_shutdown: !secret server_shutdown
+# server_shutdown: !secret server_shutdown
