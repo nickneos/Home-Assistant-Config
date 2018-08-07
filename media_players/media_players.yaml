@@ -1,10 +1,10 @@
-- platform: cast
-- platform: samsungtv
-  host: !secret samsungtv_ip
-  name: Samsung TV
-  mac: !secret samsungtv_mac
-- platform: braviatv
-  host: !secret bravia_host
+# - platform: cast
+# - platform: samsungtv
+  # host: !secret samsungtv_ip
+  # name: Samsung TV
+  # mac: !secret samsungtv_mac
+# - platform: braviatv
+  # host: !secret bravia_host
 # - platform: ps4
   # host: !secret ps4_host
   # ps4_ip: !secret ps4_ip
