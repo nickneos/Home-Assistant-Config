@@ -52,8 +52,8 @@ family_room_view:
     - media_player.sony_bravia_tv
     - group.server
     - group.server1
-    - media_player.sony_tv
-    - media_player.playstation_4
+    # - media_player.sony_tv
+    # - media_player.playstation_4
     - group.fujitsu
 
 hallway_view:
@@ -72,7 +72,7 @@ bedroom_view:
   entities:
     - group.bedroom_lights
     - group.soniq_tv_rm_switches_full
-    - media_player.bedroom_tv
+    # - media_player.bedroom_tv
     - switch.master_switch
     
 system_view:
@@ -155,10 +155,10 @@ samsung_tv:
   entities:
     - media_player.samsung_tv
 
-ps4:
-  name: Playstation 4
-  entities:
-    - media_player.playstation_4
+# ps4:
+  # name: Playstation 4
+  # entities:
+    # - media_player.playstation_4
 
 fujitsu:
   name: Fujitsu Air Conditioning

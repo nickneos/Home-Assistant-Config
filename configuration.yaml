@@ -141,7 +141,7 @@ remote:
     activity: 13474528
 
 media_player:
-  - platform: cast
+  # - platform: cast
   - platform: samsungtv
     host: !secret samsungtv_ip
     name: Samsung TV
