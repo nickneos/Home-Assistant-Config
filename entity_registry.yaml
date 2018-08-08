@@ -1,88 +1,110 @@
 light.2_dining:
+  config_entry_id:
   name:
   platform: lifx
   unique_id: d0:73:d5:13:d6:cb
 light.3_living_room:
+  config_entry_id:
   name:
   platform: lifx
   unique_id: d0:73:d5:14:17:3c
 light.hallway_1:
+  config_entry_id:
   name:
   platform: lifx
   unique_id: d0:73:d5:03:af:dc
 light.4_lamp:
+  config_entry_id:
   name:
   platform: lifx
   unique_id: d0:73:d5:13:e1:b9
 light.spare_room:
+  config_entry_id:
   name:
   platform: lifx
   unique_id: d0:73:d5:03:1c:88
 light.hallway_2:
+  config_entry_id:
   name:
   platform: lifx
   unique_id: d0:73:d5:03:3c:c3
 light.1_kitchen:
+  config_entry_id:
   name:
   platform: lifx
   unique_id: d0:73:d5:13:d2:04
 light.study:
+  config_entry_id:
   name:
   platform: lifx
   unique_id: d0:73:d5:03:31:65
 light.bedroom:
+  config_entry_id:
   name:
   platform: lifx
   unique_id: d0:73:d5:03:a8:0b
 binary_sensor.switch_158d00016d7468:
+  config_entry_id:
   name:
   platform: xiaomi_aqara
   unique_id: status158d00016d7468
 binary_sensor.motion_sensor_158d0001d6721c:
+  config_entry_id:
   name:
   platform: xiaomi_aqara
   unique_id: status158d0001d6721c
 sensor.humidity_158d000170bded:
+  config_entry_id:
   name:
   platform: xiaomi_aqara
   unique_id: humidity158d000170bded
 sensor.illumination_34ce0088ebdb:
+  config_entry_id:
   name:
   platform: xiaomi_aqara
   unique_id: illumination34ce0088ebdb
 sensor.temperature_158d000170bded:
+  config_entry_id:
   name:
   platform: xiaomi_aqara
   unique_id: temperature158d000170bded
 media_player.google_home:
+  config_entry_id: fb047d94a400414bba23d2c660bee8b1
   name:
   platform: cast
   unique_id: 0876a751-6321-3d2d-fac4-88e653e96e3f
 media_player.sony_tv:
+  config_entry_id: fb047d94a400414bba23d2c660bee8b1
   name:
   platform: cast
   unique_id: 040184ad-9243-2264-a06a-2216c3d86d70
 media_player.office_speaker:
+  config_entry_id: fb047d94a400414bba23d2c660bee8b1
   name:
   platform: cast
   unique_id: c6bfb470-07fa-a3b7-ab2b-b5acb0133640
 media_player.bedroom_speaker:
+  config_entry_id: fb047d94a400414bba23d2c660bee8b1
   name:
   platform: cast
   unique_id: e6923673-a899-5bc8-c849-ae2002579eb3
 light.gateway_light_34ce0088ebdb:
+  config_entry_id:
   name:
   platform: xiaomi_aqara
   unique_id: rgb34ce0088ebdb
 media_player.home_group:
+  config_entry_id: fb047d94a400414bba23d2c660bee8b1
   name:
   platform: cast
   unique_id: df16535c-9951-42a4-b787-3012563709d9
 media_player.bedroom_tv:
+  config_entry_id:
   name:
   platform: cast
   unique_id: 784e67fe-b6f2-9e68-b3f6-03b8a0191544
 media_player.samsung_tv_2:
+  config_entry_id:
   name:
   platform: cast
   unique_id: aaa13786-0435-65d6-ece0-4006b350cb1e
