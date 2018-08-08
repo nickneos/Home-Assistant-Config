@@ -1,9 +1,0 @@
-#- name: Nicks Work
-#  latitude: !secret lat1
-#  longitude: !secret long1
-#  icon: mdi:briefcase
-  
-#- name: Ashleis Work
-#  latitude: !secret lat2
-#  longitude: !secret long2
-#  icon: mdi:briefcase

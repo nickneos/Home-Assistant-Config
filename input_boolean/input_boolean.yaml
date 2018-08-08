@@ -1,8 +1,0 @@
-#holiday_mode:
-#  name: Holiday Mode
-#  initial: off
-#  icon: mdi:airplane
-#lights_notifications:
-#  name: Lights Notifications
-#  initial: off
-#  icon: mdi:flash 

@@ -213,3 +213,13 @@ group: !include groups.yaml
   # - platform: ffmpeg
     # input: -rtsp_transport tcp -i rtsp://192.168.0.32/unicast
     # name: Cam_Study
+
+# zone:
+  # - name: Nicks Work
+   # latitude: !secret lat1
+   # longitude: !secret long1
+   # icon: mdi:briefcase
+  # - name: Ashleis Work
+   # latitude: !secret lat2
+   # longitude: !secret long2
+   # icon: mdi:briefcase
