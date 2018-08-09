@@ -26,4 +26,5 @@ ps4-games.json
 gitupdate.sh
 *.json
 /ssh/*
-
+entity_registry.yaml
+gitpull.sh
