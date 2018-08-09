@@ -53,7 +53,7 @@ binary_sensor.motion_sensor_158d0001d6721c:
   name:
   platform: xiaomi_aqara
   unique_id: status158d0001d6721c
-sensor.humidity_158d000170bded:
+sensor.xiaomi_humidity:
   config_entry_id:
   name:
   platform: xiaomi_aqara

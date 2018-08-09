@@ -17,7 +17,7 @@ default_view:
     # - binary_sensor.door_window_sensor_158d00019da791
     # - binary_sensor.motion_sensor_158d0001d6721c
     - sensor.temperature_158d000170bded
-    - sensor.humidity_158d000170bded
+    - sensor.xiaomi_humidity
     - sensor.illumination_34ce0088ebdb
     - sensor.broadlink_sensor_temperature
     - sensor.bom_air_temp_c
