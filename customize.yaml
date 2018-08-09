@@ -46,11 +46,9 @@ script.amp_yas106_vol_down:
   icon: mdi:volume-minus
 switch.table_lamp:
   assumed_state: false
-  # emulated_hue_hidden: false
   icon: mdi:lightbulb
 switch.fairy_lights:
   assumed_state: false
-  # emulated_hue_hidden: false
   icon: mdi:lightbulb
 switch.power_switch_1:
   assumed_state: false
@@ -64,14 +62,11 @@ script.radio_vol_up:
   icon: mdi:volume-plus
 script.radio_vol_down:
   icon: mdi:volume-minus
-sensor.temperature_158d000170bded:
+sensor.xiaomi_temperature:
   friendly_name: Inside Temp 1
-sensor.humidity_158d000170bded:
+sensor.xiaomi_humidity:
   friendly_name: Inside Humidity
-sensor.illumination_34ce0088ebdb:
+sensor.xiaomi_illumination:
   friendly_name: Inside Brightness
-light.gateway_light_34ce0088ebdb:
-  # emulated_hue_hidden: false
+light.xiaomi_gateway_light:
   friendly_name: Night Light
-binary_sensor.door_window_sensor_158d00019da791:
-  friendly_name: Garage Door

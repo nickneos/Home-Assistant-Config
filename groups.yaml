@@ -15,10 +15,10 @@ default_view:
     - device_tracker.huawei_mate9
     - device_tracker.galaxy_s8_plus
     # - binary_sensor.door_window_sensor_158d00019da791
-    # - binary_sensor.motion_sensor_158d0001d6721c
-    - sensor.temperature_158d000170bded
-    - sensor.humidity_158d000170bded
-    - sensor.illumination_34ce0088ebdb
+    # - binary_sensor.xiaomi_motion_sensor
+    - sensor.xiaomi_temperature
+    - sensor.xiaomi_humidity 
+    - sensor.xiaomi_illumination
     - sensor.broadlink_sensor_temperature
     - sensor.bom_air_temp_c
     - sensor.bom_relative_humidity

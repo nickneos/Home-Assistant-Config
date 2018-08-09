@@ -2,19 +2,19 @@
   hide_entity: True
   trigger:
     platform: state
-    entity_id: binary_sensor.motion_sensor_158d0001d6721c
+    entity_id: binary_sensor.xiaomi_motion_sensor
     from: 'off'
     to: 'on'
   condition:
     - condition: numeric_state
-      entity_id: sensor.illumination_34ce0088ebdb
+      entity_id: sensor.xiaomi_illumination
       below: 200
     - condition: state
-      entity_id: light.gateway_light_34ce0088ebdb
+      entity_id: light.xiaomi_gateway_light
       state: 'off'      
   action:
     - service: light.turn_on
-      entity_id: light.gateway_light_34ce0088ebdb
+      entity_id: light.xiaomi_gateway_light
       data:
         brightness_pct: 10
         kelvin: 3200
@@ -27,18 +27,18 @@
   hide_entity: True
   trigger:
     platform: state
-    entity_id: binary_sensor.motion_sensor_158d0001d6721c
+    entity_id: binary_sensor.xiaomi_motion_sensor
     from: 'on'
     to: 'off'
     for:
       minutes: 5
   condition:
     - condition: state
-      entity_id: light.gateway_light_34ce0088ebdb
+      entity_id: light.xiaomi_gateway_light
       state: 'on'
   action:
     - service: light.turn_off
-      entity_id: light.gateway_light_34ce0088ebdb
+      entity_id: light.xiaomi_gateway_light
     # - service: automation.turn_off
       # data:
         # entity_id: automation.Motion_off

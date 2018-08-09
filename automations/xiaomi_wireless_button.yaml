@@ -4,7 +4,7 @@
     - platform: event
       event_type: click
       event_data:
-        entity_id: binary_sensor.switch_158d00016d7468
+        entity_id: binary_sensor.xiaomi_switch_1
         click_type: single
   action:
     service: light.toggle
@@ -16,7 +16,7 @@
     - platform: event
       event_type: click
       event_data:
-        entity_id: binary_sensor.switch_158d00016d7468
+        entity_id: binary_sensor.xiaomi_switch_1
         click_type: long_click_press
   action:
     service: switch.turn_off
@@ -28,7 +28,7 @@
     # platform: event
     # event_type: click
     # event_data:
-      # entity_id: binary_sensor.switch_158d00016d7468
+      # entity_id: binary_sensor.xiaomi_switch_1
       # click_type: double
   # action:
     # service: switch.toggle
