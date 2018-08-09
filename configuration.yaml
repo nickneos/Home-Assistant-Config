@@ -1,3 +1,26 @@
+############################################################
+# Title:    Home Assistant Configuration                   #
+# Author:   so3n                                           #
+# Navigation:                                              #
+#   Basic Setup                                            #
+#   History Filter                                         #
+#   Inputs                                                 #
+#   Device Trackers                                        #
+#   Remotes                                                #
+#   Media Players                                          #
+#   Lights                                                 #
+#   Google Assistant                                       #
+#   Xiaomi Gateway                                         #
+#   Notifications                                          #
+#   IFTTT                                                  #
+#   Shell                                                  #
+#   Merged Files                                           #
+#   No Longer Used                                         #
+#                                                          #
+############################################################
+
+
+############ Basic Setup ############
 homeassistant:
   name: !secret name
   latitude: !secret lat
@@ -7,31 +30,26 @@ homeassistant:
   time_zone: !secret timezone
   customize: !include customize.yaml
 
-# logger:
-      
-# Show links to resources in log and frontend
-#introduction:
-
-# Enables the frontend
-frontend:
-
-# Enables configuration UI
-config:
-
 http:
   api_password: !secret http_pw
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
   base_url: !secret url
 
-  
+frontend:
+config:
 updater:
-# discovery:
 hassio:
-
-# Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
+# logger:
+# introduction:
+# discovery:
+sun:
+tts:
+  platform: google
 
+
+############ History Filter ############
 history:
   exclude:
     domains:
@@ -44,6 +62,8 @@ history:
       - sensor.since_last_boot
       - sensor.date
 
+      
+############ Logbook Filter ############      
 logbook:
   exclude:
     entities:
@@ -65,46 +85,8 @@ logbook:
       - sun
       - weblink
 
-sun:
 
-# Text to speech
-tts:
-  platform: google
-
-light:
-  - platform: lifx
-    #server: !secret hass_ip
-             
-ifttt:
-  key: !secret ifttt_key
-  
-# emulated_hue:
-  # host_ip: !secret hass_ip
-  # listen_port: 80
-  # expose_by_default: false
-
-google_assistant:
-  project_id: !secret ga_proj
-  client_id: !secret ga_client
-  access_token: !secret ga_token
-  agent_user_id: !secret ga_user
-  api_key: !secret ga_api
-  expose_by_default: false
-  entity_config:
-    switch.table_lamp:
-      expose: true
-    switch.fairy_lights:
-      expose: true
-    light.gateway_light_34ce0088ebdb:
-      expose: true
-
-xiaomi_aqara:
-  discovery_retry: 5
-  gateways:
-    - host: !secret aqara_ip
-      mac: !secret aqara_mac
-      key: !secret aqara_key
-
+############ Inputs ############       
 input_boolean:      
   holiday_mode:
     name: Holiday Mode
@@ -134,12 +116,31 @@ input_select:
       - 'Off'
     icon: mdi:snowflake
 
+    
+############ Device Trackers ############
+device_tracker:
+  - platform: asuswrt
+    host: !secret asus_ip
+    username: !secret asus_user
+    # password: !secret asus_pw
+    ssh_key: !secret asus_key
+    protocol: ssh
+    port: 22
+    consider_home: 300
+    new_device_defaults:
+      track_new_devices: False
+      hide_if_away: False
+
+
+############ Remotes ############  
 remote:
   - platform: harmony
     name: Living Room
     host: !secret harmony_ip
     activity: 13474528
 
+    
+############ Media Players ############  
 media_player:
   # - platform: cast
   - platform: samsungtv
@@ -153,7 +154,46 @@ media_player:
     # ps4_ip: !secret ps4_ip
     # name: PlayStation 4
     # local_store: games
+    
+    
+############ Lights ############  
+light:
+  - platform: lifx
+    #server: !secret hass_ip
+      
+# emulated_hue:
+  # host_ip: !secret hass_ip
+  # listen_port: 80
+  # expose_by_default: false
+  
+  
+############ Google Assistant ############ 
+google_assistant:
+  project_id: !secret ga_proj
+  client_id: !secret ga_client
+  access_token: !secret ga_token
+  agent_user_id: !secret ga_user
+  api_key: !secret ga_api
+  expose_by_default: false
+  entity_config:
+    switch.table_lamp:
+      expose: true
+    switch.fairy_lights:
+      expose: true
+    light.gateway_light_34ce0088ebdb:
+      expose: true
 
+      
+############ Xiaomi Gateway ############
+xiaomi_aqara:
+  discovery_retry: 5
+  gateways:
+    - host: !secret aqara_ip
+      mac: !secret aqara_mac
+      key: !secret aqara_key
+
+
+############ Notifications ############
 notify:
   - name: html5
     platform: html5
@@ -172,23 +212,18 @@ notify:
       - !secret smtp_recipient1
     sender_name: My Home Assistant    
 
-device_tracker:
-  - platform: asuswrt
-    host: !secret asus_ip
-    username: !secret asus_user
-    # password: !secret asus_pw
-    ssh_key: !secret asus_key
-    protocol: ssh
-    port: 22
-    consider_home: 300
-    new_device_defaults:
-      track_new_devices: False
-      hide_if_away: False
+    
+############ IFTTT ############  
+ifttt:
+  key: !secret ifttt_key
 
+
+############ Shell ############  
 shell_command:
   server_shutdown: !secret server_shutdown
 
-#other folders/files to merge with this configuration
+
+############ Merged Files ############ 
 sensor: !include_dir_merge_list sensors/
 switch: !include_dir_merge_list switches/
 script: !include_dir_merge_named scripts/
@@ -204,6 +239,7 @@ group: !include groups.yaml
 # notify: !include_dir_merge_list notify/
 
 
+############ No Longer Used ############ 
 # ios:
 
 # ffmpeg:
