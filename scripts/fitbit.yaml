@@ -1,5 +1,0 @@
-everything_off:
-  alias: Everything Off
-  sequence:
-    - service: switch.turn_off
-      entity_id: switch.master_switch

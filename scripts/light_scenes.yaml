@@ -1,0 +1,13 @@
+scene_lamp:
+  sequence:
+    - service: switch.turn_off
+      entity_id: switch.house_lights
+    - service: light.turn_on
+      entity_id: light.4_lamp
+scene_kitchen:
+  sequence:
+    - service: switch.turn_off
+      entity_id: switch.house_lights
+    - service: light.turn_on
+      entity_id: light.1_kitchen
+    
