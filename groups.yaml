@@ -119,7 +119,7 @@ other_lights:
     - light.Spare_Room
     - switch.table_lamp
     - switch.fairy_lights
-    - light.gateway_light_34ce0088ebdb
+    - light.xiaomi_gateway_light
 
 bedroom_lights:
   name: Bedroom Lights
