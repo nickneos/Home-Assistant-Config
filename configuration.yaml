@@ -180,7 +180,7 @@ google_assistant:
       expose: true
     switch.fairy_lights:
       expose: true
-    light.gateway_light_34ce0088ebdb:
+    light.xiaomi_gateway_light:
       expose: true
 
       
