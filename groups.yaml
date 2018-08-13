@@ -1,13 +1,17 @@
-#####################################
-# S01: Default View                 #
-# S02: Views                        #
-# S03: Light Groups                 #
-# S04: Media/Remote Groups          #
-# S05: Server/PC Groups             #  
-#####################################
+############################################################
+# Title:    Home Assistant Configuration                   #
+# Author:   so3n                                           #
+# Navigation:                                              #
+#   Default View                                           #
+#   Views                                                  #
+#   Light Groups                                           #
+#   Media/Remote Groups                                    #
+#   Server/PC Groups                                       #
+#                                                          #
+############################################################
 
 
-############ S01: Default View ############
+############ Default View ############
 default_view:
   view: yes
   icon: mdi:home 
@@ -42,7 +46,7 @@ default_view:
     # - camera.Cam_Study
 
     
-############ S02: Views #########
+############ Views ############
 family_room_view:
   name: Family Area
   view: yes
@@ -92,7 +96,7 @@ system_view:
     - group.pi_monitor
 
     
-######### S03: Light Groups #########
+############ Light Groups ############
 house_lights:
   name: All Lights
   entities:
@@ -140,7 +144,7 @@ bedroom_lights:
     # - light.Spare_Room
 
 
-######### S04: Media/Remote Groups #########    
+############ Media/Remote Groups ############
 harmony:
   name: Harmony Hub
   control: hidden
@@ -217,7 +221,7 @@ arlec_rm_switches:
     - switch.power_switch_1
 
     
-######### S05: Server/PC Groups #########     
+############ Server/PC Groups ############
 server:
   name: Windows Home Server
   entities:
