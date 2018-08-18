@@ -1,30 +1,53 @@
-*.pid
-*.xml
-*.csr
+# Created by https://www.gitignore.io/api/homeassistant
+
+### HomeAssistant ###
+# Files with personal details
 *.crt
+*.csr
 *.key
-www
-OZW_Log.txt
-home-assistant.log
-home-assistant_v2.db*
-*.db-journal
-lib
-deps
-tts
-secrets.yaml
+.google.token
+.uuid
+icloud/
+google_calendars.yaml
+harmony_media_room.conf
+home-assistant.db
+home-assistant_v2.db
+home-assistant_v2.db-*
+html5_push_registrations.conf
+ip_bans.yaml
 known_devices.yaml
-*.conf
+phue.conf
+plex.conf
 pyozw.sqlite
+secrets.yaml
+tradfri.conf
+entity_registry.yaml
+
+# Temporary files
+*.db-journal
+*.pid
+tts
+
+# automatically downloaded dependencies
+deps
+lib
+www
+
+# Log files
+home-assistant.log
+ozw_log.txt
+
+# Development files
+custom_components/
+
+# Other
+*.sh
+*.json
+*.conf
+ssh/
+entity_registry.yaml
 .*
 !/.gitignore
 !/.travis.yml
-html5_push_registrations.conf
-ip_bans.yaml
-/icloud/*
-ps4-games.json
-/custom_components/*
-gitupdate.sh
-*.json
-/ssh/*
-entity_registry.yaml
-gitpull.sh
+
+# End of https://www.gitignore.io/api/homeassistant
