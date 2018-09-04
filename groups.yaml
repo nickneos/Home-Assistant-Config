@@ -16,7 +16,7 @@ default_view:
   view: yes
   icon: mdi:home 
   entities:
-    - device_tracker.huawei_mate9
+    - device_tracker.galaxynote8
     - device_tracker.galaxy_s8_plus
     # - binary_sensor.door_window_sensor_158d00019da791
     # - binary_sensor.xiaomi_motion_sensor

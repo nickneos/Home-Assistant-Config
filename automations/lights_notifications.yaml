@@ -26,7 +26,7 @@
   # hide_entity: True
   # trigger:
     # platform: state
-    # entity_id: device_tracker.huawei_mate9
+    # entity_id: device_tracker.galaxynote8
     # to: 'home'
   # condition:
     # condition: state

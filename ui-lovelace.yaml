@@ -9,7 +9,7 @@ views:
     cards:
       - type: entities
         entities:
-          - device_tracker.huawei_mate9
+          - device_tracker.galaxynote8
           - device_tracker.galaxy_s8_plus
           - sensor.xiaomi_temperature
           - sensor.xiaomi_humidity
