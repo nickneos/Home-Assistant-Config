@@ -22,14 +22,13 @@
     service: switch.turn_off
     entity_id: switch.master_switch
     
-# - alias: Toggle couch light on double click
-  # hide_entity: True
-  # trigger:
-    # platform: event
-    # event_type: click
-    # event_data:
-      # entity_id: binary_sensor.xiaomi_switch_1
-      # click_type: double
-  # action:
-    # service: switch.toggle
-    # entity_id: switch.wall_switch_right_158d000xxxxx01
+- alias: Toggle Bedroom TV on double click
+  hide_entity: True
+  trigger:
+    platform: event
+    event_type: click
+    event_data:
+      entity_id: binary_sensor.xiaomi_switch_1
+      click_type: double
+  action:
+    service: script.soniq_tv_power
