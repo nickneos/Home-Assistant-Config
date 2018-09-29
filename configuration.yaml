@@ -14,6 +14,7 @@
 #   Notifications                                          #
 #   IFTTT                                                  #
 #   Shell                                                  #
+#   Other                                                  #
 #   Merged Files                                           #
 #   No Longer Used                                         #
 #                                                          #
@@ -62,8 +63,8 @@ history:
       - sensor.since_last_boot
       - sensor.date
 
-      
-############ Logbook Filter ############      
+
+############ Logbook Filter ############
 logbook:
   exclude:
     entities:
@@ -86,8 +87,8 @@ logbook:
       - weblink
 
 
-############ Inputs ############       
-input_boolean:      
+############ Inputs ############
+input_boolean:
   holiday_mode:
     name: Holiday Mode
     initial: off
@@ -116,7 +117,7 @@ input_select:
       - 'Off'
     icon: mdi:snowflake
 
-    
+
 ############ Device Trackers ############
 device_tracker:
   - platform: asuswrt
@@ -132,15 +133,15 @@ device_tracker:
       hide_if_away: False
 
 
-############ Remotes ############  
+############ Remotes ############
 remote:
   - platform: harmony
     name: Living Room
     host: !secret harmony_ip
     activity: 13474528
 
-    
-############ Media Players ############  
+
+############ Media Players ############
 media_player:
   - platform: samsungtv
     host: !secret samsungtv_ip
@@ -154,20 +155,20 @@ media_player:
     # name: PlayStation 4
     # local_store: games
   # - platform: cast
-    
-    
-############ Lights ############  
+
+
+############ Lights ############
 light:
   - platform: lifx
     #server: !secret hass_ip
-      
+
 # emulated_hue:
   # host_ip: !secret hass_ip
   # listen_port: 80
   # expose_by_default: false
-  
-  
-############ Google Assistant ############ 
+
+
+############ Google Assistant ############
 google_assistant:
   project_id: !secret ga_proj
   client_id: !secret ga_client
@@ -183,7 +184,7 @@ google_assistant:
     light.xiaomi_gateway_light:
       expose: true
 
-      
+
 ############ Xiaomi Gateway ############
 xiaomi_aqara:
   discovery_retry: 5
@@ -210,20 +211,25 @@ notify:
     password: !secret smtp_pw
     recipient:
       - !secret smtp_recipient1
-    sender_name: My Home Assistant    
+    sender_name: My Home Assistant
 
-    
-############ IFTTT ############  
+
+############ IFTTT ############
 ifttt:
   key: !secret ifttt_key
 
 
-############ Shell ############  
+############ Shell ############
 shell_command:
   server_shutdown: !secret server_shutdown
 
 
-############ Merged Files ############ 
+############ Other ############
+weather:
+  - platform: bom
+    station: !secret bom_station
+
+############ Merged Files ############
 sensor: !include_dir_merge_list sensors/
 switch: !include_dir_merge_list switches/
 script: !include_dir_merge_named scripts/
@@ -232,19 +238,19 @@ group: !include groups.yaml
 # device_tracker: !include_dir_merge_list device_trackers/
 # shell_command: !include_dir_merge_named shell_command/
 # remote: !include_dir_merge_list remotes/
-# media_player: !include_dir_merge_list media_players/    
+# media_player: !include_dir_merge_list media_players/
 # input_select: !include_dir_merge_named input_select/
 # input_boolean: !include_dir_merge_named input_boolean/
 # zone: !include_dir_merge_list zones/
 # notify: !include_dir_merge_list notify/
 
 
-############ No Longer Used ############ 
+############ No Longer Used ############
 # ios:
 
 # ffmpeg:
   # ffmpeg_bin: /usr/bin/avconv
-  
+
 # camera:
   # - platform: ffmpeg
     # input: -rtsp_transport tcp -i rtsp://192.168.0.32/unicast
