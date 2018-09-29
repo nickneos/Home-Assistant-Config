@@ -3,192 +3,269 @@
 # https://github.com/dale3h/python-lovelace
 
 title: Home
+resources:
+  - url: /local/plan-coordinates.js?v=1
+    type: js
 views:
-  - title: default_view
+
+############ Default View ############
+  - title: Home
     icon: mdi:home
     cards:
+      - type: vertical-stack
+        cards:
+          - type: entity-filter
+            entities:
+              - device_tracker.galaxynote8
+              - device_tracker.galaxy_s8_plus
+              - device_tracker.galaxy_s8
+              - device_tracker.lg_g4
+            state_filter:
+              - home
+            card:
+              type: glance
+              title: Currently Home
+              show_state: false
+              show_name: false
+          - type: weather-forecast
+            entity: weather.bom_laverton
+          - type: glance
+            entities:
+              - sensor.xiaomi_temperature
+              - sensor.broadlink_sensor_temperature
+              - sensor.xiaomi_humidity
+              - sensor.xiaomi_illumination
+            show_name: false
       - type: entities
-        entities:
-          - device_tracker.galaxynote8
-          - device_tracker.galaxy_s8_plus
-          - sensor.xiaomi_temperature
-          - sensor.xiaomi_humidity
-          - sensor.xiaomi_illumination
-          - sensor.broadlink_sensor_temperature
-          - sensor.bom_air_temp_c
-          - sensor.bom_relative_humidity
-          - sensor.bom_rain_today
-      - type: entities
-        title: All Lights
-        show_header_toggle: true
-        entities:
-          - switch.house_lights
-      - type: entities
-        title: Family Area Lights
-        show_header_toggle: true
+        title: Family Area
+        show_header_toggle: false
         entities:
           - light.1_kitchen
           - light.2_dining
           - light.3_living_room
           - light.4_lamp
-      - type: entities
-        title: Harmony Hub
-        show_header_toggle: false
-        entities:
+          - type: divider
+            style:
+              height: 1px
+              margin-left: auto
+              margin-right: auto
+              background: lightgray
           - remote.living_room
           - input_select.harmony
+          - type: divider
+            style:
+              height: 1px
+              margin-left: auto
+              margin-right: auto
+              background: lightgray
+          - sensor.hp_ilo_server_power
+          - switch.home_server
+          - type: divider
+            style:
+              height: 1px
+              margin-left: auto
+              margin-right: auto
+              background: lightgray
+          - input_select.aircon
       - type: entities
-        title: Hallway Lights
-        show_header_toggle: true
+        title: Hallway Area
+        show_header_toggle: false
         entities:
           - light.hallway_1
           - light.hallway_2
-      - type: entities
-        title: Other Lights
-        show_header_toggle: true
-        entities:
           - light.study
           - light.spare_room
           - switch.table_lamp
           - switch.fairy_lights
           - light.xiaomi_gateway_light
-      - type: entities
-        title: Bedroom Lights
-        show_header_toggle: true
-        entities:
-          - light.bedroom
-      - type: entities
-        title: Windows Home Server
-        show_header_toggle: true
-        entities:
-          - sensor.hp_ilo_server_power
-          - switch.home_server
-      - type: entities
-        title: Fujitsu Air Conditioning
-        show_header_toggle: true
-        entities:
-          - input_select.aircon
-      - type: entities
-        title: Samsung TV & Sound Bar
-        show_header_toggle: false
-        entities:
-          - switch.samsung_tv_power
-          - script.amp_yas106_power
-      - type: entities
-        title: Soniq TV
-        show_header_toggle: false
-        entities:
-          - script.soniq_tv_power
-      - type: entities
-        title: DAB Radio
-        show_header_toggle: false
-        entities:
-          - script.radio_power
-  - title: Family Area
-    cards:
-      - type: entities
-        title: Family Area Lights
-        show_header_toggle: true
-        entities:
-          - light.1_kitchen
-          - light.2_dining
-          - light.3_living_room
-          - light.4_lamp
-      - type: entities
-        title: Harmony Hub
-        show_header_toggle: false
-        entities:
-          - remote.living_room
-          - input_select.harmony
-      - type: media-control
-        entity: media_player.sony_bravia_tv
-      - type: entities
-        title: Windows Home Server
-        show_header_toggle: true
-        entities:
-          - sensor.hp_ilo_server_power
-          - switch.home_server
-      - type: entities
-        title: Server Health
-        show_header_toggle: true
-        entities:
-          - sensor.hp_ilo_cpu_temperature
-          - sensor.hp_ilo_inlet_temperature
-          - sensor.hp_ilo_cpu_fanspeed
-      - type: entities
-        title: Fujitsu Air Conditioning
-        show_header_toggle: true
-        entities:
-          - input_select.aircon
-  - title: Hallway Area
-    cards:
-      - type: entities
-        title: Hallway Lights
-        show_header_toggle: true
-        entities:
-          - light.hallway_1
-          - light.hallway_2
-      - type: entities
-        title: Other Lights
-        show_header_toggle: true
-        entities:
-          - light.study
-          - light.spare_room
-          - switch.table_lamp
-          - switch.fairy_lights
-          - light.xiaomi_gateway_light
-      - type: entities
-        title: Samsung TV & Sound Bar
-        show_header_toggle: false
-        entities:
+          - type: divider
+            style:
+              height: 1px
+              margin-left: auto
+              margin-right: auto
+              background: lightgray
           - switch.samsung_tv_power
           - script.amp_yas106_power
           - script.amp_yas106_vol_up
           - script.amp_yas106_vol_down
-      - type: media-control
-        entity: media_player.samsung_tv
-      - type: entities
-        title: DAB Radio
-        show_header_toggle: false
-        entities:
+          - type: divider
+            style:
+              height: 1px
+              margin-left: auto
+              margin-right: auto
+              background: lightgray
           - script.radio_power
           - script.radio_vol_up
           - script.radio_vol_down
-  - title: Bedroom
-    cards:
       - type: entities
-        entities:
-          - switch.master_switch
-      - type: entities
-        title: Bedroom Lights
-        show_header_toggle: true
-        entities:
-          - light.bedroom
-      - type: entities
-        title: Soniq TV
+        title: Bedroom
         show_header_toggle: false
         entities:
+          - light.bedroom
+          - type: divider
+            style:
+              height: 1px
+              margin-left: auto
+              margin-right: auto
+              background: lightgray
           - script.soniq_tv_power
           - script.soniq_tv_ch_up
           - script.soniq_tv_ch_down
           - script.soniq_tv_vol_up
           - script.soniq_tv_vol_down
+          - type: divider
+            style:
+              height: 1px
+              margin-left: auto
+              margin-right: auto
+              background: lightgray
+          - script.radio_power
+          - script.radio_vol_up
+          - script.radio_vol_down
+          - type: divider
+            style:
+              height: 1px
+              margin-left: auto
+              margin-right: auto
+              background: lightgray
+          - switch.master_switch
+      - type: entities
+        title: Outside
+        show_header_toggle: false
+        entities:
+          - switch.fairy_lights
+
+############ Lights View ############
+  - title: Lights
+    icon: mdi:lightbulb
+    cards:
+      - type: entities
+        title: Family Area
+        show_header_toggle: true
+        entities:
+          - light.1_kitchen
+          - light.2_dining
+          - light.3_living_room
+          - light.4_lamp
+      - type: entities
+        title: Hallway
+        show_header_toggle: true
+        entities:
+          - light.hallway_1
+          - light.hallway_2
+      - type: entities
+        title: Other Rooms
+        show_header_toggle: true
+        entities:
+          - light.study
+          - light.spare_room
+          - switch.table_lamp
+          - switch.fairy_lights
+          - light.xiaomi_gateway_light
+      - type: entities
+        title: Bedroom
+        show_header_toggle: false
+        entities:
+          - light.bedroom
+      - type: entities
+        title: Outside
+        show_header_toggle: false
+        entities:
+          - switch.fairy_lights
+
+############ Floor Plan View ############
+  - tile: Floor Plan
+    id: floorplan
+    icon: mdi:floor-plan
+    # panel: true
+    cards:
+      # - type: vertical-stack
+        # cards:
+          # - type: custom:plan-coordinates
+        - type: picture-elements
+          image: /local/floorplan3d_top.png
+          elements:
+            - type: state-icon
+              entity: light.1_kitchen
+              tap_action: toggle
+              style:
+                top: 43%
+                left: 45%
+            - type: state-icon
+              entity: light.2_dining
+              tap_action: toggle
+              style:
+                top: 27%
+                left: 45%
+            - type: state-icon
+              entity: light.3_living_room
+              tap_action: toggle
+              style:
+                top: 16%
+                left: 45%
+            - type: state-icon
+              entity: light.4_lamp
+              tap_action: toggle
+              style:
+                top: 20%
+                left: 35%
+            - type: state-icon
+              entity: light.bedroom
+              tap_action: toggle
+              style:
+                top: 84%
+                left: 80%
+            - type: state-icon
+              entity: light.hallway_1
+              tap_action: toggle
+              style:
+                top: 75%
+                left: 60%
+            - type: state-icon
+              entity: light.hallway_2
+              tap_action: toggle
+              style:
+                top: 58%
+                left: 60%
+            - type: state-icon
+              entity: light.study
+              tap_action: toggle
+              style:
+                top: 58%
+                left: 43%
+            - type: state-icon
+              entity: light.spare_room
+              tap_action: toggle
+              style:
+                top: 58%
+                left: 78%
+            - type: state-icon
+              entity: remote.living_room
+              tap_action: toggle
+              style:
+                top: 15%
+                left: 58%
+            # - type: state-badge
+            #   entity: sensor.xiaomi_temperature
+            #   style:
+            #     top: 25%
+            #     left: 58%
+
+############ System View ############
   - title: System
+    icon: mdi:settings
     cards:
       - type: entities
         entities:
           - sun.sun
-          - device_tracker.galaxy_s8
-          - device_tracker.lg_g4
           - automation.daytime_away_mode
           - automation.evening_away_mode
           - automation.arrival_lights_on
           - automation.hallway_light_on_at_sunset
           - input_boolean.holiday_mode
           - input_boolean.lights_notifications
-      - type: entities
+      - type: glance
         title: Raspberry Pi
-        show_header_toggle: true
         entities:
           - sensor.processor_use
           - sensor.memory_use
