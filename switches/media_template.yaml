@@ -1,0 +1,20 @@
+- platform: template
+  switches:
+    template_sumsung_tv:
+      friendly_name: 'Samsung TV'
+      value_template: "{{ is_state('media_player.samsung_tv', 'on') }}"
+      turn_on:
+        - service: switch.turn_on
+          entity_id: switch.samsung_tv_power
+      turn_off:
+        - service: switch.turn_off
+          entity_id: switch.samsung_tv_power
+- platform: template
+  switches:
+    template_soniq_tv:
+      friendly_name: 'Bedroom TV'
+      value_template: "{{ not is_state('media_player.bedroom_tv', 'unavailable') }}"
+      turn_on:
+        - service: script.soniq_tv_power
+      turn_off:
+        - service: script.soniq_tv_power

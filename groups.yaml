@@ -14,14 +14,14 @@
 ############ Default View ############
 default_view:
   view: yes
-  icon: mdi:home 
+  icon: mdi:home
   entities:
     - device_tracker.galaxynote8
     - device_tracker.galaxy_s8_plus
     # - binary_sensor.door_window_sensor_158d00019da791
     # - binary_sensor.xiaomi_motion_sensor
     - sensor.xiaomi_temperature
-    - sensor.xiaomi_humidity 
+    - sensor.xiaomi_humidity
     - sensor.xiaomi_illumination
     - sensor.broadlink_sensor_temperature
     - sensor.bom_air_temp_c
@@ -45,7 +45,7 @@ default_view:
     - group.arlec_rm_switches
     # - camera.Cam_Study
 
-    
+
 ############ Views ############
 family_room_view:
   name: Family Area
@@ -78,7 +78,7 @@ bedroom_view:
     - group.soniq_tv_rm_switches_full
     # - media_player.bedroom_tv
     - switch.master_switch
-    
+
 system_view:
   name: System
   view: yes
@@ -95,13 +95,13 @@ system_view:
     # - group.ssl
     - group.pi_monitor
 
-    
+
 ############ Light Groups ############
 house_lights:
   name: All Lights
   entities:
     - switch.house_lights
-    
+
 family_lights:
   name: Family Area Lights
   entities:
@@ -129,7 +129,7 @@ bedroom_lights:
   name: Bedroom Lights
   entities:
     - light.Bedroom
-    
+
 # my_home_lights:
   # name: All Lights
   # entities:
@@ -153,7 +153,7 @@ harmony:
     # - sensor.harmony_activity
     - input_select.harmony
     # - media_player.sony_bravia_tv
-    
+
 samsung_tv:
   name: Samsung TV
   entities:
@@ -173,18 +173,18 @@ samsung_tv_rm_switches_compact:
   name: Samsung TV & Sound Bar
   control: hidden
   entities:
-    - switch.samsung_tv_power
+    - switch.template_sumsung_tv
     - script.amp_yas106_power
 
 samsung_tv_rm_switches_full:
   name: Samsung TV & Sound Bar
   control: hidden
   entities:
-    - switch.samsung_tv_power
+    - switch.template_sumsung_tv
     - script.amp_yas106_power
     - script.amp_yas106_vol_up
     - script.amp_yas106_vol_down
-        
+
 soniq_tv_rm_switches_compact:
   name: Soniq TV
   control: hidden
@@ -214,13 +214,13 @@ radio_rm_switches_full:
     - script.radio_power
     - script.radio_vol_up
     - script.radio_vol_down
-    
+
 arlec_rm_switches:
   name: Power Switches
   entities:
     - switch.power_switch_1
 
-    
+
 ############ Server/PC Groups ############
 server:
   name: Windows Home Server
@@ -253,5 +253,3 @@ pi_monitor:
   # name: SSL Certificate
   # entities:
     # - sensor.ssl_cert_expiry
-
-    

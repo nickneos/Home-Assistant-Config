@@ -154,7 +154,7 @@ media_player:
     # ps4_ip: !secret ps4_ip
     # name: PlayStation 4
     # local_store: games
-  # - platform: cast
+cast:
 
 
 ############ Lights ############

@@ -84,7 +84,7 @@ views:
               margin-left: auto
               margin-right: auto
               background: lightgray
-          - switch.samsung_tv_power
+          - switch.template_sumsung_tv
           - script.amp_yas106_power
           - script.amp_yas106_vol_up
           - script.amp_yas106_vol_down
@@ -108,7 +108,7 @@ views:
               margin-left: auto
               margin-right: auto
               background: lightgray
-          - script.soniq_tv_power
+          - switch.template_soniq_tv
           - script.soniq_tv_ch_up
           - script.soniq_tv_ch_down
           - script.soniq_tv_vol_up
