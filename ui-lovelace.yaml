@@ -36,36 +36,45 @@ views:
               - sensor.xiaomi_humidity
               - sensor.xiaomi_illumination
             show_name: false
-      - type: entities
-        title: Family Area
-        show_header_toggle: false
-        entities:
-          - light.1_kitchen
-          - light.2_dining
-          - light.3_living_room
-          - light.4_lamp
-          - type: divider
-            style:
-              height: 1px
-              margin-left: auto
-              margin-right: auto
-              background: lightgray
-          - remote.living_room
-          - input_select.harmony
-          - type: divider
-            style:
-              height: 1px
-              margin-left: auto
-              margin-right: auto
-              background: lightgray
-          - switch.template_home_server
-          - type: divider
-            style:
-              height: 1px
-              margin-left: auto
-              margin-right: auto
-              background: lightgray
-          - input_select.aircon
+      - type: vertical-stack
+        cards:
+          - type: entities
+            title: Family Area
+            show_header_toggle: false
+            entities:
+              - light.1_kitchen
+              - light.2_dining
+              - light.3_living_room
+              - light.4_lamp
+              - type: divider
+                style:
+                  height: 1px
+                  margin-left: auto
+                  margin-right: auto
+                  background: lightgray
+              - switch.template_home_server
+              - type: divider
+                style:
+                  height: 1px
+                  margin-left: auto
+                  margin-right: auto
+                  background: lightgray
+              - input_select.aircon
+          - type: glance
+            title: Harmony Controls
+            entities:
+              - entity: switch.template_harmony_power
+                tap_action: toggle
+              - entity: switch.template_harmony_fetch
+                tap_action: toggle
+              - entity: switch.template_harmony_tvsurround
+                tap_action: toggle
+              - entity: switch.template_harmony_ps4
+                tap_action: toggle
+              - entity: switch.template_harmony_netflix
+                tap_action: toggle
+            show_state: false
+            show_name: false
       - type: entities
         title: Hallway Area
         show_header_toggle: false
@@ -96,38 +105,30 @@ views:
           - script.radio_power
           - script.radio_vol_up
           - script.radio_vol_down
-      - type: entities
-        title: Bedroom
-        show_header_toggle: false
-        entities:
-          - light.bedroom
-          - type: divider
-            style:
-              height: 1px
-              margin-left: auto
-              margin-right: auto
-              background: lightgray
-          - switch.template_soniq_tv
-          - script.soniq_tv_ch_up
-          - script.soniq_tv_ch_down
-          - script.soniq_tv_vol_up
-          - script.soniq_tv_vol_down
-          - type: divider
-            style:
-              height: 1px
-              margin-left: auto
-              margin-right: auto
-              background: lightgray
-          - script.radio_power
-          - script.radio_vol_up
-          - script.radio_vol_down
-          - type: divider
-            style:
-              height: 1px
-              margin-left: auto
-              margin-right: auto
-              background: lightgray
-          - switch.master_switch
+      - type: vertical-stack
+        cards:
+          - type: entities
+            title: Bedroom
+            show_header_toggle: false
+            entities:
+              - light.bedroom
+              - switch.master_switch
+          - type: glance
+            title: Bedroom TV Controls
+            entities:
+              - entity: switch.template_soniq_tv
+                tap_action: toggle
+                icon: mdi:power
+              - entity: script.soniq_tv_ch_up
+                tap_action: toggle
+              - entity: script.soniq_tv_ch_down
+                tap_action: toggle
+              - entity: script.soniq_tv_vol_up
+                tap_action: toggle
+              - entity: script.soniq_tv_vol_down
+                tap_action: toggle
+            show_state: false
+            show_name: false
       - type: entities
         title: Outside
         show_header_toggle: false

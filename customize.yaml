@@ -76,3 +76,13 @@ switch.template_soniq_tv:
   icon: mdi:television
 switch.template_home_server:
   icon: mdi:server-network
+switch.template_harmony_fetch:
+  icon: mdi:television-box
+switch.template_harmony_tvsurround:
+  icon: mdi:television-classic
+switch.template_harmony_ps4:
+  icon: mdi:gamepad
+switch.template_harmony_netflix:
+  icon: mdi:netflix
+switch.template_harmony_power:
+  icon: mdi:power
