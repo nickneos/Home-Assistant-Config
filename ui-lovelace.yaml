@@ -84,7 +84,7 @@ views:
               margin-left: auto
               margin-right: auto
               background: lightgray
-          - switch.template_sumsung_tv
+          - switch.template_samsung_tv
           - script.amp_yas106_power
           - script.amp_yas106_vol_up
           - script.amp_yas106_vol_down
@@ -245,6 +245,24 @@ views:
               style:
                 top: 15%
                 left: 58%
+            - type: state-icon
+              entity: switch.template_samsung_tv
+              tap_action: toggle
+              style:
+                top: 55%
+                left: 82%
+            - type: state-icon
+              entity: switch.template_soniq_tv
+              tap_action: toggle
+              style:
+                top: 87%
+                left: 72%
+            - type: state-icon
+              entity: switch.home_server
+              tap_action: toggle
+              style:
+                top: 35%
+                left: 32%                
             # - type: state-badge
             #   entity: sensor.xiaomi_temperature
             #   style:
