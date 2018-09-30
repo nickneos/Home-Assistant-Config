@@ -70,7 +70,7 @@ sensor.xiaomi_illumination:
   friendly_name: Inside Brightness
 light.xiaomi_gateway_light:
   friendly_name: Night Light
-switch.template_sumsung_tv:
+switch.template_samsung_tv:
   icon: mdi:television
 switch.template_soniq_tv:
   icon: mdi:television

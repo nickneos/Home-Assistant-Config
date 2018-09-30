@@ -173,14 +173,14 @@ samsung_tv_rm_switches_compact:
   name: Samsung TV & Sound Bar
   control: hidden
   entities:
-    - switch.template_sumsung_tv
+    - switch.template_samsung_tv
     - script.amp_yas106_power
 
 samsung_tv_rm_switches_full:
   name: Samsung TV & Sound Bar
   control: hidden
   entities:
-    - switch.template_sumsung_tv
+    - switch.template_samsung_tv
     - script.amp_yas106_power
     - script.amp_yas106_vol_up
     - script.amp_yas106_vol_down
