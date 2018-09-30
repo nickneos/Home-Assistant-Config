@@ -52,14 +52,20 @@ views:
                   margin-left: auto
                   margin-right: auto
                   background: lightgray
-              - switch.template_home_server
-              - type: divider
-                style:
-                  height: 1px
-                  margin-left: auto
-                  margin-right: auto
-                  background: lightgray
               - input_select.aircon
+          - type: glance
+            title: Home Server
+            show_name: false
+            column_width: calc(100% / 4)
+            entities:
+              - entity: switch.template_home_server
+                tap_action: toggle
+              - entity: sensor.hp_ilo_cpu_temperature
+                icon: mdi:memory
+              - entity: sensor.hp_ilo_inlet_temperature
+                icon: mdi:arrow-right-thick
+              - entity: sensor.hp_ilo_cpu_fanspeed
+                icon: mdi:fan
           - type: glance
             title: Harmony Controls
             entities:
@@ -75,36 +81,45 @@ views:
                 tap_action: toggle
             show_state: false
             show_name: false
-      - type: entities
-        title: Hallway Area
-        show_header_toggle: false
-        entities:
-          - light.hallway_1
-          - light.hallway_2
-          - light.study
-          - light.spare_room
-          - switch.table_lamp
-          - switch.fairy_lights
-          - light.xiaomi_gateway_light
-          - type: divider
-            style:
-              height: 1px
-              margin-left: auto
-              margin-right: auto
-              background: lightgray
-          - switch.template_samsung_tv
-          - script.amp_yas106_power
-          - script.amp_yas106_vol_up
-          - script.amp_yas106_vol_down
-          - type: divider
-            style:
-              height: 1px
-              margin-left: auto
-              margin-right: auto
-              background: lightgray
-          - script.radio_power
-          - script.radio_vol_up
-          - script.radio_vol_down
+      - type: vertical-stack
+        cards:
+          - type: entities
+            title: Hallway Area
+            show_header_toggle: false
+            entities:
+              - light.hallway_1
+              - light.hallway_2
+              - light.study
+              - light.spare_room
+              - switch.table_lamp
+              - light.xiaomi_gateway_light
+          - type: glance
+            title: Samsung TV Controls
+            entities:
+              - entity: switch.template_samsung_tv
+                tap_action: toggle
+              - entity: script.amp_yas106_power
+                tap_action: toggle
+              - entity: script.amp_yas106_vol_up
+                tap_action: toggle
+              - entity: script.amp_yas106_vol_down
+                tap_action: toggle
+            show_state: false
+            show_name: false
+          - type: glance
+            title: Radio
+            show_state: false
+            show_name: false
+            entities:
+              - entity: script.radio_power
+                tap_action: toggle
+              - entity: script.radio_vol_up
+                tap_action: toggle
+              - entity: script.radio_vol_down
+                tap_action: toggle
+              - entity: script.radio_favourite
+                tap_action: toggle
+                icon: mdi:heart-outline
       - type: vertical-stack
         cards:
           - type: entities
@@ -284,11 +299,19 @@ views:
           - input_boolean.lights_notifications
       - type: glance
         title: Raspberry Pi
+        column_width: calc(100% / 4)
         entities:
-          - sensor.processor_use
-          - sensor.memory_use
-          - sensor.memory_free
-          - sensor.memory_use_percent
-          - sensor.disk_use_
-          - sensor.disk_free_
-          - sensor.disk_use_percent_
+          - entity: sensor.processor_use
+            name: CPU
+          - entity: sensor.memory_use
+            name: In Use
+          - entity: sensor.memory_free
+            name: Available
+          - entity: sensor.memory_use_percent
+            name: Usage
+          - entity: sensor.disk_use_
+            name: Used Space
+          - entity: sensor.disk_free_
+            name: Free Space
+          - entity: sensor.disk_use_percent_
+            name: Storage
