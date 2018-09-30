@@ -74,3 +74,5 @@ switch.template_samsung_tv:
   icon: mdi:television
 switch.template_soniq_tv:
   icon: mdi:television
+switch.template_home_server:
+  icon: mdi:server-network

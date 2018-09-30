@@ -18,3 +18,12 @@
         - service: script.soniq_tv_power
       turn_off:
         - service: script.soniq_tv_power
+- platform: template
+  switches:
+    template_home_server:
+      friendly_name: 'Home Server'
+      value_template: "{{ is_state('sensor.hp_ilo_server_power', 'ON') or is_state('sensor.hp_ilo_server_power', 'on') }}"
+      turn_on:
+        - service: switch.home_server
+      turn_off:
+        - service: switch.home_server

@@ -58,8 +58,7 @@ views:
               margin-left: auto
               margin-right: auto
               background: lightgray
-          - sensor.hp_ilo_server_power
-          - switch.home_server
+          - switch.template_home_server
           - type: divider
             style:
               height: 1px
@@ -258,11 +257,11 @@ views:
                 top: 87%
                 left: 72%
             - type: state-icon
-              entity: switch.home_server
+              entity: switch.template_home_server
               tap_action: toggle
               style:
                 top: 35%
-                left: 32%                
+                left: 32%
             # - type: state-badge
             #   entity: sensor.xiaomi_temperature
             #   style:
