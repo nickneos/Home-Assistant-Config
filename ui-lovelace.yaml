@@ -10,6 +10,7 @@ views:
 
 ############ Default View ############
   - title: Home
+    id: home
     icon: mdi:home
     cards:
       - type: vertical-stack
@@ -95,6 +96,8 @@ views:
               - light.xiaomi_gateway_light
           - type: glance
             title: Samsung TV Controls
+            show_state: false
+            show_name: false
             entities:
               - entity: switch.template_samsung_tv
                 tap_action: toggle
@@ -104,8 +107,6 @@ views:
                 tap_action: toggle
               - entity: script.amp_yas106_vol_down
                 tap_action: toggle
-            show_state: false
-            show_name: false
           - type: glance
             title: Radio
             show_state: false
@@ -130,6 +131,8 @@ views:
               - switch.master_switch
           - type: glance
             title: Bedroom TV Controls
+            show_state: false
+            show_name: false
             entities:
               - entity: switch.template_soniq_tv
                 tap_action: toggle
@@ -142,8 +145,6 @@ views:
                 tap_action: toggle
               - entity: script.soniq_tv_vol_down
                 tap_action: toggle
-            show_state: false
-            show_name: false
       - type: entities
         title: Outside
         show_header_toggle: false
@@ -152,6 +153,7 @@ views:
 
 ############ Lights View ############
   - title: Lights
+    id: lights
     icon: mdi:lightbulb
     cards:
       - type: entities
@@ -187,6 +189,143 @@ views:
         show_header_toggle: false
         entities:
           - switch.fairy_lights
+
+############ Media View ############
+  - title: Media
+    id: media
+    icon: mdi:youtube-tv
+    cards:
+      ### Sony TV ###
+      - type: vertical-stack
+        cards:
+          - type: glance
+            title: Harmony Controls
+            entities:
+              - entity: switch.template_harmony_power
+                tap_action: toggle
+              - entity: switch.template_harmony_fetch
+                tap_action: toggle
+              - entity: switch.template_harmony_tvsurround
+                tap_action: toggle
+              - entity: switch.template_harmony_ps4
+                tap_action: toggle
+              - entity: switch.template_harmony_netflix
+                tap_action: toggle
+            show_state: false
+            show_name: false
+          - type: conditional
+            conditions:
+              - entity: media_player.sony_bravia_tv
+                state_not: 'off'
+            card:
+              type: media-control
+              entity: media_player.sony_bravia_tv
+          - type: conditional
+            conditions:
+              - entity: media_player.chromecast_sony
+                state_not: 'off'
+              - entity: media_player.chromecast_sony
+                state_not: 'unavailable'
+            card:
+              type: media-control
+              entity: media_player.chromecast_sony
+      ### Samsung TV ###
+      - type: vertical-stack
+        cards:
+          - type: glance
+            title: Samsung TV Controls
+            show_state: false
+            show_name: false
+            entities:
+              - entity: switch.template_samsung_tv
+                tap_action: toggle
+              - entity: script.amp_yas106_power
+                tap_action: toggle
+              - entity: script.amp_yas106_vol_up
+                tap_action: toggle
+              - entity: script.amp_yas106_vol_down
+                tap_action: toggle
+          - type: conditional
+            conditions:
+              - entity: media_player.samsung_tv
+                state_not: 'off'
+            card:
+              type: media-control
+              entity: media_player.samsung_tv
+          - type: conditional
+            conditions:
+              - entity: media_player.chromecast_samsung
+                state_not: 'off'
+              - entity: media_player.chromecast_samsung
+                state_not: 'unavailable'
+            card:
+              type: media-control
+              entity: media_player.chromecast_samsung
+      ### Bedroom TV ###
+      - type: vertical-stack
+        cards:
+          - type: glance
+            title: Bedroom TV Controls
+            show_state: false
+            show_name: false
+            entities:
+              - entity: switch.template_soniq_tv
+                tap_action: toggle
+                icon: mdi:power
+              - entity: script.soniq_tv_ch_up
+                tap_action: toggle
+              - entity: script.soniq_tv_ch_down
+                tap_action: toggle
+              - entity: script.soniq_tv_vol_up
+                tap_action: toggle
+              - entity: script.soniq_tv_vol_down
+                tap_action: toggle
+          - type: conditional
+            conditions:
+              - entity: media_player.chromecast_bedroom
+                state_not: 'off'
+              - entity: media_player.chromecast_bedroom
+                state_not: 'unavailable'
+            card:
+              type: media-control
+              entity: media_player.chromecast_bedroom
+      ### Google Home ###
+      - type: conditional
+        conditions:
+          - entity: media_player.google_home_main
+            state_not: 'off'
+          - entity: media_player.google_home_main
+            state_not: 'unavailable'
+        card:
+          type: media-control
+          entity: media_player.google_home_main
+      - type: conditional
+        conditions:
+          - entity: media_player.google_home_office
+            state_not: 'off'
+          - entity: media_player.google_home_office
+            state_not: 'unavailable'
+        card:
+          type: media-control
+          entity: media_player.google_home_office
+      - type: conditional
+        conditions:
+          - entity: media_player.google_home_bedroom
+            state_not: 'off'
+          - entity: media_player.google_home_bedroom
+            state_not: 'unavailable'
+        card:
+          type: media-control
+          entity: media_player.google_home_bedroom
+      - type: conditional
+        conditions:
+          - entity: media_player.google_home_group
+            state_not: 'off'
+          - entity: media_player.google_home_group
+            state_not: 'unavailable'
+        card:
+          type: media-control
+          entity: media_player.google_home_group
 
 ############ Floor Plan View ############
   - tile: Floor Plan
@@ -286,7 +425,8 @@ views:
 
 ############ System View ############
   - title: System
-    icon: mdi:settings
+    id: system
+    icon: mdi:information-outline
     cards:
       - type: entities
         entities:
