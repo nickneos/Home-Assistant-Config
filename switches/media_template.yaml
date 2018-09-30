@@ -13,7 +13,7 @@
   switches:
     template_soniq_tv:
       friendly_name: 'Bedroom TV'
-      value_template: "{{ not is_state('media_player.bedroom_tv', 'unavailable') }}"
+      value_template: "{{ not is_state('media_player.chromecast_bedroom', 'unavailable') }}"
       turn_on:
         - service: script.soniq_tv_power
       turn_off:
