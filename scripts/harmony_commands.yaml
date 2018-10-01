@@ -57,4 +57,20 @@ amp_bass_down:
         command: BassDown
         device: 25850323
         num_repeats: 5
-        delay_secs: 0.3   
+        delay_secs: 0.3
+fujitsu_cool_20:
+  alias: Fujitsu Cool 20
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.living_room
+        command: Cool 20
+        device: 47350651
+fujitsu_off:
+  alias: Fujitsu Off
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.living_room
+        command: 'Off'
+        device: 47350651

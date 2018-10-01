@@ -5,11 +5,7 @@
       entity_id: input_select.aircon
       to: 'Cool Auto 20'
   action:
-    - service: remote.send_command
-      entity_id: remote.living_room
-      data:
-        device: 47350651
-        command: Cool 20
+    - service: script.fujitsu_cool_20
     - service: input_select.select_option
       entity_id: input_select.aircon
       data_template:
@@ -21,13 +17,8 @@
       entity_id: input_select.aircon
       to: 'Off'
   action:
-    - service: remote.send_command
-      entity_id: remote.living_room
-      data:
-        device: 47350651
-        command: 'Off'
+    - service: script.fujitsu_off
     - service: input_select.select_option
       entity_id: input_select.aircon
       data_template:
         option: "Select..."
-                

@@ -98,6 +98,10 @@ input_boolean:
     name: Lights Notifications
     initial: off
     icon: mdi:flash
+  cast_visible:
+    name: Cast Visible
+    initial: on
+    icon: mdi:cast
 
 input_select:
   harmony:
