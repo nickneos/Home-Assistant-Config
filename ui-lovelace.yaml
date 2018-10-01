@@ -339,84 +339,94 @@ views:
         - type: picture-elements
           image: /local/floorplan3d_top.png
           elements:
+            ### Family Room ###
             - type: state-icon
-              entity: light.1_kitchen
+              entity: remote.living_room
               tap_action: toggle
               style:
-                top: 43%
-                left: 45%
-            - type: state-icon
-              entity: light.2_dining
-              tap_action: toggle
-              style:
-                top: 27%
-                left: 45%
+                top: 12%
+                left: 58%
             - type: state-icon
               entity: light.3_living_room
               tap_action: toggle
               style:
-                top: 16%
+                top: 13%
                 left: 45%
             - type: state-icon
               entity: light.4_lamp
               tap_action: toggle
               style:
-                top: 20%
+                top: 18%
                 left: 35%
             - type: state-icon
-              entity: light.bedroom
+              entity: light.2_dining
               tap_action: toggle
               style:
-                top: 84%
-                left: 80%
+                top: 25%
+                left: 45%
             - type: state-icon
-              entity: light.hallway_1
+              entity: switch.template_home_server
               tap_action: toggle
               style:
-                top: 75%
-                left: 60%
+                top: 33%
+                left: 34%
+            - type: state-icon
+              entity: light.1_kitchen
+              tap_action: toggle
+              style:
+                top: 41%
+                left: 45%
+            ### Hallway Area ###
+            - type: state-icon
+              entity: switch.template_samsung_tv
+              tap_action: toggle
+              style:
+                top: 54%
+                left: 82%
             - type: state-icon
               entity: light.hallway_2
               tap_action: toggle
               style:
-                top: 58%
+                top: 57%
                 left: 60%
             - type: state-icon
               entity: light.study
               tap_action: toggle
               style:
-                top: 58%
+                top: 57%
                 left: 43%
             - type: state-icon
               entity: light.spare_room
               tap_action: toggle
               style:
-                top: 58%
+                top: 57%
                 left: 78%
             - type: state-icon
-              entity: remote.living_room
+              entity: light.hallway_1
               tap_action: toggle
               style:
-                top: 15%
-                left: 58%
+                top: 73%
+                left: 60%
+            ### Bedroom ###
             - type: state-icon
-              entity: switch.template_samsung_tv
+              entity: light.bedroom
               tap_action: toggle
               style:
-                top: 55%
-                left: 82%
+                top: 83%
+                left: 80%
             - type: state-icon
               entity: switch.template_soniq_tv
               tap_action: toggle
               style:
                 top: 87%
                 left: 72%
+            ### Bedroom ###
             - type: state-icon
-              entity: switch.template_home_server
+              entity: switch.fairy_lights
               tap_action: toggle
               style:
-                top: 35%
-                left: 32%
+                top: 33%
+                left: 17%
             # - type: state-badge
             #   entity: sensor.xiaomi_temperature
             #   style:
