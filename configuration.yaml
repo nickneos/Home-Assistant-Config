@@ -120,7 +120,7 @@ input_select:
       - Select...
       - Cool Auto 20
       - 'Off'
-    icon: mdi:snowflake
+    icon: mdi:air-conditioner
 
 
 ############ Device Trackers ############

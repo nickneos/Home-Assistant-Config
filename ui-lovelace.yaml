@@ -6,6 +6,8 @@ title: Home
 resources:
   - url: /local/plan-coordinates.js?v=1
     type: js
+  - url: /local/lovelace-slider-entity-row/slider-entity-row.js
+    type: js
 views:
 
 ############ Default View ############
@@ -31,29 +33,31 @@ views:
           - type: weather-forecast
             entity: weather.bom_laverton
           - type: glance
+            show_name: false
+            column_width: calc(100% / 5)
             entities:
+              - sun.sun
               - sensor.xiaomi_temperature
               - sensor.broadlink_sensor_temperature
               - sensor.xiaomi_humidity
               - sensor.xiaomi_illumination
-            show_name: false
+          - type: entities
+            entities:
+            - input_select.aircon
       - type: vertical-stack
         cards:
           - type: entities
             title: Family Area
             show_header_toggle: false
             entities:
-              - light.1_kitchen
-              - light.2_dining
-              - light.3_living_room
-              - light.4_lamp
-              - type: divider
-                style:
-                  height: 1px
-                  margin-left: auto
-                  margin-right: auto
-                  background: lightgray
-              - input_select.aircon
+              - entity: light.1_kitchen
+                type: custom:slider-entity-row
+              - entity: light.2_dining
+                type: custom:slider-entity-row
+              - entity: light.3_living_room
+                type: custom:slider-entity-row
+              - entity: light.4_lamp
+                type: custom:slider-entity-row
           - type: glance
             title: Home Server
             show_name: false
@@ -69,6 +73,8 @@ views:
                 icon: mdi:fan
           - type: glance
             title: Harmony Controls
+            show_state: false
+            show_name: false
             entities:
               - entity: switch.template_harmony_power
                 tap_action: toggle
@@ -79,25 +85,48 @@ views:
               - entity: switch.template_harmony_ps4
                 tap_action: toggle
               - entity: switch.template_harmony_netflix
-                tap_action: toggle
-            show_state: false
-            show_name: false
+              #   tap_action: toggle
+              # - entity: script.fetch_ch_up
+              #   tap_action: toggle
+              # - entity: script.fetch_ch_down
+              #   tap_action: toggle
+              # - entity: script.tv_vol_up
+              #   tap_action: toggle
+              # - entity: script.tv_vol_down
+              #   tap_action: toggle
+              # - entity: script.fetch_guide
+              #   tap_action: toggle
+              # - entity: script.fetch_up
+              #   tap_action: toggle
+              # - entity: script.fetch_down
+              #   tap_action: toggle
+              # - entity: script.fetch_left
+              #   tap_action: toggle
+              # - entity: script.fetch_right
+              #   tap_action: toggle
+              # - entity: script.fetch_select
+              #   tap_action: toggle
       - type: vertical-stack
         cards:
           - type: entities
             title: Hallway Area
             show_header_toggle: false
             entities:
-              - light.hallway_1
-              - light.hallway_2
-              - light.study
-              - light.spare_room
+              - entity: light.hallway_1
+                type: custom:slider-entity-row
+              - entity: light.hallway_2
+                type: custom:slider-entity-row
+              - entity: light.study
+                type: custom:slider-entity-row
+              - entity: light.spare_room
+                type: custom:slider-entity-row
               - switch.table_lamp
               - light.xiaomi_gateway_light
           - type: glance
             title: Samsung TV Controls
             show_state: false
             show_name: false
+            column_width: calc(100% / 4)
             entities:
               - entity: switch.template_samsung_tv
                 tap_action: toggle
@@ -111,6 +140,7 @@ views:
             title: Radio
             show_state: false
             show_name: false
+            column_width: calc(100% / 4)
             entities:
               - entity: script.radio_power
                 tap_action: toggle
@@ -127,7 +157,8 @@ views:
             title: Bedroom
             show_header_toggle: false
             entities:
-              - light.bedroom
+              - entity: light.bedroom
+                type: custom:slider-entity-row
               - switch.master_switch
           - type: glance
             title: Bedroom TV Controls
@@ -160,22 +191,30 @@ views:
         title: Family Area
         show_header_toggle: true
         entities:
-          - light.1_kitchen
-          - light.2_dining
-          - light.3_living_room
-          - light.4_lamp
+          - entity: light.1_kitchen
+            type: custom:slider-entity-row
+          - entity: light.2_dining
+            type: custom:slider-entity-row
+          - entity: light.3_living_room
+            type: custom:slider-entity-row
+          - entity: light.4_lamp
+            type: custom:slider-entity-row
       - type: entities
         title: Hallway
         show_header_toggle: true
         entities:
-          - light.hallway_1
-          - light.hallway_2
+          - entity: light.hallway_1
+            type: custom:slider-entity-row
+          - entity: light.hallway_2
+            type: custom:slider-entity-row
       - type: entities
         title: Other Rooms
         show_header_toggle: true
         entities:
-          - light.study
-          - light.spare_room
+          - entity: light.study
+            type: custom:slider-entity-row
+          - entity: light.spare_room
+            type: custom:slider-entity-row
           - switch.table_lamp
           - switch.fairy_lights
           - light.xiaomi_gateway_light
@@ -183,7 +222,8 @@ views:
         title: Bedroom
         show_header_toggle: false
         entities:
-          - light.bedroom
+          - entity: light.bedroom
+            type: custom:slider-entity-row
       - type: entities
         title: Outside
         show_header_toggle: false
@@ -226,6 +266,8 @@ views:
                 state_not: 'off'
               - entity: media_player.chromecast_sony
                 state_not: 'unavailable'
+              - entity: input_boolean.cast_visible
+                state: 'on'
             card:
               type: media-control
               entity: media_player.chromecast_sony
@@ -258,6 +300,8 @@ views:
                 state_not: 'off'
               - entity: media_player.chromecast_samsung
                 state_not: 'unavailable'
+              - entity: input_boolean.cast_visible
+                state: 'on'
             card:
               type: media-control
               entity: media_player.chromecast_samsung
@@ -286,6 +330,8 @@ views:
                 state_not: 'off'
               - entity: media_player.chromecast_bedroom
                 state_not: 'unavailable'
+              - entity: input_boolean.cast_visible
+                state: 'on'
             card:
               type: media-control
               entity: media_player.chromecast_bedroom
@@ -296,6 +342,8 @@ views:
             state_not: 'off'
           - entity: media_player.google_home_main
             state_not: 'unavailable'
+          - entity: input_boolean.cast_visible
+            state: 'on'
         card:
           type: media-control
           entity: media_player.google_home_main
@@ -305,6 +353,8 @@ views:
             state_not: 'off'
           - entity: media_player.google_home_office
             state_not: 'unavailable'
+          - entity: input_boolean.cast_visible
+            state: 'on'
         card:
           type: media-control
           entity: media_player.google_home_office
@@ -314,6 +364,8 @@ views:
             state_not: 'off'
           - entity: media_player.google_home_bedroom
             state_not: 'unavailable'
+          - entity: input_boolean.cast_visible
+            state: 'on'
         card:
           type: media-control
           entity: media_player.google_home_bedroom
@@ -323,6 +375,8 @@ views:
             state_not: 'off'
           - entity: media_player.google_home_group
             state_not: 'unavailable'
+          - entity: input_boolean.cast_visible
+            state: 'on'
         card:
           type: media-control
           entity: media_player.google_home_group
@@ -526,10 +580,10 @@ views:
             name: Storage
       - type: entities
         entities:
-          - sun.sun
           - automation.daytime_away_mode
           - automation.evening_away_mode
           - automation.arrival_lights_on
           - automation.hallway_light_on_at_sunset
           - input_boolean.holiday_mode
           - input_boolean.lights_notifications
+          - input_boolean.cast_visible

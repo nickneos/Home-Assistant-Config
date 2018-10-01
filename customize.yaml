@@ -86,3 +86,11 @@ switch.template_harmony_netflix:
   icon: mdi:netflix
 switch.template_harmony_power:
   icon: mdi:power
+light.1_kitchen:
+  friendly_name: Kitchen
+light.2_dining:
+  friendly_name: Dining
+light.3_living_room:
+  friendly_name: Living Room
+light.4_lamp:
+  friendly_name: Lamp
