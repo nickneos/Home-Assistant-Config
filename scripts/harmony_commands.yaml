@@ -1,3 +1,4 @@
+### TV ###
 tv_vol_up:
   alias: TV Volume Up
   sequence:
@@ -18,6 +19,7 @@ tv_vol_down:
         device: 37937380
         num_repeats: 5
         delay_secs: 0.5
+### Receiver ###
 amp_vol_up:
   alias: Amp Volume Up
   sequence:
@@ -58,6 +60,72 @@ amp_bass_down:
         device: 25850323
         num_repeats: 5
         delay_secs: 0.3
+### Fetch TV ###
+fetch_ch_up:
+  alias: Fetch Channel Up
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.living_room
+        command: ChannelUp
+        device: 50218013
+fetch_ch_down:
+  alias: Fetch Channel Down
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.living_room
+        command: ChannelDown
+        device: 50218013
+fetch_up:
+  alias: Fetch Up
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.living_room
+        command: DirectionUp
+        device: 50218013
+fetch_down:
+  alias: Fetch Down
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.living_room
+        command: DirectionDown
+        device: 50218013
+fetch_left:
+  alias: Fetch Left
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.living_room
+        command: DirectionLeft
+        device: 50218013
+fetch_right:
+  alias: Fetch Right
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.living_room
+        command: DirectionRight
+        device: 50218013
+fetch_select:
+  alias: Fetch Select
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.living_room
+        command: Select
+        device: 50218013
+fetch_guide:
+  alias: Fetch Guide
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.living_room
+        command: Guide
+        device: 50218013
+### A/C ###
 fujitsu_cool_20:
   alias: Fujitsu Cool 20
   sequence:
