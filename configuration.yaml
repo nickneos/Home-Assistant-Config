@@ -11,6 +11,7 @@
 #   Lights                                                 #
 #   Google Assistant                                       #
 #   Xiaomi Gateway                                         #
+#   Cameras                                                #
 #   Notifications                                          #
 #   IFTTT                                                  #
 #   Shell                                                  #
@@ -194,6 +195,19 @@ xiaomi_aqara:
       key: !secret aqara_key
 
 
+############ Cameras ############
+camera:
+  - platform: ffmpeg
+    input: -rtsp_transport tcp -i rtsp://192.168.0.32/unicast
+    name: Study
+  - platform: ffmpeg
+    input: -rtsp_transport tcp -i rtsp://192.168.0.33/unicast
+    name: Family Room
+  - platform: ffmpeg
+    input: -rtsp_transport tcp -i rtsp://192.168.0.34/unicast
+    name: Kitchen
+
+
 ############ Notifications ############
 notify:
   - name: html5
@@ -250,11 +264,6 @@ group: !include groups.yaml
 
 # ffmpeg:
   # ffmpeg_bin: /usr/bin/avconv
-
-# camera:
-  # - platform: ffmpeg
-    # input: -rtsp_transport tcp -i rtsp://192.168.0.32/unicast
-    # name: Cam_Study
 
 # zone:
   # - name: Nicks Work

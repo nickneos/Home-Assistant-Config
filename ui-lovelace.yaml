@@ -427,17 +427,103 @@ views:
               style:
                 top: 33%
                 left: 17%
-            # - type: state-badge
+            # - type: state-icon
             #   entity: sensor.xiaomi_temperature
             #   style:
             #     top: 25%
             #     left: 58%
+            #     "--paper-item-icon-color": pink
 
+            ### Cameras ###
+            - type: icon
+              icon: mdi:cctv
+              entity: camera.family_room
+              style:
+                top: 20%
+                left: 58%
+                transform: rotate(-60deg)
+                # --iron-icon-height: 30px
+                # --iron-icon-width: 30px
+                --iron-icon-stroke-color: dimgrey
+                --iron-icon-fill-color: dimgrey
+            - type: icon
+              icon: mdi:cctv
+              entity: camera.kitchen
+              style:
+                top: 42%
+                left: 52%
+                transform: rotate(-115deg) scaleX(-1)
+                # --iron-icon-height: 30px
+                # --iron-icon-width: 30px
+                --iron-icon-stroke-color: dimgrey
+                --iron-icon-fill-color: dimgrey
+            - type: icon
+              icon: mdi:cctv
+              entity: camera.study
+              style:
+                top: 57%
+                left: 30%
+                transform: rotate(-60deg) scaleX(-1)
+                # --iron-icon-height: 30px
+                # --iron-icon-width: 30px
+                --iron-icon-stroke-color: dimgrey
+                --iron-icon-fill-color: dimgrey
+
+############ Camera View ############
+  - title: Camera
+    id: camera
+    icon: mdi:cctv
+    cards:
+      - type: picture-glance
+        title: Kitchen
+        entities:
+          - camera.kitchen
+          - entity: switch.template_harmony_power
+            icon: mdi:television
+          - light.1_kitchen
+          - light.2_dining
+          - light.3_living_room
+          - light.4_lamp
+        camera_image: camera.kitchen
+      - type: picture-glance
+        title: Family
+        entities:
+          - camera.family_room
+          - light.1_kitchen
+          - light.2_dining
+          - light.3_living_room
+          - light.4_lamp
+          - light.hallway_1
+          - light.hallway_2
+        camera_image: camera.family_room
+      - type: picture-glance
+        title: Study
+        entities:
+          - camera.study
+          - light.Study
+          - light.spare_room
+          - light.hallway_1
+          - light.hallway_2
+        camera_image: camera.study
 ############ System View ############
   - title: System
     id: system
     icon: mdi:information-outline
     cards:
+      - type: glance
+        title: Raspberry Pi
+        column_width: calc(100% / 5)
+        entities:
+          - entity: sensor.processor_use
+            name: CPU
+          - entity: sensor.memory_use_percent
+            name: RAM
+          - entity: sensor.disk_use_
+            name: Used Space
+          - entity: sensor.disk_free_
+            name: Free Space
+          - entity: sensor.disk_use_percent_
+            name: Storage
       - type: entities
         entities:
           - sun.sun
@@ -447,21 +533,3 @@ views:
           - automation.hallway_light_on_at_sunset
           - input_boolean.holiday_mode
           - input_boolean.lights_notifications
-      - type: glance
-        title: Raspberry Pi
-        column_width: calc(100% / 4)
-        entities:
-          - entity: sensor.processor_use
-            name: CPU
-          - entity: sensor.memory_use
-            name: In Use
-          - entity: sensor.memory_free
-            name: Available
-          - entity: sensor.memory_use_percent
-            name: Usage
-          - entity: sensor.disk_use_
-            name: Used Space
-          - entity: sensor.disk_free_
-            name: Free Space
-          - entity: sensor.disk_use_percent_
-            name: Storage
