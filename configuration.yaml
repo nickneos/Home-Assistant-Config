@@ -176,9 +176,6 @@ light:
 ############ Google Assistant ############
 google_assistant:
   project_id: !secret ga_proj
-  client_id: !secret ga_client
-  access_token: !secret ga_token
-  agent_user_id: !secret ga_user
   api_key: !secret ga_api
   expose_by_default: false
   entity_config:
