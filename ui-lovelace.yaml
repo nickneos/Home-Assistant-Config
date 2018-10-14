@@ -41,9 +41,6 @@ views:
               - sensor.broadlink_sensor_temperature
               - sensor.xiaomi_humidity
               - sensor.xiaomi_illumination
-          - type: entities
-            entities:
-            - input_select.aircon
       - type: vertical-stack
         cards:
           - type: entities
@@ -58,19 +55,6 @@ views:
                 type: custom:slider-entity-row
               - entity: light.4_lamp
                 type: custom:slider-entity-row
-          - type: glance
-            title: Home Server
-            show_name: false
-            column_width: calc(100% / 4)
-            entities:
-              - entity: switch.template_home_server
-                tap_action: toggle
-              - entity: sensor.hp_ilo_cpu_temperature
-                icon: mdi:memory
-              - entity: sensor.hp_ilo_inlet_temperature
-                icon: mdi:arrow-right-thick
-              - entity: sensor.hp_ilo_cpu_fanspeed
-                icon: mdi:fan
           - type: glance
             title: Harmony Controls
             show_state: false
@@ -106,6 +90,22 @@ views:
               #   tap_action: toggle
               # - entity: script.fetch_select
               #   tap_action: toggle
+          - type: glance
+            title: Home Server
+            show_name: false
+            column_width: calc(100% / 4)
+            entities:
+              - entity: switch.template_home_server
+                tap_action: toggle
+              - entity: sensor.hp_ilo_cpu_temperature
+                icon: mdi:memory
+              - entity: sensor.hp_ilo_inlet_temperature
+                icon: mdi:arrow-right-thick
+              - entity: sensor.hp_ilo_cpu_fanspeed
+                icon: mdi:fan
+          - type: entities
+            entities:
+            - input_select.aircon
       - type: vertical-stack
         cards:
           - type: entities
@@ -564,6 +564,13 @@ views:
     id: system
     icon: mdi:information-outline
     cards:
+      - type: glance
+        show_name: false
+        entities:
+          - device_tracker.galaxynote8
+          - device_tracker.galaxy_s8_plus
+          - device_tracker.galaxy_s8
+          - device_tracker.lg_g4
       - type: glance
         title: Raspberry Pi
         column_width: calc(100% / 5)
