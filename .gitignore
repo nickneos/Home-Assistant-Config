@@ -50,6 +50,6 @@ entity_registry.yaml
 !/.gitignore
 !/.travis.yml
 python-lovelace/
-broadlink_climate_codes/
+*.zip
 
 # End of https://www.gitignore.io/api/homeassistant

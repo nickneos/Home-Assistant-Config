@@ -176,6 +176,11 @@ views:
                 tap_action: toggle
               - entity: script.soniq_tv_vol_down
                 tap_action: toggle
+          - type: entities
+            title: Bedroom A/C
+            show_header_toggle: false
+            entities:
+              - entity: climate.bedroom
       - type: entities
         title: Outside
         show_header_toggle: false

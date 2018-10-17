@@ -94,3 +94,5 @@ light.3_living_room:
   friendly_name: Living Room
 light.4_lamp:
   friendly_name: Lamp
+climate.bedroom:
+  icon: mdi:air-conditioner
