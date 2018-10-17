@@ -32,21 +32,14 @@ views:
               show_name: false
           - type: weather-forecast
             entity: weather.bom_laverton
-          - type: glance
-            show_name: false
-            column_width: calc(100% / 5)
-            entities:
-              - sun.sun
-              - sensor.xiaomi_temperature
-              - sensor.broadlink_sensor_temperature
-              - sensor.xiaomi_humidity
-              - sensor.xiaomi_illumination
       - type: vertical-stack
         cards:
           - type: entities
             title: Family Area
             show_header_toggle: false
             entities:
+              - entity: sensor.xiaomi_temperature
+              - entity: sensor.xiaomi_humidity
               - entity: light.1_kitchen
                 type: custom:slider-entity-row
               - entity: light.2_dining
@@ -112,6 +105,8 @@ views:
             title: Hallway Area
             show_header_toggle: false
             entities:
+              - entity: sensor.broadlink_sensor_temperature
+              - entity: sensor.xiaomi_illumination
               - entity: light.hallway_1
                 type: custom:slider-entity-row
               - entity: light.hallway_2
@@ -186,6 +181,7 @@ views:
         show_header_toggle: false
         entities:
           - switch.fairy_lights
+          - switch.arlec1
 
 ############ Lights View ############
   - title: Lights
@@ -398,6 +394,26 @@ views:
         - type: picture-elements
           image: /local/floorplan3d_top.png
           elements:
+            - type: image
+              entity: device_tracker.galaxynote8
+              image: /local/nick.jpg
+              state_filter:
+                not_home: grayscale(1)
+              style:
+                top: 4%
+                left: 10%
+                border-radius: 50%
+                width: 36px
+            - type: image
+              entity: device_tracker.galaxy_s8_plus
+              image: /local/ashlei.jpg
+              state_filter:
+                not_home: grayscale(1)
+              style:
+                top: 4%
+                left: 20%
+                border-radius: 50%
+                width: 36px
             ### Family Room ###
             - type: state-icon
               entity: remote.living_room
@@ -423,6 +439,14 @@ views:
               style:
                 top: 25%
                 left: 45%
+            - type: state-label
+              entity: sensor.xiaomi_temperature
+              style:
+                top: 20%
+                left: 47%
+                font-size: 0.9em
+                font-weight: bold
+                color: DarkOliveGreen
             - type: state-icon
               entity: switch.template_home_server
               tap_action: toggle
@@ -466,6 +490,14 @@ views:
               style:
                 top: 73%
                 left: 60%
+            - type: state-label
+              entity: sensor.broadlink_sensor_temperature
+              style:
+                top: 60%
+                left: 79%
+                font-size: 0.9em
+                font-weight: bold
+                color: DarkOliveGreen
             ### Bedroom ###
             - type: state-icon
               entity: light.bedroom
@@ -479,13 +511,24 @@ views:
               style:
                 top: 87%
                 left: 72%
-            ### Bedroom ###
+            - type: state-icon
+              entity: climate.bedroom
+              style:
+                top: 79%
+                left: 91%
+            ### Outside ###
             - type: state-icon
               entity: switch.fairy_lights
               tap_action: toggle
               style:
                 top: 33%
                 left: 17%
+            - type: state-icon
+              entity: switch.arlec1
+              tap_action: toggle
+              style:
+                top: 38%
+                left: 26%
             # - type: state-icon
             #   entity: sensor.xiaomi_temperature
             #   style:
@@ -576,6 +619,7 @@ views:
           - device_tracker.galaxy_s8_plus
           - device_tracker.galaxy_s8
           - device_tracker.lg_g4
+          - sun.sun
       - type: glance
         title: Raspberry Pi
         column_width: calc(100% / 5)

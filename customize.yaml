@@ -50,12 +50,10 @@ switch.table_lamp:
 switch.fairy_lights:
   assumed_state: false
   icon: mdi:lightbulb
-switch.power_switch_1:
+switch.arlec1:
+  friendly_name: Fridge
   assumed_state: false
-  icon: mdi:power-plug
-switch.power_switch_3:
-  assumed_state: false
-  icon: mdi:power-plug
+  icon: mdi:fridge
 script.radio_power:
   icon: mdi:radio
 script.radio_vol_up:
