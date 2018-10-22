@@ -400,7 +400,7 @@ views:
               state_filter:
                 not_home: grayscale(1)
               style:
-                top: 4%
+                top: 6%
                 left: 10%
                 border-radius: 50%
                 width: 36px
@@ -410,7 +410,7 @@ views:
               state_filter:
                 not_home: grayscale(1)
               style:
-                top: 4%
+                top: 6%
                 left: 20%
                 border-radius: 50%
                 width: 36px
@@ -419,30 +419,30 @@ views:
               entity: remote.living_room
               tap_action: toggle
               style:
-                top: 12%
+                top: 14%
                 left: 58%
             - type: state-icon
               entity: light.3_living_room
               tap_action: toggle
               style:
-                top: 13%
+                top: 15%
                 left: 45%
             - type: state-icon
               entity: light.4_lamp
               tap_action: toggle
               style:
-                top: 18%
+                top: 20%
                 left: 35%
             - type: state-icon
               entity: light.2_dining
               tap_action: toggle
               style:
-                top: 25%
+                top: 27%
                 left: 45%
             - type: state-label
               entity: sensor.xiaomi_temperature
               style:
-                top: 20%
+                top: 22%
                 left: 47%
                 font-size: 0.9em
                 font-weight: bold
@@ -451,49 +451,49 @@ views:
               entity: switch.template_home_server
               tap_action: toggle
               style:
-                top: 33%
+                top: 35%
                 left: 34%
             - type: state-icon
               entity: light.1_kitchen
               tap_action: toggle
               style:
-                top: 41%
+                top: 43%
                 left: 45%
             ### Hallway Area ###
             - type: state-icon
               entity: switch.template_samsung_tv
               tap_action: toggle
               style:
-                top: 54%
+                top: 56%
                 left: 82%
             - type: state-icon
               entity: light.hallway_2
               tap_action: toggle
               style:
-                top: 57%
+                top: 59%
                 left: 60%
             - type: state-icon
               entity: light.study
               tap_action: toggle
               style:
-                top: 57%
+                top: 59%
                 left: 43%
             - type: state-icon
               entity: light.spare_room
               tap_action: toggle
               style:
-                top: 57%
+                top: 59%
                 left: 78%
             - type: state-icon
               entity: light.hallway_1
               tap_action: toggle
               style:
-                top: 73%
+                top: 75%
                 left: 60%
             - type: state-label
               entity: sensor.broadlink_sensor_temperature
               style:
-                top: 60%
+                top: 61%
                 left: 79%
                 font-size: 0.9em
                 font-weight: bold
@@ -503,32 +503,32 @@ views:
               entity: light.bedroom
               tap_action: toggle
               style:
-                top: 83%
+                top: 85%
                 left: 80%
             - type: state-icon
               entity: switch.template_soniq_tv
               tap_action: toggle
               style:
-                top: 87%
+                top: 89%
                 left: 72%
             - type: state-icon
               entity: climate.bedroom
               style:
-                top: 79%
+                top: 80%
                 left: 91%
             ### Outside ###
             - type: state-icon
               entity: switch.fairy_lights
               tap_action: toggle
               style:
-                top: 33%
+                top: 35%
                 left: 17%
             - type: state-icon
               entity: switch.arlec1
               tap_action: toggle
               style:
-                top: 38%
-                left: 26%
+                top: 45%
+                left: 25%
             # - type: state-icon
             #   entity: sensor.xiaomi_temperature
             #   style:
@@ -541,7 +541,7 @@ views:
               icon: mdi:cctv
               entity: camera.family_room
               style:
-                top: 20%
+                top: 22%
                 left: 58%
                 transform: rotate(-60deg)
                 # --iron-icon-height: 30px
@@ -552,7 +552,7 @@ views:
               icon: mdi:cctv
               entity: camera.kitchen
               style:
-                top: 42%
+                top: 44%
                 left: 52%
                 transform: rotate(-115deg) scaleX(-1)
                 # --iron-icon-height: 30px
@@ -563,7 +563,7 @@ views:
               icon: mdi:cctv
               entity: camera.study
               style:
-                top: 57%
+                top: 59%
                 left: 30%
                 transform: rotate(-60deg) scaleX(-1)
                 # --iron-icon-height: 30px
