@@ -6,6 +6,11 @@
       event_data:
         entity_id: binary_sensor.xiaomi_switch_1
         click_type: single
+    - platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.xiaomi_switch_3
+        click_type: single
   action:
     service: light.toggle
     entity_id: light.Bedroom
@@ -18,6 +23,11 @@
       event_data:
         entity_id: binary_sensor.xiaomi_switch_1
         click_type: long_click_press
+    - platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.xiaomi_switch_3
+        click_type: long_click_press
   action:
     service: switch.turn_off
     entity_id: switch.master_switch
@@ -25,10 +35,75 @@
 - alias: Toggle Bedroom TV on double click
   hide_entity: True
   trigger:
-    platform: event
-    event_type: click
-    event_data:
-      entity_id: binary_sensor.xiaomi_switch_1
-      click_type: double
+    - platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.xiaomi_switch_1
+        click_type: double
+    - platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.xiaomi_switch_3
+        click_type: double
   action:
     service: script.soniq_tv_power
+
+- alias: Toggle Outdoor Lights on Single Press
+  hide_entity: True
+  trigger:
+    - platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.xiaomi_switch_2
+        click_type: single
+  action:
+    service: switch.toggle
+    entity_id: switch.outdoor_lights
+
+- alias: Toggle Fairy Lights on Double Click
+  hide_entity: True
+  trigger:
+    - platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.xiaomi_switch_2
+        click_type: double
+  action:
+    service: switch.toggle
+    entity_id: switch.fairy_lights
+
+- alias: Toggle Kitchen on Single Press
+  hide_entity: True
+  trigger:
+    - platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.xiaomi_switch_4
+        click_type: single
+  action:
+    service: light.toggle
+    entity_id: light.1_kitchen
+
+- alias: Toggle Dining Light on Double Click
+  hide_entity: True
+  trigger:
+    - platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.xiaomi_switch_4
+        click_type: double
+  action:
+    service: light.toggle
+    entity_id: light.2_dining
+   
+- alias: Toggle Fetch on Long Press
+  hide_entity: True
+  trigger:
+    - platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.xiaomi_switch_4
+        click_type: long_click_press
+  action:
+    service: switch.toggle
+    entity_id: switch.template_harmony_fetch

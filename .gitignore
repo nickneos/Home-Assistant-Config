@@ -53,5 +53,7 @@ entity_registry.yaml
 !/.travis.yml
 python-lovelace/
 appdaemon/
+broadlink_codes/test.py
 
 # End of https://www.gitignore.io/api/homeassistant
+

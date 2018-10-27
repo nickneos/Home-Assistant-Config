@@ -8,7 +8,6 @@
 #   Device Trackers                                        #
 #   Remotes                                                #
 #   Media Players                                          #
-#   Lights                                                 #
 #   Google Assistant                                       #
 #   Xiaomi Gateway                                         #
 #   Cameras                                                #
@@ -162,26 +161,17 @@ media_player:
 cast:
 
 
-############ Lights ############
-light:
-  - platform: lifx
-    #server: !secret hass_ip
-
-# emulated_hue:
-  # host_ip: !secret hass_ip
-  # listen_port: 80
-  # expose_by_default: false
-
-
 ############ Google Assistant ############
 google_assistant:
   project_id: !secret ga_proj
   api_key: !secret ga_api
   expose_by_default: false
   entity_config:
-    switch.table_lamp:
+    switch.outdoor_lights:
       expose: true
     switch.fairy_lights:
+      expose: true
+    switch.fridge:
       expose: true
     light.xiaomi_gateway_light:
       expose: true
@@ -200,13 +190,13 @@ xiaomi_aqara:
 ############ Cameras ############
 camera:
   - platform: ffmpeg
-    input: -rtsp_transport tcp -i rtsp://192.168.0.32/unicast
+    input: !secret cam1
     name: Study
   - platform: ffmpeg
-    input: -rtsp_transport tcp -i rtsp://192.168.0.33/unicast
+    input: !secret cam2
     name: Family Room
   - platform: ffmpeg
-    input: -rtsp_transport tcp -i rtsp://192.168.0.34/unicast
+    input: !secret cam3
     name: Kitchen
 
 
@@ -255,7 +245,7 @@ climate:
     max_temp: 30
     target_temp: 20
     target_temp_step: 1
-    #temp_sensor: sensor.xiaomi_temperature
+    temp_sensor: sensor.temp_bedroom
     default_operation: 'off'
     default_fan_mode: auto
     customize:

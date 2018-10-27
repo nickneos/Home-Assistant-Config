@@ -29,7 +29,7 @@ input_select.harmony: {}
 script.amp_yas106_power:
   icon: mdi:speaker
 sensor.broadlink_sensor_temperature:
-  friendly_name: Inside Temp 2
+  friendly_name: Temperature
 script.soniq_tv_power:
   icon: mdi:television
 script.soniq_tv_vol_up:
@@ -44,13 +44,13 @@ script.amp_yas106_vol_up:
   icon: mdi:volume-plus
 script.amp_yas106_vol_down:
   icon: mdi:volume-minus
-switch.table_lamp:
+switch.outdoor_lights:
   assumed_state: false
   icon: mdi:lightbulb
 switch.fairy_lights:
   assumed_state: false
-  icon: mdi:lightbulb
-switch.arlec1:
+  icon: mdi:led-on
+switch.fridge:
   friendly_name: Fridge
   assumed_state: false
   icon: mdi:fridge
@@ -60,12 +60,6 @@ script.radio_vol_up:
   icon: mdi:volume-plus
 script.radio_vol_down:
   icon: mdi:volume-minus
-sensor.xiaomi_temperature:
-  friendly_name: Inside Temp 1
-sensor.xiaomi_humidity:
-  friendly_name: Inside Humidity
-sensor.xiaomi_illumination:
-  friendly_name: Inside Brightness
 light.xiaomi_gateway_light:
   friendly_name: Night Light
 switch.template_samsung_tv:
@@ -94,3 +88,21 @@ light.4_lamp:
   friendly_name: Lamp
 climate.bedroom:
   icon: mdi:air-conditioner
+sensor.temp_bedroom:
+  friendly_name: Temperature
+sensor.temp_outside:
+  friendly_name: Temperature
+sensor.pressure_outside:
+  friendly_name: Pressure
+sensor.humidity_bedroom:
+  friendly_name: Humidity
+sensor.humidity_outside:
+  friendly_name: Humidity
+sensor.temp_main:
+  friendly_name: Temperature
+sensor.humidity_main:
+  friendly_name: Humidity
+sensor.pressure_main:
+  friendly_name: Pressure
+sensor.xiaomi_illumination:
+  friendly_name: Brightness

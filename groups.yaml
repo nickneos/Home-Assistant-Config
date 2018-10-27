@@ -20,8 +20,8 @@ default_view:
     - device_tracker.galaxy_s8_plus
     # - binary_sensor.door_window_sensor_158d00019da791
     # - binary_sensor.xiaomi_motion_sensor
-    - sensor.xiaomi_temperature
-    - sensor.xiaomi_humidity
+    - sensor.temp_main
+    - sensor.humidity_main
     - sensor.xiaomi_illumination
     - sensor.broadlink_sensor_temperature
     - sensor.bom_air_temp_c
@@ -121,7 +121,7 @@ other_lights:
   entities:
     - light.Study
     - light.Spare_Room
-    - switch.table_lamp
+    - switch.outdoor_lights
     - switch.fairy_lights
     - light.xiaomi_gateway_light
 
