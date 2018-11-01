@@ -252,7 +252,7 @@ climate:
       operations:
         - 'off'
         - cool
-        # - heat
+        - heat
       fan_modes:
         - low
         - mid
