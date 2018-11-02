@@ -1,0 +1,23 @@
+doorbell:
+  sequence:
+    - service: xiaomi_aqara.play_ringtone
+      data:
+        gw_mac: !secret xiaomi_mac
+        ringtone_id: 10001
+        ringtone_vol: 45
+    - service: light.lifx_effect_pulse
+      entity_id: group.all_lights
+      data:
+        brightness: 255
+        color_name: green
+        period: 0.5
+        cycles: 3
+        # mode: strobe
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.google_home_group
+        media_content_id: !secret doorbell
+        media_content_type: music
+    - service: notify.html5
+      data_template:
+        message: "{{now().strftime('%-d-%b-%Y %H:%M:%S')}}: Doorbell pressed"
