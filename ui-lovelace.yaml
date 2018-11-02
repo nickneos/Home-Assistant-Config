@@ -167,9 +167,9 @@ views:
           - entity: switch.template_soniq_tv
             tap_action: toggle
             icon: mdi:power
-          - entity: script.soniq_tv_ch_up
+          - entity: script.fetch2_ch_up
             tap_action: toggle
-          - entity: script.soniq_tv_ch_down
+          - entity: script.fetch2_ch_down
             tap_action: toggle
           - entity: script.soniq_tv_vol_up
             tap_action: toggle
@@ -330,9 +330,9 @@ views:
           - entity: switch.template_soniq_tv
             tap_action: toggle
             icon: mdi:power
-          - entity: script.soniq_tv_ch_up
+          - entity: script.fetch2_ch_up
             tap_action: toggle
-          - entity: script.soniq_tv_ch_down
+          - entity: script.fetch2_ch_down
             tap_action: toggle
           - entity: script.soniq_tv_vol_up
             tap_action: toggle

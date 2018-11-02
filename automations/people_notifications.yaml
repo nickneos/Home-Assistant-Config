@@ -4,26 +4,18 @@
     platform: state
     entity_id: device_tracker.lg_g4
     to: 'home'
-  # condition:
-    # condition: state
-    # entity_id: input_boolean.lights_notifications
-    # state: 'on'
   action:
     - service: notify.html5
       data_template:
-        message: "{{now().strftime('%H:%M')}}: Mum has arrived"
+        message: "{{now().strftime('%-d-%b-%Y %H:%M:%S')}}: Mum arrived"
 
 - alias: 'Mum Not Home'
   hide_entity: True
   trigger:
     platform: state
     entity_id: device_tracker.lg_g4
-    to: 'home'
-  # condition:
-    # condition: state
-    # entity_id: input_boolean.lights_notifications
-    # state: 'on'
+    to: 'not_home'
   action:
     - service: notify.html5
       data_template:
-        message: "{{now().strftime('%H:%M')}}: Mum has left"
+        message: "{{now().strftime('%-d-%b-%Y %H:%M:%S')}}: Mum left"

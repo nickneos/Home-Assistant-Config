@@ -106,3 +106,7 @@ sensor.pressure_main:
   friendly_name: Pressure
 sensor.xiaomi_illumination:
   friendly_name: Brightness
+script.fetch2_ch_down:
+  icon: mdi:mdi:arrow-down-drop-circle-outline
+script.fetch2_ch_up:
+  icon: mdi:mdi:arrow-up-drop-circle-outline
