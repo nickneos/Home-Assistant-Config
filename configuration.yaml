@@ -32,7 +32,7 @@ homeassistant:
   customize: !include customize.yaml
 
 http:
-  api_password: !secret http_pw
+  # api_password: !secret http_pw
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
   base_url: !secret url
@@ -177,6 +177,29 @@ google_assistant:
       expose: true
     climate.bedroom:
       expose: true
+    switch.template_home_server:
+      expose: true
+      name: Server
+    switch.template_samsung_tv:
+      expose: true
+      name: Samsung TV
+      aliases:
+        - TV
+    switch.template_soniq_tv:
+      expose: true
+      name: Bedroom TV
+      aliases:
+        - Soniq TV
+        - TV
+    switch.template_harmony_fetch:
+      expose: true
+      name: Fetch
+    switch.template_harmony_tvsurround:
+      expose: true
+      name: Main TV
+      aliases: 
+        - TV
+        - Sony TV
 
 ############ Xiaomi Gateway ############
 xiaomi_aqara:
