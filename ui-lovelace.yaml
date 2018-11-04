@@ -7,6 +7,8 @@ resources:
     type: js
   - url: /local/lovelace-slider-entity-row/slider-entity-row.js
     type: js
+  - url: /local/dark-sky-weather-card/dark-sky-weather-card.js
+    type: js    
 views:
 
 ############ Default View ############
@@ -28,9 +30,38 @@ views:
           title: Currently Home
           show_state: false
           show_name: false
-      - id: 1bb466d29adb47feb4aefa42fa515142  # Automatically created id
-        type: weather-forecast
-        entity: weather.bom_laverton
+      # - type: sensor
+      #   entity: sensor.temp_outside
+      #   name: Outside Temp
+      #   height: 55
+      # - id: 1bb466d29adb47feb4aefa42fa515142  # Automatically created id
+      #   type: weather-forecast
+      #   entity: weather.bom_laverton
+      - type: custom:dark-sky-weather-card
+        entity_sun: sun.sun
+        entity_daily_summary: sensor.bom_melbourne_detailed_summary_0
+        entity_current_conditions: sensor.dark_sky_icon
+        entity_humidity: sensor.bom_relative_humidity
+        entity_pressure: sensor.bom_pressure_mb
+        entity_temperature: sensor.bom_air_temp_c
+        entity_visibility: sensor.dark_sky_visibility
+        entity_wind_bearing: sensor.bom_wind_direction
+        entity_wind_speed: sensor.bom_wind_speed_kmh
+        entity_forecast_high_temp_1: sensor.bom_melbourne_max_temp_c_1
+        entity_forecast_high_temp_2: sensor.bom_melbourne_max_temp_c_2
+        entity_forecast_high_temp_3: sensor.bom_melbourne_max_temp_c_3
+        entity_forecast_high_temp_4: sensor.bom_melbourne_max_temp_c_4
+        entity_forecast_high_temp_5: sensor.bom_melbourne_max_temp_c_5
+        entity_forecast_low_temp_1: sensor.bom_melbourne_min_temp_c_1
+        entity_forecast_low_temp_2: sensor.bom_melbourne_min_temp_c_2
+        entity_forecast_low_temp_3: sensor.bom_melbourne_min_temp_c_3
+        entity_forecast_low_temp_4: sensor.bom_melbourne_min_temp_c_4
+        entity_forecast_low_temp_5: sensor.bom_melbourne_min_temp_c_5
+        entity_forecast_icon_1: sensor.dark_sky_icon_1
+        entity_forecast_icon_2: sensor.dark_sky_icon_2
+        entity_forecast_icon_3: sensor.dark_sky_icon_3
+        entity_forecast_icon_4: sensor.dark_sky_icon_4
+        entity_forecast_icon_5: sensor.dark_sky_icon_5
       - id: de0b5ed12271420db496e160d6f6e391  # Automatically created id
         type: entities
         title: Family Area
@@ -47,6 +78,9 @@ views:
             type: custom:slider-entity-row
           - entity: light.4_lamp
             type: custom:slider-entity-row
+      - type: thermostat
+        title: Living Room A/C
+        entity: climate.living_room
       - id: c0307a52e64040f699e8b35fffffc114  # Automatically created id
         type: glance
         title: Harmony Controls
@@ -97,10 +131,6 @@ views:
             icon: mdi:arrow-right-thick
           - entity: sensor.hp_ilo_cpu_fanspeed
             icon: mdi:fan
-      - id: a944d58dec3c4526af5b9ef836ba5c65  # Automatically created id
-        type: entities
-        entities:
-          - input_select.aircon
       - id: b9b0dd5770d94bcabebe232379688c08  # Automatically created id
         type: entities
         title: Hallway Area
@@ -116,7 +146,8 @@ views:
             type: custom:slider-entity-row
           - entity: light.spare_room
             type: custom:slider-entity-row
-          - light.xiaomi_gateway_light
+          - entity: light.xiaomi_gateway_light
+            type: custom:slider-entity-row
       - id: c2f8731a12b74e15a39bcee42c2925b6  # Automatically created id
         type: glance
         title: Samsung TV Controls
@@ -196,6 +227,11 @@ views:
     id: lights
     icon: mdi:lightbulb
     cards:
+      - type: entities
+        title: All Lights
+        show_header_toggle: false
+        entities:
+          - entity: switch.house_lights
       - id: e072cf10d3424eaa8a289e7545fe0a49  # Automatically created id
         type: entities
         title: Family Area
@@ -227,7 +263,8 @@ views:
             type: custom:slider-entity-row
           - entity: light.spare_room
             type: custom:slider-entity-row
-          - light.xiaomi_gateway_light
+          - entity: light.xiaomi_gateway_light
+            type: custom:slider-entity-row
       - id: 340a74c4bcb84dce920bc5f3768132b0  # Automatically created id
         type: entities
         title: Bedroom
@@ -682,5 +719,4 @@ views:
           - automation.arrival_lights_on
           - automation.hallway_light_on_at_sunset
           - input_boolean.holiday_mode
-          - input_boolean.lights_notifications
           - input_boolean.cast_visible

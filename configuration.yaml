@@ -14,7 +14,8 @@
 #   Notifications                                          #
 #   IFTTT                                                  #
 #   Shell                                                  #
-#   Other                                                  #
+#   Weather                                                #
+#   Climate                                                #
 #   Merged Files                                           #
 #   No Longer Used                                         #
 #                                                          #
@@ -93,33 +94,10 @@ input_boolean:
     name: Holiday Mode
     initial: off
     icon: mdi:airplane
-  lights_notifications:
-    name: Lights Notifications
-    initial: off
-    icon: mdi:flash
   cast_visible:
     name: Cast Visible
     initial: on
     icon: mdi:cast
-
-input_select:
-  harmony:
-    name: Current Activity
-    options:
-      - Watch TV
-      - Watch TV with Surround
-      - Watch Fetch
-      - Watch Netflix
-      - Play PS4
-      - Power Off
-    icon: mdi:remote
-  aircon:
-    name: Mode
-    options:
-      - Select...
-      - Cool Auto 20
-      - 'Off'
-    icon: mdi:air-conditioner
 
 
 ############ Device Trackers ############
@@ -176,6 +154,8 @@ google_assistant:
     light.xiaomi_gateway_light:
       expose: true
     climate.bedroom:
+      expose: true
+    climate.living_room:
       expose: true
     switch.template_home_server:
       expose: true
@@ -253,11 +233,13 @@ shell_command:
   server_shutdown: !secret server_shutdown
 
 
-############ Other ############
+############ Weather ############
 weather:
   - platform: bom
     station: !secret bom_station
 
+
+############ Climate ############
 climate:
   - platform: broadlink
     name: Bedroom
@@ -275,12 +257,34 @@ climate:
       operations:
         - 'off'
         - cool
+        - dry
         - heat
       fan_modes:
         - low
         - mid
         - high
         - auto
+  - platform: harmony
+    name: Living Room
+    host: !secret harmony_ip
+    device_id: 47350651
+    min_temp: 18
+    max_temp: 30
+    target_temp: 20
+    target_temp_step: 1
+    temp_sensor: sensor.temp_main
+    default_operation: 'off'
+    default_fan_mode: auto
+    customize:
+      operations:
+        - 'off'
+        - cool
+      fan_modes:
+        - low
+        - mid
+        - high
+        - auto
+
 
 ############ Merged Files ############
 sensor: !include_dir_merge_list sensors/

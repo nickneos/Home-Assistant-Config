@@ -2,7 +2,7 @@
   switches:
     template_samsung_tv:
       friendly_name: 'Samsung TV'
-      value_template: "{{ is_state('media_player.samsung_tv', 'on') }}"
+      value_template: "{{ not is_state('media_player.samsung_tv', 'off') }}"
       turn_on:
         - service: switch.turn_on
           entity_id: switch.samsung_tv_power

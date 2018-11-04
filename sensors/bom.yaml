@@ -31,14 +31,48 @@
 - platform: bom_forecast
   product_id: IDV10450
   name: Melbourne
-  forecast_days: 3
+  forecast_days: 5
   rest_of_today: True
   friendly: False
-#   friendly_state_format: '{max}, {summary}'
+  friendly_state_format: '{max}, {summary}'
   monitored_conditions:
     - 'max'
     - 'min'
     - 'chance_of_rain'
     - 'possible_rainfall'
-    # - 'summary'
-    # - 'detailed_summary'
+    - 'summary'
+    - 'detailed_summary'
+
+- platform: darksky
+  api_key: !secret darksky_api
+  forecast:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+  monitored_conditions:
+      - icon
+      - summary
+      - nearest_storm_distance
+      - nearest_storm_bearing
+      - humidity
+      - temperature
+      - temperature_high
+      - temperature_low
+      - apparent_temperature
+      - apparent_temperature_high
+      - apparent_temperature_low
+      - wind_speed
+      - wind_bearing
+      - precip_type
+      - precip_probability
+      - precip_accumulation
+      - precip_intensity
+      - precip_intensity_max
+      - uv_index
+      - daily_summary
+      - pressure
+      - visibility
+  update_interval:
+      minutes: 5

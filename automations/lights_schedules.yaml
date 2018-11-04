@@ -1,5 +1,7 @@
 ### Turn off lights in morning when everyone leaves home
 - alias: 'Daytime Away Mode'
+  hide_entity: True
+  initial_state: 'on'
   trigger:
     platform: state
     entity_id: group.all_devices
@@ -27,6 +29,8 @@
 
 ### Leave only Hallway Light on when everyone leaves home at night
 - alias: 'Evening Away Mode'
+  hide_entity: True
+  initial_state: 'on'
   trigger:
     platform: state
     entity_id: group.all_devices
@@ -45,6 +49,8 @@
         
 ### Turn on kitchen light in evening when someone enters home
 - alias: 'Arrival Lights On'
+  hide_entity: True
+  initial_state: 'on'
   trigger:
     platform: state
     entity_id: group.all_devices
@@ -69,6 +75,8 @@
 
 ### Turn Hallway Light on at Sunset
 - alias: 'Hallway Light On at Sunset'
+  hide_entity: True
+  initial_state: 'on'
   trigger:
     platform: sun
     event: sunset
