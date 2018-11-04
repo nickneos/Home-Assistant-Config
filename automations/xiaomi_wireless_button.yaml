@@ -74,8 +74,8 @@
     service: switch.toggle
     entity_id: switch.fairy_lights
 
-### Doorbell ###
-- alias: Doorbell Single Press
+### Doorbell - home ###
+- alias: Doorbell 1 Single Press
   hide_entity: True
   trigger:
     - platform: event
@@ -83,5 +83,26 @@
       event_data:
         entity_id: binary_sensor.xiaomi_switch_2
         click_type: single
+  condition:
+    condition: state
+    entity_id: group.all_devices
+    state: 'home'
   action:
-    - service: script.doorbell
+    - service: script.doorbell_1
+
+  ### Doorbell - not home ###
+- alias: Doorbell 2 Single Press
+  hide_entity: True
+  trigger:
+    - platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.xiaomi_switch_2
+        click_type: single
+  condition:
+    condition: state
+    entity_id: group.all_devices
+    state: 'not_home'
+  action:
+    - service: script.doorbell_2
+    
