@@ -19,10 +19,10 @@ views:
       - id: 7223d5f458d047a3a92c700010815714  # Automatically created id
         type: entity-filter
         entities:
-          - device_tracker.galaxynote8
-          - device_tracker.galaxy_s8_plus
-          - device_tracker.galaxy_s8
-          - device_tracker.lg_g4
+          - device_tracker.nicks_note8
+          - device_tracker.ashs_s8_plus
+          - device_tracker.marys_s8
+          - device_tracker.mums_lg_g4
         state_filter:
           - home
         card:
@@ -451,7 +451,7 @@ views:
         image: /local/floorplan3d_top.png
         elements:
           - type: image
-            entity: device_tracker.galaxynote8
+            entity: device_tracker.nicks_note8
             image: /local/nick.jpg
             state_filter:
               not_home: grayscale(1)
@@ -461,7 +461,7 @@ views:
               border-radius: 50%
               width: 36px
           - type: image
-            entity: device_tracker.galaxy_s8_plus
+            entity: device_tracker.ashs_s8_plus
             image: /local/ashlei.jpg
             state_filter:
               not_home: grayscale(1)
@@ -691,10 +691,10 @@ views:
         type: glance
         show_name: false
         entities:
-          - device_tracker.galaxynote8
-          - device_tracker.galaxy_s8_plus
-          - device_tracker.galaxy_s8
-          - device_tracker.lg_g4
+          - device_tracker.nicks_note8
+          - device_tracker.ashs_s8_plus
+          - device_tracker.marys_s8
+          - device_tracker.mums_lg_g4
           - sun.sun
       - id: 872c22b49b33439d9f928bd3fdd4cbb6  # Automatically created id
         type: glance
