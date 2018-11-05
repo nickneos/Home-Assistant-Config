@@ -3,21 +3,25 @@
   switches:
     house_lights:
       friendly_name: 'House Lights'
-      value_template: "{{ is_state('group.all_lights', 'on') or is_state('switch.outdoor_lights', 'on') or is_state('switch.fairy_lights', 'on') }}"
+      value_template: "{{ is_state('group.all_lights', 'on') or is_state('switch.arlec_1b', 'on') or is_state('switch.arlec_1c', 'on') or is_state('switch.arlec_2a', 'on') }}"
       turn_on:
         - service: light.turn_on
           entity_id: group.all_lights
         - service: switch.turn_on
-          entity_id: switch.outdoor_lights
+          entity_id: switch.arlec_1b
         - service: switch.turn_on
-          entity_id: switch.fairy_lights
+          entity_id: switch.arlec_1c
+        - service: switch.turn_on
+          entity_id: switch.arlec_2a
       turn_off:
         - service: light.turn_off
           entity_id: group.all_lights
         - service: switch.turn_off
-          entity_id: switch.outdoor_lights
+          entity_id: switch.arlec_1b
         - service: switch.turn_off
-          entity_id: switch.fairy_lights
+          entity_id: switch.arlec_1c
+        - service: switch.turn_off
+          entity_id: switch.arlec_2a
 
 ### Master Switch ###
 - platform: template

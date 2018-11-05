@@ -145,18 +145,26 @@ google_assistant:
   api_key: !secret ga_api
   expose_by_default: false
   entity_config:
-    switch.outdoor_lights:
+    switch.arlec_1a:
       expose: true
-    switch.fairy_lights:
+      name: Fridge
+    switch.arlec_1b:
       expose: true
-    switch.fridge:
+      name: Outdoor Lights
+    switch.arlec_1c:
       expose: true
+      name: Fairy Lights
+    switch.arlec_2a:
+      expose: true
+      name: Floor Lamp
     light.xiaomi_gateway_light:
       expose: true
     climate.bedroom:
       expose: true
+      name: Bedroom Air Conditioner
     climate.living_room:
       expose: true
+      name: Main Air Conditioner
     switch.template_home_server:
       expose: true
       name: Server
@@ -245,7 +253,7 @@ climate:
     name: Bedroom
     host: !secret broadlink_host1
     mac: !secret broadlink_mac1
-    ircodes_ini: 'broadlink_codes/Panasonic_CS-Z25TKR.ini'
+    ircodes_ini: 'www/climate_codes/panasonic.ini'
     min_temp: 16
     max_temp: 30
     target_temp: 20
@@ -267,7 +275,7 @@ climate:
   - platform: harmony
     name: Living Room
     host: !secret harmony_ip
-    device_id: 47350651
+    device_id: 58354062
     min_temp: 18
     max_temp: 30
     target_temp: 20
@@ -279,9 +287,11 @@ climate:
       operations:
         - 'off'
         - cool
+        # - dry
+        # - heat
       fan_modes:
         - low
-        - mid
+        - med
         - high
         - auto
 

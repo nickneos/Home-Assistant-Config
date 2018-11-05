@@ -41,9 +41,9 @@ views:
         entity_sun: sun.sun
         entity_daily_summary: sensor.bom_melbourne_detailed_summary_0
         entity_current_conditions: sensor.dark_sky_icon
-        entity_humidity: sensor.bom_relative_humidity
-        entity_pressure: sensor.bom_pressure_mb
-        entity_temperature: sensor.bom_air_temp_c
+        entity_humidity: sensor.humidity_outside
+        entity_pressure: sensor.pressure_outside
+        entity_temperature: sensor.temp_outside
         entity_visibility: sensor.dark_sky_visibility
         entity_wind_bearing: sensor.bom_wind_direction
         entity_wind_speed: sensor.bom_wind_speed_kmh
@@ -67,7 +67,6 @@ views:
         title: Family Area
         show_header_toggle: false
         entities:
-          - entity: sensor.temp_main
           - entity: sensor.humidity_main
           - entity: sensor.pressure_main
           - entity: light.1_kitchen
@@ -76,7 +75,7 @@ views:
             type: custom:slider-entity-row
           - entity: light.3_living_room
             type: custom:slider-entity-row
-          - entity: light.4_lamp
+          - entity: switch.arlec_2a
             type: custom:slider-entity-row
       - type: thermostat
         title: Living Room A/C
@@ -133,20 +132,24 @@ views:
             icon: mdi:fan
       - id: b9b0dd5770d94bcabebe232379688c08  # Automatically created id
         type: entities
-        title: Hallway Area
-        show_header_toggle: false
+        title: Spare Rooms
+        show_header_toggle: true
         entities:
           - entity: sensor.broadlink_sensor_temperature
           - entity: sensor.xiaomi_illumination
-          - entity: light.hallway_1
-            type: custom:slider-entity-row
-          - entity: light.hallway_2
-            type: custom:slider-entity-row
           - entity: light.study
             type: custom:slider-entity-row
           - entity: light.spare_room
             type: custom:slider-entity-row
           - entity: light.xiaomi_gateway_light
+            type: custom:slider-entity-row
+      - type: entities
+        title: Hallway
+        show_header_toggle: true
+        entities:
+          - entity: light.hallway_1
+            type: custom:slider-entity-row
+          - entity: light.hallway_2
             type: custom:slider-entity-row
       - id: c2f8731a12b74e15a39bcee42c2925b6  # Automatically created id
         type: glance
@@ -163,32 +166,14 @@ views:
             tap_action: toggle
           - entity: script.amp_yas106_vol_down
             tap_action: toggle
-      - id: 174387d35cf445f680b7cb7c2b3af096  # Automatically created id
-        type: glance
-        title: Radio
-        show_state: false
-        show_name: false
-        column_width: calc(100% / 4)
-        entities:
-          - entity: script.radio_power
-            tap_action: toggle
-          - entity: script.radio_vol_up
-            tap_action: toggle
-          - entity: script.radio_vol_down
-            tap_action: toggle
-          - entity: script.radio_favourite
-            tap_action: toggle
-            icon: mdi:heart-outline
       - id: 42ad800f88ed4044b7fe50dd4c90cdf3  # Automatically created id
         type: entities
-        title: Bedroom
+        title: Master Bedroom
         show_header_toggle: false
         entities:
-          - entity: sensor.temp_bedroom
           - entity: sensor.humidity_bedroom
           - entity: light.bedroom
             type: custom:slider-entity-row
-          # - entity: climate.bedroom
       - id: 3c591b242aa04fc790b3308befe0d8c7  # Automatically created id
         type: glance
         title: Bedroom TV Controls
@@ -210,17 +195,20 @@ views:
         type: thermostat
         title: Bedroom A/C
         entity: climate.bedroom
+      - type: entities
+        title: Bedroom 2
+        show_header_toggle: false
+        entities:
+          - entity: light.bedroom_2
+            type: custom:slider-entity-row          
       - id: 731049d668324c5c893a87ab871f0729  # Automatically created id
         type: entities
         title: Outside
         show_header_toggle: false
         entities:
-          - sensor.temp_outside
-          - sensor.humidity_outside
-          - sensor.pressure_outside
-          - switch.outdoor_lights
-          - switch.fairy_lights
-          - switch.fridge
+          - switch.arlec_1b
+          - switch.arlec_1c
+          - switch.arlec_1a
 
 ############ Lights View ############
   - title: Lights
@@ -243,7 +231,7 @@ views:
             type: custom:slider-entity-row
           - entity: light.3_living_room
             type: custom:slider-entity-row
-          - entity: light.4_lamp
+          - entity: switch.arlec_2a
             type: custom:slider-entity-row
       - id: 14011638fcd04aebbb92b28509382632  # Automatically created id
         type: entities
@@ -267,18 +255,24 @@ views:
             type: custom:slider-entity-row
       - id: 340a74c4bcb84dce920bc5f3768132b0  # Automatically created id
         type: entities
-        title: Bedroom
+        title: Master Bedroom
         show_header_toggle: false
         entities:
           - entity: light.bedroom
             type: custom:slider-entity-row
+      - type: entities
+        title: Bedroom 2
+        show_header_toggle: false
+        entities:
+          - entity: light.bedroom_2
+            type: custom:slider-entity-row            
       - id: f622bfbbef1f4584894f257b75f7a129  # Automatically created id
         type: entities
         title: Outside
         show_header_toggle: true
         entities:
-          - switch.outdoor_lights
-          - switch.fairy_lights
+          - switch.arlec_1b
+          - switch.arlec_1c
 
 ############ Media View ############
   - title: Media
@@ -436,6 +430,21 @@ views:
         card:
           type: media-control
           entity: media_player.google_home_group
+      - type: glance
+        title: Radio
+        show_state: false
+        show_name: false
+        column_width: calc(100% / 4)
+        entities:
+          - entity: script.radio_power
+            tap_action: toggle
+          - entity: script.radio_vol_up
+            tap_action: toggle
+          - entity: script.radio_vol_down
+            tap_action: toggle
+          - entity: script.radio_favourite
+            tap_action: toggle
+            icon: mdi:heart-outline          
 
 ############ Floor Plan View ############
   - tile: Floor Plan
@@ -484,7 +493,7 @@ views:
               top: 15%
               left: 45%
           - type: state-icon
-            entity: light.4_lamp
+            entity: switch.arlec_2a
             tap_action: toggle
             style:
               top: 20%
@@ -582,19 +591,19 @@ views:
               color: DarkOliveGreen              
             ### Outside ###
           - type: state-icon
-            entity: switch.outdoor_lights
+            entity: switch.arlec_1b
             tap_action: toggle
             style:
               top: 35%
               left: 17%
           - type: state-icon
-            entity: switch.fairy_lights
+            entity: switch.arlec_1c
             tap_action: toggle
             style:
               top: 35%
               left: 7%
           - type: state-icon
-            entity: switch.fridge
+            entity: switch.arlec_1a
             tap_action: toggle
             style:
               top: 45%
@@ -658,7 +667,7 @@ views:
           - light.1_kitchen
           - light.2_dining
           - light.3_living_room
-          - light.4_lamp
+          - switch.arlec_2a
         camera_image: camera.kitchen
       - id: ec2da53e1be94943a8b804b480fffca8  # Automatically created id
         type: picture-glance
@@ -668,7 +677,7 @@ views:
           - light.1_kitchen
           - light.2_dining
           - light.3_living_room
-          - light.4_lamp
+          - switch.arlec_2a
           - light.hallway_1
           - light.hallway_2
         camera_image: camera.family_room

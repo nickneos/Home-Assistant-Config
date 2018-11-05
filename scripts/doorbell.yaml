@@ -5,13 +5,13 @@ doorbell_1:
       data:
         gw_mac: !secret xiaomi_mac
         ringtone_id: 10001
-        ringtone_vol: 45
+        ringtone_vol: 25
     - service: light.lifx_effect_pulse
       entity_id: group.all_lights
       data:
         brightness: 255
         color_name: green
-        period: 0.5
+        period: 0.25
         cycles: 10
         # mode: strobe
     - service: media_player.play_media
@@ -30,7 +30,7 @@ doorbell_2:
       data:
         brightness: 255
         color_name: green
-        period: 0.5
+        period: 0.25
         cycles: 10
         # mode: strobe
     - service: notify.html5

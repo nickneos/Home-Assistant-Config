@@ -3,7 +3,7 @@ scene_lamp:
     - service: switch.turn_off
       entity_id: switch.house_lights
     - service: light.turn_on
-      entity_id: light.4_lamp
+      entity_id: switch.arlec_2a
 scene_kitchen:
   sequence:
     - service: switch.turn_off

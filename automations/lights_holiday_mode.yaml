@@ -18,8 +18,8 @@
     - delay: '{{ (range(0, 2)|random|int) }}:{{ (range(1, 59)|random|int) }}:00'
     - service: light.turn_on
       entity_id: light.1_kitchen
-    - service: light.turn_on
-      entity_id: light.4_lamp
+    - service: switch.turn_on
+      entity_id: switch.arlec_2a
 
 - alias: 'Holiday - Lights Off'
   hide_entity: True
@@ -32,11 +32,11 @@
     state: 'on'
   action:
     - delay: '{{ (range(0, 2)|random|int) }}:{{ (range(1, 59)|random|int) }}:00'
-    - service: light.turn_off
-      entity_id: group.all_lights
+    - service: switch.turn_off
+      entity_id: switch.house_lights
     - delay: '0:00:{{ (range(10, 59)|random|int) }}'
     - service: light.turn_on
       entity_id: light.bedroom
     - delay: '0:{{ (range(5, 20)|random|int) }}:00'
-    - service: light.turn_off
-      entity_id: group.all_lights
+    - service: switch.turn_off
+      entity_id: switch.house_lights
