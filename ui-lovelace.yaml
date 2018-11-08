@@ -729,3 +729,13 @@ views:
           - automation.hallway_light_on_at_sunset
           - input_boolean.holiday_mode
           - input_boolean.cast_visible
+      - type: map
+        aspect_ratio: 100%
+        entities:
+          - device_tracker.nicks_note8
+          - device_tracker.ashs_s8_plus
+          - zone.home
+          - zone.work
+          - zone.work_2
+          - zone.gym
+          - zone.gym_2

@@ -16,6 +16,7 @@
 #   Shell                                                  #
 #   Weather                                                #
 #   Climate                                                #
+#   Covers                                                 #
 #   Merged Files                                           #
 #   No Longer Used                                         #
 #                                                          #
@@ -102,6 +103,7 @@ input_boolean:
 
 ############ Device Trackers ############
 device_tracker:
+  - platform: gpslogger
   - platform: asuswrt
     host: !secret asus_ip
     username: !secret asus_user
@@ -296,6 +298,41 @@ climate:
         - auto
 
 
+############ Covers ############
+cover:
+  - platform: mqtt
+    name: "Garage"
+    state_topic: "cmnd/garagestate/POWER2"
+    command_topic: "cmnd/sonoffsv01/POWER"
+    payload_open: "ON"
+    payload_close: "ON"
+    payload_stop: "ON"
+    state_open: "OFF"
+    state_closed: "ON"
+    optimistic: false
+
+
+zone:
+  - name: Work
+    latitude: !secret lat1
+    longitude: !secret long1
+    icon: mdi:briefcase
+  - name: Work
+    latitude: !secret lat2
+    longitude: !secret long2
+    icon: mdi:briefcase
+  - name: Gym
+    latitude: !secret lat3
+    longitude: !secret long3
+    icon: mdi:dumbbell
+    radius: 50
+  - name: Gym
+    latitude: !secret lat4
+    longitude: !secret long4
+    icon: mdi:dumbbell
+    radius: 50
+
+
 ############ Merged Files ############
 sensor: !include_dir_merge_list sensors/
 switch: !include_dir_merge_list switches/
@@ -317,13 +354,3 @@ group: !include groups.yaml
 
 # ffmpeg:
   # ffmpeg_bin: /usr/bin/avconv
-
-# zone:
-  # - name: Nicks Work
-   # latitude: !secret lat1
-   # longitude: !secret long1
-   # icon: mdi:briefcase
-  # - name: Ashleis Work
-   # latitude: !secret lat2
-   # longitude: !secret long2
-   # icon: mdi:briefcase

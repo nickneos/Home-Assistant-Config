@@ -109,3 +109,5 @@ script.fetch2_ch_up:
 switch.arlec_2a:
   assumed_state: false
   icon: mdi:lightbulb
+cover.garage:
+  device_class: garage
