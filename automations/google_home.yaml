@@ -1,0 +1,35 @@
+- alias: Google Home Night Mode
+  trigger:
+    platform: time
+    at: '23:00:00'
+  action:
+    - service: media_player.volume_set
+      entity_id: media_player.google_home_bedroom
+      data:
+        volume_level: 0.2
+    - service: media_player.volume_set
+      entity_id: media_player.google_home_office
+      data:
+        volume_level: 0.2
+    - service: media_player.volume_set
+      entity_id: media_player.google_home_main
+      data:
+        volume_level: 0.2
+
+- alias: Google Home Day Mode
+  trigger:
+    platform: time
+    at: '06:00:00'
+  action:
+    - service: media_player.volume_set
+      entity_id: media_player.google_home_bedroom
+      data:
+        volume_level: 0.5
+    - service: media_player.volume_set
+      entity_id: media_player.google_home_office
+      data:
+        volume_level: 0.5
+    - service: media_player.volume_set
+      entity_id: media_player.google_home_main
+      data:
+        volume_level: 0.65
