@@ -1,4 +1,6 @@
 - alias: Google Home Night Mode
+  hide_entity: True
+  initial_state: 'on'
   trigger:
     platform: time
     at: '23:00:00'
@@ -17,6 +19,8 @@
         volume_level: 0.2
 
 - alias: Google Home Day Mode
+  hide_entity: True
+  initial_state: 'on'
   trigger:
     platform: time
     at: '06:00:00'
