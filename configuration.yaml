@@ -17,6 +17,7 @@
 #   Weather                                                #
 #   Climate                                                #
 #   Covers                                                 #
+#   Binary Sensors                                         #
 #   Merged Files                                           #
 #   No Longer Used                                         #
 #                                                          #
@@ -332,6 +333,11 @@ zone:
     icon: mdi:dumbbell
     radius: 50
 
+binary_sensor:
+  - platform: ping
+    host: 8.8.8.8
+    count: 5
+    scan_interval: 300
 
 ############ Merged Files ############
 sensor: !include_dir_merge_list sensors/
