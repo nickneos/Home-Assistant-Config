@@ -657,40 +657,80 @@ views:
     id: camera
     icon: mdi:cctv
     cards:
-      - id: 9179a81c608649de9923e29f3d264af0  # Automatically created id
-        type: picture-glance
-        title: Kitchen
-        entities:
-          - camera.kitchen
-          - entity: switch.template_harmony_power
-            icon: mdi:television
-          - light.1_kitchen
-          - light.2_dining
-          - light.3_living_room
-          - switch.arlec_2a
-        camera_image: camera.kitchen
-      - id: ec2da53e1be94943a8b804b480fffca8  # Automatically created id
-        type: picture-glance
-        title: Family
-        entities:
-          - camera.family_room
-          - light.1_kitchen
-          - light.2_dining
-          - light.3_living_room
-          - switch.arlec_2a
-          - light.hallway_1
-          - light.hallway_2
-        camera_image: camera.family_room
-      - id: 999afad22d3c4420a2d9a3911680edea  # Automatically created id
-        type: picture-glance
-        title: Study
-        entities:
-          - camera.study
-          - light.Study
-          - light.spare_room
-          - light.hallway_1
-          - light.hallway_2
-        camera_image: camera.study
+      - type: vertical-stack
+        cards:
+          - type: picture-glance
+            title: Front 1
+            camera_image: camera.front_1
+            entities: 
+              - camera.front_1
+          - type: horizontal-stack
+            cards:
+              - type: picture-glance
+                title: Front 2
+                camera_image: camera.front_2
+                entities: 
+                  - camera.front_2
+              - type: picture-glance
+                title: Deck
+                camera_image: camera.deck
+                entities: 
+                  - camera.deck
+          - type: horizontal-stack
+            cards:
+              - type: picture-glance
+                title: Side
+                camera_image: camera.side
+                entities: 
+                  - camera.side
+              - type: picture-glance
+                title: Backyard
+                camera_image: camera.backyard
+                entities: 
+                  - camera.backyard
+  - title: Camera
+    id: camera2
+    icon: mdi:cctv
+    cards:
+      - type: vertical-stack
+        cards:
+          - id: 999afad22d3c4420a2d9a3911680edea  # Automatically created id
+            type: picture-glance
+            title: Study
+            entities:
+              - camera.study
+              - light.Study
+              - light.spare_room
+              - light.hallway_1
+              - light.hallway_2
+            camera_image: camera.study
+          - type: horizontal-stack
+            cards:
+              - id: 9179a81c608649de9923e29f3d264af0  # Automatically created id
+                type: picture-glance
+                title: Kitchen
+                entities:
+                  - camera.kitchen
+                  - entity: switch.template_harmony_power
+                    icon: mdi:television
+                  - light.1_kitchen
+                  - light.2_dining
+                  - light.3_living_room
+                  - switch.arlec_2a
+                camera_image: camera.kitchen
+              - id: ec2da53e1be94943a8b804b480fffca8  # Automatically created id
+                type: picture-glance
+                title: Family
+                entities:
+                  - camera.family_room
+                  - light.1_kitchen
+                  - light.2_dining
+                  - light.3_living_room
+                  - switch.arlec_2a
+                  - light.hallway_1
+                  - light.hallway_2
+                camera_image: camera.family_room
+
 ############ System View ############
   - title: System
     id: system
@@ -705,6 +745,7 @@ views:
           - device_tracker.marys_s8
           - device_tracker.mums_lg_g4
           - sun.sun
+          - binary_sensor.online
       - id: 872c22b49b33439d9f928bd3fdd4cbb6  # Automatically created id
         type: glance
         title: Raspberry Pi

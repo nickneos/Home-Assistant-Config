@@ -33,6 +33,9 @@ homeassistant:
   unit_system: metric
   time_zone: !secret timezone
   customize: !include customize.yaml
+  whitelist_external_dirs:
+    - /tmp
+    - /share
 
 http:
   # api_password: !secret http_pw
@@ -203,6 +206,7 @@ xiaomi_aqara:
 
 ############ Cameras ############
 camera:
+  ## xiaomi
   - platform: ffmpeg
     input: !secret cam1
     name: Study
@@ -212,6 +216,24 @@ camera:
   - platform: ffmpeg
     input: !secret cam3
     name: Kitchen
+  ## swann/reolink
+  - platform: ffmpeg
+    input: !secret reolink1
+    name: Front 1
+    extra_arguments: -pred 1 -q:v 2
+  - platform: ffmpeg
+    input: !secret reolink2
+    name: Front 2
+    extra_arguments: -q:v 32
+  - platform: ffmpeg
+    input: !secret reolink3
+    name: Deck
+  - platform: ffmpeg
+    input: !secret reolink4
+    name: Side
+  - platform: ffmpeg
+    input: !secret reolink5
+    name: Backyard
 
 
 ############ Notifications ############
@@ -313,6 +335,7 @@ cover:
     optimistic: false
 
 
+############ Zones ############
 zone:
   - name: Work
     latitude: !secret lat1
@@ -333,11 +356,14 @@ zone:
     icon: mdi:dumbbell
     radius: 50
 
+############ Binary Sensors ############
 binary_sensor:
   - platform: ping
+    name: Online
     host: 8.8.8.8
     count: 5
     scan_interval: 300
+
 
 ############ Merged Files ############
 sensor: !include_dir_merge_list sensors/
@@ -354,9 +380,3 @@ group: !include groups.yaml
 # zone: !include_dir_merge_list zones/
 # notify: !include_dir_merge_list notify/
 
-
-############ No Longer Used ############
-# ios:
-
-# ffmpeg:
-  # ffmpeg_bin: /usr/bin/avconv
