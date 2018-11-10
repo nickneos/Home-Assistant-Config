@@ -64,8 +64,16 @@
   action:
     - service: light.turn_on
       entity_id: light.1_kitchen
+      data:
+        brightness_pct: 100
+        kelvin: 3500
     - service: switch.turn_on
       entity_id: switch.arlec_2a
+    - delay: 00:15:00
+    - service: light.turn_off
+      entity_id: light.hallway_2 
+      data:
+        transition: 15  
 
 ### Turn Hallway Light on at Sunset
 - alias: 'Hallway Light On at Sunset'
@@ -88,4 +96,4 @@
     data:
       brightness_pct: 60
       kelvin: 3200
-      transition: 150      
+      transition: 120      
