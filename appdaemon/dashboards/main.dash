@@ -1,0 +1,104 @@
+##
+## Main arguments, all optional
+##
+title: Main Panel
+widget_dimensions: [120, 120]
+widget_size: [1, 1]
+widget_margins: [5, 5]
+columns: 8
+global_parameters:
+    use_comma: 0
+    precision: 1
+    use_hass_icon: 1
+    namespace: default
+    devices:
+      media_player:
+        step: 5
+layout:
+    - clock(2x1), my_weather (2x2), main_temp, main_humidity, outside_temp,         outside_humidity
+    - nick_presence,        ash_presence,     bedroom_temp,                     bedroom_humidity,                   switch.outdoor_lights,  switch.fairy_lights
+    - light.1_kitchen,      light.2_dining,   switch.template_harmony_fetch,    switch.template_harmony_tvsurround,          light.hallway_1,       light.study,                light.bedroom,              climate.bedroom
+    - light.3_living_room,  light.4_lamp,     switch.template_harmony_ps4,      switch.template_home_server, light.hallway_2, light.spare_room,     switch.template_samsung_tv, switch.template_soniq_tv
+
+clock:
+    widget_type: clock
+
+my_weather:
+  widget_type: weather
+  title: Today
+#   widget_style: "background: yellow; color: white;"
+  show_forecast: 1
+  # prefer_icons: 1
+  forecast_title: Tomorrow
+  sensors:
+    icon: sensor.dark_sky_icon
+    temperature:  sensor.bom_air_temp_c
+    apparent_temperature: sensor.bom_feels_like_c
+    humidity: sensor.bom_relative_humidity
+    precip_probability: sensor.bom_melbourne_chance_of_rain_0
+    precip_intensity: sensor.dark_sky_precip_intensity
+    precip_type: sensor.bom_melbourne_possible_rainfall_0
+    pressure: sensor.bom_pressure_mb
+    wind_speed: sensor.bom_wind_speed_kmh
+    wind_bearing: sensor.bom_wind_direction
+    forecast_icon: sensor.dark_sky_icon_1
+    forecast_temperature_min: sensor.bom_melbourne_min_temp_c_1
+    forecast_temperature_max: sensor.bom_melbourne_max_temp_c_1
+    forecast_precip_probability: sensor.bom_melbourne_chance_of_rain_1
+    forecast_precip_type: sensor.bom_melbourne_possible_rainfall_1
+    
+main_temp:
+    widget_type: sensor
+    title: Main Temp
+    units: "&deg;C"
+    precision: 1
+    entity: sensor.temp_main
+ 
+main_humidity:
+    widget_type: sensor
+    title: Main Humidity
+    units: "%"
+    precision: 1
+    entity: sensor.humidity_main
+
+outside_temp:
+    widget_type: sensor
+    title: Outside Temp
+    units: "&deg;C"
+    precision: 1
+    entity: sensor.temp_outside
+ 
+outside_humidity:
+    widget_type: sensor
+    title: Outside Humidity
+    units: "%"
+    precision: 1
+    entity: sensor.humidity_outside
+
+bedroom_temp:
+    widget_type: sensor
+    title: Bedroom Temp
+    units: "&deg;C"
+    precision: 1
+    entity: sensor.temp_bedroom
+ 
+bedroom_humidity:
+    widget_type: sensor
+    title: Bedroom Humidity
+    units: "%"
+    precision: 1
+    entity: sensor.humidity_bedroom
+
+nick_presence:
+    widget_type: device_tracker
+    title: Nick
+    device: galaxynote8
+    icon_on: fa-male
+    icon_off: fa-male
+
+ash_presence:
+    widget_type: device_tracker
+    title: Ashlei
+    icon_on: fa-female
+    icon_off: fa-female
+    device: galaxy_s8_plus

@@ -46,14 +46,14 @@ custom_components/
 *.conf
 *.zip
 *.rar
+*.pyc
+*.jpg
 ssh/
 entity_registry.yaml
 .*
 !/.gitignore
 !/.travis.yml
 python-lovelace/
-appdaemon/
-broadlink_codes/test.py
 
 # End of https://www.gitignore.io/api/homeassistant
 

@@ -1,0 +1,37 @@
+#
+# Main arguments, all optional
+#
+title: Cameras
+widget_dimensions: [120, 120]
+widget_margins: [10, 10]
+columns: 8
+#skin = green
+#
+# Includes (Optional)
+#
+layout:
+    - kitchen (4x3), study (4x3)
+    -
+    -
+    - family_room (4x3)
+
+
+kitchen:
+    widget_type: camera
+    title: Kitchen
+    refresh: 10
+    frame_style: ""
+    entity_picture: !secret cam_pic1
+study:
+    widget_type: camera
+    title: Study
+    refresh: 10
+    frame_style: ""
+    entity_picture: !secret cam_pic2
+
+family_room:
+    widget_type: camera
+    title: Family Room
+    refresh: 10
+    frame_style: ""
+    entity_picture: !secret cam_pic3
