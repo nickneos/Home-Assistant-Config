@@ -20,3 +20,11 @@ sunset:
     - switch.arlec_2a
     - light.1_kitchen
   pet_light: light.hallway_2
+
+googlehome:
+  module: google_home
+  class: Google_Home
+  devices:
+    - media_player.google_home_main
+    - media_player.google_home_office
+    - media_player.google_home_bedroom
