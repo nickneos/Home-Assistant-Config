@@ -1,12 +1,22 @@
 presence:
   module: presence
   class: Presence
-  devices_on:
+  arrival_on:
     - switch.arlec_2a
     - light.1_kitchen
     - switch.template_harmony_fetch
-  devices_off:
+  away_off:
     - switch.house_lights
   pet_light: light.hallway_2
   radio_device: media_player.google_home_office
   radio_url: 'https://abc.ihrcast.arn.com.au/iHRabc01?'
+  people_notifications:
+    - device_tracker.mums_lg_g4
+
+sunset:
+  module: sun
+  class: Sunset
+  devices_on:
+    - switch.arlec_2a
+    - light.1_kitchen
+  pet_light: light.hallway_2

@@ -1,53 +1,69 @@
 import appdaemon.plugins.hass.hassapi as hass
+import time
 
 #
 # Presence App
 #
 # Args:
-#   devices_on: devices to turn on when someone arrives home
-#   devices_off: devices to turn off when everyones left home
+#   arrival_on: devices to turn on when someone arrives home
+#   away_off: devices to turn off when everyones left home
 #   pet_light: light to leave on at night when no ones home
 
 
 class Presence(hass.Hass):
 
     def initialize(self):
-        self.listen_state(self.someones_arrived, "group.all_devices", new = "home")
-        self.listen_state(self.everyones_left, "group.all_devices", old = "home")
-        self.run_at_sunset(self.sunset_cb, offset = -30 * 60)
+        # listeners for group.all_devices - home and not_home
+        self.listen_state(self.someones_arrived, "group.all_devices", new = "home", duration = 6)
+        self.listen_state(self.everyones_left, "group.all_devices", old = "home", duration = 120)
+        
+        # listeners for specific people - home and not_home
+        for tracker in self.args["people_notifications"]:
+            self.log("Setting up people-notification listener for {}".format(tracker))
+            self.listen_state(self.notify_arrived, tracker, new = "home")
+            self.listen_state(self.notify_left, tracker, old = "home")
 
+        # trackers = self.get_trackers()
+        # for tracker in trackers:
+        #     self.log("{}: {}".format(self.get_state(tracker, attribute="friendly_name"), self.get_state(tracker)))
+ 
 
     def someones_arrived(self, entity, attribute, old, new, kwargs):
         self.log("*** Someone's Arrived ***")
-
-        if self.now_is_between("sunset - 00:30:00", "sunrise + 00:10:00"):
-
-            for device in self.args["devices_on"]:
-                if device == "light.1_kitchen":
-                    self.log(f"Turning on {device}")
-                    self.turn_on(device, brightness_pct = "100", kelvin = "3500")
-
-                # turn on harmony only for Nick or Ash
-                elif device == "switch.template_harmony_fetch":
-                    if self.get_tracker_state("device_tracker.nicks_note8") == "home" or self.get_tracker_state("device_tracker.ashs_s8_plus") == "home":
-                        self.log(f"Turning on {device}")
-                        self.turn_on(device) 
-
-                else:
-                    self.log(f"Turning on {device}")
-                    self.turn_on(device)
         
+        # devices to turn on
+        for device in self.args["arrival_on"]:
+            if device == "light.1_kitchen" and self.now_is_between("sunset - 00:30:00", "sunrise + 00:10:00"):
+                self.log(f"Turning on {device}")
+                self.turn_on(device, brightness_pct = "100", kelvin = "3500")
+
+            elif device != "switch.template_harmony_fetch" and self.now_is_between("sunset - 00:30:00", "sunrise + 00:10:00"):
+                self.log(f"Turning on {device}")
+                self.turn_on(device)
+            
+            # turn on harmony only for Nick or Ash
+            elif device == "switch.template_harmony_fetch":
+                if self.get_tracker_state("device_tracker.nicks_note8") == "home" or self.get_tracker_state("device_tracker.ashs_s8_plus") == "home":
+                    self.log(f"Turning on {device}")
+                    self.turn_on(device) 
+
         # turn off radio
         self.log("Turning off {}".format(self.args["radio_device"]))
         self.turn_off(self.args["radio_device"]) 
-        # turn off hallway 2 after 15 minutes
-        self.run_in(self.delayed_action, 1 * 60)
 
+        # turn off pet light after 15 minutes if its on
+        pet_light = self.args["pet_light"]
+        if self.get_state(pet_light) == "on":
+            n = 15
+            self.log(f"Turning off {pet_light} in {n} minutes")
+            self.run_in(self.delayed_action, n * 60)
+        
 
     def everyones_left(self, entity, attribute, old, new, kwargs):
         self.log("*** Everyone's Left ***")
         
-        for device in self.args["devices_off"]:
+        # devices to turn off
+        for device in self.args["away_off"]:
             self.log(f"Turning off {device}")
             self.turn_off(device)
 
@@ -61,21 +77,16 @@ class Presence(hass.Hass):
             self.turn_on(self.args["pet_light"], transition = "15")
 
 
-    def sunset_cb(self, kwargs):
-        if self.get_state("input_boolean.holiday_mode") == "on":
-            return
-            
-        if self.noone_home():
-            self.log("Turning on {}".format(self.args["pet_light"]))
-            self.turn_on(self.args["pet_light"], brightness_pct = "60", kelvin = "3200", transition = "120")
-        else:
-            for device in self.args["devices_on"]:
-                d1, d2 = self.split_entity(device)
-                if d1 in ["light", "switch"] and d2 != "template_harmony_fetch":
-                    self.log(f"Turning on {device}")
-                    self.turn_on(device)
-            
-
     def delayed_action(self, kwargs):
         self.log("Turning off {}".format(self.args["pet_light"]))
         self.turn_off(self.args["pet_light"])
+
+
+    def notify_arrived(self, entity, attribute, old, new, kwargs):
+        message = "{}: {} arrived".format(time.strftime("%d-%b-%Y %H:%M:%S"), self.get_state(entity, attribute="friendly_name"))
+        self.notify(message, name = "html5")
+
+
+    def notify_left(self, entity, attribute, old, new, kwargs):
+        message = "{}: {} left".format(time.strftime("%d-%b-%Y %H:%M:%S"), self.get_state(entity, attribute="friendly_name"))
+        self.notify(message, name = "html5")
