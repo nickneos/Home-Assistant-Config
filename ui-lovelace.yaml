@@ -3,12 +3,12 @@
 
 title: Home
 resources:
-  - url: /local/plan-coordinates.js?v=1
+  - url: /local/lovelace/lovelace-slider-entity-row/slider-entity-row.js
     type: js
-  - url: /local/lovelace-slider-entity-row/slider-entity-row.js
+  - url: /local/lovelace/dark-sky-weather-card/dark-sky-weather-card.js
     type: js
-  - url: /local/dark-sky-weather-card/dark-sky-weather-card.js
-    type: js    
+  - url: /local/lovelace/vertical-stack-in-card/vertical-stack-in-card.js
+    type: js
 views:
 
 ############ Default View ############
@@ -16,34 +16,22 @@ views:
     id: home
     icon: mdi:home
     cards:
+      
       - id: 7223d5f458d047a3a92c700010815714  # Automatically created id
-        type: entity-filter
+        type: glance
         entities:
           - device_tracker.nicks_note8
           - device_tracker.ashs_s8_plus
-          - device_tracker.marys_s8
-          - device_tracker.mums_lg_g4
-        state_filter:
-          - home
-        card:
-          type: glance
-          title: Currently Home
-          show_state: false
-          show_name: false
-      # - type: sensor
-      #   entity: sensor.temp_outside
-      #   name: Outside Temp
-      #   height: 55
-      # - id: 1bb466d29adb47feb4aefa42fa515142  # Automatically created id
-      #   type: weather-forecast
-      #   entity: weather.bom_laverton
+        show_state: true
+        show_name: false
+
       - type: custom:dark-sky-weather-card
         entity_sun: sun.sun
         entity_daily_summary: sensor.bom_melbourne_detailed_summary_0
         entity_current_conditions: sensor.dark_sky_icon
-        entity_humidity: sensor.humidity_outside
-        entity_pressure: sensor.pressure_outside
-        entity_temperature: sensor.temp_outside
+        entity_humidity: sensor.bom_relative_humidity
+        entity_pressure: sensor.bom_pressure_mb
+        entity_temperature: sensor.bom_air_temp_c
         entity_visibility: sensor.dark_sky_visibility
         entity_wind_bearing: sensor.bom_wind_direction
         entity_wind_speed: sensor.bom_wind_speed_kmh
@@ -62,153 +50,151 @@ views:
         entity_forecast_icon_3: sensor.dark_sky_icon_3
         entity_forecast_icon_4: sensor.dark_sky_icon_4
         entity_forecast_icon_5: sensor.dark_sky_icon_5
-      - id: de0b5ed12271420db496e160d6f6e391  # Automatically created id
-        type: entities
-        title: Family Area
+
+      - type: entities
+        title: Garage
         show_header_toggle: false
         entities:
-          - entity: sensor.humidity_main
-          - entity: sensor.pressure_main
-          - entity: light.1_kitchen
-            type: custom:slider-entity-row
-          - entity: light.2_dining
-            type: custom:slider-entity-row
-          - entity: light.3_living_room
-            type: custom:slider-entity-row
-          - entity: switch.arlec_2a
-            type: custom:slider-entity-row
-      - type: thermostat
-        title: Living Room A/C
-        entity: climate.living_room
-      - id: c0307a52e64040f699e8b35fffffc114  # Automatically created id
-        type: glance
-        title: Harmony Controls
-        show_state: false
-        show_name: false
-        entities:
-          - entity: switch.template_harmony_power
-            tap_action: toggle
-          - entity: switch.template_harmony_fetch
-            tap_action: toggle
-          - entity: switch.template_harmony_tvsurround
-            tap_action: toggle
-          - entity: switch.template_harmony_ps4
-            tap_action: toggle
-          - entity: switch.template_harmony_netflix
-          #   tap_action: toggle
-          # - entity: script.fetch_ch_up
-          #   tap_action: toggle
-          # - entity: script.fetch_ch_down
-          #   tap_action: toggle
-          # - entity: script.tv_vol_up
-          #   tap_action: toggle
-          # - entity: script.tv_vol_down
-          #   tap_action: toggle
-          # - entity: script.fetch_guide
-          #   tap_action: toggle
-          # - entity: script.fetch_up
-          #   tap_action: toggle
-          # - entity: script.fetch_down
-          #   tap_action: toggle
-          # - entity: script.fetch_left
-          #   tap_action: toggle
-          # - entity: script.fetch_right
-          #   tap_action: toggle
-          # - entity: script.fetch_select
-          #   tap_action: toggle
-      - id: e1f2ad15a53a436e9691c4c8ca3c8786  # Automatically created id
-        type: glance
-        title: Home Server
-        show_name: false
-        column_width: calc(100% / 4)
-        entities:
-          - entity: switch.template_home_server
-            tap_action: toggle
-          - entity: sensor.hp_ilo_cpu_temperature
-            icon: mdi:memory
-          - entity: sensor.hp_ilo_inlet_temperature
-            icon: mdi:arrow-right-thick
-          - entity: sensor.hp_ilo_cpu_fanspeed
-            icon: mdi:fan
-      - id: b9b0dd5770d94bcabebe232379688c08  # Automatically created id
-        type: entities
+          - cover.garage
+
+      - type: custom:vertical-stack-in-card
+        title: Family Area
+        cards:
+          - type: glance
+            show_state: true
+            show_name: false
+            entities:
+              - sensor.temp_main
+              - sensor.humidity_main
+              - sensor.pressure_main
+              # - camera.kitchen
+              # - camera.family_room
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - entity: light.1_kitchen
+                type: custom:slider-entity-row
+              - entity: light.2_dining
+                type: custom:slider-entity-row
+              - entity: light.3_living_room
+                type: custom:slider-entity-row
+              - entity: switch.arlec_2a
+                type: custom:slider-entity-row
+              - entity: vacuum.xiaomi_vacuum_cleaner
+          - type: glance
+            show_state: false
+            show_name: false
+            entities:
+              # - entity: switch.template_harmony_power
+              #   tap_action: toggle
+              - entity: switch.template_harmony_fetch
+                tap_action: toggle
+              - entity: switch.template_harmony_tvsurround
+                tap_action: toggle
+              - entity: switch.template_harmony_ps4
+                tap_action: toggle
+              - entity: switch.template_harmony_netflix
+                tap_action: toggle
+              - entity: switch.template_home_server
+                tap_action: toggle
+          - type: thermostat
+            title: Living Room A/C
+            entity: climate.living_room
+
+      - type: custom:vertical-stack-in-card
         title: Spare Rooms
-        show_header_toggle: true
-        entities:
-          - entity: sensor.broadlink_sensor_temperature
-          - entity: sensor.xiaomi_illumination
-          - entity: light.study
-            type: custom:slider-entity-row
-          - entity: light.spare_room
-            type: custom:slider-entity-row
-          - entity: light.xiaomi_gateway_light
-            type: custom:slider-entity-row
+        cards:
+          - type: glance
+            show_name: false
+            show_state: true
+            entities:
+              - sensor.broadlink_sensor_temperature
+              - sensor.xiaomi_illumination
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - entity: light.study
+                type: custom:slider-entity-row
+              - entity: light.spare_room
+                type: custom:slider-entity-row
+              - entity: light.xiaomi_gateway_light
+                type: custom:slider-entity-row
+          - type: glance
+            show_state: false
+            show_name: false
+            entities:
+              - entity: switch.template_samsung_tv
+                tap_action: toggle
+              - entity: script.amp_yas106_power
+                tap_action: toggle
+              - entity: script.amp_yas106_vol_up
+                tap_action: toggle
+              - entity: script.amp_yas106_vol_down
+                tap_action: toggle
+
       - type: entities
         title: Hallway
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
           - entity: light.hallway_1
             type: custom:slider-entity-row
           - entity: light.hallway_2
             type: custom:slider-entity-row
-      - id: c2f8731a12b74e15a39bcee42c2925b6  # Automatically created id
-        type: glance
-        title: Samsung TV Controls
-        show_state: false
-        show_name: false
-        column_width: calc(100% / 4)
-        entities:
-          - entity: switch.template_samsung_tv
-            tap_action: toggle
-          - entity: script.amp_yas106_power
-            tap_action: toggle
-          - entity: script.amp_yas106_vol_up
-            tap_action: toggle
-          - entity: script.amp_yas106_vol_down
-            tap_action: toggle
-      - id: 42ad800f88ed4044b7fe50dd4c90cdf3  # Automatically created id
-        type: entities
+
+      - type: custom:vertical-stack-in-card
         title: Master Bedroom
-        show_header_toggle: false
-        entities:
-          - entity: sensor.humidity_bedroom
-          - entity: light.bedroom
-            type: custom:slider-entity-row
-      - id: 3c591b242aa04fc790b3308befe0d8c7  # Automatically created id
-        type: glance
-        title: Bedroom TV Controls
-        show_state: false
-        show_name: false
-        entities:
-          - entity: switch.template_soniq_tv
-            tap_action: toggle
-            icon: mdi:power
-          - entity: script.fetch2_ch_up
-            tap_action: toggle
-          - entity: script.fetch2_ch_down
-            tap_action: toggle
-          - entity: script.soniq_tv_vol_up
-            tap_action: toggle
-          - entity: script.soniq_tv_vol_down
-            tap_action: toggle
-      - id: d2b118ab3d4640429de0a4e3d0df8296  # Automatically created id
-        type: thermostat
-        title: Bedroom A/C
-        entity: climate.bedroom
+        cards:
+          - type: glance
+            show_name: false
+            show_state: true
+            entities:
+              - sensor.temp_bedroom
+              - sensor.humidity_bedroom
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - entity: light.bedroom
+                type: custom:slider-entity-row
+          - type: glance
+            show_state: false
+            show_name: false
+            entities:
+              - entity: switch.template_soniq_tv
+                tap_action: toggle
+              - entity: script.fetch2_ch_up
+                tap_action: toggle
+              - entity: script.fetch2_ch_down
+                tap_action: toggle
+              - entity: script.soniq_tv_vol_up
+                tap_action: toggle
+              - entity: script.soniq_tv_vol_down
+                tap_action: toggle
+          - type: thermostat
+            title: Bedroom A/C
+            entity: climate.bedroom
+
       - type: entities
         title: Bedroom 2
         show_header_toggle: false
         entities:
           - entity: light.bedroom_2
-            type: custom:slider-entity-row          
-      - id: 731049d668324c5c893a87ab871f0729  # Automatically created id
-        type: entities
+            type: custom:slider-entity-row
+
+      - type: custom:vertical-stack-in-card
         title: Outside
-        show_header_toggle: false
-        entities:
-          - switch.arlec_1b
-          - switch.arlec_1c
-          - switch.arlec_1a
+        cards:
+          - type: glance
+            show_state: true
+            show_name: false
+            entities:
+              - sensor.temp_outside
+              - sensor.humidity_outside
+              - sensor.pressure_outside
+          - type: entities
+            entities:
+              - switch.arlec_1b
+              - switch.arlec_1c
+              - switch.arlec_1a
 
 ############ Lights View ############
   - title: Lights
@@ -616,6 +602,12 @@ views:
               font-size: 0.9em
               font-weight: bold
               color: DarkOliveGreen
+          - type: state-icon
+            entity: cover.garage
+            tap_action: toggle
+            style:
+              top: 92%
+              left: 30%
 
             ### Cameras ###
           - type: icon
@@ -736,47 +728,63 @@ views:
     id: system
     icon: mdi:information-outline
     cards:
-      - id: 3dd9b783214746519e2b99e203b24731  # Automatically created id
-        type: glance
-        show_name: false
+      - type: horizontal-stack
+        cards:
+          - type: gauge
+            title: CPU
+            unit_of_measurement: '%'
+            entity: sensor.processor_use
+            severity:
+              green: 0
+              yellow: 45
+              red: 85
+          - type: gauge
+            title: RAM
+            unit_of_measurement: '%'
+            entity: sensor.memory_use_percent
+            severity:
+              green: 0
+              yellow: 45
+              red: 85
+      - type: horizontal-stack
+        cards:
+          - type: gauge
+            title: Storage
+            unit_of_measurement: '%'
+            entity: sensor.disk_use_percent_
+            severity:
+              green: 0
+              yellow: 45
+              red: 85
+          - type: glance
+            column_width: calc(100% / 5)
+            entities:
+              - entity: sensor.disk_use_
+                name: Used Space
+              # - entity: sensor.disk_free_
+              #   name: Free Space
+              - binary_sensor.online
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: glance
+            show_name: false
+            entities:
+              - device_tracker.nicks_note8
+              - device_tracker.ashs_s8_plus
+              - device_tracker.marys_s8
+              - device_tracker.mums_lg_g4
+          - type: map
+            aspect_ratio: 100%
+            entities:
+              - device_tracker.nicks_note8
+              - device_tracker.ashs_s8_plus
+              - zone.home
+              - zone.work
+              - zone.work_2
+              - zone.gym
+              - zone.gym_2
+      - type: entities
         entities:
-          - device_tracker.nicks_note8
-          - device_tracker.ashs_s8_plus
-          - device_tracker.marys_s8
-          - device_tracker.mums_lg_g4
-          - sun.sun
-          - binary_sensor.online
-      - id: 872c22b49b33439d9f928bd3fdd4cbb6  # Automatically created id
-        type: glance
-        title: Raspberry Pi
-        column_width: calc(100% / 5)
-        entities:
-          - entity: sensor.processor_use
-            name: CPU
-          - entity: sensor.memory_use_percent
-            name: RAM
-          - entity: sensor.disk_use_
-            name: Used Space
-          - entity: sensor.disk_free_
-            name: Free Space
-          - entity: sensor.disk_use_percent_
-            name: Storage
-      - id: ef2b40ec57534cfdb8bc62dffccb255c  # Automatically created id
-        type: entities
-        entities:
-          - automation.daytime_away_mode
-          - automation.evening_away_mode
-          - automation.arrival_lights_on
-          - automation.hallway_light_on_at_sunset
           - input_boolean.holiday_mode
           - input_boolean.cast_visible
-      - type: map
-        aspect_ratio: 100%
-        entities:
-          - device_tracker.nicks_note8
-          - device_tracker.ashs_s8_plus
-          - zone.home
-          - zone.work
-          - zone.work_2
-          - zone.gym
-          - zone.gym_2
+      

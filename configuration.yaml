@@ -19,6 +19,7 @@
 #   Covers                                                 #
 #   Zones                                                  #
 #   Binary Sensors                                         #
+#   Vacuum                                                 #
 #   Merged Files                                           #
 #   No Longer Used                                         #
 #                                                          #
@@ -49,6 +50,8 @@ config:
 updater:
 hassio:
 conversation:
+history:
+logbook:
 # logger:
 # introduction:
 # discovery:
@@ -56,42 +59,8 @@ sun:
 tts:
   platform: google
 
-
-############ History Filter ############
-history:
-  exclude:
-    domains:
-      - automation
-      - weblink
-      - updater
-      - script
-    entities:
-      - sensor.last_boot
-      - sensor.since_last_boot
-      - sensor.date
-
-
-############ Logbook Filter ############
-logbook:
-  exclude:
-    entities:
-      - sensor.last_boot
-      - sensor.since_last_boot
-      - sensor.date
-      - automation.home_server_on
-      - automation.home_server_off
-      - automation.samsung_tv_on
-      - automation.samsung_tv_off
-      - automation.ps4_on
-      - automation.ps4_off
-      - automation.harmony_input_selection
-      - automation.harmony_off
-      - automation.harmony_activity_sync
-      - automation.fujitsu_selection_cool_20
-      - automation.fujitsu_selection_off
-    domains:
-      - sun
-      - weblink
+############ DB Recorder ############
+recorder: !include recorder.yaml
 
 
 ############ Inputs ############
@@ -109,6 +78,10 @@ input_boolean:
 ############ Device Trackers ############
 device_tracker:
   - platform: gpslogger
+    consider_home: 180
+    new_device_defaults:
+      track_new_devices: False
+      hide_if_away: False
   - platform: asuswrt
     host: !secret asus_ip
     username: !secret asus_user
@@ -116,7 +89,7 @@ device_tracker:
     ssh_key: !secret asus_key
     protocol: ssh
     port: 22
-    consider_home: 300
+    consider_home: 180
     new_device_defaults:
       track_new_devices: False
       hide_if_away: False
@@ -195,6 +168,11 @@ google_assistant:
       aliases: 
         - TV
         - Sony TV
+    cover.garage:
+      expose: true
+      name: Garage Door
+      aliases: 
+        - Garage
 
 ############ Xiaomi Gateway ############
 xiaomi_aqara:
@@ -221,11 +199,9 @@ camera:
   - platform: ffmpeg
     input: !secret reolink1
     name: Front 1
-    extra_arguments: -pred 1 -q:v 2
   - platform: ffmpeg
     input: !secret reolink2
     name: Front 2
-    extra_arguments: -q:v 32
   - platform: ffmpeg
     input: !secret reolink3
     name: Deck
@@ -325,7 +301,7 @@ climate:
 ############ Covers ############
 cover:
   - platform: mqtt
-    name: "Garage"
+    name: Garage
     state_topic: "cmnd/garagestate/POWER2"
     command_topic: "cmnd/sonoffsv01/POWER"
     payload_open: "ON"
@@ -357,6 +333,7 @@ zone:
     icon: mdi:dumbbell
     radius: 50
 
+
 ############ Binary Sensors ############
 binary_sensor:
   - platform: ping
@@ -364,6 +341,13 @@ binary_sensor:
     host: 8.8.8.8
     count: 5
     scan_interval: 300
+
+
+############ Vacuum ############
+vacuum:
+  - platform: xiaomi_miio
+    host: !secret vacuum_ip
+    token: !secret vacuum_token
 
 
 ############ Merged Files ############

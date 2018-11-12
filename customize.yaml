@@ -111,5 +111,6 @@ switch.arlec_2a:
   icon: mdi:lightbulb
 cover.garage:
   device_class: garage
+  friendly_name: Garage Door
 binary_sensor.online:
   icon: mdi:web
