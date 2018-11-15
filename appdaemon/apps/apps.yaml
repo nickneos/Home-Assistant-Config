@@ -28,3 +28,14 @@ googlehome:
     - media_player.google_home_main
     - media_player.google_home_office
     - media_player.google_home_bedroom
+
+xiaomi_button:
+  module: xiaomi
+  class: Button
+  bedroom_switch:
+    - binary_sensor.xiaomi_switch_1
+    - binary_sensor.xiaomi_switch_3
+  doorbell:
+    - binary_sensor.xiaomi_switch_2
+  outside_switch:
+    - binary_sensor.xiaomi_switch_4

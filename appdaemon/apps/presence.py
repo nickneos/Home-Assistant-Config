@@ -15,7 +15,7 @@ class Presence(hass.Hass):
     def initialize(self):
         # listeners for group.all_devices - home and not_home
         self.listen_state(self.someones_arrived, "group.all_devices", new = "home", duration = 6)
-        self.listen_state(self.everyones_left, "group.all_devices", old = "home", duration = 120)
+        self.listen_state(self.everyones_left, "group.all_devices", old = "home", duration = 60)
         
         # listeners for specific people - home and not_home
         for tracker in self.args["people_notifications"]:
@@ -50,6 +50,7 @@ class Presence(hass.Hass):
         # turn off radio
         self.log("Turning off {}".format(self.args["radio_device"]))
         self.turn_off(self.args["radio_device"]) 
+        # self.cancel_listen_state(self.radio_handle)
 
         # turn off pet light after 15 minutes if its on
         pet_light = self.args["pet_light"]
@@ -70,6 +71,7 @@ class Presence(hass.Hass):
         # turn on news on google home office
         self.log("Streaming {} on {}".format(self.args["radio_url"], self.args["radio_device"]))
         self.call_service("media_player/play_media", entity_id = self.args["radio_device"], media_content_id = self.args["radio_url"], media_content_type = "music")
+        # radio_handle = self.listen_state(self.gh_keep_alive, self.args["radio_device"], old = "playing", duration = 300)
 
         # leave pet light on at night
         if self.now_is_between("sunset - 00:30:00", "sunrise"):
@@ -90,3 +92,9 @@ class Presence(hass.Hass):
     def notify_left(self, entity, attribute, old, new, kwargs):
         message = "{}: {} left".format(time.strftime("%d-%b-%Y %H:%M:%S"), self.get_state(entity, attribute="friendly_name"))
         self.notify(message, name = "html5")
+
+
+    # def gh_keep_alive(self, entity, attribute, old, new, kwargs):
+    #     self.log("Stream ended...")
+    #     self.log("Resuming stream {} on {}".format(self.args["radio_url"], self.args["radio_device"]))
+    #     self.call_service("media_player/play_media", entity_id = self.args["radio_device"], media_content_id = self.args["radio_url"], media_content_type = "music")
