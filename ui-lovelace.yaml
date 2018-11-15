@@ -787,4 +787,7 @@ views:
         entities:
           - input_boolean.holiday_mode
           - input_boolean.cast_visible
-      
+      - type: entities
+        entities:
+          - switch.flood_light
+          - switch.test

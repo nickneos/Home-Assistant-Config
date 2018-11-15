@@ -1,0 +1,17 @@
+- platform: mqtt
+  name: Flood Light
+  command_topic: "cmnd/sonoff_t1_01/power"
+  state_topic: "stat/sonoff_t1_01/POWER"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: true
+
+- platform: mqtt
+  name: Test
+  command_topic: "cmnd/sonoff_basic_01/power"
+  state_topic: "stat/sonoff_basic_01/POWER"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: true
