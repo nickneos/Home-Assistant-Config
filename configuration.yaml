@@ -137,6 +137,9 @@ google_assistant:
     switch.arlec_2a:
       expose: true
       name: Floor Lamp
+    switch.flood_light:
+      expose: true
+      name: Flood Light
     light.xiaomi_gateway_light:
       expose: true
     climate.bedroom:

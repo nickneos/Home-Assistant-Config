@@ -44,11 +44,9 @@ script.amp_yas106_vol_up:
 script.amp_yas106_vol_down:
   icon: mdi:volume-minus
 switch.arlec_1b:
-  assumed_state: false
-  icon: mdi:lightbulb
+  icon: mdi:led-outline
 switch.arlec_1c:
-  assumed_state: false
-  icon: mdi:led-on
+  icon: mdi:pine-tree
 switch.arlec_1a:
   assumed_state: false
   icon: mdi:fridge
@@ -107,10 +105,11 @@ script.fetch2_ch_down:
 script.fetch2_ch_up:
   icon: mdi:arrow-up-drop-circle-outline
 switch.arlec_2a:
-  assumed_state: false
-  icon: mdi:lightbulb
+  icon: mdi:floor-lamp
 cover.garage:
   device_class: garage
   friendly_name: Garage Door
 binary_sensor.online:
   icon: mdi:web
+switch.flood_light:
+  icon: mdi:spotlight-beam

@@ -41,6 +41,7 @@ ozw_log.txt
 # Development files
 custom_components/
 appdaemon/custom_css/
+appdaemon/appdaemon.yaml
 
 # Other
 *.sh

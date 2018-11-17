@@ -192,6 +192,7 @@ views:
               - sensor.pressure_outside
           - type: entities
             entities:
+              - switch.flood_light
               - switch.arlec_1b
               - switch.arlec_1c
               - switch.arlec_1a
@@ -789,5 +790,4 @@ views:
           - input_boolean.cast_visible
       - type: entities
         entities:
-          - switch.flood_light
           - switch.test
