@@ -1,4 +1,5 @@
 import appdaemon.plugins.hass.hassapi as hass
+import time
 
 
 class Button(hass.Hass):
@@ -13,6 +14,11 @@ class Button(hass.Hass):
         for switch in self.args["doorbell"]:
             self.log(f"Setting up event listener for {switch}")
             self.listen_event(self.doorbell, "click", entity_id = switch)
+        
+        self.log(f"Setting up state listener for xiaomi_motion_sensor")
+        self.listen_state(self.motion, "binary_sensor.xiaomi_motion_sensor", new = "on", mode = 1)
+        self.listen_state(self.motion, "binary_sensor.xiaomi_motion_sensor", new = "off", duration = 10, mode = 2)
+
 
 
     def bedroom_switch(self, event_name, data, kwargs):
@@ -52,11 +58,39 @@ class Button(hass.Hass):
 
     def doorbell(self, event_name, data, kwargs):
         
-        if data["click_type"] == "single":
-            script = "script/doorbell_1" if self.anyone_home() else "script/doorbell_2"
-            self.log(f"Doorbell pressed...executing {script}")
-            self.call_service(script)
+        # if data["click_type"] == "single":
+        #     script = "script/doorbell_1" if self.anyone_home() else "script/doorbell_2"
+        #     self.log(f"Doorbell pressed...executing {script}")
+        #     self.call_service(script)
+        
+        if self.anyone_home():
+            self.call_service("xiaomi_aqara/play_ringtone", gw_mac = self.args["gw_mac"],
+                                ringtone_id = "10001", ringtone_vol = "25")
+
+        self.call_service("light/lifx_effect_pulse", entity_id = "group.all_lights", 
+                            brightness = "255", color_name = "green", period = "0.4", cycles = "10")
+
+        if self.anyone_home():
+            self.call_service("media_player/play_media", entity_id = "media_player.google_home_group", 
+                                media_content_id = self.args["media_content_id"], media_content_type = "music")
+
+        t = time.strftime("%d-%b-%Y %H:%M:%S")
+        message = f"{t}: Doorbell pressed"
+        self.log(message)
+        self.notify(message, name = "html5")
 
 
+    def motion(self, entity, attribute, old, new, kwargs):
 
-          
+        if kwargs["mode"] == 1:
+            x = float(self.get_state("sensor.xiaomi_illumination"))
+            # if x < 200 and self.get_state("light.xiaomi_gateway_light") == "off":
+            if self.get_state("light.xiaomi_gateway_light") == "off":
+                self.log("Motion detected...\nTurning on night light")
+                self.turn_on("light.xiaomi_gateway_light", brightness_pct = "10", kelvin = "3200")
+        
+        elif kwargs["mode"] == 2:
+            if self.get_state("light.xiaomi_gateway_light") == "on":
+                self.log("Turning off night light")
+                self.turn_off("light.xiaomi_gateway_light")
+

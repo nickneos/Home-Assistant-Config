@@ -20,8 +20,7 @@ class Presence(hass.Hass):
         # listeners for specific people - home and not_home
         for tracker in self.args["people_notifications"]:
             self.log("Setting up people-notification listener for {}".format(tracker))
-            self.listen_state(self.notify_arrived, tracker, new = "home")
-            self.listen_state(self.notify_left, tracker, old = "home")
+            self.listen_state(self.people_notification, tracker)
 
         # trackers = self.get_trackers()
         # for tracker in trackers:
@@ -84,15 +83,15 @@ class Presence(hass.Hass):
         self.turn_off(self.args["pet_light"])
 
 
-    def notify_arrived(self, entity, attribute, old, new, kwargs):
-        message = "{}: {} arrived".format(time.strftime("%d-%b-%Y %H:%M:%S"), self.get_state(entity, attribute="friendly_name"))
+    def people_notification(self, entity, attribute, old, new, kwargs):
+        if new == "home":
+            message = "{}: {} arrived".format(time.strftime("%d-%b-%Y %H:%M:%S"), self.get_state(entity, attribute="friendly_name"))
+        elif old == "home":
+            message = "{}: {} left".format(time.strftime("%d-%b-%Y %H:%M:%S"), self.get_state(entity, attribute="friendly_name"))
+        else:
+            return
+        
         self.notify(message, name = "html5")
-
-
-    def notify_left(self, entity, attribute, old, new, kwargs):
-        message = "{}: {} left".format(time.strftime("%d-%b-%Y %H:%M:%S"), self.get_state(entity, attribute="friendly_name"))
-        self.notify(message, name = "html5")
-
 
     # def gh_keep_alive(self, entity, attribute, old, new, kwargs):
     #     self.log("Stream ended...")

@@ -1,4 +1,5 @@
 import appdaemon.plugins.hass.hassapi as hass
+import random
 
 #
 # Sunset App
@@ -18,16 +19,17 @@ class Sunset(hass.Hass):
     def sunset_cb(self, kwargs):
         self.log("sunset callback triggered")
 
-        if self.get_state("input_boolean.holiday_mode") == "on":
+        if self.get_state("input_boolean.holiday_mode") == "on" and self.noone_home():
             self.log("Holiday Mode is activated...beginning holiday algorithm")
+            self.turn_on("light.hallway_2", brightness_pct = "60", kelvin = "3200", transition = "120")
+            sec_delay = random.randint(15*60, 180*60)  # between 15 to 180 minutes
+            # self.run_in(self.holiday_mode, 1)
             return
-            
-        if self.noone_home():
+        elif self.noone_home():
             self.log("Turning on {}".format(self.args["pet_light"]))
             self.turn_on(self.args["pet_light"], brightness_pct = "60", kelvin = "3200", transition = "120")
         else:
             for device in self.args["devices_on"]:
                 self.log(f"Turning on {device}")
                 self.turn_on(device)
-            
-
+    

@@ -1,44 +1,44 @@
-- alias: Turn on gateway light with motion
-  hide_entity: True
-  trigger:
-    platform: state
-    entity_id: binary_sensor.xiaomi_motion_sensor
-    from: 'off'
-    to: 'on'
-  condition:
-    - condition: numeric_state
-      entity_id: sensor.xiaomi_illumination
-      below: 200
-    - condition: state
-      entity_id: light.xiaomi_gateway_light
-      state: 'off'      
-  action:
-    - service: light.turn_on
-      entity_id: light.xiaomi_gateway_light
-      data:
-        brightness_pct: 10
-        kelvin: 3200
-        # brightness: 5
-    # - service: automation.turn_on
-      # data:
-        # entity_id: automation.MOTION_OFF
+# - alias: Turn on gateway light with motion
+#   hide_entity: True
+#   trigger:
+#     platform: state
+#     entity_id: binary_sensor.xiaomi_motion_sensor
+#     from: 'off'
+#     to: 'on'
+#   condition:
+#     - condition: numeric_state
+#       entity_id: sensor.xiaomi_illumination
+#       below: 200
+#     - condition: state
+#       entity_id: light.xiaomi_gateway_light
+#       state: 'off'      
+#   action:
+#     - service: light.turn_on
+#       entity_id: light.xiaomi_gateway_light
+#       data:
+#         brightness_pct: 10
+#         kelvin: 3200
+#         # brightness: 5
+#     # - service: automation.turn_on
+#       # data:
+#         # entity_id: automation.MOTION_OFF
         
-- alias: Turn off gateway light after 5 minutes of no motion
-  hide_entity: True
-  trigger:
-    platform: state
-    entity_id: binary_sensor.xiaomi_motion_sensor
-    from: 'on'
-    to: 'off'
-    for:
-      minutes: 5
-  condition:
-    - condition: state
-      entity_id: light.xiaomi_gateway_light
-      state: 'on'
-  action:
-    - service: light.turn_off
-      entity_id: light.xiaomi_gateway_light
-    # - service: automation.turn_off
-      # data:
-        # entity_id: automation.Motion_off
+# - alias: Turn off gateway light after 5 minutes of no motion
+#   hide_entity: True
+#   trigger:
+#     platform: state
+#     entity_id: binary_sensor.xiaomi_motion_sensor
+#     from: 'on'
+#     to: 'off'
+#     for:
+#       minutes: 5
+#   condition:
+#     - condition: state
+#       entity_id: light.xiaomi_gateway_light
+#       state: 'on'
+#   action:
+#     - service: light.turn_off
+#       entity_id: light.xiaomi_gateway_light
+#     # - service: automation.turn_off
+#       # data:
+#         # entity_id: automation.Motion_off

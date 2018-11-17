@@ -35,7 +35,18 @@ xiaomi_button:
   bedroom_switch:
     - binary_sensor.xiaomi_switch_1
     - binary_sensor.xiaomi_switch_3
-  doorbell:
-    - binary_sensor.xiaomi_switch_2
   outside_switch:
     - binary_sensor.xiaomi_switch_4
+  # for doorbell
+  doorbell:
+    - binary_sensor.xiaomi_switch_2
+  gw_mac: !secret xiaomi_mac
+  media_content_id: !secret doorbell
+
+garage:
+  module: garage
+  class: Garage
+
+outdoor_lights:
+  module: outdoor_lights
+  class: OutdoorLights
