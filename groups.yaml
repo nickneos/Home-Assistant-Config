@@ -1,428 +1,428 @@
-############################################################
-# Title:    Home Assistant Configuration                   #
-# Author:   so3n                                           #
-# Navigation:                                              #
-#   Default View                                           #
-#   Views                                                  #
-#   Light Groups                                           #
-#   Media/Remote Groups                                    #
-#   Server/PC Groups                                       #
-#                                                          #
-############################################################
+# ############################################################
+# # Title:    Home Assistant Configuration                   #
+# # Author:   so3n                                           #
+# # Navigation:                                              #
+# #   Default View                                           #
+# #   Views                                                  #
+# #   Light Groups                                           #
+# #   Media/Remote Groups                                    #
+# #   Server/PC Groups                                       #
+# #                                                          #
+# ############################################################
 
 
-############ Default View ############
-default_view:
-  view: yes
-  icon: mdi:home
-  entities:
-    - device_tracker.nicks_note8
-    - device_tracker.ashs_s8_plus
-    # - binary_sensor.door_window_sensor_158d00019da791
-    # - binary_sensor.xiaomi_motion_sensor
-    - sensor.temp_main
-    - sensor.humidity_main
-    - sensor.xiaomi_illumination
-    - sensor.broadlink_sensor_temperature
-    - sensor.bom_air_temp_c
-    - sensor.bom_relative_humidity
-    - sensor.bom_rain_today
-    - group.house_lights
-    - group.family_lights
-    - group.harmony
-    - group.hallway_lights
-    - group.other_lights
-    - group.bedroom_lights
-    - group.server
-    # - group.server1
-    # - group.samsung_tv
-    # - media_player.google_home
-    # - group.ps4
-    - group.fujitsu
-    - group.samsung_tv_rm_switches_compact
-    - group.soniq_tv_rm_switches_compact
-    - group.radio_rm_switches_compact
-    - group.arlec_rm_switches
-    # - camera.Cam_Study
+# ############ Default View ############
+# default_view:
+#   view: yes
+#   icon: mdi:home
+#   entities:
+#     - device_tracker.nicks_note8
+#     - device_tracker.ashs_s8_plus
+#     # - binary_sensor.door_window_sensor_158d00019da791
+#     # - binary_sensor.xiaomi_motion_sensor
+#     - sensor.temp_main
+#     - sensor.humidity_main
+#     - sensor.xiaomi_illumination
+#     - sensor.broadlink_sensor_temperature
+#     - sensor.bom_air_temp_c
+#     - sensor.bom_relative_humidity
+#     - sensor.bom_rain_today
+#     - group.house_lights
+#     - group.family_lights
+#     - group.harmony
+#     - group.hallway_lights
+#     - group.other_lights
+#     - group.bedroom_lights
+#     - group.server
+#     # - group.server1
+#     # - group.samsung_tv
+#     # - media_player.google_home
+#     # - group.ps4
+#     - group.fujitsu
+#     - group.samsung_tv_rm_switches_compact
+#     - group.soniq_tv_rm_switches_compact
+#     - group.radio_rm_switches_compact
+#     - group.arlec_rm_switches
+#     # - camera.Cam_Study
 
 
-############ Views ############
-family_room_view:
-  name: Family Area
-  view: yes
-  entities:
-    - group.family_lights
-    - group.harmony
-    - media_player.sony_bravia_tv
-    - group.server
-    - group.server1
-    # - media_player.sony_tv
-    # - media_player.playstation_4
-    - group.fujitsu
+# ############ Views ############
+# family_room_view:
+#   name: Family Area
+#   view: yes
+#   entities:
+#     - group.family_lights
+#     - group.harmony
+#     - media_player.sony_bravia_tv
+#     - group.server
+#     - group.server1
+#     # - media_player.sony_tv
+#     # - media_player.playstation_4
+#     - group.fujitsu
 
-hallway_view:
-  name: Hallway Area
-  view: yes
-  entities:
-    - group.hallway_lights
-    - group.other_lights
-    - group.samsung_tv_rm_switches_full
-    - media_player.samsung_tv
-    - group.radio_rm_switches_full
+# hallway_view:
+#   name: Hallway Area
+#   view: yes
+#   entities:
+#     - group.hallway_lights
+#     - group.other_lights
+#     - group.samsung_tv_rm_switches_full
+#     - media_player.samsung_tv
+#     - group.radio_rm_switches_full
 
-bedroom_view:
-  name: Bedroom
-  view: yes
-  entities:
-    - group.bedroom_lights
-    - group.soniq_tv_rm_switches_full
-    # - media_player.bedroom_tv
-    - switch.master_switch
+# bedroom_view:
+#   name: Bedroom
+#   view: yes
+#   entities:
+#     - group.bedroom_lights
+#     - group.soniq_tv_rm_switches_full
+#     # - media_player.bedroom_tv
+#     - switch.master_switch
 
-system_view:
-  name: System
-  view: yes
-  entities:
-    - sun.sun
-    - device_tracker.marys_s8
-    - device_tracker.mums_lg_g4
-    - automation.daytime_away_mode
-    - automation.evening_away_mode
-    - automation.arrival_lights_on
-    - automation.hallway_light_on_at_sunset
-    - input_boolean.holiday_mode
-    - input_boolean.lights_notifications
-    # - group.ssl
-    - group.pi_monitor
-
-
-############ Light Groups ############
-house_lights:
-  name: All Lights
-  entities:
-    - switch.house_lights
-
-family_lights:
-  name: Family Area Lights
-  entities:
-    - light.1_Kitchen
-    - light.2_Dining
-    - light.3_Living_Room
-    - switch.arlec_2a
-
-hallway_lights:
-  name: Hallway Lights
-  entities:
-    - light.Hallway_1
-    - light.Hallway_2
-
-other_lights:
-  name: Other Lights
-  entities:
-    - light.Study
-    - light.Spare_Room
-    - switch.arlec_1b
-    - switch.arlec_1c
-    - light.xiaomi_gateway_light
-
-bedroom_lights:
-  name: Bedroom Lights
-  entities:
-    - light.Bedroom
-
-# my_home_lights:
-  # name: All Lights
-  # entities:
-    # - light.1_Kitchen
-    # - light.2_Dining
-    # - light.3_Living_Room
-    # - switch.arlec_2a
-    # - light.Bedroom
-    # - light.Hallway_1
-    # - light.Hallway_2
-    # - light.Study
-    # - light.Spare_Room
+# system_view:
+#   name: System
+#   view: yes
+#   entities:
+#     - sun.sun
+#     - device_tracker.marys_s8
+#     - device_tracker.mums_lg_g4
+#     - automation.daytime_away_mode
+#     - automation.evening_away_mode
+#     - automation.arrival_lights_on
+#     - automation.hallway_light_on_at_sunset
+#     - input_boolean.holiday_mode
+#     - input_boolean.lights_notifications
+#     # - group.ssl
+#     - group.pi_monitor
 
 
-############ Media/Remote Groups ############
-harmony:
-  name: Harmony Hub
-  control: hidden
-  entities:
-    - remote.living_room
-    # - sensor.harmony_activity
-    - input_select.harmony
-    # - media_player.sony_bravia_tv
+# ############ Light Groups ############
+# house_lights:
+#   name: All Lights
+#   entities:
+#     - switch.house_lights
 
-samsung_tv:
-  name: Samsung TV
-  entities:
-    - media_player.samsung_tv
+# family_lights:
+#   name: Family Area Lights
+#   entities:
+#     - light.1_Kitchen
+#     - light.2_Dining
+#     - light.3_Living_Room
+#     - switch.arlec_2a
 
-# ps4:
-  # name: Playstation 4
-  # entities:
-    # - media_player.playstation_4
+# hallway_lights:
+#   name: Hallway Lights
+#   entities:
+#     - light.Hallway_1
+#     - light.Hallway_2
 
-fujitsu:
-  name: Fujitsu Air Conditioning
-  entities:
-    - input_select.aircon
+# other_lights:
+#   name: Other Lights
+#   entities:
+#     - light.Study
+#     - light.Spare_Room
+#     - switch.arlec_1b
+#     - switch.arlec_1c
+#     - light.xiaomi_gateway_light
 
-samsung_tv_rm_switches_compact:
-  name: Samsung TV & Sound Bar
-  control: hidden
-  entities:
-    - switch.template_samsung_tv
-    - script.amp_yas106_power
+# bedroom_lights:
+#   name: Bedroom Lights
+#   entities:
+#     - light.Bedroom
 
-samsung_tv_rm_switches_full:
-  name: Samsung TV & Sound Bar
-  control: hidden
-  entities:
-    - switch.template_samsung_tv
-    - script.amp_yas106_power
-    - script.amp_yas106_vol_up
-    - script.amp_yas106_vol_down
-
-soniq_tv_rm_switches_compact:
-  name: Soniq TV
-  control: hidden
-  entities:
-    - script.soniq_tv_power
-
-soniq_tv_rm_switches_full:
-  name: Soniq TV
-  control: hidden
-  entities:
-    - script.soniq_tv_power
-    - script.soniq_tv_ch_up
-    - script.soniq_tv_ch_down
-    - script.soniq_tv_vol_up
-    - script.soniq_tv_vol_down
-
-radio_rm_switches_compact:
-  name: DAB Radio
-  control: hidden
-  entities:
-    - script.radio_power
-
-radio_rm_switches_full:
-  name: DAB Radio
-  control: hidden
-  entities:
-    - script.radio_power
-    - script.radio_vol_up
-    - script.radio_vol_down
-
-arlec_rm_switches:
-  name: Power Switches
-  entities:
-    - switch.power_switch_1
+# # my_home_lights:
+#   # name: All Lights
+#   # entities:
+#     # - light.1_Kitchen
+#     # - light.2_Dining
+#     # - light.3_Living_Room
+#     # - switch.arlec_2a
+#     # - light.Bedroom
+#     # - light.Hallway_1
+#     # - light.Hallway_2
+#     # - light.Study
+#     # - light.Spare_Room
 
 
-############ Server/PC Groups ############
-server:
-  name: Windows Home Server
-  entities:
-    - sensor.hp_ilo_server_power
-    - switch.home_server
+# ############ Media/Remote Groups ############
+# harmony:
+#   name: Harmony Hub
+#   control: hidden
+#   entities:
+#     - remote.living_room
+#     # - sensor.harmony_activity
+#     - input_select.harmony
+#     # - media_player.sony_bravia_tv
 
-server1:
-  name: Server Health
-  entities:
-    - sensor.hp_ilo_CPU_Temperature
-    - sensor.hp_ilo_Inlet_Temperature
-    - sensor.hp_ilo_CPU_fanspeed
+# samsung_tv:
+#   name: Samsung TV
+#   entities:
+#     - media_player.samsung_tv
 
-pi_monitor:
-  name: Raspberry Pi
-  entities:
-    - sensor.processor_use
-    - sensor.memory_use
-    - sensor.memory_free
-    - sensor.memory_use_percent
-    - sensor.disk_use_
-    - sensor.disk_free_
-    - sensor.disk_use_percent_
-    # - sensor.speedtest_ping
-    # - sensor.speedtest_download
-    # - sensor.speedtest_upload
+# # ps4:
+#   # name: Playstation 4
+#   # entities:
+#     # - media_player.playstation_4
 
-# ssl:
-  # name: SSL Certificate
-  # entities:
-    # - sensor.ssl_cert_expiry
+# fujitsu:
+#   name: Fujitsu Air Conditioning
+#   entities:
+#     - input_select.aircon
 
-weather:
-  name: weather
-  entities:
-  - sensor.temp_outside
-  - sensor.humidity_outside
-  - sensor.pressure_outside
-  - sensor.bom_air_temp_c
-  - sensor.bom_cloud
-  - sensor.bom_cloud_base
-  - sensor.bom_cloud_oktas
-  - sensor.bom_cloud_type
-  - sensor.bom_cloud_type_id
-  - sensor.bom_delta_temp_c
-  - sensor.bom_dew_point_c
-  - sensor.bom_feels_like_c
-  - sensor.bom_melbourne_chance_of_rain_0
-  - sensor.bom_melbourne_chance_of_rain_1
-  - sensor.bom_melbourne_chance_of_rain_2
-  - sensor.bom_melbourne_chance_of_rain_3
-  - sensor.bom_melbourne_chance_of_rain_4
-  - sensor.bom_melbourne_chance_of_rain_5
-  - sensor.bom_melbourne_detailed_summary_0
-  - sensor.bom_melbourne_detailed_summary_1
-  - sensor.bom_melbourne_detailed_summary_2
-  - sensor.bom_melbourne_detailed_summary_3
-  - sensor.bom_melbourne_detailed_summary_4
-  - sensor.bom_melbourne_detailed_summary_5
-  - sensor.bom_melbourne_max_temp_c_0
-  - sensor.bom_melbourne_max_temp_c_1
-  - sensor.bom_melbourne_max_temp_c_2
-  - sensor.bom_melbourne_max_temp_c_3
-  - sensor.bom_melbourne_max_temp_c_4
-  - sensor.bom_melbourne_max_temp_c_5
-  - sensor.bom_melbourne_min_temp_c_0
-  - sensor.bom_melbourne_min_temp_c_1
-  - sensor.bom_melbourne_min_temp_c_2
-  - sensor.bom_melbourne_min_temp_c_3
-  - sensor.bom_melbourne_min_temp_c_4
-  - sensor.bom_melbourne_min_temp_c_5
-  - sensor.bom_melbourne_possible_rainfall_0
-  - sensor.bom_melbourne_possible_rainfall_1
-  - sensor.bom_melbourne_possible_rainfall_2
-  - sensor.bom_melbourne_possible_rainfall_3
-  - sensor.bom_melbourne_possible_rainfall_4
-  - sensor.bom_melbourne_possible_rainfall_5
-  - sensor.bom_melbourne_summary_0
-  - sensor.bom_melbourne_summary_1
-  - sensor.bom_melbourne_summary_2
-  - sensor.bom_melbourne_summary_3
-  - sensor.bom_melbourne_summary_4
-  - sensor.bom_melbourne_summary_5
-  - sensor.bom_pressure_mb
-  - sensor.bom_pressure_msl
-  - sensor.bom_pressure_qnh
-  - sensor.bom_pressure_tend
-  - sensor.bom_rain_today
-  - sensor.bom_relative_humidity
-  - sensor.bom_sea_state
-  - sensor.bom_swell_direction
-  - sensor.bom_swell_height
-  - sensor.bom_swell_period
-  - sensor.bom_visability_km
-  - sensor.bom_weather
-  - sensor.bom_wind_direction
-  - sensor.bom_wind_gust_kmh
-  - sensor.bom_wind_gust_kt
-  - sensor.bom_wind_speed_kmh
-  - sensor.bom_wind_speed_kt
-  - sensor.broadlink_sensor_temperature
-  - sensor.dark_sky_apparent_temperature
-  - sensor.dark_sky_daily_max_precip_intensity
-  - sensor.dark_sky_daily_max_precip_intensity_1
-  - sensor.dark_sky_daily_max_precip_intensity_2
-  - sensor.dark_sky_daily_max_precip_intensity_3
-  - sensor.dark_sky_daily_max_precip_intensity_4
-  - sensor.dark_sky_daily_max_precip_intensity_5
-  - sensor.dark_sky_daily_summary
-  - sensor.dark_sky_daytime_high_apparent_temperature
-  - sensor.dark_sky_daytime_high_apparent_temperature_1
-  - sensor.dark_sky_daytime_high_apparent_temperature_2
-  - sensor.dark_sky_daytime_high_apparent_temperature_3
-  - sensor.dark_sky_daytime_high_apparent_temperature_4
-  - sensor.dark_sky_daytime_high_apparent_temperature_5
-  - sensor.dark_sky_daytime_high_temperature
-  - sensor.dark_sky_daytime_high_temperature_1
-  - sensor.dark_sky_daytime_high_temperature_2
-  - sensor.dark_sky_daytime_high_temperature_3
-  - sensor.dark_sky_daytime_high_temperature_4
-  - sensor.dark_sky_daytime_high_temperature_5
-  - sensor.dark_sky_humidity
-  - sensor.dark_sky_humidity_1
-  - sensor.dark_sky_humidity_2
-  - sensor.dark_sky_humidity_3
-  - sensor.dark_sky_humidity_4
-  - sensor.dark_sky_humidity_5
-  - sensor.dark_sky_icon
-  - sensor.dark_sky_icon_1
-  - sensor.dark_sky_icon_2
-  - sensor.dark_sky_icon_3
-  - sensor.dark_sky_icon_4
-  - sensor.dark_sky_icon_5
-  - sensor.dark_sky_nearest_storm_bearing
-  - sensor.dark_sky_nearest_storm_distance
-  - sensor.dark_sky_overnight_low_apparent_temperature
-  - sensor.dark_sky_overnight_low_apparent_temperature_1
-  - sensor.dark_sky_overnight_low_apparent_temperature_2
-  - sensor.dark_sky_overnight_low_apparent_temperature_3
-  - sensor.dark_sky_overnight_low_apparent_temperature_4
-  - sensor.dark_sky_overnight_low_apparent_temperature_5
-  - sensor.dark_sky_overnight_low_temperature
-  - sensor.dark_sky_overnight_low_temperature_1
-  - sensor.dark_sky_overnight_low_temperature_2
-  - sensor.dark_sky_overnight_low_temperature_3
-  - sensor.dark_sky_overnight_low_temperature_4
-  - sensor.dark_sky_overnight_low_temperature_5
-  - sensor.dark_sky_precip
-  - sensor.dark_sky_precip_1
-  - sensor.dark_sky_precip_2
-  - sensor.dark_sky_precip_3
-  - sensor.dark_sky_precip_4
-  - sensor.dark_sky_precip_5
-  - sensor.dark_sky_precip_accumulation
-  - sensor.dark_sky_precip_accumulation_1
-  - sensor.dark_sky_precip_accumulation_2
-  - sensor.dark_sky_precip_accumulation_3
-  - sensor.dark_sky_precip_accumulation_4
-  - sensor.dark_sky_precip_accumulation_5
-  - sensor.dark_sky_precip_intensity
-  - sensor.dark_sky_precip_intensity_1
-  - sensor.dark_sky_precip_intensity_2
-  - sensor.dark_sky_precip_intensity_3
-  - sensor.dark_sky_precip_intensity_4
-  - sensor.dark_sky_precip_intensity_5
-  - sensor.dark_sky_precip_probability
-  - sensor.dark_sky_precip_probability_1
-  - sensor.dark_sky_precip_probability_2
-  - sensor.dark_sky_precip_probability_3
-  - sensor.dark_sky_precip_probability_4
-  - sensor.dark_sky_precip_probability_5
-  - sensor.dark_sky_pressure
-  - sensor.dark_sky_pressure_1
-  - sensor.dark_sky_pressure_2
-  - sensor.dark_sky_pressure_3
-  - sensor.dark_sky_pressure_4
-  - sensor.dark_sky_pressure_5
-  - sensor.dark_sky_summary
-  - sensor.dark_sky_temperature
-  - sensor.dark_sky_uv_index
-  - sensor.dark_sky_uv_index_1
-  - sensor.dark_sky_uv_index_2
-  - sensor.dark_sky_uv_index_3
-  - sensor.dark_sky_uv_index_4
-  - sensor.dark_sky_uv_index_5
-  - sensor.dark_sky_visibility
-  - sensor.dark_sky_visibility_1
-  - sensor.dark_sky_visibility_2
-  - sensor.dark_sky_visibility_3
-  - sensor.dark_sky_visibility_4
-  - sensor.dark_sky_visibility_5
-  - sensor.dark_sky_wind_bearing
-  - sensor.dark_sky_wind_bearing_1
-  - sensor.dark_sky_wind_bearing_2
-  - sensor.dark_sky_wind_bearing_3
-  - sensor.dark_sky_wind_bearing_4
-  - sensor.dark_sky_wind_bearing_5
-  - sensor.dark_sky_wind_speed
-  - sensor.dark_sky_wind_speed_1
-  - sensor.dark_sky_wind_speed_2
-  - sensor.dark_sky_wind_speed_3
-  - sensor.dark_sky_wind_speed_4
-  - sensor.dark_sky_wind_speed_5
+# samsung_tv_rm_switches_compact:
+#   name: Samsung TV & Sound Bar
+#   control: hidden
+#   entities:
+#     - switch.template_samsung_tv
+#     - script.amp_yas106_power
+
+# samsung_tv_rm_switches_full:
+#   name: Samsung TV & Sound Bar
+#   control: hidden
+#   entities:
+#     - switch.template_samsung_tv
+#     - script.amp_yas106_power
+#     - script.amp_yas106_vol_up
+#     - script.amp_yas106_vol_down
+
+# soniq_tv_rm_switches_compact:
+#   name: Soniq TV
+#   control: hidden
+#   entities:
+#     - script.soniq_tv_power
+
+# soniq_tv_rm_switches_full:
+#   name: Soniq TV
+#   control: hidden
+#   entities:
+#     - script.soniq_tv_power
+#     - script.soniq_tv_ch_up
+#     - script.soniq_tv_ch_down
+#     - script.soniq_tv_vol_up
+#     - script.soniq_tv_vol_down
+
+# radio_rm_switches_compact:
+#   name: DAB Radio
+#   control: hidden
+#   entities:
+#     - script.radio_power
+
+# radio_rm_switches_full:
+#   name: DAB Radio
+#   control: hidden
+#   entities:
+#     - script.radio_power
+#     - script.radio_vol_up
+#     - script.radio_vol_down
+
+# arlec_rm_switches:
+#   name: Power Switches
+#   entities:
+#     - switch.power_switch_1
+
+
+# ############ Server/PC Groups ############
+# server:
+#   name: Windows Home Server
+#   entities:
+#     - sensor.hp_ilo_server_power
+#     - switch.home_server
+
+# server1:
+#   name: Server Health
+#   entities:
+#     - sensor.hp_ilo_CPU_Temperature
+#     - sensor.hp_ilo_Inlet_Temperature
+#     - sensor.hp_ilo_CPU_fanspeed
+
+# pi_monitor:
+#   name: Raspberry Pi
+#   entities:
+#     - sensor.processor_use
+#     - sensor.memory_use
+#     - sensor.memory_free
+#     - sensor.memory_use_percent
+#     - sensor.disk_use_
+#     - sensor.disk_free_
+#     - sensor.disk_use_percent_
+#     # - sensor.speedtest_ping
+#     # - sensor.speedtest_download
+#     # - sensor.speedtest_upload
+
+# # ssl:
+#   # name: SSL Certificate
+#   # entities:
+#     # - sensor.ssl_cert_expiry
+
+# weather:
+#   name: weather
+#   entities:
+#   - sensor.temp_outside
+#   - sensor.humidity_outside
+#   - sensor.pressure_outside
+#   - sensor.bom_air_temp_c
+#   - sensor.bom_cloud
+#   - sensor.bom_cloud_base
+#   - sensor.bom_cloud_oktas
+#   - sensor.bom_cloud_type
+#   - sensor.bom_cloud_type_id
+#   - sensor.bom_delta_temp_c
+#   - sensor.bom_dew_point_c
+#   - sensor.bom_feels_like_c
+#   - sensor.bom_melbourne_chance_of_rain_0
+#   - sensor.bom_melbourne_chance_of_rain_1
+#   - sensor.bom_melbourne_chance_of_rain_2
+#   - sensor.bom_melbourne_chance_of_rain_3
+#   - sensor.bom_melbourne_chance_of_rain_4
+#   - sensor.bom_melbourne_chance_of_rain_5
+#   - sensor.bom_melbourne_detailed_summary_0
+#   - sensor.bom_melbourne_detailed_summary_1
+#   - sensor.bom_melbourne_detailed_summary_2
+#   - sensor.bom_melbourne_detailed_summary_3
+#   - sensor.bom_melbourne_detailed_summary_4
+#   - sensor.bom_melbourne_detailed_summary_5
+#   - sensor.bom_melbourne_max_temp_c_0
+#   - sensor.bom_melbourne_max_temp_c_1
+#   - sensor.bom_melbourne_max_temp_c_2
+#   - sensor.bom_melbourne_max_temp_c_3
+#   - sensor.bom_melbourne_max_temp_c_4
+#   - sensor.bom_melbourne_max_temp_c_5
+#   - sensor.bom_melbourne_min_temp_c_0
+#   - sensor.bom_melbourne_min_temp_c_1
+#   - sensor.bom_melbourne_min_temp_c_2
+#   - sensor.bom_melbourne_min_temp_c_3
+#   - sensor.bom_melbourne_min_temp_c_4
+#   - sensor.bom_melbourne_min_temp_c_5
+#   - sensor.bom_melbourne_possible_rainfall_0
+#   - sensor.bom_melbourne_possible_rainfall_1
+#   - sensor.bom_melbourne_possible_rainfall_2
+#   - sensor.bom_melbourne_possible_rainfall_3
+#   - sensor.bom_melbourne_possible_rainfall_4
+#   - sensor.bom_melbourne_possible_rainfall_5
+#   - sensor.bom_melbourne_summary_0
+#   - sensor.bom_melbourne_summary_1
+#   - sensor.bom_melbourne_summary_2
+#   - sensor.bom_melbourne_summary_3
+#   - sensor.bom_melbourne_summary_4
+#   - sensor.bom_melbourne_summary_5
+#   - sensor.bom_pressure_mb
+#   - sensor.bom_pressure_msl
+#   - sensor.bom_pressure_qnh
+#   - sensor.bom_pressure_tend
+#   - sensor.bom_rain_today
+#   - sensor.bom_relative_humidity
+#   - sensor.bom_sea_state
+#   - sensor.bom_swell_direction
+#   - sensor.bom_swell_height
+#   - sensor.bom_swell_period
+#   - sensor.bom_visability_km
+#   - sensor.bom_weather
+#   - sensor.bom_wind_direction
+#   - sensor.bom_wind_gust_kmh
+#   - sensor.bom_wind_gust_kt
+#   - sensor.bom_wind_speed_kmh
+#   - sensor.bom_wind_speed_kt
+#   - sensor.broadlink_sensor_temperature
+#   - sensor.dark_sky_apparent_temperature
+#   - sensor.dark_sky_daily_max_precip_intensity
+#   - sensor.dark_sky_daily_max_precip_intensity_1
+#   - sensor.dark_sky_daily_max_precip_intensity_2
+#   - sensor.dark_sky_daily_max_precip_intensity_3
+#   - sensor.dark_sky_daily_max_precip_intensity_4
+#   - sensor.dark_sky_daily_max_precip_intensity_5
+#   - sensor.dark_sky_daily_summary
+#   - sensor.dark_sky_daytime_high_apparent_temperature
+#   - sensor.dark_sky_daytime_high_apparent_temperature_1
+#   - sensor.dark_sky_daytime_high_apparent_temperature_2
+#   - sensor.dark_sky_daytime_high_apparent_temperature_3
+#   - sensor.dark_sky_daytime_high_apparent_temperature_4
+#   - sensor.dark_sky_daytime_high_apparent_temperature_5
+#   - sensor.dark_sky_daytime_high_temperature
+#   - sensor.dark_sky_daytime_high_temperature_1
+#   - sensor.dark_sky_daytime_high_temperature_2
+#   - sensor.dark_sky_daytime_high_temperature_3
+#   - sensor.dark_sky_daytime_high_temperature_4
+#   - sensor.dark_sky_daytime_high_temperature_5
+#   - sensor.dark_sky_humidity
+#   - sensor.dark_sky_humidity_1
+#   - sensor.dark_sky_humidity_2
+#   - sensor.dark_sky_humidity_3
+#   - sensor.dark_sky_humidity_4
+#   - sensor.dark_sky_humidity_5
+#   - sensor.dark_sky_icon
+#   - sensor.dark_sky_icon_1
+#   - sensor.dark_sky_icon_2
+#   - sensor.dark_sky_icon_3
+#   - sensor.dark_sky_icon_4
+#   - sensor.dark_sky_icon_5
+#   - sensor.dark_sky_nearest_storm_bearing
+#   - sensor.dark_sky_nearest_storm_distance
+#   - sensor.dark_sky_overnight_low_apparent_temperature
+#   - sensor.dark_sky_overnight_low_apparent_temperature_1
+#   - sensor.dark_sky_overnight_low_apparent_temperature_2
+#   - sensor.dark_sky_overnight_low_apparent_temperature_3
+#   - sensor.dark_sky_overnight_low_apparent_temperature_4
+#   - sensor.dark_sky_overnight_low_apparent_temperature_5
+#   - sensor.dark_sky_overnight_low_temperature
+#   - sensor.dark_sky_overnight_low_temperature_1
+#   - sensor.dark_sky_overnight_low_temperature_2
+#   - sensor.dark_sky_overnight_low_temperature_3
+#   - sensor.dark_sky_overnight_low_temperature_4
+#   - sensor.dark_sky_overnight_low_temperature_5
+#   - sensor.dark_sky_precip
+#   - sensor.dark_sky_precip_1
+#   - sensor.dark_sky_precip_2
+#   - sensor.dark_sky_precip_3
+#   - sensor.dark_sky_precip_4
+#   - sensor.dark_sky_precip_5
+#   - sensor.dark_sky_precip_accumulation
+#   - sensor.dark_sky_precip_accumulation_1
+#   - sensor.dark_sky_precip_accumulation_2
+#   - sensor.dark_sky_precip_accumulation_3
+#   - sensor.dark_sky_precip_accumulation_4
+#   - sensor.dark_sky_precip_accumulation_5
+#   - sensor.dark_sky_precip_intensity
+#   - sensor.dark_sky_precip_intensity_1
+#   - sensor.dark_sky_precip_intensity_2
+#   - sensor.dark_sky_precip_intensity_3
+#   - sensor.dark_sky_precip_intensity_4
+#   - sensor.dark_sky_precip_intensity_5
+#   - sensor.dark_sky_precip_probability
+#   - sensor.dark_sky_precip_probability_1
+#   - sensor.dark_sky_precip_probability_2
+#   - sensor.dark_sky_precip_probability_3
+#   - sensor.dark_sky_precip_probability_4
+#   - sensor.dark_sky_precip_probability_5
+#   - sensor.dark_sky_pressure
+#   - sensor.dark_sky_pressure_1
+#   - sensor.dark_sky_pressure_2
+#   - sensor.dark_sky_pressure_3
+#   - sensor.dark_sky_pressure_4
+#   - sensor.dark_sky_pressure_5
+#   - sensor.dark_sky_summary
+#   - sensor.dark_sky_temperature
+#   - sensor.dark_sky_uv_index
+#   - sensor.dark_sky_uv_index_1
+#   - sensor.dark_sky_uv_index_2
+#   - sensor.dark_sky_uv_index_3
+#   - sensor.dark_sky_uv_index_4
+#   - sensor.dark_sky_uv_index_5
+#   - sensor.dark_sky_visibility
+#   - sensor.dark_sky_visibility_1
+#   - sensor.dark_sky_visibility_2
+#   - sensor.dark_sky_visibility_3
+#   - sensor.dark_sky_visibility_4
+#   - sensor.dark_sky_visibility_5
+#   - sensor.dark_sky_wind_bearing
+#   - sensor.dark_sky_wind_bearing_1
+#   - sensor.dark_sky_wind_bearing_2
+#   - sensor.dark_sky_wind_bearing_3
+#   - sensor.dark_sky_wind_bearing_4
+#   - sensor.dark_sky_wind_bearing_5
+#   - sensor.dark_sky_wind_speed
+#   - sensor.dark_sky_wind_speed_1
+#   - sensor.dark_sky_wind_speed_2
+#   - sensor.dark_sky_wind_speed_3
+#   - sensor.dark_sky_wind_speed_4
+#   - sensor.dark_sky_wind_speed_5
 
