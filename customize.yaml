@@ -44,8 +44,10 @@ script.amp_yas106_vol_up:
 script.amp_yas106_vol_down:
   icon: mdi:volume-minus
 switch.arlec_1b:
+  assumed_state: false
   icon: mdi:led-outline
 switch.arlec_1c:
+  assumed_state: false
   icon: mdi:pine-tree
 switch.arlec_1a:
   assumed_state: false
@@ -106,6 +108,7 @@ script.fetch2_ch_up:
   icon: mdi:arrow-up-drop-circle-outline
 switch.arlec_2a:
   icon: mdi:floor-lamp
+  assumed_state: false
 cover.garage:
   device_class: garage
   friendly_name: Garage Door
@@ -113,3 +116,15 @@ binary_sensor.online:
   icon: mdi:web
 switch.flood_light:
   icon: mdi:spotlight-beam
+script.vacuum_main:
+  icon: mdi:broom
+script.vacuum_front_hallway:
+  icon: mdi:broom
+script.vacuum_spare_rooms:
+  icon: mdi:broom
+script.vacuum_master_bedroom:
+  icon: mdi:broom
+script.vacuum_bedroom_2:
+  icon: mdi:broom
+script.vacuum_bedroom_3:
+  icon: mdi:broom

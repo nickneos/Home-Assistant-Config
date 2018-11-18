@@ -50,3 +50,7 @@ garage:
 outdoor_lights:
   module: outdoor_lights
   class: OutdoorLights
+
+timer:
+  module: timer
+  class: Timer

@@ -41,7 +41,6 @@ ozw_log.txt
 # Development files
 custom_components/
 appdaemon/custom_css/
-appdaemon/appdaemon.yaml
 
 # Other
 *.sh
@@ -59,3 +58,4 @@ entity_registry.yaml
 python-lovelace/
 
 # End of https://www.gitignore.io/api/homeassistant
+appdaemon/appdaemon.yaml

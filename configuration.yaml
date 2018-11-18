@@ -72,7 +72,23 @@ input_boolean:
   cast_visible:
     name: Cast Visible
     initial: on
-    icon: mdi:cast
+    icon: mdi:cast_visible
+
+input_select:
+  timer_device:
+    name: Device
+    options:
+      - Select...
+      - Main AC
+      - Bedroom AC
+    initial: 'Select...'
+input_number:
+  timer_hours:
+    name: Hours
+    initial: 1
+    min: 1
+    max: 24
+    step: 1
 
 
 ############ Device Trackers ############

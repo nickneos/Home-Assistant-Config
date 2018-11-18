@@ -80,6 +80,7 @@ views:
                 type: custom:slider-entity-row
               - entity: switch.arlec_2a
                 type: custom:slider-entity-row
+              - entity: script.vacuum_main
               - entity: vacuum.xiaomi_vacuum_cleaner
           - type: glance
             show_state: false
@@ -119,6 +120,7 @@ views:
                 type: custom:slider-entity-row
               - entity: light.xiaomi_gateway_light
                 type: custom:slider-entity-row
+              - entity: script.vacuum_spare_rooms
           - type: glance
             show_state: false
             show_name: false
@@ -140,6 +142,7 @@ views:
             type: custom:slider-entity-row
           - entity: light.hallway_2
             type: custom:slider-entity-row
+          - entity: script.vacuum_front_hallway
 
       - type: custom:vertical-stack-in-card
         title: Master Bedroom
@@ -155,6 +158,7 @@ views:
             entities:
               - entity: light.bedroom
                 type: custom:slider-entity-row
+              - entity: script.vacuum_master_bedroom
           - type: glance
             show_state: false
             show_name: false
@@ -174,11 +178,13 @@ views:
             entity: climate.bedroom
 
       - type: entities
-        title: Bedroom 2
+        title: Other Bedrooms
         show_header_toggle: false
         entities:
           - entity: light.bedroom_2
             type: custom:slider-entity-row
+          - entity: script.vacuum_bedroom_2
+          - entity: script.vacuum_bedroom_3
 
       - type: custom:vertical-stack-in-card
         title: Outside
@@ -791,3 +797,8 @@ views:
       - type: entities
         entities:
           - switch.test
+      - type: entities
+        title: Timer
+        entities:
+          - input_number.timer_hours
+          - input_select.timer_device
