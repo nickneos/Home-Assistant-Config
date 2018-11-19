@@ -27,5 +27,7 @@ class Timer(hass.Hass):
         self.set_state("input_select.timer_device", state = old)
     
     def power_off(self, kwargs):
-        self.turn_off(kwargs["device"])
+        dev = kwargs["device"]
+        self.log(f"Turning off {dev}")
+        self.turn_off(dev)
 

@@ -771,6 +771,7 @@ views:
               # - entity: sensor.disk_free_
               #   name: Free Space
               - binary_sensor.online
+              - sensor.hassio_db_size
       - type: custom:vertical-stack-in-card
         cards:
           - type: glance

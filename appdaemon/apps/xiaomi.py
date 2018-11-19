@@ -6,18 +6,16 @@ class Button(hass.Hass):
 
     def initialize(self):
         for switch in self.args["bedroom_switch"]:
-            self.log(f"Setting up event listener for {switch}")
             self.listen_event(self.bedroom_switch, "click", entity_id = switch)
+        
         for switch in self.args["outside_switch"]:
-            self.log(f"Setting up event listener for {switch}")
             self.listen_event(self.outside_switch, "click", entity_id = switch)
+        
         for switch in self.args["doorbell"]:
-            self.log(f"Setting up event listener for {switch}")
             self.listen_event(self.doorbell, "click", entity_id = switch)
         
-        self.log(f"Setting up state listener for xiaomi_motion_sensor")
-        self.listen_state(self.motion, "binary_sensor.xiaomi_motion_sensor", new = "on", mode = 1)
-        self.listen_state(self.motion, "binary_sensor.xiaomi_motion_sensor", new = "off", duration = 10, mode = 2)
+        self.listen_state(self.motion, "binary_sensor.xiaomi_motion_sensor", new = "on")
+        self.listen_state(self.motion, "binary_sensor.xiaomi_motion_sensor", new = "off", duration = 10)
 
 
 
@@ -70,9 +68,9 @@ class Button(hass.Hass):
         self.call_service("light/lifx_effect_pulse", entity_id = "group.all_lights", 
                             brightness = "255", color_name = "green", period = "0.4", cycles = "10")
 
-        if self.anyone_home():
-            self.call_service("media_player/play_media", entity_id = "media_player.google_home_group", 
-                                media_content_id = self.args["media_content_id"], media_content_type = "music")
+        # if self.anyone_home():
+        #     self.call_service("media_player/play_media", entity_id = "media_player.google_home_group", 
+        #                         media_content_id = self.args["media_content_id"], media_content_type = "music")
 
         t = time.strftime("%d-%b-%Y %H:%M:%S")
         message = f"{t}: Doorbell pressed"
@@ -81,16 +79,16 @@ class Button(hass.Hass):
 
 
     def motion(self, entity, attribute, old, new, kwargs):
+        dev = self.args["sensor_light"]
 
-        if kwargs["mode"] == 1:
+        if new == "on":
             x = float(self.get_state("sensor.xiaomi_illumination"))
-            # if x < 200 and self.get_state("light.xiaomi_gateway_light") == "off":
-            if self.get_state("light.xiaomi_gateway_light") == "off":
+            if x < 200 and self.get_state(dev) == "off":
                 self.log("Motion detected...\nTurning on night light")
-                self.turn_on("light.xiaomi_gateway_light", brightness_pct = "10", kelvin = "3200")
-        
-        elif kwargs["mode"] == 2:
-            if self.get_state("light.xiaomi_gateway_light") == "on":
+                self.turn_on(dev, brightness_pct = "10", kelvin = "3200")
+            
+        elif new == "off":
+            if self.get_state(dev) == "on":
                 self.log("Turning off night light")
-                self.turn_off("light.xiaomi_gateway_light")
+                self.turn_off(dev)
 

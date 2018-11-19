@@ -128,3 +128,5 @@ script.vacuum_bedroom_2:
   icon: mdi:broom
 script.vacuum_bedroom_3:
   icon: mdi:broom
+input_boolean.cast_visible:
+  icon: mdi:cast

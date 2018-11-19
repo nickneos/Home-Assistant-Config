@@ -17,7 +17,7 @@ class Garage(hass.Hass):
             message = f"{t}: Garage door open"
         elif mode == 2:
             t = time.strftime("%d-%b-%Y %H:%M:%S")
-            message = f"{t}: Garage door open has been open for 15 minutes"
+            message = f"{t}: Garage door has been open for 15 minutes"
         else:
             return
 
