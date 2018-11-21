@@ -78,7 +78,7 @@ class Sunset(hass.Hass):
                 self.cancel_timer(self.handle1)
 
             # Turn off all lights
-            dev = "switch.house_lights"
+            dev = "group.light_devices"
             self.log(f"Turning off {dev}")
             self.turn_off(dev)
 
@@ -100,6 +100,6 @@ class Sunset(hass.Hass):
         
         elif kwargs["stage"] == 4:
             # Stage 4: Turn off all lights
-            self.turn_off("switch.house_lights")
+            self.turn_off("group.light_devices")
 
 

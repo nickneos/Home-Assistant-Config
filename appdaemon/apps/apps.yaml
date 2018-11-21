@@ -6,7 +6,7 @@ presence:
     - light.1_kitchen
     - switch.template_harmony_fetch
   away_off:
-    - switch.house_lights
+    - group.light_devices
     - remote.living_room
     - switch.template_samsung_tv
   pet_light: light.hallway_2

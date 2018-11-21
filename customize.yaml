@@ -16,7 +16,7 @@ sensor.bom_relative_humidity:
   friendly_name: Outside Humidity
 sensor.bom_rain_today:
   friendly_name: Rain Today
-switch.house_lights:
+group.light_devices:
   icon: mdi:lightbulb
 script.everything_off:
   icon: mdi:power

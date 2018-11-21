@@ -79,6 +79,7 @@ views:
               - entity: light.3_living_room
                 type: custom:slider-entity-row
               - entity: switch.arlec_2a
+              - entity: switch.pantry_light
                 type: custom:slider-entity-row
               - entity: script.vacuum_main
               - entity: vacuum.xiaomi_vacuum_cleaner
@@ -212,7 +213,7 @@ views:
         title: All Lights
         show_header_toggle: false
         entities:
-          - entity: switch.house_lights
+          - entity: group.light_devices
       - id: e072cf10d3424eaa8a289e7545fe0a49  # Automatically created id
         type: entities
         title: Family Area
@@ -225,7 +226,7 @@ views:
           - entity: light.3_living_room
             type: custom:slider-entity-row
           - entity: switch.arlec_2a
-            type: custom:slider-entity-row
+          - entity: switch.pantry_light
       - id: 14011638fcd04aebbb92b28509382632  # Automatically created id
         type: entities
         title: Hallway
@@ -264,6 +265,7 @@ views:
         title: Outside
         show_header_toggle: true
         entities:
+          - switch.flood_light
           - switch.arlec_1b
           - switch.arlec_1c
 
@@ -753,25 +755,17 @@ views:
               green: 0
               yellow: 45
               red: 85
-      - type: horizontal-stack
-        cards:
-          - type: gauge
-            title: Storage
-            unit_of_measurement: '%'
-            entity: sensor.disk_use_percent_
-            severity:
-              green: 0
-              yellow: 45
-              red: 85
-          - type: glance
-            column_width: calc(100% / 5)
-            entities:
-              - entity: sensor.disk_use_
-                name: Used Space
-              # - entity: sensor.disk_free_
-              #   name: Free Space
-              - binary_sensor.online
-              - sensor.hassio_db_size
+      - type: glance
+        column_width: calc(100% / 5)
+        entities:
+          - entity: sensor.disk_use_
+            name: Used Space
+          - entity: sensor.disk_free_
+            name: Free Space
+          - entity: sensor.disk_use_percent_
+            name: Used Space %
+          - binary_sensor.online
+          - sensor.hassio_db_size
       - type: custom:vertical-stack-in-card
         cards:
           - type: glance
