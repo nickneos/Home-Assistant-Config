@@ -8,7 +8,7 @@
   retain: true
 
 - platform: mqtt
-  name: Test
+  name: Pantry Light
   command_topic: "cmnd/sonoff_basic_01/power"
   state_topic: "stat/sonoff_basic_01/POWER"
   qos: 1

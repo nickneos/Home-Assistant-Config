@@ -116,6 +116,8 @@ binary_sensor.online:
   icon: mdi:web
 switch.flood_light:
   icon: mdi:spotlight-beam
+switch.pantry_light:
+  icon: mdi:lightbulb
 script.vacuum_main:
   icon: mdi:broom
 script.vacuum_front_hallway:

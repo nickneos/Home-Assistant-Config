@@ -2,7 +2,7 @@
 #   hide_entity: True
 #   trigger:
 #     platform: state
-#     entity_id: binary_sensor.xiaomi_motion_sensor
+#     entity_id: binary_sensor.xiaomi_pantry_sensor
 #     from: 'off'
 #     to: 'on'
 #   condition:
@@ -27,7 +27,7 @@
 #   hide_entity: True
 #   trigger:
 #     platform: state
-#     entity_id: binary_sensor.xiaomi_motion_sensor
+#     entity_id: binary_sensor.xiaomi_pantry_sensor
 #     from: 'on'
 #     to: 'off'
 #     for:

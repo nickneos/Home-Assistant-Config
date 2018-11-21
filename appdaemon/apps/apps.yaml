@@ -44,7 +44,7 @@ xiaomi_button:
     - binary_sensor.xiaomi_switch_2
   gw_mac: !secret xiaomi_mac
   media_content_id: !secret doorbell
-  sensor_light: light.xiaomi_gateway_light
+  sensor_light: switch.pantry_light
 
 
 garage:

@@ -41,9 +41,10 @@ homeassistant:
 
 http:
   # api_password: !secret http_pw
-  ssl_certificate: /ssl/fullchain.pem
-  ssl_key: /ssl/privkey.pem
-  base_url: !secret url
+  # commented out below since using NGINX reverse proxy
+  # ssl_certificate: /ssl/fullchain.pem
+  # ssl_key: /ssl/privkey.pem
+  # base_url: !secret url
 
 frontend:
 config:
@@ -86,8 +87,8 @@ input_number:
   timer_hours:
     name: Hours
     initial: 1
-    min: 1
-    max: 24
+    min: 0
+    max: 12
     step: 1
 
 
@@ -156,6 +157,9 @@ google_assistant:
     switch.flood_light:
       expose: true
       name: Flood Light
+    switch.pantry_light:
+      expose: true
+      name: Pantry Light
     light.xiaomi_gateway_light:
       expose: true
     climate.bedroom:
