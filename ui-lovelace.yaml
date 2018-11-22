@@ -737,7 +737,26 @@ views:
     id: system
     icon: mdi:information-outline
     cards:
-      - type: horizontal-stack
+      - type: custom:vertical-stack-in-card
+        title: Speedtest.net
+        cards:
+          - type: sensor
+            entity: sensor.speedtest_download
+            name: Dowload
+            height: 63
+            line_color: "#3498db"
+          - type: sensor
+            entity: sensor.speedtest_upload
+            name: Upload
+            height: 25
+            line_color: "#3498db" 
+          - type: sensor
+            entity: sensor.speedtest_ping
+            name: Ping
+            height: 30
+            line_color: "#3498db" 
+      - type: custom:vertical-stack-in-card
+        title: System
         cards:
           - type: gauge
             title: CPU
@@ -755,17 +774,19 @@ views:
               green: 0
               yellow: 45
               red: 85
-      - type: glance
-        column_width: calc(100% / 5)
-        entities:
-          - entity: sensor.disk_use_
-            name: Used Space
-          - entity: sensor.disk_free_
-            name: Free Space
-          - entity: sensor.disk_use_percent_
-            name: Used Space %
-          - binary_sensor.online
-          - sensor.hassio_db_size
+          - type: gauge
+            title: Storage
+            unit_of_measurement: '%'
+            entity: sensor.disk_use_percent_
+            severity:
+              green: 0
+              yellow: 45
+              red: 85
+          - type: glance
+            entities:
+              - binary_sensor.online
+              - sensor.hassio_db_size
+              - sensor.hassio_db_no_of_days
       - type: custom:vertical-stack-in-card
         cards:
           - type: glance
@@ -789,9 +810,6 @@ views:
         entities:
           - input_boolean.holiday_mode
           - input_boolean.cast_visible
-      - type: entities
-        entities:
-          - switch.test
       - type: entities
         title: Timer
         entities:
