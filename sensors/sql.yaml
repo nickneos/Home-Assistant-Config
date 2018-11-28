@@ -4,14 +4,14 @@
   queries:
     - name: Hassio DB Size
       query: 'SELECT table_schema "database"
-                    ,Round(Sum(data_length + index_length) / 1048576, 2) "value" 
+                    ,Round(Sum(data_length + index_length) / 1048576, 1) "value" 
               FROM information_schema.tables 
               WHERE table_schema="homeassistant" 
               GROUP BY table_schema;'
       column: 'value'
       unit_of_measurement: MB
     - name: Hassio DB No Of Days
-      query: 'select timestampdiff(hour,min(created),max(created))/24 "value" 
+      query: 'select Round(timestampdiff(hour,min(created),max(created))/24, 1) "value" 
               from states;'
       column: 'value'
       unit_of_measurement: days

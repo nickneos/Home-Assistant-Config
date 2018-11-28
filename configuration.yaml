@@ -53,12 +53,19 @@ hassio:
 conversation:
 history:
 logbook:
-# logger:
+logger:
+  default: warn
+  logs:
+    # homeassistant.components.device_tracker: debug
+    # homeassistant.components.light: debug
+    # homeassistant.components.switch: debug
+    homeassistant.components.climate: debug
 # introduction:
 # discovery:
 sun:
 tts:
   platform: google
+
 
 ############ DB Recorder ############
 recorder: !include recorder.yaml
@@ -83,6 +90,7 @@ input_select:
       - Main AC
       - Bedroom AC
     initial: 'Select...'
+
 input_number:
   timer_hours:
     name: Hours
@@ -99,13 +107,10 @@ device_tracker:
     new_device_defaults:
       track_new_devices: False
       hide_if_away: False
-  - platform: asuswrt
-    host: !secret asus_ip
-    username: !secret asus_user
-    # password: !secret asus_pw
-    ssh_key: !secret asus_key
-    protocol: ssh
-    port: 22
+  - platform: unifi_direct
+    host: !secret unifi_ip
+    username: !secret unifi_user
+    password: !secret unifi_pw
     consider_home: 180
     new_device_defaults:
       track_new_devices: False
@@ -137,65 +142,8 @@ cast:
 
 
 ############ Google Assistant ############
-google_assistant:
-  project_id: !secret ga_proj
-  api_key: !secret ga_api
-  expose_by_default: false
-  entity_config:
-    switch.arlec_1a:
-      expose: true
-      name: Fridge
-    switch.arlec_1b:
-      expose: true
-      name: Outdoor Lights
-    switch.arlec_1c:
-      expose: true
-      name: Fairy Lights
-    switch.arlec_2a:
-      expose: true
-      name: Floor Lamp
-    switch.flood_light:
-      expose: true
-      name: Flood Light
-    switch.pantry_light:
-      expose: true
-      name: Pantry Light
-    light.xiaomi_gateway_light:
-      expose: true
-    climate.bedroom:
-      expose: true
-      name: Bedroom Air Conditioner
-    climate.living_room:
-      expose: true
-      name: Main Air Conditioner
-    switch.template_home_server:
-      expose: true
-      name: Server
-    switch.template_samsung_tv:
-      expose: true
-      name: Samsung TV
-      aliases:
-        - TV
-    switch.template_soniq_tv:
-      expose: true
-      name: Bedroom TV
-      aliases:
-        - Soniq TV
-        - TV
-    switch.template_harmony_fetch:
-      expose: true
-      name: Fetch
-    switch.template_harmony_tvsurround:
-      expose: true
-      name: Main TV
-      aliases: 
-        - TV
-        - Sony TV
-    cover.garage:
-      expose: true
-      name: Garage Door
-      aliases: 
-        - Garage
+google_assistant: !include google_assistant.yaml
+
 
 ############ Xiaomi Gateway ############
 xiaomi_aqara:
@@ -219,21 +167,21 @@ camera:
     input: !secret cam3
     name: Kitchen
   ## swann/reolink
-  - platform: ffmpeg
-    input: !secret reolink1
-    name: Front 1
-  - platform: ffmpeg
-    input: !secret reolink2
-    name: Front 2
-  - platform: ffmpeg
-    input: !secret reolink3
-    name: Deck
-  - platform: ffmpeg
-    input: !secret reolink4
-    name: Side
-  - platform: ffmpeg
-    input: !secret reolink5
-    name: Backyard
+  # - platform: ffmpeg
+  #   input: !secret reolink1
+  #   name: Front 1
+  # - platform: ffmpeg
+  #   input: !secret reolink2
+  #   name: Front 2
+  # - platform: ffmpeg
+  #   input: !secret reolink3
+  #   name: Deck
+  # - platform: ffmpeg
+  #   input: !secret reolink4
+  #   name: Side
+  # - platform: ffmpeg
+  #   input: !secret reolink5
+  #   name: Backyard
 
 
 ############ Notifications ############
@@ -379,12 +327,3 @@ switch: !include_dir_merge_list switches/
 script: !include_dir_merge_named scripts/
 automation: !include_dir_merge_list automations/
 group: !include groups.yaml
-# device_tracker: !include_dir_merge_list device_trackers/
-# shell_command: !include_dir_merge_named shell_command/
-# remote: !include_dir_merge_list remotes/
-# media_player: !include_dir_merge_list media_players/
-# input_select: !include_dir_merge_named input_select/
-# input_boolean: !include_dir_merge_named input_boolean/
-# zone: !include_dir_merge_list zones/
-# notify: !include_dir_merge_list notify/
-

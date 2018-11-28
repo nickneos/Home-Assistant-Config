@@ -1,0 +1,58 @@
+project_id: !secret ga_proj
+api_key: !secret ga_api
+expose_by_default: false
+entity_config:
+  switch.arlec_1a:
+    expose: true
+    name: Fridge
+  switch.arlec_1b:
+    expose: true
+    name: Outdoor Lights
+  switch.arlec_1c:
+    expose: true
+    name: Fairy Lights
+  switch.arlec_2a:
+    expose: true
+    name: Floor Lamp
+  switch.flood_light:
+    expose: true
+    name: Flood Light
+  switch.pantry_light:
+    expose: true
+    name: Pantry Light
+  light.xiaomi_gateway_light:
+    expose: true
+  climate.bedroom:
+    expose: true
+    name: Bedroom Air Conditioner
+  climate.living_room:
+    expose: true
+    name: Main Air Conditioner
+  switch.template_home_server:
+    expose: true
+    name: Server
+  switch.template_samsung_tv:
+    expose: true
+    name: Samsung TV
+    aliases:
+    - TV
+  switch.template_soniq_tv:
+    expose: true
+    name: Bedroom TV
+    aliases:
+    - Soniq TV
+    - TV
+  switch.template_harmony_fetch:
+    expose: true
+    name: Fetch
+  switch.template_harmony_tvsurround:
+    expose: true
+    name: Main TV
+    aliases: 
+    - TV
+    - Sony TV
+  cover.garage:
+    expose: true
+    name: Garage Door
+    aliases: 
+    - Garage
