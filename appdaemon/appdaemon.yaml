@@ -9,7 +9,11 @@ appdaemon:
     HASS:
       type: hass
       ha_url: http://hassio/homeassistant
-      token: 674911b125ff1c28720c7fbf24e635b6af239ee69ad88bef824367777ba61604
+      token: c54b612afa1423a214288406638147842bd63a24f9ccd20430f23d8ffbe0a388
 hadashboard:
   dash_url: http://127.0.0.1:5050
   dash_dir: /config/appdaemon/dashboards
+  rss_feeds:
+  - feed: https://www.abc.net.au/news/feed/51120/rss.xml
+    target: rss.abc_news
+  rss_update: 300

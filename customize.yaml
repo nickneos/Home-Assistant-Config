@@ -76,14 +76,15 @@ switch.template_harmony_netflix:
   icon: mdi:netflix
 switch.template_harmony_power:
   icon: mdi:power
-light.1_kitchen:
+light.kitchen:
   friendly_name: Kitchen
-light.2_dining:
+light.dining:
   friendly_name: Dining
-light.3_living_room:
+light.living_room:
   friendly_name: Living Room
 climate.bedroom:
   icon: mdi:air-conditioner
+  unit_of_measurement: °C
 sensor.temp_bedroom:
   friendly_name: Temperature
 sensor.temp_outside:
@@ -120,7 +121,7 @@ switch.pantry_light:
   icon: mdi:lightbulb
 script.vacuum_main:
   icon: mdi:broom
-script.vacuum_front_hallway:
+script.vacuum_hallway:
   icon: mdi:broom
 script.vacuum_spare_rooms:
   icon: mdi:broom
@@ -132,3 +133,10 @@ script.vacuum_bedroom_3:
   icon: mdi:broom
 input_boolean.cast_visible:
   icon: mdi:cast
+climate.living_room:
+  icon: mdi:air-conditioner
+  unit_of_measurement: °C
+sensor.hassio_db_size:
+  icon: mdi:database
+sensor.hassio_db_no_of_days:
+  icon: mdi:database

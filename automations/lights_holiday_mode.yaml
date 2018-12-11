@@ -17,7 +17,7 @@
 #         transition: 150   
 #     - delay: '{{ (range(0, 2)|random|int) }}:{{ (range(1, 59)|random|int) }}:00'
 #     - service: light.turn_on
-#       entity_id: light.1_kitchen
+#       entity_id: light.kitchen
 #     - service: switch.turn_on
 #       entity_id: switch.arlec_2a
 

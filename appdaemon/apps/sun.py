@@ -63,7 +63,7 @@ class Sunset(hass.Hass):
 
         elif kwargs["stage"] == 1:
             # Stage 1: turn on some family area lights
-            devs = ["light.1_kitchen", "switch.arlec_2a"]
+            devs = ["light.kitchen", "switch.arlec_2a"]
             for dev in devs:
                 self.log(f"Turning on {dev}")
                 self.turn_on(dev)

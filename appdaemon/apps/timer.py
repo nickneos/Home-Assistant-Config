@@ -29,5 +29,5 @@ class Timer(hass.Hass):
     def power_off(self, kwargs):
         dev = kwargs["device"]
         self.log(f"Turning off {dev}")
-        self.turn_off(dev)
+        self.call_service("climate/set_operation_mode", entity_id = dev, operation_mode = "off")
 

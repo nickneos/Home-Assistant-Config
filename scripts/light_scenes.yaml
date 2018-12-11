@@ -9,5 +9,5 @@ scene_kitchen:
     - service: switch.turn_off
       entity_id: group.light_devices
     - service: light.turn_on
-      entity_id: light.1_kitchen
+      entity_id: light.kitchen
     

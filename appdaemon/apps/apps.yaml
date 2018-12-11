@@ -3,7 +3,7 @@ presence:
   class: Presence
   arrival_on:
     - switch.arlec_2a
-    - light.1_kitchen
+    - light.kitchen
     - switch.template_harmony_fetch
   away_off:
     - group.light_devices
@@ -20,7 +20,7 @@ sunset:
   class: Sunset
   devices_on:
     - switch.arlec_2a
-    - light.1_kitchen
+    - light.kitchen
   pet_light: light.hallway_2
 
 googlehome:
@@ -44,7 +44,13 @@ xiaomi_button:
     - binary_sensor.xiaomi_switch_2
   gw_mac: !secret xiaomi_mac
   media_content_id: !secret doorbell
-  sensor_light: switch.pantry_light
+
+xiaomi_motion:
+  module: xiaomi
+  class: Motion
+  light: switch.pantry_light
+  sensor: binary_sensor.xiaomi_pantry_sensor
+  duration: 300
 
 
 garage:

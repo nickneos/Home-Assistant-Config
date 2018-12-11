@@ -105,9 +105,9 @@
 # family_lights:
 #   name: Family Area Lights
 #   entities:
-#     - light.1_Kitchen
-#     - light.2_Dining
-#     - light.3_Living_Room
+#     - light.kitchen
+#     - light.dining
+#     - light.living_room
 #     - switch.arlec_2a
 
 # hallway_lights:
@@ -133,9 +133,9 @@
 # # my_home_lights:
 #   # name: All Lights
 #   # entities:
-#     # - light.1_Kitchen
-#     # - light.2_Dining
-#     # - light.3_Living_Room
+#     # - light.kitchen
+#     # - light.dining
+#     # - light.living_room
 #     # - switch.arlec_2a
 #     # - light.Bedroom
 #     # - light.Hallway_1
@@ -257,9 +257,9 @@
 light_devices:
   name: All Lights
   entities:
-    - light.1_kitchen
-    - light.2_dining
-    - light.3_living_room
+    - light.kitchen
+    - light.dining
+    - light.living_room
     - light.bedroom
     - light.bedroom_2
     - light.xiaomi_gateway_light
@@ -288,6 +288,12 @@ weather:
   - sensor.bom_delta_temp_c
   - sensor.bom_dew_point_c
   - sensor.bom_feels_like_c
+  - sensor.bom_forecast_melbourne_0
+  - sensor.bom_forecast_melbourne_1
+  - sensor.bom_forecast_melbourne_2
+  - sensor.bom_forecast_melbourne_3
+  - sensor.bom_forecast_melbourne_4
+  - sensor.bom_forecast_melbourne_5
   - sensor.bom_melbourne_chance_of_rain_0
   - sensor.bom_melbourne_chance_of_rain_1
   - sensor.bom_melbourne_chance_of_rain_2

@@ -5,16 +5,16 @@ vacuum_main:
       data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         command: app_zoned_clean
-        params: [[19059,25168,27509,30168,1],[16512,26186,18612,30186,1],[15303,25173,19153,26623,1],[20299,23589,23299,25239,1]]
+        params: [[15322,25118,26972,30818,1],[20296,20699,23346,25149,1],[15412,23602,16812,25102,1]]
 
-vacuum_front_hallway:
+vacuum_hallway:
   alias: "Vacuum Hallway"
   sequence:
     - service: vacuum.send_command
       data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         command: app_zoned_clean
-        params: [[6895,25025,12295,26825,1]]
+        params: [[6987,25014,12387,26614,1],[12371,24987,15321,26387,1]]
 
 vacuum_spare_rooms:
   alias: "Vacuum Spare Rooms"
@@ -23,7 +23,7 @@ vacuum_spare_rooms:
       data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         command: app_zoned_clean
-        params: [[12165,26300,15615,30100,1],[12171,24740,15371,26540,1],[11757,20822,15307,24922,1]]
+        params: [[12208,20165,15308,30415,1]]
 
 vacuum_master_bedroom:
   alias: "Vacuum Master Bedroom"

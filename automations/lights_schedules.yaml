@@ -63,7 +63,7 @@
 #       state: below_horizon
 #   action:
 #     - service: light.turn_on
-#       entity_id: light.1_kitchen
+#       entity_id: light.kitchen
 #       data:
 #         brightness_pct: 100
 #         kelvin: 3500

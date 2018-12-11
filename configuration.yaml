@@ -54,14 +54,13 @@ conversation:
 history:
 logbook:
 logger:
-  default: warn
+  default: warning
   logs:
-    # homeassistant.components.device_tracker: debug
+    homeassistant.components.konnected: debug
     # homeassistant.components.light: debug
     # homeassistant.components.switch: debug
-    homeassistant.components.climate: debug
+    # homeassistant.components.climate: debug
 # introduction:
-# discovery:
 sun:
 tts:
   platform: google
@@ -99,6 +98,12 @@ input_number:
     max: 12
     step: 1
 
+input_datetime:
+  timer_off:
+    name: Time to turn off
+    has_date: true
+    has_time: true
+
 
 ############ Device Trackers ############
 device_tracker:
@@ -115,6 +120,17 @@ device_tracker:
     new_device_defaults:
       track_new_devices: False
       hide_if_away: False
+  # - platform: unifi
+  #   host: !secret hass_ip
+  #   username: !secret unifi_user2
+  #   password: !secret unifi_pw2
+  #   site_id: !secret unifi_siteid
+  #   verify_ssl: false
+  #   detection_time: 180
+  #   consider_home: 180
+  #   new_device_defaults:
+  #     track_new_devices: False
+  #     hide_if_away: False
 
 
 ############ Remotes ############
@@ -319,6 +335,52 @@ vacuum:
   - platform: xiaomi_miio
     host: !secret vacuum_ip
     token: !secret vacuum_token
+
+
+# konnected:
+#   access_token: !secret konnected_token
+#   api_host: !secret hass_url
+#   devices:
+#     - id: !secret konnected_mac
+#       binary_sensors:
+#         - zone: 1
+#           type: motion
+#       switches:
+#         - zone: out
+#       host: !secret konnected_host
+#       port: !secret konnected_port
+#       discovery: False        
+
+# discovery:
+#   ignore:
+#     - apple_tv
+#     - axis
+#     - belkin_wemo
+#     - bluesound
+#     - bose_soundtouch
+#     - denonavr
+#     - directv
+#     - frontier_silicon
+#     - google_cast
+#     - harmony
+#     - ikea_tradfri
+#     - logitech_mediaserver
+#     - netgear_router
+#     - openhome
+#     - panasonic_viera
+#     - philips_hue
+#     - plex_mediaserver
+#     - roku
+#     - sabnzbd
+#     - samsung_printer
+#     - samsung_tv
+#     - sonos
+#     - songpal 
+#     - tellstick
+#     - wink
+#     - yamaha
+#     - yeelight
+#     - xiaomi_gw
 
 
 ############ Merged Files ############

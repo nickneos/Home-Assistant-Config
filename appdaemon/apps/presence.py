@@ -32,7 +32,7 @@ class Presence(hass.Hass):
         
         # devices to turn on
         for device in self.args["arrival_on"]:
-            if device == "light.1_kitchen" and self.now_is_between("sunset - 00:30:00", "sunrise + 00:10:00"):
+            if device == "light.kitchen" and self.now_is_between("sunset - 00:30:00", "sunrise + 00:10:00"):
                 self.log(f"Turning on {device}")
                 self.turn_on(device, brightness_pct = "100", kelvin = "3500")
 
