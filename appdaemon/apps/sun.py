@@ -2,16 +2,14 @@ import appdaemon.plugins.hass.hassapi as hass
 import random
 import datetime
 
-#
-# Sunset App
-#
-# Args:
-#   devices_on: devices to turn on when someone arrives home
-#   devices_off: devices to turn off when everyones left home
-#   pet_light: light to leave on at night when no ones home
-
-
 class Sunset(hass.Hass):
+    """
+    Sunset App
+    Args:
+        devices_on: devices to turn on when someone arrives home
+        devices_off: devices to turn off when everyones left home
+        pet_light: light to leave on at night when no ones home
+    """
 
     def initialize(self):
         self.handle1 = None
@@ -20,31 +18,54 @@ class Sunset(hass.Hass):
 
 
     def sunset_cb(self, kwargs):
+        """Sunset Callback Function"""
         self.log("sunset callback triggered")
 
-        if self.noone_home() and self.get_state("input_boolean.holiday_mode") != "on":
+        if self.noone_home() and \
+                self.get_state("input_boolean.holiday_mode") != "on":
             self.log("Turning on {}".format(self.args["pet_light"]))
-            self.turn_on(self.args["pet_light"], brightness_pct = "60", kelvin = "3200", transition = "120")
-
-        elif self.anyone_home() and self.get_state("input_boolean.holiday_mode") != "on":
+            self.turn_on(self.args["pet_light"], brightness_pct = "60", 
+                         kelvin = "3200", transition = "120")
+        elif self.anyone_home() and \
+                self.get_state("input_boolean.holiday_mode") != "on":
             for device in self.args["devices_on"]:
                 self.log(f"Turning on {device}")
                 self.turn_on(device)
-
         elif self.get_state("input_boolean.holiday_mode") == "on":
             self.run_in(self.holiday_mode, 1, stage = 0)
+        
+        fairy_lights = ["switch.arlec_1c"]
+        if self.get_state("input_boolean.fairy_lights") == "on":
+            for fl in fairy_lights:
+                self.log(f"Turning on {fl}")
+                self.turn_on(fl)
+            self.run_in(self.end_fairy_lights, 4 * 60 * 60, 
+                        lights = fairy_lights)
 
+
+    def end_fairy_lights(self, kwargs):
+        """Callback function to turn off fairy lights"""
+        lights = kwargs["lights"]
+        for fl in lights:
+            self.log(f"Turning off {fl}")
+            self.turn_off(fl)
 
 
     def holiday_mode(self, kwargs):
-        
+        """
+        Callback function for holiday mode:
+        Simulates house presence by turning on and off different set
+        of lights 
+        """
         if kwargs["stage"] == 0:
-            self.log("Holiday Mode is activated...beginning holiday algorithm")
+            self.log(
+                "Holiday Mode is activated...beginning holiday algorithm")
 
             # Turn on Hallway 2 Light
             dev = "light.hallway_2"
             self.log(f"Turning on {dev}")
-            self.turn_on(dev, brightness_pct = "60", kelvin = "3200", transition = "120")
+            self.turn_on(dev, brightness_pct = "60", kelvin = "3200", 
+                         transition = "120")
 
             # Generate stage 1 start time
             s_delay = random.randint(15*60, 120*60)
@@ -52,7 +73,8 @@ class Sunset(hass.Hass):
             self.log(f"Random datetime generated for stage 1: {run_at_1}")
 
             # Generate stage 2 start time
-            basetime = datetime.datetime.combine(self.date(), datetime.time(21, 5))
+            basetime = datetime.datetime.combine(self.date(), 
+                                                 datetime.time(21, 5))
             s_delay = random.randint(30*60, 180*60)
             run_at_2 = basetime + datetime.timedelta(seconds = s_delay)
             self.log(f"Random datetime generated for stage 2: {run_at_2}")
@@ -74,7 +96,8 @@ class Sunset(hass.Hass):
 
             # If stage 2 is triggered before stage 1 then cancel stage 1 timer
             if self.handle1 != None: 
-                self.log(f"Canceling self.handle1: {self.info_timer(self.handle1)}")
+                self.log(
+                    f"Canceling self.handle1: {self.info_timer(self.handle1)}")
                 self.cancel_timer(self.handle1)
 
             # Turn off all lights
@@ -101,5 +124,3 @@ class Sunset(hass.Hass):
         elif kwargs["stage"] == 4:
             # Stage 4: Turn off all lights
             self.turn_off("group.light_devices")
-
-

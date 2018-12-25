@@ -268,7 +268,7 @@ light_devices:
     - light.spare_room
     - light.study
     - switch.arlec_1b
-    - switch.arlec_1c
+    # - switch.arlec_1c
     - switch.arlec_2a
     - switch.flood_light
     - switch.pantry_light
