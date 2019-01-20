@@ -5,19 +5,19 @@ entity_config:
   switch.arlec_1a:
     expose: true
     name: Fridge
-  switch.arlec_1b:
+  light.outdoor_lights:
     expose: true
     name: Outdoor Lights
-  switch.arlec_1c:
+  light.fairy_lights:
     expose: true
     name: Fairy Lights
-  switch.arlec_2a:
+  light.floor_lamp:
     expose: true
     name: Floor Lamp
-  switch.flood_light:
+  light.flood_light:
     expose: true
     name: Flood Light
-  switch.pantry_light:
+  light.pantry_light:
     expose: true
     name: Pantry Light
   light.xiaomi_gateway_light:

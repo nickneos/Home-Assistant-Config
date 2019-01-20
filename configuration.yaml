@@ -57,11 +57,10 @@ logger:
   default: warning
   logs:
     custom_components.climate: debug
-    custom_components.remote: debug
+    # custom_components.remote: debug
+    # homeassistant.components.konnected: debug
     # pyharmony: debug
-    # homeassistant.components.light: debug
     # homeassistant.components.switch: debug
-    # homeassistant.components.climate: debug
 # introduction:
 sun:
 tts:
@@ -282,8 +281,8 @@ climate:
       operations:
         - 'off'
         - cool
-        # - dry
-        # - heat
+        - dry
+        - heat
       fan_modes:
         - low
         - med
@@ -343,50 +342,49 @@ vacuum:
     token: !secret vacuum_token
 
 
-# konnected:
-#   access_token: !secret konnected_token
-#   api_host: !secret hass_url
-#   devices:
-#     - id: !secret konnected_mac
-#       binary_sensors:
-#         - zone: 1
-#           type: motion
-#       switches:
-#         - zone: out
-#       host: !secret konnected_host
-#       port: !secret konnected_port
-#       discovery: False        
+konnected:
+  access_token: !secret konnected_token
+  api_host: !secret hass_url
+  devices:
+    - id: !secret konnected_mac
+      host: !secret konnected_host
+      port: !secret konnected_port
+      discovery: False
+      binary_sensors:
+        - zone: 1
+          type: motion
+        - zone: 2
+          type: motion
+        - zone: 3
+          type: motion
+        - zone: 4
+          type: motion
+        - zone: 5
+          type: motion
+        - zone: 6
+          type: lock
+      switches:
+        - zone: out
+          momentary: 500
+          name: Alarm Toggle
+     
+light:
+  - platform: switch
+    name: Floor Lamp
+    entity_id: switch.floor_lamp
+  - platform: switch
+    name: Pantry Light
+    entity_id: switch.pantry_light
+  - platform: switch
+    name: Flood Light
+    entity_id: switch.flood_light
+  - platform: switch
+    name: Outdoor Lights
+    entity_id: switch.arlec_1b
+  - platform: switch
+    name: Fairy Lights
+    entity_id: switch.arlec_1c
 
-# discovery:
-#   ignore:
-#     - apple_tv
-#     - axis
-#     - belkin_wemo
-#     - bluesound
-#     - bose_soundtouch
-#     - denonavr
-#     - directv
-#     - frontier_silicon
-#     - google_cast
-#     - harmony
-#     - ikea_tradfri
-#     - logitech_mediaserver
-#     - netgear_router
-#     - openhome
-#     - panasonic_viera
-#     - philips_hue
-#     - plex_mediaserver
-#     - roku
-#     - sabnzbd
-#     - samsung_printer
-#     - samsung_tv
-#     - sonos
-#     - songpal 
-#     - tellstick
-#     - wink
-#     - yamaha
-#     - yeelight
-#     - xiaomi_gw
 
 
 ############ Merged Files ############

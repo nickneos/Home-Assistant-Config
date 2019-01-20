@@ -13,8 +13,8 @@ global_parameters:
         step: 5
 layout:
     - light.kitchen, light.dining, clock (3x1), light.hallway_1, light.hallway_2
-    - light.living_room, switch.arlec_2a, switch.pantry_light, light.spare_room, light.study, all_lights (2x1)
-    - light.bedroom, light.bedroom_2, switch.flood_light, switch.arlec_1b, switch.arlec_1c, light.xiaomi_gateway_light
+    - light.living_room, light.floor_lamp, light.pantry_light, light.spare_room, light.study, all_lights (2x1)
+    - light.bedroom, light.bedroom_2, light.flood_light, light.outdoor_lights, light.fairy_lights, light.xiaomi_gateway_light
     - load_main, load_lights, load_media, spacer, spacer, spacer, reload
     # - empty: 2
 
@@ -31,7 +31,7 @@ clock:
 
 all_lights:
     widget_type: group
-    entity: group.light_devices
+    entity: group.all_lights
     title: All Lights
     widget_style: $black_background
 

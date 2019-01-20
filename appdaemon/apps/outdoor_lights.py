@@ -1,7 +1,7 @@
 import appdaemon.plugins.hass.hassapi as hass
 
-DEV1 = "switch.flood_light"
-DEV2 = "switch.arlec_1b"
+DEV1 = "light.flood_light"
+DEV2 = "light.outdoor_lights"
 
 class OutdoorLights(hass.Hass):
 

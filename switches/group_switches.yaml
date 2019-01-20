@@ -3,35 +3,35 @@
 #   switches:
 #     house_lights:
 #       friendly_name: 'House Lights'
-#       value_template: "{{ is_state('group.all_lights', 'on') or is_state('switch.arlec_1b', 'on') or is_state('switch.arlec_1c', 'on') or is_state('switch.arlec_2a', 'on') }}"
+#       value_template: "{{ is_state('group.all_lights', 'on') or is_state('light.outdoor_lights', 'on') or is_state('light.fairy_lights', 'on') or is_state('light.floor_lamp', 'on') }}"
 #       turn_on:
 #         - service: light.turn_on
 #           entity_id: group.all_lights
 #         - service: switch.turn_on
-#           entity_id: switch.arlec_1b
+#           entity_id: light.outdoor_lights
 #         - service: switch.turn_on
-#           entity_id: switch.arlec_1c
+#           entity_id: light.fairy_lights
 #         - service: switch.turn_on
-#           entity_id: switch.arlec_2a
+#           entity_id: light.floor_lamp
 #       turn_off:
 #         - service: light.turn_off
 #           entity_id: group.all_lights
 #         - service: switch.turn_off
-#           entity_id: switch.arlec_1b
+#           entity_id: light.outdoor_lights
 #         - service: switch.turn_off
-#           entity_id: switch.arlec_1c
+#           entity_id: light.fairy_lights
 #         - service: switch.turn_off
-#           entity_id: switch.arlec_2a
+#           entity_id: light.floor_lamp
 
 ### Master Switch ###
 - platform: template
   switches:
     master_switch:
       friendly_name: 'Master Switch'
-      value_template: "{{ is_state('group.light_devices', 'on') or is_state('remote.living_room', 'on') or is_state('switch.template_samsung_tv', 'on') }}"
+      value_template: "{{ is_state('group.all_lights', 'on') or is_state('remote.living_room', 'on') or is_state('switch.template_samsung_tv', 'on') }}"
       turn_on:
         - service: homeassistant.turn_on
-          entity_id: group.light_devices
+          entity_id: group.all_lights
         - service: remote.turn_on
           entity_id: remote.living_room
         - service: switch.turn_on
@@ -40,7 +40,7 @@
           # entity_id: switch.template_home_server
       turn_off:
         - service: homeassistant.turn_off
-          entity_id: group.light_devices
+          entity_id: group.all_lights
         - service: remote.turn_off
           entity_id: remote.living_room
         - service: switch.turn_off

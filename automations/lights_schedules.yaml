@@ -68,7 +68,7 @@
 #         brightness_pct: 100
 #         kelvin: 3500
 #     - service: switch.turn_on
-#       entity_id: switch.arlec_2a
+#       entity_id: light.floor_lamp
 #     - delay: 00:15:00
 #     - service: light.turn_off
 #       entity_id: light.hallway_2 

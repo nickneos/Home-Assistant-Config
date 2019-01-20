@@ -34,7 +34,7 @@ class Sunset(hass.Hass):
         elif self.get_state("input_boolean.holiday_mode") == "on":
             self.run_in(self.holiday_mode, 1, stage = 0)
         
-        fairy_lights = ["switch.arlec_1c"]
+        fairy_lights = ["light.fairy_lights"]
         if self.get_state("input_boolean.fairy_lights") == "on":
             for fl in fairy_lights:
                 self.log(f"Turning on {fl}")
@@ -85,7 +85,7 @@ class Sunset(hass.Hass):
 
         elif kwargs["stage"] == 1:
             # Stage 1: turn on some family area lights
-            devs = ["light.kitchen", "switch.arlec_2a"]
+            devs = ["light.kitchen", "light.floor_lamp"]
             for dev in devs:
                 self.log(f"Turning on {dev}")
                 self.turn_on(dev)
@@ -101,7 +101,7 @@ class Sunset(hass.Hass):
                 self.cancel_timer(self.handle1)
 
             # Turn off all lights
-            dev = "group.light_devices"
+            dev = "group.all_lights"
             self.log(f"Turning off {dev}")
             self.turn_off(dev)
 
@@ -123,4 +123,4 @@ class Sunset(hass.Hass):
         
         elif kwargs["stage"] == 4:
             # Stage 4: Turn off all lights
-            self.turn_off("group.light_devices")
+            self.turn_off("group.all_lights")

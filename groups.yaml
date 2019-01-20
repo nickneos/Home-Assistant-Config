@@ -108,7 +108,7 @@
 #     - light.kitchen
 #     - light.dining
 #     - light.living_room
-#     - switch.arlec_2a
+#     - light.floor_lamp
 
 # hallway_lights:
 #   name: Hallway Lights
@@ -121,8 +121,8 @@
 #   entities:
 #     - light.Study
 #     - light.Spare_Room
-#     - switch.arlec_1b
-#     - switch.arlec_1c
+#     - light.outdoor_lights
+#     - light.fairy_lights
 #     - light.xiaomi_gateway_light
 
 # bedroom_lights:
@@ -136,7 +136,7 @@
 #     # - light.kitchen
 #     # - light.dining
 #     # - light.living_room
-#     # - switch.arlec_2a
+#     # - light.floor_lamp
 #     # - light.Bedroom
 #     # - light.Hallway_1
 #     # - light.Hallway_2
@@ -254,24 +254,6 @@
 #   # entities:
 #     # - sensor.ssl_cert_expiry
 
-light_devices:
-  name: All Lights
-  entities:
-    - light.kitchen
-    - light.dining
-    - light.living_room
-    - light.bedroom
-    - light.bedroom_2
-    - light.xiaomi_gateway_light
-    - light.hallway_1
-    - light.hallway_2
-    - light.spare_room
-    - light.study
-    - switch.arlec_1b
-    # - switch.arlec_1c
-    - switch.arlec_2a
-    - switch.flood_light
-    - switch.pantry_light
 
 weather:
   name: weather

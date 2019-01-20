@@ -19,7 +19,7 @@
 #     - service: light.turn_on
 #       entity_id: light.kitchen
 #     - service: switch.turn_on
-#       entity_id: switch.arlec_2a
+#       entity_id: light.floor_lamp
 
 # - alias: 'Holiday - Lights Off'
 #   hide_entity: True

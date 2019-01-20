@@ -2,11 +2,11 @@ presence:
   module: presence
   class: Presence
   arrival_on:
-    - switch.arlec_2a
+    - light.floor_lamp
     - light.kitchen
     - switch.template_harmony_fetch
   away_off:
-    - group.light_devices
+    - group.all_lights
     - remote.living_room
     - switch.template_samsung_tv
   pet_light: light.hallway_2
@@ -19,7 +19,7 @@ sunset:
   module: sun
   class: Sunset
   devices_on:
-    - switch.arlec_2a
+    - light.floor_lamp
     - light.kitchen
   pet_light: light.hallway_2
 
@@ -45,13 +45,25 @@ xiaomi_button:
   gw_mac: !secret xiaomi_mac
   media_content_id: !secret doorbell
 
-xiaomi_motion:
-  module: xiaomi
-  class: Motion
-  light: switch.pantry_light
+pantry_motion_light:
+  module: motion
+  class: sensor_light
+  light: light.pantry_light
   sensor: binary_sensor.xiaomi_pantry_sensor
   duration: 300
-
+hallway_motion_light:
+  module: motion
+  class: sensor_light
+  light: light.hallway_2
+  sensor: binary_sensor.konnected_2345c8_zone_3
+  duration: 300
+  night_mode: true
+# garage_motion_light:
+#   module: motion
+#   class: sensor_light
+#   light: switch.garage_light
+#   sensor: binary_sensor.konnected_2345c8_zone_1
+#   duration: 300
 
 garage:
   module: garage
@@ -64,3 +76,18 @@ outdoor_lights:
 timer:
   module: timer
   class: Timer
+
+router:
+  module: router
+  class: Router
+
+alarm:
+  module: motion
+  class: Alarm
+  motion_sensors:
+    - binary_sensor.konnected_2345c8_zone_1
+    - binary_sensor.konnected_2345c8_zone_2
+    - binary_sensor.konnected_2345c8_zone_3
+    - binary_sensor.konnected_2345c8_zone_4
+    - binary_sensor.konnected_2345c8_zone_5
+    - binary_sensor.xiaomi_pantry_sensor

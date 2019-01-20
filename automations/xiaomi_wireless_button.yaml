@@ -60,7 +60,7 @@
 #         click_type: single
 #   action:
 #     service: switch.toggle
-#     entity_id: switch.arlec_1b
+#     entity_id: light.outdoor_lights
 
 # - alias: Toggle Fairy Lights on Double Click
 #   hide_entity: True
@@ -72,7 +72,7 @@
 #         click_type: double
 #   action:
 #     service: switch.toggle
-#     entity_id: switch.arlec_1c
+#     entity_id: light.fairy_lights
 
 # ### Doorbell - home ###
 # - alias: Doorbell 1 Single Press
