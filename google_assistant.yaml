@@ -20,8 +20,19 @@ entity_config:
   light.pantry_light:
     expose: true
     name: Pantry Light
+  light.workbench_light:
+    expose: true
+    name: Workbench Light
+  light.back_hallway:
+    expose: true
+    name: Back Hallway
   light.xiaomi_gateway_light:
     expose: true
+  light.front_porch:
+    expose: true
+    name: Front Porch
+    aliases:
+    - Porch
   climate.bedroom:
     expose: true
     name: Bedroom Air Conditioner

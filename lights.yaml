@@ -1,0 +1,38 @@
+  - platform: switch
+    name: Floor Lamp
+    entity_id: switch.floor_lamp
+  - platform: switch
+    name: Pantry Light
+    entity_id: switch.pantry_light
+  - platform: switch
+    name: Flood Light
+    entity_id: switch.flood_light
+  - platform: switch
+    name: Outdoor Lights
+    entity_id: switch.arlec_1b
+  - platform: switch
+    name: Fairy Lights
+    entity_id: switch.arlec_1c
+  - platform: switch
+    name: Workbench Light
+    entity_id: switch.garage_light
+  - platform: mqtt
+    name: Back Hallway
+    command_topic: "cmnd/bulb1/power"
+    state_topic: "stat/bulb1/POWER"
+    brightness_command_topic: "cmnd/bulb1/dimmer"
+    brightness_scale: 100
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+  - platform: mqtt
+    name: Front Porch
+    command_topic: "cmnd/bulb2/power"
+    state_topic: "stat/bulb2/POWER"
+    brightness_command_topic: "cmnd/bulb2/dimmer"
+    brightness_scale: 100
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true

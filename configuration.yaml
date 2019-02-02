@@ -112,11 +112,6 @@ input_datetime:
 
 ############ Device Trackers ############
 device_tracker:
-  - platform: gpslogger
-    consider_home: 180
-    new_device_defaults:
-      track_new_devices: False
-      hide_if_away: False
   - platform: unifi_direct
     host: !secret unifi_ip
     username: !secret unifi_user
@@ -125,18 +120,7 @@ device_tracker:
     new_device_defaults:
       track_new_devices: False
       hide_if_away: False
-  # - platform: unifi
-  #   host: !secret hass_ip
-  #   username: !secret unifi_user2
-  #   password: !secret unifi_pw2
-  #   site_id: !secret unifi_siteid
-  #   verify_ssl: false
-  #   detection_time: 180
-  #   consider_home: 180
-  #   new_device_defaults:
-  #     track_new_devices: False
-  #     hide_if_away: False
-
+gpslogger:
 
 ############ Remotes ############
 remote:
@@ -154,11 +138,6 @@ media_player:
     mac: !secret samsungtv_mac
   - platform: braviatv
     host: !secret bravia_host
-  # - platform: ps4
-    # host: !secret ps4_host
-    # ps4_ip: !secret ps4_ip
-    # name: PlayStation 4
-    # local_store: games
 cast:
 
 
@@ -367,29 +346,11 @@ konnected:
         - zone: out
           momentary: 500
           name: Alarm Toggle
-     
-light:
-  - platform: switch
-    name: Floor Lamp
-    entity_id: switch.floor_lamp
-  - platform: switch
-    name: Pantry Light
-    entity_id: switch.pantry_light
-  - platform: switch
-    name: Flood Light
-    entity_id: switch.flood_light
-  - platform: switch
-    name: Outdoor Lights
-    entity_id: switch.arlec_1b
-  - platform: switch
-    name: Fairy Lights
-    entity_id: switch.arlec_1c
-
-
 
 ############ Merged Files ############
 sensor: !include_dir_merge_list sensors/
 switch: !include_dir_merge_list switches/
 script: !include_dir_merge_named scripts/
 automation: !include automations.yaml
+light: !include lights.yaml
 group: !include groups.yaml
