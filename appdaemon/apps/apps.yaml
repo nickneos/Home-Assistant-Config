@@ -31,20 +31,55 @@ googlehome:
     - media_player.google_home_office
     - media_player.google_home_bedroom
 
-xiaomi_button:
+### Xiaomi Buttons ###
+bedroom_buttons:
   module: xiaomi
   class: Button
-  bedroom_switch:
+  buttons:
     - binary_sensor.xiaomi_switch_1
     - binary_sensor.xiaomi_switch_3
-  outside_switch:
+  actions:
+    - click_type: single
+      type: standard
+      entity: light.bedroom
+      service: toggle
+    - click_type: double
+      type: standard
+      entity: switch.template_soniq_tv
+      service: toggle
+    - click_type: long_click_press
+      type: standard
+      entity: switch.master_switch
+      service: turn_off
+outside_button:
+  module: xiaomi
+  class: Button
+  buttons:
     - binary_sensor.xiaomi_switch_4
-  # for doorbell
-  doorbell:
+  actions:
+    - click_type: single
+      type: standard
+      entity: light.flood_light
+      service: toggle
+    - click_type: double
+      type: standard
+      entity: light.fairy_lights
+      service: toggle
+doorbell:
+  module: xiaomi
+  class: Button
+  buttons:
     - binary_sensor.xiaomi_switch_2
-  gw_mac: !secret xiaomi_mac
-  media_content_id: !secret doorbell
+  actions:
+    - click_type: single
+      type: doorbell
+      light: light.front_porch
+      gw_mac: !secret xiaomi_mac
+      ringtone_id: 10001
+      volume: 20
 
+
+### Motion Lights ###
 pantry_motion_light:
   module: motion
   class: sensor_light
@@ -56,18 +91,30 @@ hallway_motion_light:
   class: sensor_light
   light: light.hallway_2
   sensor: binary_sensor.konnected_2345c8_zone_3
-  duration: 300
+  duration: 180
   night_mode: true
-# garage_motion_light:
-#   module: motion
-#   class: sensor_light
-#   light: switch.garage_light
-#   sensor: binary_sensor.konnected_2345c8_zone_1
-#   duration: 300
+back_hallway_motion_light:
+  module: motion
+  class: sensor_light
+  light: light.back_hallway
+  sensor: binary_sensor.konnected_2345c8_zone_4
+  duration: 120
+  night_mode: true
+  brightness: 30
+garage_motion_light:
+  module: motion
+  class: sensor_light
+  light: light.workbench_light
+  sensor: binary_sensor.konnected_2345c8_zone_1
+  duration: 120
 
 garage:
   module: garage
   class: Garage
+  garage_door: cover.garage
+  light: light.front_porch
+  light_duration: 180
+
 
 outdoor_lights:
   module: outdoor_lights
@@ -77,17 +124,23 @@ timer:
   module: timer
   class: Timer
 
-router:
-  module: router
-  class: Router
+# router:
+#   module: router
+#   class: Router
 
 alarm:
   module: motion
   class: Alarm
   motion_sensors:
-    - binary_sensor.konnected_2345c8_zone_1
-    - binary_sensor.konnected_2345c8_zone_2
-    - binary_sensor.konnected_2345c8_zone_3
-    - binary_sensor.konnected_2345c8_zone_4
-    - binary_sensor.konnected_2345c8_zone_5
-    - binary_sensor.xiaomi_pantry_sensor
+    - name: Garage
+      entity: binary_sensor.konnected_2345c8_zone_1
+    - name: Family Area
+      entity: binary_sensor.konnected_2345c8_zone_2
+    - name: Hallway
+      entity: binary_sensor.konnected_2345c8_zone_3
+    - name: Back Hallway
+      entity: binary_sensor.konnected_2345c8_zone_4
+    - name: Master Bedroom
+      entity: binary_sensor.konnected_2345c8_zone_5
+    - name: Pantry
+      entity: binary_sensor.xiaomi_pantry_sensor

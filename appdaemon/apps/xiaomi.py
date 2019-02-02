@@ -1,65 +1,45 @@
 import appdaemon.plugins.hass.hassapi as hass
 import time
 
-
 class Button(hass.Hass):
 
     def initialize(self):
-        for switch in self.args["bedroom_switch"]:
-            self.listen_event(self.bedroom_switch, "xiaomi_aqara.click",
-                              entity_id = switch)
         
-        for switch in self.args["outside_switch"]:
-            self.listen_event(self.outside_switch, "xiaomi_aqara.click", 
-                              entity_id = switch)
-        
-        for switch in self.args["doorbell"]:
-            self.listen_event(self.doorbell, "xiaomi_aqara.click", 
-                              entity_id = switch)
-
-    def bedroom_switch(self, event_name, data, kwargs):
-        device, entity = self.split_entity(data["entity_id"])
-        button = entity
-        click = data["click_type"]
-        
-        if click == "single":
-            dev = "light.Bedroom"
-            self.log(f"{button} pressed ({click})...action = {dev}")
-            self.call_service("light/toggle", entity_id = dev)
-          
-        elif click == "long_click_press":
-            dev = "switch.master_switch"
-            self.log(f"{button} pressed ({click})...action = {dev}")
-            self.turn_off(dev)
-        
-        elif click == "double":
-            dev = "switch.template_soniq_tv"
-            self.log(f"{button} pressed ({click})...action = {dev}")
-            self.call_service("switch/toggle", entity_id = dev)
+        for button in self.args["buttons"]:
+            self.listen_event(self.cb_button, "xiaomi_aqara.click",
+                              entity_id = button)
 
 
-    def outside_switch(self, event_name, data, kwargs):
-        device, entity = self.split_entity(data["entity_id"])
-        button = entity
-        click = data["click_type"]
+    def cb_button(self, event_name, data, kwargs):
+        click_type = data["click_type"]        
+        action = None
+        for x in self.args["actions"]:
+            if click_type == x["click_type"]:
+                action = x
+        if not action:
+            return
+        self.log(action)       
+        button_type = action["type"] if "type" in action else "standard"
 
-        if click == "single":
-            dev = "light.flood_light"
-            self.log(f"{button} pressed ({click})...action = {dev}")
-            self.call_service("light/toggle", entity_id = dev)
-
-        elif click  == "double":
-            dev = "light.fairy_lights"
-            self.log(f"{button} pressed ({click})...action = {dev}")
-            self.call_service("light/toggle", entity_id = dev)
+        if button_type == "standard":
+            entity_id = action["entity"]
+            device, entity = self.split_entity(entity_id)
+            service = action["service"]
+            self.call_service(f"{device}/{service}", entity_id = entity_id)
+        elif button_type == "doorbell":
+            self.doorbell(action)
 
 
-    def doorbell(self, event_name, data, kwargs):
-        
+    def doorbell(self, data):
+
+        if self.sun_down():
+            self.turn_on(data["light"])
+            self.start_timer()
+
         if self.anyone_home():
             self.call_service("xiaomi_aqara/play_ringtone", 
-                               gw_mac = self.args["gw_mac"],
-                               ringtone_id = "10001", ringtone_vol = "25")
+                               gw_mac = data["gw_mac"],
+                               ringtone_id = data["ringtone_id"], ringtone_vol = data["volume"])
 
         self.call_service("light/lifx_effect_pulse", 
                            entity_id = "group.all_lights", 
@@ -70,15 +50,21 @@ class Button(hass.Hass):
             devices = ["media_player.google_home_main", 
                        "media_player.google_home_bedroom",
                        "media_player.google_home_office"]
-            msg = ("Attention. There's someone at the door. "
-                   + "There's someone at the door")
+            msg = ("There's someone at the door")
             for gh in devices:
                 if self.get_state(gh) == "off": 
                     self.call_service("tts/google_say", entity_id = gh,
                                       message = msg)
+                    break
 
         t = time.strftime("%d-%b-%Y %H:%M:%S")
         message = f"{t}: Doorbell pressed"
         self.log(message)
         self.notify(message, name = "html5")
 
+
+    def start_timer(self):        
+        self.handle = self.run_in(self.end_timer, 180)
+
+    def end_timer(self, kwargs):
+        self.turn_off(self.light)
