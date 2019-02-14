@@ -40,11 +40,13 @@ class Button(hass.Hass):
             self.call_service("xiaomi_aqara/play_ringtone", 
                                gw_mac = data["gw_mac"],
                                ringtone_id = data["ringtone_id"], ringtone_vol = data["volume"])
-
-        self.call_service("light/lifx_effect_pulse", 
-                           entity_id = "group.all_lights", 
-                           brightness = "255", color_name = "green", 
-                           period = "0.4", cycles = "10")
+        
+        lights = data["flash"]
+        for x in lights:
+            self.call_service("light/lifx_effect_pulse", 
+                                entity_id = x, 
+                                brightness = "255", color_name = "green", 
+                                period = "0.5", cycles = "10")
 
         if self.anyone_home():
             devices = ["media_player.google_home_main", 

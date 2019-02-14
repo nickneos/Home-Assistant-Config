@@ -77,6 +77,15 @@ doorbell:
       gw_mac: !secret xiaomi_mac
       ringtone_id: 10001
       volume: 20
+      flash:
+        - light.bedroom
+        - light.study
+        - light.spare_room
+        - light.kitchen
+        - light.dining
+        - light.living_room
+        - light.bedroom_2
+
 
 
 ### Motion Lights ###
@@ -85,6 +94,8 @@ pantry_motion_light:
   class: sensor_light
   light: light.pantry_light
   sensor: binary_sensor.xiaomi_pantry_sensor
+  brightness: 100
+  kelvin: 3200
   duration: 300
 hallway_motion_light:
   module: motion
@@ -111,7 +122,7 @@ garage_motion_light:
 garage:
   module: garage
   class: Garage
-  garage_door: cover.garage
+  garage_door: cover.garage_main
   light: light.front_porch
   light_duration: 180
 

@@ -10,11 +10,14 @@ class sensor_light(hass.Hass):
         self.duration = self.args["duration"]
         self.night_mode = False
         self.brightness = None
+        self.kelvin = None
 
         if "night_mode" in self.args:
             self.night_mode = self.args["night_mode"]
         if "brightness" in self.args:
             self.brightness = self.args["brightness"]
+        if "kelvin" in self.args:
+            self.kelvin = self.args["kelvin"]
 
         self.listen_state(self.motion, self.args["sensor"], new = "on")
 
@@ -23,14 +26,17 @@ class sensor_light(hass.Hass):
         
         if self.night_mode and self.sun_up():
             return
-            
+    
         self.log(f"Motion detected...Turning on {self.light}")
-        if self.brightness:
+        if self.brightness and self.kelvin:
+            self.turn_on(self.light, brightness_pct = self.brightness, kelvin = self.kelvin)
+        elif self.brightness:
             self.turn_on(self.light, brightness_pct = self.brightness)
+        elif self.kelvin:
+            self.turn_on(self.light, kelvin = self.kelvin)
         else:
             self.turn_on(self.light)
         self.start_timer()
-
 
     def start_timer(self):
         if self.handle != None:
@@ -61,7 +67,7 @@ class Alarm(hass.Hass):
     
     
     def cb_alarm_trigger(self, entity, attribute, old, new, kwargs):
-        if self.noone_home():
+        if self.noone_home() and self.get_state("input_boolean.motion_notifications") == "on":
             t = time.strftime("%d-%b-%Y %H:%M:%S")
             n = kwargs["sensor_name"]
             msg = f"{t}: Motion detected in {n}"

@@ -15,22 +15,21 @@ class Garage(hass.Hass):
 
     def cb_garage_open(self, entity, attribute, old, new, kwargs):
         mode = kwargs["mode"]
-        
+
         if mode == 1:
             self.log("garage opened")
-            if self.sun_down():
+            if self.sun_down() and self.light:
                 self.turn_on(self.light)
                 self.start_timer()
             if self.noone_home():
                 t = time.strftime("%d-%b-%Y %H:%M:%S")
-                message = f"{t}: Garage door open"
+                msg = f"{t}: Garage door open"
+                self.notify(msg, name = "html5")
         elif mode == 2:
             t = time.strftime("%d-%b-%Y %H:%M:%S")
-            message = f"{t}: Garage door has been open for 15 minutes"
-        else:
-            return
-
-        self.notify(message, name = "html5")
+            msg = f"{t}: Garage door has been open for 15 minutes"
+            self.notify(msg, name = "html5")
+        
 
     def start_timer(self):
         if self.handle != None:

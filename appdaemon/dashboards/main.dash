@@ -14,7 +14,7 @@ global_parameters:
 layout:
     - my_weather (2x2), clock (3x1), nick_presence, ash_presence
     - sonytv, fetch, server, main_ac, bedroom_ac
-    - light.kitchen, light.dining, light.living_room, light.floor_lamp, light.hallway_1, light.hallway_2, cover.garage
+    - light.kitchen, light.dining, light.living_room, light.floor_lamp, light.hallway_1, light.hallway_2, cover.garage_main
     - load_main, load_lights, load_media, spacer, spacer, spacer, reload
     # - empty: 2
         
