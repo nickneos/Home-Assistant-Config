@@ -33,6 +33,9 @@ entity_config:
     name: Front Porch
     aliases:
     - Porch
+  light.bedroom_3:
+    expose: true
+    name: Bedroom 3
   climate.bedroom:
     expose: true
     name: Bedroom Air Conditioner
@@ -46,11 +49,13 @@ entity_config:
     expose: true
     name: Samsung TV
     aliases:
+    - Samsung TV
     - TV
   switch.template_soniq_tv:
     expose: true
     name: Bedroom TV
     aliases:
+    - Bedroom TV
     - Soniq TV
     - TV
   switch.template_harmony_fetch:
@@ -62,8 +67,16 @@ entity_config:
     aliases: 
     - TV
     - Sony TV
-  cover.garage:
+  cover.garage_main:
     expose: true
     name: Garage Door
     aliases: 
-    - Garage
+    - Garage Door
+    - Garage Main
+    - Main Garage
+  cover.garage_rear:
+    expose: true
+    name: Garage Rear
+    aliases: 
+    - Rear Garage
+    - Garage Rear

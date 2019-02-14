@@ -1,39 +1,3 @@
-- platform: mqtt
-  name: Flood Light
-  command_topic: "cmnd/sonoff_t1_01/power"
-  state_topic: "stat/sonoff_t1_01/POWER"
-  qos: 1
-  payload_on: "ON"
-  payload_off: "OFF"
-  retain: true
-
-- platform: mqtt
-  name: Pantry Light
-  command_topic: "cmnd/sonoff_basic_01/power"
-  state_topic: "stat/sonoff_basic_01/POWER"
-  qos: 1
-  payload_on: "ON"
-  payload_off: "OFF"
-  retain: true
-
-- platform: mqtt
-  name: Garage Light
-  command_topic: "cmnd/sonoff_basic_02/power"
-  state_topic: "stat/sonoff_basic_02/POWER"
-  qos: 1
-  payload_on: "ON"
-  payload_off: "OFF"
-  retain: true
-
-- platform: mqtt
-  name: Floor Lamp
-  command_topic: "cmnd/lamp_01/power"
-  state_topic: "stat/lamp_01/POWER"
-  qos: 1
-  payload_on: "ON"
-  payload_off: "OFF"
-  retain: true
-
 # - platform: mqtt
 #   name: Router
 #   command_topic: "cmnd/sonoff_s20_02/power"

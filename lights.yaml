@@ -1,38 +1,139 @@
-  - platform: switch
-    name: Floor Lamp
-    entity_id: switch.floor_lamp
-  - platform: switch
-    name: Pantry Light
-    entity_id: switch.pantry_light
-  - platform: switch
-    name: Flood Light
-    entity_id: switch.flood_light
-  - platform: switch
-    name: Outdoor Lights
-    entity_id: switch.arlec_1b
-  - platform: switch
-    name: Fairy Lights
-    entity_id: switch.arlec_1c
-  - platform: switch
-    name: Workbench Light
-    entity_id: switch.garage_light
-  - platform: mqtt
-    name: Back Hallway
-    command_topic: "cmnd/bulb1/power"
-    state_topic: "stat/bulb1/POWER"
-    brightness_command_topic: "cmnd/bulb1/dimmer"
-    brightness_scale: 100
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    retain: true
-  - platform: mqtt
-    name: Front Porch
-    command_topic: "cmnd/bulb2/power"
-    state_topic: "stat/bulb2/POWER"
-    brightness_command_topic: "cmnd/bulb2/dimmer"
-    brightness_scale: 100
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    retain: true
+### Sonoff Rleays ###
+- platform: mqtt
+  name: Flood Light
+  state_topic: "tele/sonoff_t1_01/STATE"
+  value_template: "{{ value_json.POWER }}"
+  command_topic: "cmnd/sonoff_t1_01/POWER"
+  availability_topic: "tele/sonoff_t1_01/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: true
+
+- platform: mqtt
+  name: Workbench Light
+  state_topic: "tele/sonoff_basic_02/STATE"
+  value_template: "{{ value_json.POWER }}"
+  command_topic: "cmnd/sonoff_basic_02/POWER"
+  availability_topic: "tele/sonoff_basic_02/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: true
+
+- platform: mqtt
+  name: Floor Lamp
+  state_topic: "tele/lamp_01/STATE"
+  value_template: "{{ value_json.POWER }}"
+  command_topic: "cmnd/lamp_01/POWER"
+  availability_topic: "tele/lamp_01/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: true
+
+- platform: mqtt
+  name: Table Lamp
+  state_topic: "tele/S20_02/STATE"
+  value_template: "{{ value_json.POWER }}"
+  command_topic: "cmnd/S20_02/POWER"
+  availability_topic: "tele/S20_02/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: true
+
+### Mirabella Globes ###
+- platform: mqtt
+  name: Back Hallway
+  command_topic: "cmnd/bulb1/POWER"
+  state_topic: "tele/bulb1/STATE"
+  state_value_template: "{{value_json.POWER}}"
+  availability_topic: "tele/bulb1/LWT"
+  brightness_command_topic: "cmnd/bulb1/Dimmer"
+  brightness_state_topic: "tele/bulb1/STATE"
+  brightness_scale: 100
+  on_command_type: "brightness"
+  brightness_value_template: "{{value_json.Dimmer}}"
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  qos: 1
+  retain: false
+
+- platform: mqtt
+  name: Front Porch
+  command_topic: "cmnd/bulb2/POWER"
+  state_topic: "tele/bulb2/STATE"
+  state_value_template: "{{value_json.POWER}}"
+  availability_topic: "tele/bulb2/LWT"
+  brightness_command_topic: "cmnd/bulb2/Dimmer"
+  brightness_state_topic: "tele/bulb2/STATE"
+  brightness_scale: 100
+  on_command_type: "brightness"
+  brightness_value_template: "{{value_json.Dimmer}}"
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  qos: 1
+  retain: false
+
+- platform: mqtt
+  name: Bedroom 3
+  command_topic: "cmnd/bulb4/POWER"
+  state_topic: "tele/bulb4/STATE"
+  state_value_template: "{{value_json.POWER}}"
+  availability_topic: "tele/bulb4/LWT"
+  brightness_command_topic: "cmnd/bulb4/Dimmer"
+  brightness_state_topic: "tele/bulb4/STATE"
+  brightness_scale: 100
+  on_command_type: "brightness"
+  brightness_value_template: "{{value_json.Dimmer}}"
+  color_temp_command_topic: "cmnd/bulb4/CT"
+  color_temp_state_topic: "tele/bulb4/STATE"
+  color_temp_value_template: "{{value_json.CT}}"
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  qos: 1
+  retain: false
+
+- platform: mqtt
+  name: Pantry Light
+  command_topic: "cmnd/bulb3/POWER"
+  state_topic: "tele/bulb3/STATE"
+  state_value_template: "{{value_json.POWER}}"
+  availability_topic: "tele/bulb3/LWT"
+  brightness_command_topic: "cmnd/bulb3/Dimmer"
+  brightness_state_topic: "tele/bulb3/STATE"
+  brightness_scale: 100
+  on_command_type: "brightness"
+  brightness_value_template: "{{value_json.Dimmer}}"
+  color_temp_command_topic: "cmnd/bulb3/CT"
+  color_temp_state_topic: "tele/bulb3/STATE"
+  color_temp_value_template: "{{value_json.CT}}"
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  qos: 1
+  retain: false
+
+### Arlec Switches ###
+- platform: switch
+  name: Outdoor Lights
+  entity_id: switch.arlec_1b
+- platform: switch
+  name: Fairy Lights
+  entity_id: switch.arlec_1c

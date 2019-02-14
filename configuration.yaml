@@ -85,6 +85,9 @@ input_boolean:
     name: Fairy Lights Schedule
     # initial: on
     icon: mdi:pine-tree
+  motion_notifications:
+    name: Motion Notifications
+    icon: mdi:bell
 
 input_select:
   timer_device:
@@ -272,16 +275,32 @@ climate:
 ############ Covers ############
 cover:
   - platform: mqtt
-    name: Garage
-    state_topic: "cmnd/garagestate/POWER2"
-    command_topic: "cmnd/sonoffsv01/POWER"
+    name: Garage Main
+    state_topic: "cmnd/garage1_state/POWER2"
+    command_topic: "cmnd/garage1/POWER"
+    availability_topic: "tele/garage1/LWT"
     payload_open: "ON"
     payload_close: "ON"
     payload_stop: "ON"
     state_open: "OFF"
     state_closed: "ON"
+    payload_available: "Online"
+    payload_not_available: "Offline"
     optimistic: false
 
+  - platform: mqtt
+    name: Garage Rear
+    state_topic: "cmnd/garage2_state/POWER2"
+    command_topic: "cmnd/garage2/POWER"
+    availability_topic: "tele/garage2/LWT"
+    payload_open: "ON"
+    payload_close: "ON"
+    payload_stop: "ON"
+    state_open: "OFF"
+    state_closed: "ON"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    optimistic: false
 
 ############ Zones ############
 zone:
@@ -354,3 +373,9 @@ script: !include_dir_merge_named scripts/
 automation: !include automations.yaml
 light: !include lights.yaml
 group: !include groups.yaml
+
+
+panel_iframe:
+  tasmota:
+    title: 'Tasmota'
+    url: 'https://192.168.1.19:9541/devices'

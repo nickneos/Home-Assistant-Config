@@ -1,5 +1,5 @@
 - alias: 'IFTTT'
-  id: ifttt
+  id: id_0001
   hide_entity: true
   initial_state: true
   trigger:
@@ -11,3 +11,23 @@
     service_template: '{{ trigger.event.data.service }}'
     data_template:
       entity_id: '{{ trigger.event.data.entity_id }}'
+
+- alias: "Power state on HA start-up"
+  id: id_0002
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/sonoffs/state"
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: cmnd/sonoffs/POWER
+    - service: mqtt.publish
+      data:
+        topic: cmnd/sonoffs/POWER2
+    - service: mqtt.publish
+      data:
+        topic: cmnd/sonoffs/POWER3 

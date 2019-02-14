@@ -107,9 +107,6 @@ script.fetch2_ch_up:
   icon: mdi:arrow-up-drop-circle-outline
 light.floor_lamp:
   icon: mdi:floor-lamp
-cover.garage:
-  device_class: garage
-  friendly_name: Garage Door
 binary_sensor.online:
   icon: mdi:web
 light.flood_light:
@@ -151,3 +148,9 @@ binary_sensor.konnected_2345c8_zone_6:
   friendly_name: Alarm Armed
 switch.alarm:
   icon: mdi:shield-key
+light.table_lamp:
+  icon: mdi:lamp
+cover.garage_main:
+  device_class: garage
+cover.garage_rear:
+  device_class: garage
