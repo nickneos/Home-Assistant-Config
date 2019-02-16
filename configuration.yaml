@@ -377,5 +377,10 @@ group: !include groups.yaml
 
 panel_iframe:
   tasmota:
-    title: 'Tasmota'
+    title: TasmoAdmin
+    icon: mdi:power-socket-au
     url: 'https://192.168.1.19:9541/devices'
+  log:
+    title: Log Viewer
+    icon: mdi:book-open
+    url: 'https://192.168.1.19:4277'
