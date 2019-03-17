@@ -110,7 +110,7 @@ samsungtv:
 
 outside_lights:
     widget_type: switch
-    entity: light.flood_light
+    entity: light.outside_light
     title: Outside
     # icon_style_active: mdi-lightbulb-on-outline
     # icon_style_inactive: mdi-lightbulb-outline

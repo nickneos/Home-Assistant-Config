@@ -35,7 +35,7 @@ www
 
 # Log files
 *.log
-home-assistant.log
+*.log*
 ozw_log.txt
 
 # Development files

@@ -1,6 +1,6 @@
 ### Sonoff Rleays ###
 - platform: mqtt
-  name: Flood Light
+  name: Outside Light
   state_topic: "tele/sonoff_t1_01/STATE"
   value_template: "{{ value_json.POWER }}"
   command_topic: "cmnd/sonoff_t1_01/POWER"
@@ -132,8 +132,15 @@
 
 ### Arlec Switches ###
 - platform: switch
-  name: Outdoor Lights
+  name: Outdoor LED 1
   entity_id: switch.arlec_1b
 - platform: switch
-  name: Fairy Lights
+  name: Outdoor LED 2
   entity_id: switch.arlec_1c
+
+### group lights ###
+- platform: group
+  name: Outdoor LED
+  entities:
+    - light.outdoor_led_1
+    - light.outdoor_led_2

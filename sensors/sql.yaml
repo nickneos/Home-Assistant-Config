@@ -1,6 +1,6 @@
 - platform: sql
   db_url: !secret mysql_url
-  icon: mdi:database
+  # icon: mdi:database
   queries:
     - name: Hassio DB Size
       query: 'SELECT table_schema "database"

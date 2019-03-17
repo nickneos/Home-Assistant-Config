@@ -109,8 +109,6 @@ light.floor_lamp:
   icon: mdi:floor-lamp
 binary_sensor.online:
   icon: mdi:web
-light.flood_light:
-  icon: mdi:spotlight-beam
 light.pantry_light:
   icon: mdi:lightbulb
 script.vacuum_main:

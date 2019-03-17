@@ -33,14 +33,15 @@ class Sunset(hass.Hass):
                 self.turn_on(device)
         elif self.get_state("input_boolean.holiday_mode") == "on":
             self.run_in(self.holiday_mode, 1, stage = 0)
-        
-        fairy_lights = ["light.fairy_lights"]
-        if self.get_state("input_boolean.fairy_lights") == "on":
-            for fl in fairy_lights:
-                self.log(f"Turning on {fl}")
-                self.turn_on(fl)
-            self.run_in(self.end_fairy_lights, 4 * 60 * 60, 
-                        lights = fairy_lights)
+
+        if "fairy_lights" in self.args:
+            fairy_lights = self.args["fairy_lights"]
+            if self.get_state("input_boolean.fairy_lights") == "on":
+                for fl in fairy_lights:
+                    self.log(f"Turning on {fl}")
+                    self.turn_on(fl)
+                self.run_in(self.end_fairy_lights, 4 * 60 * 60, 
+                            lights = fairy_lights)
 
 
     def end_fairy_lights(self, kwargs):

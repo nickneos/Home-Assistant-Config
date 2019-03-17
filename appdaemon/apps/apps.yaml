@@ -22,6 +22,8 @@ sunset:
     - light.floor_lamp
     - light.kitchen
   pet_light: light.hallway_2
+  fairy_lights:
+    - light.outdoor_led
 
 googlehome:
   module: google_home
@@ -59,11 +61,11 @@ outside_button:
   actions:
     - click_type: single
       type: standard
-      entity: light.flood_light
+      entity: light.outside_light
       service: toggle
     - click_type: double
       type: standard
-      entity: light.fairy_lights
+      entity: light.outdoor_led
       service: toggle
 doorbell:
   module: xiaomi
@@ -128,8 +130,12 @@ garage:
 
 
 outdoor_lights:
-  module: outdoor_lights
-  class: OutdoorLights
+  module: trigger
+  class: Trigger
+  trigger: light.outside_light
+  action:
+    - light.outdoor_led_1
+    - light.outdoor_led_2
 
 timer:
   module: timer

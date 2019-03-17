@@ -5,18 +5,15 @@ entity_config:
   switch.arlec_1a:
     expose: true
     name: Fridge
-  light.outdoor_lights:
+  light.outdoor_led:
     expose: true
-    name: Outdoor Lights
-  light.fairy_lights:
-    expose: true
-    name: Fairy Lights
+    name: Outdoor LED
   light.floor_lamp:
     expose: true
     name: Floor Lamp
-  light.flood_light:
+  light.outside_light:
     expose: true
-    name: Flood Light
+    name: Outside Light
   light.pantry_light:
     expose: true
     name: Pantry Light
