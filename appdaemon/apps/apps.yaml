@@ -1,3 +1,4 @@
+### People Presence Automations
 presence:
   module: presence
   class: Presence
@@ -15,6 +16,7 @@ presence:
   people_notifications:
     - device_tracker.mums_lg_g4
 
+### Time Based Automations ###
 sunset:
   module: sun
   class: Sunset
@@ -25,7 +27,8 @@ sunset:
   fairy_lights:
     - light.outdoor_led
 
-googlehome:
+### Google Home Volume Control ###    
+gh_volume:
   module: google_home
   class: Google_Home
   devices:
@@ -77,6 +80,7 @@ doorbell:
       type: doorbell
       light: light.front_porch
       gw_mac: !secret xiaomi_mac
+      # gw_mac: 34ce0088ebdb
       ringtone_id: 10001
       volume: 20
       flash:
@@ -87,8 +91,6 @@ doorbell:
         - light.dining
         - light.living_room
         - light.bedroom_2
-
-
 
 ### Motion Lights ###
 pantry_motion_light:
@@ -121,30 +123,7 @@ garage_motion_light:
   sensor: binary_sensor.konnected_2345c8_zone_1
   duration: 120
 
-garage:
-  module: garage
-  class: Garage
-  garage_door: cover.garage_main
-  light: light.front_porch
-  light_duration: 180
-
-
-outdoor_lights:
-  module: trigger
-  class: Trigger
-  trigger: light.outside_light
-  action:
-    - light.outdoor_led_1
-    - light.outdoor_led_2
-
-timer:
-  module: timer
-  class: Timer
-
-# router:
-#   module: router
-#   class: Router
-
+### Alarm Notifications
 alarm:
   module: motion
   class: Alarm
@@ -161,3 +140,27 @@ alarm:
       entity: binary_sensor.konnected_2345c8_zone_5
     - name: Pantry
       entity: binary_sensor.xiaomi_pantry_sensor
+
+
+### Other ###
+garage:
+  module: garage
+  class: Garage
+  garage_door: cover.garage_main
+  light: light.front_porch
+  light_duration: 180
+
+outdoor_lights:
+  module: trigger
+  class: Trigger
+  trigger: light.outside_light
+  action:
+    - light.outdoor_led
+
+timer:
+  module: timer
+  class: Timer
+
+# router:
+#   module: router
+#   class: Router

@@ -1,5 +1,5 @@
 - platform: broadlink
-  update_interval: 300
+  scan_interval: 300
   host: !secret broadlink_host2
   mac: !secret broadlink_mac2
   monitored_conditions:

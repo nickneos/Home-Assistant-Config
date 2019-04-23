@@ -14,6 +14,6 @@ class Google_Home(hass.Hass):
             if quiet_mode:
                 vol = "0.2"
             else:
-                vol = "0.65" if gh == "media_player.google_home_main" else "0.5"
+                vol = "0.6" if gh == "media_player.google_home_main" else "0.5"
             self.log(f"Setting volume to {vol} for {gh}")
             self.call_service("media_player/volume_set", entity_id = gh, volume_level = vol)

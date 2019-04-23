@@ -13,12 +13,14 @@ class Button(hass.Hass):
     def cb_button(self, event_name, data, kwargs):
         click_type = data["click_type"]        
         action = None
+        button = kwargs["entity_id"]
+        
         for x in self.args["actions"]:
             if click_type == x["click_type"]:
                 action = x
         if not action:
             return
-        self.log(action)       
+        self.log(f"{button}: {action}")       
         button_type = action["type"] if "type" in action else "standard"
 
         if button_type == "standard":

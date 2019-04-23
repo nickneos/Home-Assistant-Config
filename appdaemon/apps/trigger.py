@@ -1,7 +1,35 @@
 import appdaemon.plugins.hass.hassapi as hass
 
-class Trigger(hass.Hass):
+#
+# App to send email report for devices running low on battery
+#
+# Args:
+#
+# threshold = value below which battery levels are reported and email is sent
+# always_send = set to 1 to override threshold and force send
+#
+# None
+#
+# Release Notes
+#
+# Version 1.0:
+#   Initial Version
 
+class Trigger(hass.Hass):
+    #
+    # App to send email report for devices running low on battery
+    #
+    # Args:
+    #
+    # threshold = value below which battery levels are reported and email is sent
+    # always_send = set to 1 to override threshold and force send
+    #
+    # None
+    #
+    # Release Notes
+    #
+    # Version 1.0:
+    #   Initial Version
     def initialize(self):
         
         self.trigger = self.args["trigger"]

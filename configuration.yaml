@@ -192,8 +192,9 @@ camera:
 notify:
   - name: html5
     platform: html5
-    gcm_api_key: !secret gcm-sender-key
-    gcm_sender_id: !secret gcm-sender-id
+    vapid_pub_key: !secret vapid_pub_key
+    vapid_prv_key: !secret vapid_prv_key
+    vapid_email: !secret vapid_email
   - name: gmail
     platform: smtp
     server: smtp.gmail.com
