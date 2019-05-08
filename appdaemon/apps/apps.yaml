@@ -82,7 +82,7 @@ doorbell:
       gw_mac: !secret xiaomi_mac
       # gw_mac: 34ce0088ebdb
       ringtone_id: 10001
-      volume: 20
+      volume: 15
       flash:
         - light.bedroom
         - light.study

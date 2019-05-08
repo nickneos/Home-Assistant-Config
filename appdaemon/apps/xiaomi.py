@@ -50,16 +50,16 @@ class Button(hass.Hass):
                                 brightness = "255", color_name = "green", 
                                 period = "0.5", cycles = "10")
 
-        if self.anyone_home():
-            devices = ["media_player.google_home_main", 
-                       "media_player.google_home_bedroom",
-                       "media_player.google_home_office"]
-            msg = ("There's someone at the door")
-            for gh in devices:
-                if self.get_state(gh) == "off": 
-                    self.call_service("tts/google_say", entity_id = gh,
-                                      message = msg)
-                    break
+        # if self.anyone_home():
+        #     # devices = ["media_player.google_home_main", 
+        #     #            "media_player.google_home_bedroom",
+        #     #            "media_player.google_home_office"]
+        #     # msg = ("There's someone at the door")
+        #     # for gh in devices:
+        #     #     if self.get_state(gh) == "off": 
+        #     #         self.call_service("tts/google_say", entity_id = gh,
+        #     #                           message = msg)
+        #     #         break
 
         t = time.strftime("%d-%b-%Y %H:%M:%S")
         message = f"{t}: Doorbell pressed"
