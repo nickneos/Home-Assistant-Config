@@ -1,29 +1,35 @@
 soniq_tv_power:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBYAAABJ5USFBE5ERQSFBE5ETkSOBIUETkRFBI5ETkROREUEjgSOREUETkSOBI5ERQRFBIUERQSOBIUERQRFBI5ETkRORE5EgAE1AABJ0sRAAxiAAEnSxEADQU= 
     ### FETCH MINI
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBQAAABK5MUERQSEzcUERQSEzcUNhQSFBEUNxM3FBEUEhMSEzcUEhQ2ExIUNhQ3FDYUEhM3FBITEhM3FBEUEhMSEzcUERQ3FAAFXgABKkkUAA0FAAAAAAAAAAA= 
 soniq_tv_vol_up:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBYAAABKJURFBI5ERQRFBI4EjkROREUEjgSFBE5ETkRORIUETkRORE5EhQRFBE5ERQSFBE5ERQSFBE5ETkRFRE5ETkRFBI4EgAE1gABJ0sRAAxjAAEnSxEADQU= 
 soniq_tv_vol_down:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBQAAABJ5YRFBE5ERQSFBE5ETkSOBIUETkRFBI4EjkROREUEjgSORE5ETkRFBIUERQRFBI5ERQRFBIUETkRORE5EjgSFBE5EQAE1gABJ0sSAA0FAAAAAAAAAAA= 
 soniq_tv_ch_up:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBQAAABJ5USFBE5ERQRFBI5ETkROREUEjkRFBE5ETkSOBIUETkRORI4EhQRFBIUETkRFBE5EhQRFBE5ETkSOBIUETkRFBI5EQAE1gABJ0wRAA0FAAAAAAAAAAA= 
 soniq_tv_ch_down:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBQAAABJ5USFBE5ERQSFBE5ETkRORIUETkRFBI4EjkROREUEjgSORE5ERQSOBI5ERQRFBI4EhQRFBI4EhQRFBI4EjgSFBE5EQAE1wABJ0sRAA0FAAAAAAAAAAA=

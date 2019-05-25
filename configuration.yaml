@@ -65,7 +65,7 @@ logger:
 # introduction:
 sun:
 tts:
-  platform: google
+  platform: google_translate
 
 
 ############ DB Recorder ############
@@ -226,6 +226,9 @@ weather:
 
 
 ############ Climate ############
+smartir:
+  update_branch: master
+
 climate:
 #   - platform: broadlink
 #     name: Bedroom
@@ -248,8 +251,9 @@ climate:
 #         - high
   - platform: smartir
     name: Bedroom
+    unique_id: bedroom
     device_code: 1022
-    controller_send_service: switch.broadlink_send_packet_192_168_1_30
+    controller_data: !secret broadlink_host1
     temperature_sensor: sensor.temp_bedroom
     humidity_sensor: sensor.humidity_bedroom
   - platform: harmony_ac
@@ -393,7 +397,3 @@ panel_iframe:
     title: TasmoAdmin
     icon: mdi:power-socket-au
     url: 'https://192.168.1.19:9541/devices'
-  log:
-    title: Log Viewer
-    icon: mdi:book-open
-    url: 'https://192.168.1.19:4277'

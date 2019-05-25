@@ -1,115 +1,138 @@
 fetch2_power:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBQAAABKJYSExITEjkRFBITEjkRORIUERQROhE5EhMSExIUETkSFBE5ERQRORI5ETkSExI5ERURFBE5EhMSFBEUETkSExI5EQAFYQABKEsSAA0FAAAAAAAAAAA=
 fetch2_ch_up:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBQAAABKJYRFBEUEjkRFBEUEToROREVERQRORI5ERQRFBITEjkRFRETEjkRORI5ETkSExI5EToRORITEhQRFBEUETkSFBEUEQAFYQABKEwRAA0FAAAAAAAAAAA=
 fetch2_ch_down:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBQAAABKJYRFBEUEjkRFBEUETkSOREUEhQRORI5ERQRFBEUEjkRFBI4EToRFBE5EjkRFBE5EjkSExIUETkRFBITEjkRFBEUEgAFYAABKEsSAA0FAAAAAAAAAAA=
 fetch2_up:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBQAAABKJYRFBITEjkRFBEUEjkROREVERQRORI5ERQRFBEUEjkRFBITEjgSFBEUERQRFBE5EjkSOREUETkSORE5EjkRFBEUEgAFYAABJ0wRAA0FAAAAAAAAAAA=
 fetch2_down:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBQAAABKJYRFBEUEjkRFBEUEToROREVERQRORI5ERQRFBITEjkRFBITEhMSOREUERQSExI5EToRORI5ERQRORI5ETkSFBEUEQAFYgABJ0wRAA0FAAAAAAAAAAA=
 fetch2_left:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBQAAABJ5YSFBEUETkSExIUETkRORIUERQSORE5EhMSFBEUETkRFRE5ERQRFBEUEhMSExI5EToRFBE5EjkRORI5ETkRFBITEgAFYAABJ0wRAA0FAAAAAAAAAAA=
 fetch2_right:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBQAAABKJYSExIUETkRFBITEjkRORIUERQSORE5EhMSFBEUETkSFBE5ETkSFBEUERQRFBI5EToRFBEUETkSORE5EjkRFBEUEgAFYAABKEsSAA0FAAAAAAAAAAA=
 fetch2_ok:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBQAAABJ5YSExIUETkRFBITEjkRORIUERQSORE5EhMSFBEUETkSFBETExMRFBE5EjkRORITEhQRORI5ETkSFBEUERQRORI5EQAFYQABKEsSAA0FAAAAAAAAAAA=
 fetch2_apps:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBIAAABKJYSExEUETkSFBEUETkSOREUEhMSORE5EhQRFBEUETkSFBE5ETkSExIUETkRORIUERQSExIUETkROhEUERQRORI5EQANBQ==
 fetch2_menu:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBQAAABKJYRFBEUEToRFBEUETkSOREVERQRORI5ERQRFBEUEjkRFBI4EhQRFBE5EjkRFBE5EjkSFBE5ETkSFBEUETkSFBEUEQAFYQABKEwRAA0FAAAAAAAAAAA=
 fetch2_back:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBQAAABKJUSFBEUETkSExIUETkROhEUEhMSORE5EhMSFBEUETkRFRE5ERQRORITEjkRFBE5EjkSExI5ERQRORIUETkRFBITEgAFYAABKEsSAA0FAAAAAAAAAAA=
 fetch2_exit:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBQAAABKJUTExEUETkSExIUETkROhEUEhMSORE5EhMSFBEUETkSFBETExMROREUEhMSORE5EjkSORE5ERQSORE5ERQSExIUEQAFYAABJ0wRAA0FAAAAAAAAAAA=
 fetch2_guide:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBQAAABJ5YSFBEUETkSExIUETkSOREUEhMSORE5EhMSFBEUETkSFBETExMRFBEUERQSORE5EjkRORI5ETkSORE5EhQRFBEUEQAFYQABKEsRAA0FAAAAAAAAAAA=
 fetch2_search:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBQAAABKZYRFBEUEjkRFBEUETkSOREVERQRORI5ERQRFBEUEToRFBITEhMRORIUETkRORIUERQSORE5ERQSOREUERQRORI5EQAFYAABJ0wRAA0FAAAAAAAAAAA=
 fetch2_red:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBIAAABKJYRFBEUETkSExIUETkRORIUERQSORE5ERQSExITEjkRFBITEjgSORE5EhMSFBE5EToRORITEhQRFBE5EjkRFBEUEQANBQ==
 fetch2_green:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBIAAABJ5YSExIUETkRFBITEjkRORIUERQRORI5ERQRFBITEjkRFBI4EhMSExI5ERQRFBI5ETkSFBE5ETkSFBE5EToRFBEUEQANBQ==
 fetch2_yellow:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBIAAABJ5YRFBITEjkRFBEUETkSOREUEhQRORE5ExMRFBEUETkSFBE5ETkROhEUERQRFBE5EjkSExIUERQRORE5EjkRFBEUEQANBQ==
 fetch2_blue:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBIAAABKJYSExEUETkSFBEUETkSOREUEhMSORE5EhMSFBEUETkRFRETExISFBE5ERQSExI5EToRORE5EjkRFBE5EjkRFBEUEgANBQ==
 fetch2_play:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBQAAABKJYRFBEUEjkRFBEUETkSOREVERQRORI5ERQRFBEUETkTExEUEjgSExI5ETkSExI5EToRORITEjkRFBEUETkSFBEUEQAFYAABKEsRAA0FAAAAAAAAAAA=
 fetch2_rwd:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBQAAABKJYSExEUETkSFBEUETkSOREUEhMSORE5EhMSExIUETkRFRE4EhQSOBE5EjkRFBE5EzgSExI5ERQRFBEUEjkRFBEUEQAFYAABJ0wRAA0FAAAAAAAAAAA=
 fetch2_fwd:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBQAAABJ5YTEhIUETkRFBITEjkROREVERQRORI5ERQRFBEUEToRFBITEhMRORI5ERQRFBE5EjkSORE5EhMSFBE5ETkTExEUEQAFXwABKUoSAA0FAAAAAAAAAAA=
 fetch2_stop:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBQAAABKJYSExIUETkRFBITEjkRORIUERQSORE5ERQSExIUETkRFRE4EhQRORE6ERQRFBE5EjkSExI5ERQRFBI5ETkRFBITEgAFYAABJ0wRAA0FAAAAAAAAAAA=
 fetch2_record:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_30
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host1
         packet: JgBQAAABJ5YSFBEUETkSExIUETkRORIUERQSORE5EhMSFBEUETkSFBETEzgRFBEUEjkRFBE5EjkSOREUEjgSOREUETkSExIUEQAFYAABJ0wRAA0FAAAAAAAAAAA=

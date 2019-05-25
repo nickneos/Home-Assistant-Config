@@ -1,55 +1,66 @@
 radio_power:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_31
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host2
         packet: JgBYAAABJ5MTEhQQFRETEhQQFRATEhQRFTUUNRM3FTMWNRQ2FTUUNhMSFDUTEhQ2ExIUEBUQExIUNhMSFDUUERU1EzYVNhQ1EwAFHAABJ0oUAAxNAAEnShQADQU=
 radio_mute:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_31
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host2
         packet: JgBQAAABKZEVEBMSFBAVERMSFBAVEBMSFDYTNhU1FTUTNhU2FDUTNhU2FDUTNxUQExIUEBUQExIUERUQExIUNRQ2FTUUNRQ2FQAFGgABK0UUAA0FAAAAAAAAAAA=
 radio_vol_up:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_31
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host2
         packet: JgBIAAABKpEVEBMSFBAVEBQRFRAVEBMSFDYTNhU1FDYTNhU1FDYTNhU1FRAVNRQ1FBIUEBUQExIUEBU2FBAVEBM3FTMWNRQ2FQANBQ==
 radio_vol_down:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_31
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host2
         packet: JgBIAAABKJIUEhQQFRATEhQQFRETEhQQFTUUNhM2FTUVNRM2FTYUNRMSFBAVNhQ1EzcVEBMSFBAVNRQ2ExIUEBUQFDYVNRQ1FAANBQ==
 radio_source:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_31
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host2
         packet: JgBQAAABKJITEhQRFBETEhMRFRAUEhMRFDYTNhQ2FDYVNRM2FDYUNhM2FjUVDxQ2ExEWDxQSExEUERMSEzcTEhM2EzcUNhU0FAAFGwABKEkUAA0FAAAAAAAAAAA=
 radio_favourite:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_31
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host2
         packet: JgBQAAABKJMTEhQQFBEUERQRFBETEhQQFTYUNRM2FTYUNRM3FTUTNhQRFDYTNhU2FDUTEhQRFBETNhUQExIUERUQEzYVNRU1EwAFHAABJ0oUAA0FAAAAAAAAAAA=
 radio_shuffle:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_31
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host2
         packet: JgBQAAABKZEVDxUSFBAVEBMSFBEUERMSEzYTNxU1EzYUNhU1FDUUNhQ2FBEUNhMRFBETEhQRFRATEhQ1FBEVNRM2FTYUNRM2FQAFGgABKkcTAA0FAAAAAAAAAAA=
 radio_snooze:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_31
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host2
         packet: JgBQAAABKJMTEhQQFBITEhQQFBETEhMSFDYUNRM3FTUUNRM3FTUUNRQSExEVNRM3ExIUEBUQExIUNhM2FRAUERQ2EzYVMhg1EwAFHAABJ0oUAA0FAAAAAAAAAAA=
 radio_sleep:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_31
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host2
         packet: JgBIAAABJ5MTEhQRFBETEhQQFRATEhQRFTUUNRQ2FTUTNhQ2FTUUNhMSExEVEBMSFDYTEhQQFBEUNhU1FDUUNhUQEzcUNRQ2EwANBQ==
 radio_alarm:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_31
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host2
         packet: JgBQAAABKpAVEBQSFBAVEBMSFBEUERMSFDUTNxU1EzYUNhQ2FDUUNhQRExIUNhMSFBAUERMSFRAVNRQ1FBITNhM2FDcUNRM3FAAFGgABKUgTAA0FAAAAAAAAAAA=
 radio_select:
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_31
+    - service: broadlink.send
       data:
+        host: !secret broadlink_host2
         packet: JgBQAAABKpMUEBUQExIUERQRExITERUQEzcUNhQ1FDYVNRQ1FDYVNRQ2EzYUNhQ2EzYVEBQRFBEVEBMSFBAVEBQSFDUTNxQ2FAAFGgABKUgVAA0FAAAAAAAAAAA=
