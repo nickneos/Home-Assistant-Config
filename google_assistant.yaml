@@ -11,9 +11,6 @@ entity_config:
   light.floor_lamp:
     expose: true
     name: Floor Lamp
-  light.outside_light:
-    expose: true
-    name: Outside Light
   light.pantry_light:
     expose: true
     name: Pantry Light
