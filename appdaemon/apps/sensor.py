@@ -19,7 +19,9 @@ class sensor_light(hass.Hass):
         if "kelvin" in self.args:
             self.kelvin = self.args["kelvin"]
 
-        self.listen_state(self.motion, self.args["sensor"], new = "on")
+        dev, ent = self.split_entity(self.sensor)
+        self.state = "open" if dev == "cover" else "on"
+        self.listen_state(self.motion, self.sensor, new = self.state)
 
 
     def motion(self, entity, attribute, old, new, kwargs):
@@ -27,7 +29,7 @@ class sensor_light(hass.Hass):
         if self.night_mode and self.sun_up():
             return
     
-        self.log(f"Motion detected...Turning on {self.light}")
+        self.log(f"{self.sensor} tripped...Turning on {self.light}")
         if self.brightness and self.kelvin:
             self.turn_on(self.light, brightness_pct = self.brightness, kelvin = self.kelvin)
         elif self.brightness:
@@ -48,8 +50,8 @@ class sensor_light(hass.Hass):
 
     def end_timer(self, kwargs):
         
-        if self.get_state(self.args["sensor"]) == "on":
-            self.log("Motion sensor still active...starting new delay")
+        if self.get_state(self.args["sensor"]) == self.state:
+            self.log(f"{self.sensor} still tripped...starting new delay")
             self.start_timer()
         else:
             self.log(f"Turning off {self.light}")

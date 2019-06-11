@@ -237,8 +237,8 @@ climate:
     unique_id: bedroom
     device_code: 1022
     controller_data: !secret broadlink_host1
-    temperature_sensor: sensor.temp_bedroom
-    humidity_sensor: sensor.humidity_bedroom
+    temperature_sensor: sensor.xiaomi_temp_1
+    humidity_sensor: sensor.xiaomi_humidity_1
   - platform: harmony_ac
     name: Living Room
     host: !secret harmony_ip
@@ -247,7 +247,7 @@ climate:
     max_temp: 30
     target_temp: 20
     target_temp_step: 1
-    temp_sensor: sensor.temp_main
+    temp_sensor: sensor.xiaomi_temp_2
     default_operation: 'off'
     default_fan_mode: auto
     customize:

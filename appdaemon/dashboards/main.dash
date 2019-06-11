@@ -45,13 +45,13 @@ my_weather:
     forecast_title: Tomorrow
     sensors:
         icon: sensor.dark_sky_icon
-        temperature:  sensor.temp_outside
+        temperature:  sensor.xiaomi_temp_3
         apparent_temperature: sensor.bom_feels_like_c
-        humidity: sensor.humidity_outside
+        humidity: sensor.xiaomi_humidity_3
         precip_probability: sensor.bom_melbourne_chance_of_rain_0
         precip_intensity: sensor.dark_sky_precip_intensity
         precip_type: sensor.bom_melbourne_possible_rainfall_0
-        pressure: sensor.pressure_outside
+        pressure: sensor.xiaomi_pressure_3
         wind_speed: sensor.bom_wind_speed_kmh
         wind_bearing: sensor.bom_wind_direction
         forecast_icon: sensor.dark_sky_icon_1

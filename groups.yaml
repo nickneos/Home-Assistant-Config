@@ -19,9 +19,9 @@
 #     - device_tracker.nicks_note8
 #     - device_tracker.ashs_s8_plus
 #     # - binary_sensor.door_window_sensor_158d00019da791
-#     # - binary_sensor.xiaomi_pantry_sensor
-#     - sensor.temp_main
-#     - sensor.humidity_main
+#     # - binary_sensor.xiaomi_motion_1
+#     - sensor.xiaomi_temp_2
+#     - sensor.xiaomi_humidity_2
 #     - sensor.xiaomi_illumination
 #     - sensor.broadlink_sensor_temperature
 #     - sensor.bom_air_temp_c
@@ -258,9 +258,9 @@
 # weather:
 #   name: weather
 #   entities:
-#   - sensor.temp_outside
-#   - sensor.humidity_outside
-#   - sensor.pressure_outside
+#   - sensor.xiaomi_temp_3
+#   - sensor.xiaomi_humidity_3
+#   - sensor.xiaomi_pressure_3
 #   - sensor.bom_air_temp_c
 #   - sensor.bom_cloud
 #   - sensor.bom_cloud_base

@@ -75,24 +75,6 @@ switch.template_harmony_power:
 climate.bedroom:
   icon: mdi:air-conditioner
   unit_of_measurement: °C
-sensor.temp_bedroom:
-  friendly_name: Temperature
-sensor.temp_outside:
-  friendly_name: Temperature
-sensor.pressure_outside:
-  friendly_name: Pressure
-sensor.humidity_bedroom:
-  friendly_name: Humidity
-sensor.humidity_outside:
-  friendly_name: Humidity
-sensor.temp_main:
-  friendly_name: Temperature
-sensor.humidity_main:
-  friendly_name: Humidity
-sensor.pressure_main:
-  friendly_name: Pressure
-sensor.xiaomi_illumination:
-  friendly_name: Brightness
 script.fetch2_ch_down:
   icon: mdi:arrow-down-drop-circle-outline
 script.fetch2_ch_up:
@@ -133,8 +115,6 @@ cover.garage_main:
 cover.garage_rear:
   device_class: garage
 binary_sensor.xiaomi_door_1:
-  icon: mdi:door
   device_class: door
 binary_sensor.xiaomi_door_2:
-  icon: mdi:door
   device_class: door
