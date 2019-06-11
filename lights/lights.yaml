@@ -1,16 +1,16 @@
 ### Sonoff Rleays ###
-- platform: mqtt
-  name: Workbench Light
-  state_topic: "tele/sonoff_basic_02/STATE"
-  value_template: "{{ value_json.POWER }}"
-  command_topic: "cmnd/sonoff_basic_02/POWER"
-  availability_topic: "tele/sonoff_basic_02/LWT"
-  qos: 1
-  payload_on: "ON"
-  payload_off: "OFF"
-  payload_available: "Online"
-  payload_not_available: "Offline"
-  retain: true
+# - platform: mqtt
+#   name: Workbench Light
+#   state_topic: "tele/sonoff_basic_02/STATE"
+#   value_template: "{{ value_json.POWER }}"
+#   command_topic: "cmnd/sonoff_basic_02/POWER"
+#   availability_topic: "tele/sonoff_basic_02/LWT"
+#   qos: 1
+#   payload_on: "ON"
+#   payload_off: "OFF"
+#   payload_available: "Online"
+#   payload_not_available: "Offline"
+#   retain: true
 
 - platform: mqtt
   name: Floor Lamp
