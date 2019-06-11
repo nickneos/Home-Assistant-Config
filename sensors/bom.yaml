@@ -33,10 +33,8 @@
   name: Melbourne
   forecast_days: 5
   rest_of_today: True
-#   friendly: False
-  mode: all
+  friendly: False
   friendly_state_format: '{max}, {summary}'
-  text_if_no_value: 'N/A'
   monitored_conditions:
     - 'max'
     - 'min'

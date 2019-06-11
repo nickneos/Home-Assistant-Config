@@ -56,8 +56,6 @@ script.radio_vol_up:
   icon: mdi:volume-plus
 script.radio_vol_down:
   icon: mdi:volume-minus
-light.xiaomi_gateway_light:
-  friendly_name: Night Light
 switch.template_samsung_tv:
   icon: mdi:television
 switch.template_soniq_tv:
@@ -74,12 +72,6 @@ switch.template_harmony_netflix:
   icon: mdi:netflix
 switch.template_harmony_power:
   icon: mdi:power
-light.kitchen:
-  friendly_name: Kitchen
-light.dining:
-  friendly_name: Dining
-light.living_room:
-  friendly_name: Living Room
 climate.bedroom:
   icon: mdi:air-conditioner
   unit_of_measurement: °C
@@ -132,19 +124,7 @@ sensor.hassio_db_size:
   icon: mdi:database
 sensor.hassio_db_no_of_days:
   icon: mdi:database
-binary_sensor.konnected_2345c8_zone_1:
-  friendly_name: Garage Motion
-binary_sensor.konnected_2345c8_zone_2:
-  friendly_name: Family Room Motion
-binary_sensor.konnected_2345c8_zone_3:
-  friendly_name: Front Hallway Motion
-binary_sensor.konnected_2345c8_zone_4:
-  friendly_name: Rear Hallway Motion
-binary_sensor.konnected_2345c8_zone_5:
-  friendly_name: Master Bedroom Motion
-binary_sensor.konnected_2345c8_zone_6:
-  friendly_name: Alarm Armed
-switch.alarm:
+switch.template_alarm:
   icon: mdi:shield-key
 light.table_lamp:
   icon: mdi:lamp
@@ -152,3 +132,9 @@ cover.garage_main:
   device_class: garage
 cover.garage_rear:
   device_class: garage
+binary_sensor.xiaomi_door_1:
+  icon: mdi:door
+  device_class: door
+binary_sensor.xiaomi_door_2:
+  icon: mdi:door
+  device_class: door
