@@ -72,7 +72,7 @@ ash_presence:
     title: Ashlei
     icon_on: fa-female
     icon_off: fa-female
-    device: ashs_s8_plus
+    device: ashs_s10
 
 main_ac:
     widget_type: climate

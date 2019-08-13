@@ -65,13 +65,21 @@ class Alarm(hass.Hass):
         for sensor in self.args["motion_sensors"]:
             sensor_id = sensor["entity"]
             sensor_name = sensor["name"]
-            self.listen_state(self.cb_alarm_trigger, sensor_id, new = "on", sensor_name = sensor_name)
+            self.listen_state(self.cb_alarm_trigger, sensor_id, new = "on", sensor_name = sensor_name, sensor_type = "motion")
+
+        for sensor in self.args["door_sensors"]:
+            sensor_id = sensor["entity"]
+            sensor_name = sensor["name"]
+            self.listen_state(self.cb_alarm_trigger, sensor_id, new = "on", sensor_name = sensor_name, sensor_type = "door")
     
     
     def cb_alarm_trigger(self, entity, attribute, old, new, kwargs):
         if self.noone_home() and self.get_state("input_boolean.motion_notifications") == "on":
             t = time.strftime("%d-%b-%Y %H:%M:%S")
             n = kwargs["sensor_name"]
-            msg = f"{t}: Motion detected in {n}"
+            if kwargs["sensor_type"] == "motion":
+                msg = f"{t}: Motion detected in {n}"
+            elif kwargs["sensor_type"] == "door":
+                msg = f"{t}: {n} opened"
             self.log(msg)
             self.notify(msg, name = "html5")

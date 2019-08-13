@@ -21,13 +21,27 @@ class Button(hass.Hass):
         if not action:
             return
         self.log(f"{button}: {action}")       
+        
         button_type = action["type"] if "type" in action else "standard"
+        tgt_dev = action["target_dev"] if "target_dev" in action else None
 
         if button_type == "standard":
-            entity_id = action["entity"]
-            device, entity = self.split_entity(entity_id)
-            service = action["service"]
-            self.call_service(f"{device}/{service}", entity_id = entity_id)
+            device, entity = self.split_entity(tgt_dev)
+            service = action["service"] 
+            self.call_service(f"{device}/{service}", entity_id = tgt_dev)
+        
+        elif button_type == "dimmer":
+            if self.get_state(tgt_dev) == "off":
+                self.call_service("light/turn_on", entity_id = tgt_dev)
+            else:
+                dim_step = action["dim_step"] if "dim_step" in action else 3
+                dim_step_pct = round(100 / dim_step)
+                brightness = round((self.get_state(tgt_dev, attribute = "brightness") / 255) * 100)
+                brightness = brightness + dim_step_pct
+                if brightness > 100:
+                    brightness = dim_step_pct
+                self.call_service("light/turn_on", entity_id = tgt_dev, brightness_pct = brightness)
+        
         elif button_type == "doorbell":
             self.doorbell(action)
 

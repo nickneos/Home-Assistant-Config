@@ -42,7 +42,7 @@ class Presence(hass.Hass):
             
             # turn on harmony only for Nick or Ash
             elif device == "switch.template_harmony_fetch":
-                if self.get_tracker_state("device_tracker.nicks_note8") == "home" or self.get_tracker_state("device_tracker.ashs_s8_plus") == "home":
+                if self.get_tracker_state("device_tracker.nicks_note8") == "home" or self.get_tracker_state("device_tracker.ashs_s10") == "home":
                     self.log(f"Turning on {device}")
                     self.turn_on(device) 
 

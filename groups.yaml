@@ -17,7 +17,7 @@
 #   icon: mdi:home
 #   entities:
 #     - device_tracker.nicks_note8
-#     - device_tracker.ashs_s8_plus
+#     - device_tracker.ashs_s10
 #     # - binary_sensor.door_window_sensor_158d00019da791
 #     # - binary_sensor.xiaomi_motion_1
 #     - sensor.xiaomi_temp_2

@@ -56,9 +56,9 @@ history:
 logbook:
 logger:
   default: warning
-  # logs:
+  logs:
     # custom_components.smartir.climate: debug
-    # custom_components.harmony_ac.climate: debug
+    custom_components.harmony_ac.climate: debug
     # custom_components.remote: debug
     # homeassistant.components.konnected: debug
     # pyharmony: debug
@@ -241,18 +241,15 @@ climate:
     humidity_sensor: sensor.xiaomi_humidity_1
   - platform: harmony_ac
     name: Living Room
-    host: !secret harmony_ip
+    remote_entity: remote.living_room
     device_id: 58354062
     min_temp: 18
     max_temp: 30
     target_temp: 20
     target_temp_step: 1
     temp_sensor: sensor.xiaomi_temp_2
-    default_operation: 'off'
-    default_fan_mode: auto
     customize:
       operations:
-        - 'off'
         - cool
         - dry
         - heat

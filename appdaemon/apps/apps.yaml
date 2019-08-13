@@ -46,15 +46,15 @@ bedroom_buttons:
   actions:
     - click_type: single
       type: standard
-      entity: light.bedroom
+      target_dev: light.bedroom
       service: toggle
     - click_type: double
       type: standard
-      entity: switch.template_soniq_tv
+      target_dev: switch.template_soniq_tv
       service: toggle
     - click_type: long_click_press
       type: standard
-      entity: switch.master_switch
+      target_dev: switch.master_switch
       service: turn_off
 outside_button:
   module: xiaomi
@@ -64,7 +64,21 @@ outside_button:
   actions:
     - click_type: single
       type: standard
-      entity: light.outdoor_led
+      target_dev: light.outdoor_led
+      service: toggle
+nursery_button:
+  module: xiaomi
+  class: Button
+  buttons:
+    - binary_sensor.xiaomi_switch_5
+  actions:
+    - click_type: single
+      type: dimmer
+      dim_step: 3
+      target_dev: light.nursery
+    - click_type: long_click_press
+      type: standard
+      target_dev: light.nursery
       service: toggle
 doorbell:
   module: xiaomi
@@ -78,7 +92,7 @@ doorbell:
       gw_mac: !secret xiaomi_mac
       # gw_mac: 34ce0088ebdb
       ringtone_id: 10001
-      volume: 15
+      volume: 10
       flash:
         - light.bedroom
         - light.study
@@ -151,6 +165,11 @@ alarm:
       entity: binary_sensor.konnected_zone_5
     - name: Pantry
       entity: binary_sensor.xiaomi_motion_1
+  door_sensors:
+    - name: Front Door
+      entity: binary_sensor.xiaomi_door_1
+    - name: Sliding Door
+      entity: binary_sensor.xiaomi_door_2
 
 
 ### Other ###
