@@ -28,13 +28,42 @@ sunset:
     - light.outdoor_led
 
 ### Google Home Volume Control ###    
-gh_volume:
+gh_main:
   module: google_home
-  class: Google_Home
-  devices:
-    - media_player.google_home_main
-    - media_player.google_home_office
-    - media_player.google_home_bedroom
+  class: Quiet_Mode
+  device: media_player.google_home_main
+  night_mode:
+    hour: 23
+    min: 5
+    vol: 0.3
+  day_mode: 
+    hour: 5
+    min: 59
+    vol: 0.55
+gh_office:
+  module: google_home
+  class: Quiet_Mode
+  device: media_player.google_home_office
+  night_mode:
+    hour: 23
+    min: 5
+    vol: 0.2
+  day_mode: 
+    hour: 6
+    min: 55
+    vol: 0.4
+gh_bedroom:
+  module: google_home
+  class: Quiet_Mode
+  device: media_player.google_home_bedroom
+  night_mode:
+    hour: 21
+    min: 55
+    vol: 0.2
+  day_mode: 
+    hour: 6
+    min: 55
+    vol: 0.4
 
 ### Xiaomi Buttons ###
 bedroom_buttons:
