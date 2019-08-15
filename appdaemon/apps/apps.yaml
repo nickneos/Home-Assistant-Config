@@ -225,21 +225,17 @@ timer_main_tv:
   input: input_number.timer_main_tv
   units: minutes
 
-### Other ###
-garage:
+### Garage ###
+garage_main:
   module: garage
   class: Garage
   garage_door: cover.garage_main
+  notify_when_away: true
+  duration_notify: 15
+garage_rear:
+  module: garage
+  class: Garage
+  garage_door: cover.garage_rear
+  notify_when_away: true
+  duration_notify: 30
 
-# outdoor_lights:
-#   module: trigger
-#   class: Trigger
-#   trigger: light.outside_light
-#   action:
-#     - light.outdoor_led
-
-
-
-# router:
-#   module: router
-#   class: Router
