@@ -179,25 +179,21 @@ garage_open_light:
 ### Alarm Notifications
 alarm:
   module: sensor
-  class: Alarm
+  class: Notifications
   motion_sensors:
-    - name: Garage
-      entity: binary_sensor.konnected_zone_1
-    - name: Family Area
-      entity: binary_sensor.konnected_zone_2
-    - name: Hallway
-      entity: binary_sensor.konnected_zone_3
-    - name: Back Hallway
-      entity: binary_sensor.konnected_zone_4
-    - name: Master Bedroom
-      entity: binary_sensor.konnected_zone_5
-    - name: Pantry
-      entity: binary_sensor.xiaomi_motion_1
+    - binary_sensor.konnected_zone_1
+    - binary_sensor.konnected_zone_2
+    - binary_sensor.konnected_zone_3
+    - binary_sensor.konnected_zone_4
+    - binary_sensor.konnected_zone_5
+    - binary_sensor.xiaomi_motion_1
   door_sensors:
-    - name: Front Door
-      entity: binary_sensor.xiaomi_door_1
-    - name: Sliding Door
-      entity: binary_sensor.xiaomi_door_2
+    - binary_sensor.xiaomi_door_1
+    - binary_sensor.xiaomi_door_2
+  water_sensors:
+    - binary_sensor.xiaomi_water_1
+    - binary_sensor.xiaomi_water_2
+    - binary_sensor.xiaomi_water_3
 
 ### Timers ###
 timer_main_ac:

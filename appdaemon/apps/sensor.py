@@ -58,28 +58,42 @@ class sensor_light(hass.Hass):
             self.turn_off(self.light)
 
 
-class Alarm(hass.Hass):
+class Notifications(hass.Hass):
 
     def initialize(self):
 
-        for sensor in self.args["motion_sensors"]:
-            sensor_id = sensor["entity"]
-            sensor_name = sensor["name"]
-            self.listen_state(self.cb_alarm_trigger, sensor_id, new = "on", sensor_name = sensor_name, sensor_type = "motion")
+        sensors = []
+        sensors.extend(self.args["motion_sensors"])
+        sensors.extend(self.args["door_sensors"])
+        sensors.extend(self.args["water_sensors"])
 
-        for sensor in self.args["door_sensors"]:
-            sensor_id = sensor["entity"]
-            sensor_name = sensor["name"]
-            self.listen_state(self.cb_alarm_trigger, sensor_id, new = "on", sensor_name = sensor_name, sensor_type = "door")
-    
+        for sensor in sensors:
+            s_name = self.get_state(sensor, attribute="friendly_name")
+            s_type = self.get_state(sensor, attribute="device_class")
+
+            self.listen_state(self.cb_alarm_trigger, sensor, new = "on",
+                                sensor_name = s_name, sensor_type = s_type)  
     
     def cb_alarm_trigger(self, entity, attribute, old, new, kwargs):
+        t = time.strftime("%d-%b-%Y %H:%M:%S")
+        sensor_name = kwargs["sensor_name"]
+        sensor_type = kwargs["sensor_type"]
+        
         if self.noone_home() and self.get_state("input_boolean.motion_notifications") == "on":
-            t = time.strftime("%d-%b-%Y %H:%M:%S")
-            n = kwargs["sensor_name"]
-            if kwargs["sensor_type"] == "motion":
-                msg = f"{t}: Motion detected in {n}"
-            elif kwargs["sensor_type"] == "door":
-                msg = f"{t}: {n} opened"
-            self.log(msg)
+                
+            if sensor_type == "motion":
+                msg = f"{t}: {sensor_name} sensor tripped".title()
+                msg = msg.replace("Sensor Sensor", "Sensor")
+            elif sensor_type == "door":
+                msg = f"{t}: {sensor_name} opened"
+
             self.notify(msg, name = "html5")
+        
+        if sensor_type == "moisture":
+            subject = f"{sensor_name} sensor leak detected".title()
+            subject = subject.replace("Sensor Sensor", "Sensor")
+            msg = f"{t}: {subject}"
+
+            self.notify(msg, name = "html5")
+            self.notify(msg, name = "gmail", title = subject)
+
