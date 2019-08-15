@@ -1,0 +1,7 @@
+# timer_device:
+#   name: Device
+#   options:
+#     - Select...
+#     - Main AC
+#     - Bedroom AC
+#   initial: 'Select...'

@@ -1,28 +1,6 @@
 ############################################################
 # Title:    Home Assistant Configuration                   #
 # Author:   so3n                                           #
-# Navigation:                                              #
-#   Basic Setup                                            #
-#   History Filter                                         #
-#   Inputs                                                 #
-#   Device Trackers                                        #
-#   Remotes                                                #
-#   Media Players                                          #
-#   Google Assistant                                       #
-#   Xiaomi Gateway                                         #
-#   Cameras                                                #
-#   Notifications                                          #
-#   IFTTT                                                  #
-#   Shell                                                  #
-#   Weather                                                #
-#   Climate                                                #
-#   Covers                                                 #
-#   Zones                                                  #
-#   Binary Sensors                                         #
-#   Vacuum                                                 #
-#   Alarm                                                  #
-#   Merged Files                                           #
-#   No Longer Used                                         #
 #                                                          #
 ############################################################
 
@@ -71,48 +49,6 @@ tts:
 
 ############ DB Recorder ############
 recorder: !include recorder.yaml
-
-
-############ Inputs ############
-input_boolean:
-  holiday_mode:
-    name: Holiday Mode
-    # initial: off
-    icon: mdi:airplane
-  cast_visible:
-    name: Cast Visible
-    initial: on
-    icon: mdi:cast_visible
-  fairy_lights:
-    name: Fairy Lights Schedule
-    # initial: on
-    icon: mdi:pine-tree
-  motion_notifications:
-    name: Motion Notifications
-    icon: mdi:bell
-
-input_select:
-  timer_device:
-    name: Device
-    options:
-      - Select...
-      - Main AC
-      - Bedroom AC
-    initial: 'Select...'
-
-input_number:
-  timer_hours:
-    name: Hours
-    initial: 1
-    min: 0
-    max: 12
-    step: 1
-
-input_datetime:
-  timer_off:
-    name: Time to turn off
-    has_date: true
-    has_time: true
 
 
 ############ Device Trackers ############
@@ -369,6 +305,10 @@ sensor: !include_dir_merge_list sensors/
 switch: !include_dir_merge_list switches/
 light: !include_dir_merge_list lights/
 script: !include_dir_merge_named scripts/
+input_number: !include input/input_number.yaml
+input_boolean: !include input/input_boolean.yaml
+input_select: !include input/input_select.yaml
+input_datetime: !include input/input_datetime.yaml
 automation: !include automations.yaml
 group: !include groups.yaml
 

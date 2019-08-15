@@ -1,0 +1,29 @@
+timer_main_ac:
+  name: Main AC Timer
+  initial: 0
+  min: 0
+  max: 12
+  step: 1
+timer_bedroom_ac:
+  name: Bedroom AC Timer
+  initial: 0
+  min: 0
+  max: 12
+  step: 1
+timer_main_tv:
+  name: Main Tv Timer
+  initial: 0
+  min: 0
+  max: 720
+  step: 1
+timer_bedroom_tv:
+  name: Bedroom TV Timer
+  initial: 0
+  min: 0
+  max: 720
+  step: 1
+doorbell_volume:
+  name: Doorbell Volume
+  min: 1
+  max: 100
+  step: 1

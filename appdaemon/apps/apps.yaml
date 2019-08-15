@@ -111,25 +111,24 @@ nursery_button:
       service: toggle
 doorbell:
   module: xiaomi
-  class: Button
+  class: Doorbell
   buttons:
     - binary_sensor.xiaomi_switch_3
-  actions:
-    - click_type: single
-      type: doorbell
-      light: light.front_porch
-      gw_mac: !secret xiaomi_mac
-      # gw_mac: 34ce0088ebdb
-      ringtone_id: 10001
-      volume: 10
-      flash:
-        - light.bedroom
-        - light.study
-        - light.spare_room
-        - light.kitchen
-        - light.dining
-        - light.living_room
-        - light.bedroom_2
+  click_type: single
+  gw_mac: !secret xiaomi_mac
+  ringtone_id: 10001
+  vol_slider: input_number.doorbell_volume 
+  courtesy_light: 
+    - entity_id: light.front_porch
+      timer: 180
+  flash:
+    - light.bedroom
+    - light.study
+    - light.spare_room
+    - light.kitchen
+    - light.dining
+    - light.living_room
+    - light.bedroom_2
 
 ### Sensor Lights ###
 pantry_motion_light:
@@ -200,6 +199,31 @@ alarm:
     - name: Sliding Door
       entity: binary_sensor.xiaomi_door_2
 
+### Timers ###
+timer_main_ac:
+  module: timer
+  class: Timer
+  device: climate.living_room
+  input: input_number.timer_main_ac
+  units: hours
+timer_bedroom_ac:
+  module: timer
+  class: Timer
+  device: climate.bedroom
+  input: input_number.timer_bedroom_ac
+  units: hours
+timer_bedroom_tv:
+  module: timer
+  class: Timer
+  device: switch.template_soniq_tv
+  input: input_number.timer_bedroom_tv
+  units: minutes
+timer_main_tv:
+  module: timer
+  class: Timer
+  device: remote.living_room
+  input: input_number.timer_main_tv
+  units: minutes
 
 ### Other ###
 garage:
@@ -214,9 +238,7 @@ garage:
 #   action:
 #     - light.outdoor_led
 
-timer:
-  module: timer
-  class: Timer
+
 
 # router:
 #   module: router

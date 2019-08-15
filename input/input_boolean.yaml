@@ -1,0 +1,15 @@
+holiday_mode:
+  name: Holiday Mode
+  # initial: off
+  icon: mdi:airplane
+cast_visible:
+  name: Cast Visible
+  initial: on
+  icon: mdi:cast_visible
+fairy_lights:
+  name: Fairy Lights Schedule
+  # initial: on
+  icon: mdi:pine-tree
+motion_notifications:
+  name: Motion Notifications
+  icon: mdi:bell

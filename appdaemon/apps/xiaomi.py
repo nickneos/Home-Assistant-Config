@@ -9,7 +9,6 @@ class Button(hass.Hass):
             self.listen_event(self.cb_button, "xiaomi_aqara.click",
                               entity_id = button)
 
-
     def cb_button(self, event_name, data, kwargs):
         click_type = data["click_type"]        
         action = None
@@ -42,47 +41,78 @@ class Button(hass.Hass):
                     brightness = dim_step_pct
                 self.call_service("light/turn_on", entity_id = tgt_dev, brightness_pct = brightness)
         
-        elif button_type == "doorbell":
-            self.doorbell(action)
 
+class Doorbell(hass.Hass):
 
-    def doorbell(self, data):
+    def initialize(self):
+        
+        self.click_type = self.args["click_type"]
+        self.gw_mac = self.args["gw_mac"]
+        self.ringtone_id = self.args["ringtone_id"]
+        self.vol_slider = self.args["vol_slider"]
+        self.flash = self.args["flash"] if "flash" in self.args else None
+        self.courtesy_light = self.args["courtesy_light"] if "courtesy_light" in self.args else None
+        self.gh_devices = self.args["gh_devices"] if "gh_devices" in self.args else None
 
-        if self.sun_down():
-            self.turn_on(data["light"])
+        for button in self.args["buttons"]:
+            self.listen_event(self.cb_doorbell, "xiaomi_aqara.click",
+                              entity_id = button)
+        
+        self.listen_state(self.doorbell_slider_change, self.vol_slider)
+
+    def cb_doorbell(self, event_name, data, kwargs):
+
+        event_click = data["click_type"]
+        button = kwargs["entity_id"]
+        
+        if event_click != self.click_type:
+            return
+        self.log(f"{button}: {self.click_type}")    
+
+        if self.courtesy_light and self.sun_down():
+            self.turn_on(self.courtesy_light["entity_id"])
             self.start_timer()
 
         if self.anyone_home():
+            vol = self.get_state(self.vol_slider)
+            vol = float(vol)
             self.call_service("xiaomi_aqara/play_ringtone", 
-                               gw_mac = data["gw_mac"],
-                               ringtone_id = data["ringtone_id"], ringtone_vol = data["volume"])
+                               gw_mac = self.gw_mac,
+                               ringtone_id = self.ringtone_id,
+                               ringtone_vol = vol)
         
-        lights = data["flash"]
-        for x in lights:
-            self.call_service("light/lifx_effect_pulse", 
-                                entity_id = x, 
-                                brightness = "255", color_name = "green", 
-                                period = "0.5", cycles = "10")
+        if self.flash:
+            lights = self.flash
+            for x in lights:
+                self.call_service("light/lifx_effect_pulse", 
+                                    entity_id = x, 
+                                    brightness = "255", color_name = "green", 
+                                    period = "0.5", cycles = "10")
 
-        # if self.anyone_home():
-        #     # devices = ["media_player.google_home_main", 
-        #     #            "media_player.google_home_bedroom",
-        #     #            "media_player.google_home_office"]
-        #     # msg = ("There's someone at the door")
-        #     # for gh in devices:
-        #     #     if self.get_state(gh) == "off": 
-        #     #         self.call_service("tts/google_say", entity_id = gh,
-        #     #                           message = msg)
-        #     #         break
+        if self.gh_devices and self.anyone_home():
+            msg = ("There's someone at the door")
+            for gh in self.gh_devices:
+                if self.get_state(gh) == "off": 
+                    self.call_service("tts/google_say", entity_id = gh,
+                                      message = msg)
+                    break
 
         t = time.strftime("%d-%b-%Y %H:%M:%S")
         message = f"{t}: Doorbell pressed"
         self.log(message)
         self.notify(message, name = "html5")
 
-
-    def start_timer(self):        
-        self.handle = self.run_in(self.end_timer, 180)
+    def start_timer(self):
+        timer = self.courtesy_light["timer"] if "timer" in self.courtesy_light else 60
+        self.handle = self.run_in(self.end_timer, timer)
 
     def end_timer(self, kwargs):
-        self.turn_off(self.light)
+        self.turn_off(self.courtesy_light["entity_id"])
+    
+    def doorbell_slider_change(self, entity, attribute, old, new, kwargs):
+        vol = float(new)
+        self.call_service("xiaomi_aqara/play_ringtone", 
+                            gw_mac = self.gw_mac,
+                            ringtone_id = self.ringtone_id, 
+                            ringtone_vol = vol)
+        
