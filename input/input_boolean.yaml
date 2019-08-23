@@ -13,3 +13,7 @@ fairy_lights:
 motion_notifications:
   name: Motion Notifications
   icon: mdi:bell
+people_automations:
+  name: People Automations
+  icon: mdi:account
+  
