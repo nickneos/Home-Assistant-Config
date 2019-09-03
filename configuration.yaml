@@ -104,7 +104,7 @@ camera:
     name: Study
   - platform: ffmpeg
     input: !secret cam2
-    name: Family Room
+    name: dafang1
   - platform: ffmpeg
     input: !secret cam3
     name: Kitchen

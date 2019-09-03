@@ -6,16 +6,24 @@ presence:
     - light.floor_lamp
     - light.kitchen
     - switch.template_harmony_fetch
+  arrival_off:
+    - switch.dafang1_motion_detection
+    - light.hallway_2
+  away_on:
+    - switch.dafang1_motion_detection
+    - light.hallway_2
   away_off:
     - group.all_lights
     - remote.living_room
     - switch.template_samsung_tv
-  pet_light: light.hallway_2
   radio:
     device: media_player.google_home_office
     url: 'https://abc.ihrcast.arn.com.au/iHRabc01?'
   people_notifications:
     - device_tracker.mums_lg_g4
+  residents:
+    - device_tracker.nicks_note8
+    - device_tracker.ashs_s10
 
 ### Time Based Automations ###
 sunset:
@@ -134,8 +142,8 @@ doorbell:
   ringtone_id: 10001
   vol_slider: input_number.doorbell_volume 
   courtesy_light: 
-    - entity_id: light.front_porch
-      timer: 180
+    entity_id: light.front_porch
+    timer: 180
   flash:
     - light.bedroom
     - light.study
@@ -154,6 +162,7 @@ pantry_motion_light:
   brightness: 100
   kelvin: 3200
   duration: 300
+  toggle: input_boolean.pantry_sensor_light
 hallway_motion_light:
   module: sensor
   class: sensor_light
@@ -161,6 +170,7 @@ hallway_motion_light:
   sensor: binary_sensor.konnected_zone_3
   duration: 180
   night_mode: true
+  toggle: input_boolean.main_hallway_sensor_light
 back_hallway_motion_light:
   module: sensor
   class: sensor_light
@@ -169,6 +179,7 @@ back_hallway_motion_light:
   duration: 120
   night_mode: true
   brightness: 30
+  toggle: input_boolean.back_hallway_sensor_light
 backyard_door_light:
   module: sensor
   class: sensor_light
@@ -176,6 +187,7 @@ backyard_door_light:
   sensor: binary_sensor.xiaomi_door_2
   night_mode: true
   duration: 180
+  toggle: input_boolean.sliding_door_light
 front_door_light:
   module: sensor
   class: sensor_light
@@ -183,14 +195,25 @@ front_door_light:
   sensor: binary_sensor.xiaomi_door_1
   night_mode: true
   duration: 180
-garage_open_light:
+  toggle: input_boolean.front_door_light
+garage_open_light_1:
   module: sensor
   class: sensor_light
   light: light.front_porch
   sensor: cover.garage_main
   night_mode: true
   duration: 180
+  toggle: input_boolean.main_garage_door_light
+garage_open_light_2:
+  module: sensor
+  class: sensor_light
+  light: light.outdoor_led
+  sensor: cover.garage_rear
+  night_mode: true
+  duration: 180
+  toggle: input_boolean.rear_garage_door_light
 
+  
 ### Alarm Notifications
 alarm:
   module: sensor
@@ -202,6 +225,7 @@ alarm:
     - binary_sensor.konnected_zone_4
     - binary_sensor.konnected_zone_5
     - binary_sensor.xiaomi_motion_1
+    # - binary_sensor.dafang1_motion_sensor
   door_sensors:
     - binary_sensor.xiaomi_door_1
     - binary_sensor.xiaomi_door_2

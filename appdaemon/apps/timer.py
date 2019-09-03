@@ -1,5 +1,5 @@
 import appdaemon.plugins.hass.hassapi as hass
-
+from datetime import datetime
 
 class Timer(hass.Hass):
 
@@ -13,25 +13,35 @@ class Timer(hass.Hass):
     def cb_timer(self, entity, attribute, old, new, kwargs):           
         dev = self.device
 
+        if self.get_state(dev) == "off":
+            self.log(f"{dev} currently off...no timer set")
+            return
+
         if self.units == "minutes":
             sec = float(new) * 60 
         elif self.units == "hours":
             sec = float(new) * 60 * 60
         else:
-            float(new)
-        
+            sec = float(new)
+            self.units = "seconds"
+
         if self.handle != None:
             self.cancel_timer(self.handle)
             self.log(f"Cancelling {self.handle}")
 
-        self.log(f"Turning off {dev} in {sec} seconds")
-        self.handle = self.run_in(self.power_off, sec, device = dev)
-        self.log(self.info_timer(self.handle))
-
+        self.handle = self.run_in(self.power_off, sec)
+        t, i, k  = self.info_timer(self.handle)
+        time_str = t.strftime("%Y-%m-%d %H:%M:%S")
+        self.log(f"Turning off {dev} in {round(float(new))} {self.units} ({time_str})")
+        
     def power_off(self, kwargs):
-        dev = kwargs["device"]
-        platform, entity = self.split_entity(dev)
+        dev = self.device
+        d1, d2 = self.split_entity(dev)
+
+        if self.get_state(dev) == "off":
+            self.log(f"{dev} already off")
+            return
 
         self.log(f"Turning off {dev}")
-        self.call_service(f"{platform}/turn_off", entity_id = dev)
+        self.call_service(f"{d1}/turn_off", entity_id = dev)
 

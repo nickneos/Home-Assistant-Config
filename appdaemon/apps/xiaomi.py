@@ -35,11 +35,13 @@ class Button(hass.Hass):
             else:
                 dim_step = action["dim_step"] if "dim_step" in action else 3
                 dim_step_pct = round(100 / dim_step)
-                brightness = round((self.get_state(tgt_dev, attribute = "brightness") / 255) * 100)
-                brightness = brightness + dim_step_pct
-                if brightness > 100:
-                    brightness = dim_step_pct
-                self.call_service("light/turn_on", entity_id = tgt_dev, brightness_pct = brightness)
+                brightness = self.get_state(tgt_dev, attribute = "brightness")
+                if brightness:
+                    brightness = round((brightness / 255) * 100)
+                    brightness = brightness + dim_step_pct
+                    if brightness > 100:
+                        brightness = dim_step_pct
+                    self.call_service("light/turn_on", entity_id = tgt_dev, brightness_pct = brightness)
         
 
 class Doorbell(hass.Hass):

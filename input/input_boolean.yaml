@@ -16,4 +16,26 @@ motion_notifications:
 people_automations:
   name: People Automations
   icon: mdi:account
+main_hallway_sensor_light:
+  name: Main Hallway Sensor Light
+  icon: mdi:lightbulb-on-outline
+back_hallway_sensor_light:
+  name: Back Hallway Sensor Light
+  icon: mdi:lightbulb-on-outline
+pantry_sensor_light:
+  name: Pantry Sensor Light
+  icon: mdi:lightbulb-on-outline
+sliding_door_light:
+  name: Sliding Door Light
+  icon: mdi:lightbulb-on-outline
+front_door_light:
+  name: Front Porch Light
+  icon: mdi:lightbulb-on-outline
+main_garage_door_light:
+  name: Main Garage Door Light
+  icon: mdi:lightbulb-on-outline
+rear_garage_door_light:
+  name: Rear Garage Door Light
+  icon: mdi:lightbulb-on-outline
+
   

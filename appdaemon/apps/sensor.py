@@ -8,26 +8,27 @@ class sensor_light(hass.Hass):
         self.light = self.args["light"]
         self.sensor = self.args["sensor"]
         self.duration = self.args["duration"]
-        self.night_mode = False
-        self.brightness = None
-        self.kelvin = None
+        self.night_mode = self.args["night_mode"] if "night_mode" in self.args else False
+        self.brightness = self.args["brightness"] if "brightness" in self.args else None
+        self.kelvin = self.args["kelvin"] if "kelvin" in self.args else None
+        self.toggle = self.args["toggle"] if "toggle" in self.args else None
+        s_type = self.get_state(self.sensor, attribute="device_class")
 
-        if "night_mode" in self.args:
-            self.night_mode = self.args["night_mode"]
-        if "brightness" in self.args:
-            self.brightness = self.args["brightness"]
-        if "kelvin" in self.args:
-            self.kelvin = self.args["kelvin"]
+        if s_type == "garage":
+            self.trigger = "open" 
+        else:
+            self.trigger = "on"
 
-        dev, ent = self.split_entity(self.sensor)
-        self.state = "open" if dev == "cover" else "on"
-        self.listen_state(self.motion, self.sensor, new = self.state)
+        self.listen_state(self.cb_motion, self.sensor, new = self.trigger)
 
-
-    def motion(self, entity, attribute, old, new, kwargs):
+    def cb_motion(self, entity, attribute, old, new, kwargs):
         
         if self.night_mode and self.sun_up():
             return
+        
+        if self.toggle:
+            if self.get_state(self.toggle) == "off":
+                return
     
         self.log(f"{self.sensor} tripped...Turning on {self.light}")
         if self.brightness and self.kelvin:
@@ -47,10 +48,9 @@ class sensor_light(hass.Hass):
         self.log(f"{self.light} set to turn off in {self.duration} seconds")
         self.handle = self.run_in(self.end_timer, self.duration)
 
-
     def end_timer(self, kwargs):
         
-        if self.get_state(self.args["sensor"]) == self.state:
+        if self.get_state(self.sensor) == self.trigger:
             self.log(f"{self.sensor} still tripped...starting new delay")
             self.start_timer()
         else:
