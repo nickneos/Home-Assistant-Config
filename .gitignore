@@ -54,6 +54,7 @@ ssh/
 entity_registry.yaml
 .*
 !/.gitignore
+!/.gitattributes
 !/.travis.yml
 python-lovelace/
 
