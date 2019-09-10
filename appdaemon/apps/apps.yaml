@@ -94,7 +94,7 @@ bedroom_buttons:
       type: standard
       target_dev: switch.master_switch
       service: turn_off
-bedroom_button_1:
+guest_bedroom__button:
   module: xiaomi
   class: Button
   buttons:
@@ -102,11 +102,11 @@ bedroom_button_1:
   actions:
     - click_type: single
       type: dimmer
-      dim_step: 3
-      target_dev: light.bedroom
+      dim_step: 4
+      target_dev: light.guest_bedroom
     - click_type: long_click_press
       type: standard
-      target_dev: light.bedroom
+      target_dev: light.guest_bedroom
       service: toggle
 outside_button:
   module: xiaomi

@@ -28,9 +28,11 @@ entity_config:
     name: Front Porch
     aliases:
     - Porch
-  light.bedroom_3:
+  light.guest_bedroom:
     expose: true
-    name: Bedroom 3
+    name: Guest Bedroom
+    aliases:
+      - Guest Room
   climate.bedroom:
     expose: true
     name: Bedroom Air Conditioner

@@ -118,3 +118,7 @@ binary_sensor.xiaomi_door_1:
   device_class: door
 binary_sensor.xiaomi_door_2:
   device_class: door
+person.nick:
+  entity_picture: "/local/nick.jpg"
+person.ashlei:
+  entity_picture: "/local/ashlei.jpg"

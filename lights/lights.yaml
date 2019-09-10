@@ -10,7 +10,7 @@
   payload_off: "OFF"
   payload_available: "Online"
   payload_not_available: "Offline"
-  retain: true
+  retain: false
 
 - platform: mqtt
   name: Floor Lamp
@@ -23,7 +23,7 @@
   payload_off: "OFF"
   payload_available: "Online"
   payload_not_available: "Offline"
-  retain: true
+  retain: false
 
 ### Mirabella Globes ###
 - platform: mqtt
@@ -63,7 +63,7 @@
   retain: false
 
 - platform: mqtt
-  name: Bedroom 3
+  name: Guest Bedroom
   command_topic: "cmnd/bulb4/POWER"
   state_topic: "tele/bulb4/STATE"
   state_value_template: "{{value_json.POWER}}"
