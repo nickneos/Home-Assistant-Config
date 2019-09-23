@@ -5,6 +5,7 @@ class sensor_light(hass.Hass):
 
     def initialize(self):
         self.handle = None
+        self.utils = self.get_app("utils")
         self.light = self.args["light"]
         self.sensor = self.args["sensor"]
         self.duration = self.args["duration"]
@@ -61,7 +62,8 @@ class sensor_light(hass.Hass):
 class Notifications(hass.Hass):
 
     def initialize(self):
-
+        self.utils = self.get_app("utils")
+        
         sensors = []
         sensors.extend(self.args["motion_sensors"])
         sensors.extend(self.args["door_sensors"])
@@ -79,7 +81,7 @@ class Notifications(hass.Hass):
         sensor_name = kwargs["sensor_name"]
         sensor_type = kwargs["sensor_type"]
         
-        if self.noone_home() and self.get_state("input_boolean.motion_notifications") == "on":
+        if self.utils.noone_home() and self.get_state("input_boolean.motion_notifications") == "on":
                 
             if sensor_type == "motion":
                 msg = f"{t}: {sensor_name} sensor tripped".title()

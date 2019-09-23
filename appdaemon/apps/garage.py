@@ -6,6 +6,7 @@ class Garage(hass.Hass):
 
     def initialize(self):
         self.handle = None
+        self.utils = self.get_app("utils")
         self.garage_door = self.args["garage_door"]
         self.garage_name = self.get_state(self.garage_door, attribute="friendly_name")
         self.notify_when_away = self.args["notify_when_away"] if "notify_when_away" in self.args else False
@@ -22,7 +23,7 @@ class Garage(hass.Hass):
 
         if mode == 1:
             self.log(f"{self.garage_name} opened")
-            if self.noone_home():
+            if self.utils.noone_home():
                 t = time.strftime("%d-%b-%Y %H:%M:%S")
                 msg = f"{t}: {self.garage_name} open"
                 self.notify(msg, name = "html5")

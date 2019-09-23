@@ -1,16 +1,19 @@
+utils:
+  module: utils
+  class: utils
+
 ### People Presence Automations
 presence:
   module: presence
   class: Presence
+  dependencies: utils
   arrival_on:
     - light.floor_lamp
     - light.kitchen
     - switch.template_harmony_fetch
   arrival_off:
-    - switch.dafang1_motion_detection
     - light.hallway_2
   away_on:
-    - switch.dafang1_motion_detection
     - light.hallway_2
   away_off:
     - group.all_lights
@@ -29,10 +32,12 @@ presence:
 sunset:
   module: sun
   class: Sunset
-  devices_on:
+  dependencies: utils
+  athome_on:
     - light.floor_lamp
     - light.kitchen
-  pet_light: light.hallway_2
+  away_on: 
+    - light.hallway_2
   fairy_lights:
     - light.outdoor_led
 
@@ -40,6 +45,7 @@ sunset:
 gh_main:
   module: google_home
   class: Quiet_Mode
+  dependencies: utils
   device: media_player.google_home_main
   night_mode:
     hour: 23
@@ -52,6 +58,7 @@ gh_main:
 gh_office:
   module: google_home
   class: Quiet_Mode
+  dependencies: utils
   device: media_player.google_home_office
   night_mode:
     hour: 23
@@ -64,6 +71,7 @@ gh_office:
 gh_bedroom:
   module: google_home
   class: Quiet_Mode
+  dependencies: utils
   device: media_player.google_home_bedroom
   night_mode:
     hour: 21
@@ -78,6 +86,7 @@ gh_bedroom:
 bedroom_buttons:
   module: xiaomi
   class: Button
+  dependencies: utils
   buttons:
     - binary_sensor.xiaomi_switch_1
     - binary_sensor.xiaomi_switch_2
@@ -97,6 +106,7 @@ bedroom_buttons:
 guest_bedroom__button:
   module: xiaomi
   class: Button
+  dependencies: utils
   buttons:
     - binary_sensor.xiaomi_switch_6
   actions:
@@ -111,6 +121,7 @@ guest_bedroom__button:
 outside_button:
   module: xiaomi
   class: Button
+  dependencies: utils
   buttons:
     - binary_sensor.xiaomi_switch_4
   actions:
@@ -118,23 +129,25 @@ outside_button:
       type: standard
       target_dev: light.outdoor_led
       service: toggle
-nursery_button:
+kitchen_button:
   module: xiaomi
   class: Button
+  dependencies: utils
   buttons:
     - binary_sensor.xiaomi_switch_5
   actions:
     - click_type: single
       type: dimmer
       dim_step: 3
-      target_dev: light.nursery
+      target_dev: light.kitchen
     - click_type: long_click_press
       type: standard
-      target_dev: light.nursery
+      target_dev: light.kitchen
       service: toggle
 doorbell:
   module: xiaomi
   class: Doorbell
+  dependencies: utils
   buttons:
     - binary_sensor.xiaomi_switch_3
   click_type: single
@@ -145,18 +158,17 @@ doorbell:
     entity_id: light.front_porch
     timer: 180
   flash:
-    - light.bedroom
     - light.study
     - light.spare_room
     - light.kitchen
     - light.dining
     - light.living_room
-    - light.bedroom_2
 
 ### Sensor Lights ###
 pantry_motion_light:
   module: sensor
   class: sensor_light
+  dependencies: utils
   light: light.pantry_light
   sensor: binary_sensor.xiaomi_motion_1
   brightness: 100
@@ -166,6 +178,7 @@ pantry_motion_light:
 hallway_motion_light:
   module: sensor
   class: sensor_light
+  dependencies: utils
   light: light.hallway_2
   sensor: binary_sensor.konnected_zone_3
   duration: 180
@@ -174,6 +187,7 @@ hallway_motion_light:
 back_hallway_motion_light:
   module: sensor
   class: sensor_light
+  dependencies: utils
   light: light.back_hallway
   sensor: binary_sensor.konnected_zone_4
   duration: 120
@@ -183,6 +197,7 @@ back_hallway_motion_light:
 backyard_door_light:
   module: sensor
   class: sensor_light
+  dependencies: utils
   light: light.outdoor_led
   sensor: binary_sensor.xiaomi_door_2
   night_mode: true
@@ -191,6 +206,7 @@ backyard_door_light:
 front_door_light:
   module: sensor
   class: sensor_light
+  dependencies: utils
   light: light.front_porch
   sensor: binary_sensor.xiaomi_door_1
   night_mode: true
@@ -199,6 +215,7 @@ front_door_light:
 garage_open_light_1:
   module: sensor
   class: sensor_light
+  dependencies: utils
   light: light.front_porch
   sensor: cover.garage_main
   night_mode: true
@@ -207,6 +224,7 @@ garage_open_light_1:
 garage_open_light_2:
   module: sensor
   class: sensor_light
+  dependencies: utils
   light: light.outdoor_led
   sensor: cover.garage_rear
   night_mode: true
@@ -218,6 +236,7 @@ garage_open_light_2:
 alarm:
   module: sensor
   class: Notifications
+  dependencies: utils
   motion_sensors:
     - binary_sensor.konnected_zone_1
     - binary_sensor.konnected_zone_2
@@ -225,7 +244,6 @@ alarm:
     - binary_sensor.konnected_zone_4
     - binary_sensor.konnected_zone_5
     - binary_sensor.xiaomi_motion_1
-    # - binary_sensor.dafang1_motion_sensor
   door_sensors:
     - binary_sensor.xiaomi_door_1
     - binary_sensor.xiaomi_door_2
@@ -238,24 +256,28 @@ alarm:
 timer_main_ac:
   module: timer
   class: Timer
+  dependencies: utils
   device: climate.living_room
   input: input_number.timer_main_ac
   units: hours
 timer_bedroom_ac:
   module: timer
   class: Timer
+  dependencies: utils
   device: climate.bedroom
   input: input_number.timer_bedroom_ac
   units: hours
 timer_bedroom_tv:
   module: timer
   class: Timer
+  dependencies: utils
   device: switch.template_soniq_tv
   input: input_number.timer_bedroom_tv
   units: minutes
 timer_main_tv:
   module: timer
   class: Timer
+  dependencies: utils
   device: remote.living_room
   input: input_number.timer_main_tv
   units: minutes
@@ -264,12 +286,14 @@ timer_main_tv:
 garage_main:
   module: garage
   class: Garage
+  dependencies: utils
   garage_door: cover.garage_main
   notify_when_away: true
   duration_notify: 15
 garage_rear:
   module: garage
   class: Garage
+  dependencies: utils
   garage_door: cover.garage_rear
   notify_when_away: true
   duration_notify: 30

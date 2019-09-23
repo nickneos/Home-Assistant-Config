@@ -8,7 +8,7 @@ import time
 class Presence(hass.Hass):
 
     def initialize(self):
-
+        self.utils = self.get_app("utils")
         self.arrival_on = self.args["arrival_on"] if "arrival_on" in self.args else []
         self.arrival_off = self.args["arrival_off"] if "arrival_off" in self.args else []
         self.away_on = self.args["away_on"] if "away_on" in self.args else []
@@ -52,12 +52,10 @@ class Presence(hass.Hass):
             elif device == "switch.template_harmony_fetch":
                 for person in self.residents:
                     if self.get_tracker_state(person) == "home":
-                        self.log(f"Turning on {device}")
-                        self.turn_on(device)
+                        self.utils.on(device)
                         break
             else:
-                self.log(f"Turning on {device}")
-                self.turn_on(device)
+                self.utils.on(device)
 
         # devices to turn off
         for device in self.arrival_off:
@@ -67,14 +65,12 @@ class Presence(hass.Hass):
                 self.log(f"Turning off {device} in {n} minutes")
                 self.run_in(self.delayed_off, n * 60, device = device)
             else:
-                self.log(f"Turning off {device}")
-                self.turn_off(device) 
+                self.utils.off(device) 
 
         # turn off radio
         if self.radio:
             r_dev = self.radio["device"]
-            self.log(f"Turning off {r_dev}")
-            self.turn_off(r_dev) 
+            self.utils.off(r_dev)
         
 
     def everyones_left(self, entity, attribute, old, new, kwargs):
@@ -88,8 +84,7 @@ class Presence(hass.Hass):
         
         # devices to turn off
         for device in self.away_off:
-            self.log(f"Turning off {device}")
-            self.turn_off(device)
+            self.utils.off(device)
 
         # devices to turn on
         for device in self.away_on:
@@ -113,8 +108,7 @@ class Presence(hass.Hass):
 
     def delayed_off(self, kwargs):
         dev = kwargs["device"]
-        self.log(f"Turning off {dev}")
-        self.turn_off(dev)
+        self.utils.off(dev)
 
 
     def people_notification(self, entity, attribute, old, new, kwargs):

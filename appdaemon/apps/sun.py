@@ -12,45 +12,34 @@ class Sunset(hass.Hass):
     """
 
     def initialize(self):
+        self.utils = self.get_app("utils")
         self.handle1 = None
         self.handle2 = None
-        self.run_at_sunset(self.sunset_cb, offset = -30 * 60)
+        self.athome_on = self.args["athome_on"] if "athome_on" in self.args else []
+        self.away_on = self.args["away_on"] if "away_on" in self.args else []
+        self.fairy_lights = self.args["fairy_lights"] if "fairy_lights" in self.args else []
 
+        self.run_at_sunset(self.sunset_cb, offset = -30 * 60)
 
     def sunset_cb(self, kwargs):
         """Sunset Callback Function"""
         self.log("sunset callback triggered")
-
-        if self.noone_home() and \
-                self.get_state("input_boolean.holiday_mode") != "on":
-            self.log("Turning on {}".format(self.args["pet_light"]))
-            self.turn_on(self.args["pet_light"], brightness_pct = "60", 
-                         kelvin = "3200", transition = "120")
-        elif self.anyone_home() and \
-                self.get_state("input_boolean.holiday_mode") != "on":
-            for device in self.args["devices_on"]:
-                self.log(f"Turning on {device}")
-                self.turn_on(device)
-        elif self.get_state("input_boolean.holiday_mode") == "on":
+       
+        if self.get_state("input_boolean.holiday_mode") == "on":
             self.run_in(self.holiday_mode, 1, stage = 0)
+        else:
+            devices = self.away_on if self.utils.noone_home() else self.athome_on
+            for dev in devices:
+                self.utils.on(dev)
+        
+        if self.get_state("input_boolean.fairy_lights") == "on":
+            for fl in self.fairy_lights:
+                self.utils.on(fl)
+                self.run_in(self.delayed_off, 4 * 60 * 60, device = fl)
 
-        if "fairy_lights" in self.args:
-            fairy_lights = self.args["fairy_lights"]
-            if self.get_state("input_boolean.fairy_lights") == "on":
-                for fl in fairy_lights:
-                    self.log(f"Turning on {fl}")
-                    self.turn_on(fl)
-                self.run_in(self.end_fairy_lights, 4 * 60 * 60, 
-                            lights = fairy_lights)
-
-
-    def end_fairy_lights(self, kwargs):
-        """Callback function to turn off fairy lights"""
-        lights = kwargs["lights"]
-        for fl in lights:
-            self.log(f"Turning off {fl}")
-            self.turn_off(fl)
-
+    def delayed_off(self, kwargs):
+        dev = kwargs["device"]
+        self.utils.off(dev)
 
     def holiday_mode(self, kwargs):
         """
@@ -64,9 +53,9 @@ class Sunset(hass.Hass):
 
             # Turn on Hallway 2 Light
             dev = "light.hallway_2"
-            self.log(f"Turning on {dev}")
-            self.turn_on(dev, brightness_pct = "60", kelvin = "3200", 
-                         transition = "120")
+            # self.turn_on(dev, brightness_pct = "60", kelvin = "3200", 
+            #              transition = "120")
+            self.utils.on(dev)
 
             # Generate stage 1 start time
             s_delay = random.randint(15*60, 120*60)
@@ -88,8 +77,7 @@ class Sunset(hass.Hass):
             # Stage 1: turn on some family area lights
             devs = ["light.kitchen", "light.floor_lamp"]
             for dev in devs:
-                self.log(f"Turning on {dev}")
-                self.turn_on(dev)
+                self.utils.on(dev)
             self.handle1 = None
         
         elif kwargs["stage"] == 2:
@@ -103,8 +91,7 @@ class Sunset(hass.Hass):
 
             # Turn off all lights
             dev = "group.all_lights"
-            self.log(f"Turning off {dev}")
-            self.turn_off(dev)
+            self.utils.off(dev)
 
             # Generate Stage 3 delay and schedule
             s_delay = random.randint(10, 60)
@@ -115,7 +102,7 @@ class Sunset(hass.Hass):
             # Stage 3
             
             # Turn on bedroom light
-            self.turn_on("light.bedroom")
+            self.utils.on("light.bedroom")
 
             # Generage Stage 4 delay and schedule
             s_delay = random.randint(5*60, 20*60)
@@ -124,4 +111,4 @@ class Sunset(hass.Hass):
         
         elif kwargs["stage"] == 4:
             # Stage 4: Turn off all lights
-            self.turn_off("group.all_lights")
+            self.utils.off("group.all_lights")

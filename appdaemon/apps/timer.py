@@ -4,6 +4,7 @@ from datetime import datetime
 class Timer(hass.Hass):
 
     def initialize(self):
+        self.utils = self.get_app("utils")
         self.handle = None
         self.device = self.args["device"]
         self.input = self.args["input"]
@@ -36,12 +37,4 @@ class Timer(hass.Hass):
         
     def power_off(self, kwargs):
         dev = self.device
-        d1, d2 = self.split_entity(dev)
-
-        if self.get_state(dev) == "off":
-            self.log(f"{dev} already off")
-            return
-
-        self.log(f"Turning off {dev}")
-        self.call_service(f"{d1}/turn_off", entity_id = dev)
-
+        self.utils.off(dev)

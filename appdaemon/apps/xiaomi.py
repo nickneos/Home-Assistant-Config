@@ -4,6 +4,7 @@ import time
 class Button(hass.Hass):
 
     def initialize(self):
+        self.utils = self.get_app("utils")
         
         for button in self.args["buttons"]:
             self.listen_event(self.cb_button, "xiaomi_aqara.click",
@@ -37,7 +38,7 @@ class Button(hass.Hass):
                 dim_step_pct = round(100 / dim_step)
                 brightness = self.get_state(tgt_dev, attribute = "brightness")
                 if brightness:
-                    brightness = round((brightness / 255) * 100)
+                    brightness = self.utils.bound_to_100(brightness)
                     brightness = brightness + dim_step_pct
                     if brightness > 100:
                         brightness = dim_step_pct
@@ -47,7 +48,7 @@ class Button(hass.Hass):
 class Doorbell(hass.Hass):
 
     def initialize(self):
-        
+        self.utils = self.get_app("utils")
         self.click_type = self.args["click_type"]
         self.gw_mac = self.args["gw_mac"]
         self.ringtone_id = self.args["ringtone_id"]
@@ -75,7 +76,7 @@ class Doorbell(hass.Hass):
             self.turn_on(self.courtesy_light["entity_id"])
             self.start_timer()
 
-        if self.anyone_home():
+        if self.utils.anyone_home():
             vol = self.get_state(self.vol_slider)
             vol = float(vol)
             self.call_service("xiaomi_aqara/play_ringtone", 
@@ -91,7 +92,7 @@ class Doorbell(hass.Hass):
                                     brightness = "255", color_name = "green", 
                                     period = "0.5", cycles = "10")
 
-        if self.gh_devices and self.anyone_home():
+        if self.gh_devices and self.utils.anyone_home():
             msg = ("There's someone at the door")
             for gh in self.gh_devices:
                 if self.get_state(gh) == "off": 
