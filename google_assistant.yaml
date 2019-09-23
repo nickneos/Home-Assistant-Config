@@ -39,7 +39,7 @@ entity_config:
   climate.living_room:
     expose: true
     name: Main Air Conditioner
-  switch.template_home_server:
+  switch.home_server:
     expose: true
     name: Server
   switch.template_samsung_tv:

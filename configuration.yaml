@@ -104,10 +104,13 @@ camera:
     name: Study
   - platform: ffmpeg
     input: !secret cam2
-    name: dafang1
+    name: Nursery
   - platform: ffmpeg
     input: !secret cam3
     name: Kitchen
+  - platform: ffmpeg
+    input: !secret cam4
+    name: dafang1
   ## swann/reolink
   # - platform: ffmpeg
   #   input: !secret reolink1

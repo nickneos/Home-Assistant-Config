@@ -62,6 +62,8 @@ switch.template_soniq_tv:
   icon: mdi:television
 switch.template_home_server:
   icon: mdi:server-network
+switch.home_server:
+  icon: mdi:server-network
 switch.template_harmony_fetch:
   icon: mdi:television-box
 switch.template_harmony_tvsurround:
@@ -122,3 +124,7 @@ person.nick:
   entity_picture: "/local/nick.jpg"
 person.ashlei:
   entity_picture: "/local/ashlei.jpg"
+person.liza:
+  entity_picture: "/local/liza.jpg"
+person.maryann:
+  entity_picture: "/local/mary.jpg"

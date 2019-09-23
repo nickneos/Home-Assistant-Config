@@ -32,10 +32,10 @@ vacuum_master_bedroom:
       data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         command: app_zoned_clean
-        params: [[4940,21004,9040,25104,1]]
+        params: [[4940,21004,9040,25104,3]]
 
 vacuum_bedroom_2:
-  alias: "Vacuum Bedroom 2"
+  alias: "Vacuum Nursery"
   sequence:
     - service: vacuum.send_command
       data:
@@ -44,7 +44,7 @@ vacuum_bedroom_2:
         params: [[16947,20664,20297,25164,1]]
 
 vacuum_bedroom_3:
-  alias: "Vacuum Bedroom 3"
+  alias: "Vacuum Guest Bedroom"
   sequence:
     - service: vacuum.send_command
       data:
