@@ -254,15 +254,6 @@ zone:
     radius: 50
 
 
-############ Binary Sensors ############
-binary_sensor:
-  - platform: ping
-    name: Online
-    host: 8.8.8.8
-    count: 5
-    scan_interval: 300
-
-
 ############ Vacuum ############
 vacuum:
   - platform: xiaomi_miio
@@ -315,6 +306,7 @@ tuya:
 
 ############ Merged Files ############
 sensor: !include_dir_merge_list sensors/
+binary_sensor: !include_dir_merge_list binary_sensors/
 switch: !include_dir_merge_list switches/
 light: !include_dir_merge_list lights/
 script: !include_dir_merge_named scripts/
