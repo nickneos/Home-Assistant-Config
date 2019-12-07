@@ -14,7 +14,7 @@ class Timer(hass.Hass):
     def cb_timer(self, entity, attribute, old, new, kwargs):           
         dev = self.device
 
-        if self.get_state(dev) == "off":
+        if self.utils.is_off(dev):
             self.log(f"{dev} currently off...no timer set")
             return
 

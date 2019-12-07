@@ -111,6 +111,9 @@ camera:
   - platform: ffmpeg
     input: !secret cam4
     name: dafang1
+  - platform: ffmpeg
+    input: !secret cam5
+    name: dafang2
   ## swann/reolink
   # - platform: ffmpeg
   #   input: !secret reolink1
@@ -302,6 +305,13 @@ speedtestdotnet:
     - ping
     - download
     - upload
+
+
+tuya:
+  username: !secret tuya_user
+  password: !secret tuya_pw
+  country_code: !secret tuya_country
+
 
 ############ Merged Files ############
 sensor: !include_dir_merge_list sensors/

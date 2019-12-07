@@ -25,14 +25,14 @@ class Sunset(hass.Hass):
         """Sunset Callback Function"""
         self.log("sunset callback triggered")
        
-        if self.get_state("input_boolean.holiday_mode") == "on":
+        if self.utils.is_on("input_boolean.holiday_mode"):
             self.run_in(self.holiday_mode, 1, stage = 0)
         else:
-            devices = self.away_on if self.utils.noone_home() else self.athome_on
+            devices = self.away_on if self.noone_home() else self.athome_on
             for dev in devices:
                 self.utils.on(dev)
         
-        if self.get_state("input_boolean.fairy_lights") == "on":
+        if self.utils.is_on("input_boolean.fairy_lights"):
             for fl in self.fairy_lights:
                 self.utils.on(fl)
                 self.run_in(self.delayed_off, 4 * 60 * 60, device = fl)

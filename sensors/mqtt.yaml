@@ -1,0 +1,10 @@
+
+- platform: mqtt
+  name: "Car Sensor"
+  state_topic: "tele/garage1/SENSOR"
+  value_template: "{{ value_json['SR04']['Distance'] }}"
+  unit_of_measurement: "cm"
+  availability_topic: "tele/garage1/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+ 

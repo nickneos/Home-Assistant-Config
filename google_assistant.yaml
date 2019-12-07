@@ -3,36 +3,12 @@ api_key: !secret ga_api
 expose_by_default: false
 secure_devices_pin: !secret GA_pin
 entity_config:
-  switch.arlec_1a:
-    expose: true
-    name: Fridge
   light.outdoor_led:
     expose: true
     name: Outdoor LED
   light.floor_lamp:
     expose: true
     name: Floor Lamp
-  light.pantry_light:
-    expose: true
-    name: Pantry Light
-  light.workbench_light:
-    expose: true
-    name: Workbench Light
-  light.back_hallway:
-    expose: true
-    name: Back Hallway
-  light.xiaomi_gateway_light:
-    expose: true
-  light.front_porch:
-    expose: true
-    name: Front Porch
-    aliases:
-    - Porch
-  light.guest_bedroom:
-    expose: true
-    name: Guest Bedroom
-    aliases:
-      - Guest Room
   climate.bedroom:
     expose: true
     name: Bedroom Air Conditioner

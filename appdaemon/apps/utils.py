@@ -242,3 +242,43 @@ class utils(hass.Hass):
             if self.get_state(p) == "home":
                 return False
         return True
+    
+    def is_on(self, device):
+        """
+        """
+        if self.get_state(device) == "on":
+            return True
+        else:
+            return False
+
+    def is_off(self, device):
+        """
+        """
+        if self.get_state(device) == "off":
+            return True
+        else:
+            return False
+
+    def tripped_name(self, device):
+        s_type = self.get_state(device, attribute="device_class")
+
+        if s_type == "garage":
+            return "open" 
+        else:
+            return "on"
+
+    def is_tripped(self, device):
+        """
+        """
+        s_type = self.get_state(device, attribute="device_class")
+        
+        if s_type == "garage":
+            trip = "open" 
+        else:
+            trip = "on"
+
+        if self.get_state(device) == trip:
+            return True
+        else:
+            return False
+    

@@ -22,8 +22,8 @@ presence:
   radio:
     device: media_player.google_home_office
     url: 'https://abc.ihrcast.arn.com.au/iHRabc01?'
-  people_notifications:
-    - device_tracker.mums_lg_g4
+  # people_notifications:
+  #   - device_tracker.mums_lg_g4
   residents:
     - device_tracker.nicks_note8
     - device_tracker.ashs_s10
@@ -129,7 +129,7 @@ outside_button:
       type: standard
       target_dev: light.outdoor_led
       service: toggle
-kitchen_button:
+study_button:
   module: xiaomi
   class: Button
   dependencies: utils
@@ -139,10 +139,10 @@ kitchen_button:
     - click_type: single
       type: dimmer
       dim_step: 3
-      target_dev: light.kitchen
+      target_dev: light.study
     - click_type: long_click_press
       type: standard
-      target_dev: light.kitchen
+      target_dev: light.study
       service: toggle
 doorbell:
   module: xiaomi
@@ -157,100 +157,122 @@ doorbell:
   courtesy_light: 
     entity_id: light.front_porch
     timer: 180
-  flash:
-    - light.study
-    - light.spare_room
-    - light.kitchen
-    - light.dining
-    - light.living_room
+  # flash:
+  #   - light.study
+  #   - light.spare_room
+  #   - light.kitchen
+  #   - light.dining
+  #   - light.living_room
 
 ### Sensor Lights ###
 pantry_motion_light:
   module: sensor
   class: sensor_light
   dependencies: utils
+  constrain_presence: anyone
   light: light.pantry_light
   sensor: binary_sensor.xiaomi_motion_1
-  brightness: 100
-  kelvin: 3200
   duration: 300
   toggle: input_boolean.pantry_sensor_light
 hallway_motion_light:
   module: sensor
   class: sensor_light
   dependencies: utils
+  constrain_start_time: sunset
+  constrain_end_time: sunrise
+  constrain_presence: anyone
   light: light.hallway_2
   sensor: binary_sensor.konnected_zone_3
-  duration: 180
-  night_mode: true
+  duration: 120
   toggle: input_boolean.main_hallway_sensor_light
 back_hallway_motion_light:
   module: sensor
   class: sensor_light
   dependencies: utils
+  constrain_start_time: sunset
+  constrain_end_time: sunrise
+  constrain_presence: anyone
   light: light.back_hallway
   sensor: binary_sensor.konnected_zone_4
   duration: 120
-  night_mode: true
-  brightness: 30
   toggle: input_boolean.back_hallway_sensor_light
 backyard_door_light:
   module: sensor
   class: sensor_light
   dependencies: utils
+  constrain_start_time: sunset
+  constrain_end_time: sunrise
   light: light.outdoor_led
   sensor: binary_sensor.xiaomi_door_2
-  night_mode: true
   duration: 180
   toggle: input_boolean.sliding_door_light
 front_door_light:
   module: sensor
   class: sensor_light
   dependencies: utils
+  constrain_start_time: sunset
+  constrain_end_time: sunrise
   light: light.front_porch
   sensor: binary_sensor.xiaomi_door_1
-  night_mode: true
   duration: 180
   toggle: input_boolean.front_door_light
 garage_open_light_1:
   module: sensor
   class: sensor_light
   dependencies: utils
+  constrain_start_time: sunset
+  constrain_end_time: sunrise
   light: light.front_porch
   sensor: cover.garage_main
-  night_mode: true
   duration: 180
   toggle: input_boolean.main_garage_door_light
 garage_open_light_2:
   module: sensor
   class: sensor_light
   dependencies: utils
+  constrain_start_time: sunset
+  constrain_end_time: sunrise
   light: light.outdoor_led
   sensor: cover.garage_rear
-  night_mode: true
   duration: 180
   toggle: input_boolean.rear_garage_door_light
 
   
-### Alarm Notifications
+### Sensors
 alarm:
   module: sensor
   class: Notifications
   dependencies: utils
-  motion_sensors:
+  toggle: input_boolean.motion_notifications
+  sensors:
     - binary_sensor.konnected_zone_1
     - binary_sensor.konnected_zone_2
     - binary_sensor.konnected_zone_3
     - binary_sensor.konnected_zone_4
     - binary_sensor.konnected_zone_5
     - binary_sensor.xiaomi_motion_1
-  door_sensors:
     - binary_sensor.xiaomi_door_1
     - binary_sensor.xiaomi_door_2
-  water_sensors:
+    - cover.garage_main
+    - cover.garage_rear
+water_sensors:
+  module: sensor
+  class: Notifications
+  dependencies: utils
+  notify_when_home: True
+  sensors:
     - binary_sensor.xiaomi_water_1
     - binary_sensor.xiaomi_water_2
     - binary_sensor.xiaomi_water_3
+garage:
+  module: sensor
+  class: Notifications
+  dependencies: utils
+  notify_when_home: True
+  duration: 1200
+  sensors:
+    - cover.garage_main
+    - cover.garage_rear
 
 ### Timers ###
 timer_main_ac:
@@ -281,20 +303,4 @@ timer_main_tv:
   device: remote.living_room
   input: input_number.timer_main_tv
   units: minutes
-
-### Garage ###
-garage_main:
-  module: garage
-  class: Garage
-  dependencies: utils
-  garage_door: cover.garage_main
-  notify_when_away: true
-  duration_notify: 15
-garage_rear:
-  module: garage
-  class: Garage
-  dependencies: utils
-  garage_door: cover.garage_rear
-  notify_when_away: true
-  duration_notify: 30
 

@@ -25,85 +25,6 @@
   payload_not_available: "Offline"
   retain: false
 
-### Mirabella Globes ###
-- platform: mqtt
-  name: Back Hallway
-  command_topic: "cmnd/bulb1/POWER"
-  state_topic: "tele/bulb1/STATE"
-  state_value_template: "{{value_json.POWER}}"
-  availability_topic: "tele/bulb1/LWT"
-  brightness_command_topic: "cmnd/bulb1/Dimmer"
-  brightness_state_topic: "tele/bulb1/STATE"
-  brightness_scale: 100
-  on_command_type: "brightness"
-  brightness_value_template: "{{value_json.Dimmer}}"
-  payload_on: "ON"
-  payload_off: "OFF"
-  payload_available: "Online"
-  payload_not_available: "Offline"
-  qos: 1
-  retain: false
-
-- platform: mqtt
-  name: Front Porch
-  command_topic: "cmnd/bulb2/POWER"
-  state_topic: "tele/bulb2/STATE"
-  state_value_template: "{{value_json.POWER}}"
-  availability_topic: "tele/bulb2/LWT"
-  brightness_command_topic: "cmnd/bulb2/Dimmer"
-  brightness_state_topic: "tele/bulb2/STATE"
-  brightness_scale: 100
-  on_command_type: "brightness"
-  brightness_value_template: "{{value_json.Dimmer}}"
-  payload_on: "ON"
-  payload_off: "OFF"
-  payload_available: "Online"
-  payload_not_available: "Offline"
-  qos: 1
-  retain: false
-
-- platform: mqtt
-  name: Guest Bedroom
-  command_topic: "cmnd/bulb4/POWER"
-  state_topic: "tele/bulb4/STATE"
-  state_value_template: "{{value_json.POWER}}"
-  availability_topic: "tele/bulb4/LWT"
-  brightness_command_topic: "cmnd/bulb4/Dimmer"
-  brightness_state_topic: "tele/bulb4/STATE"
-  brightness_scale: 100
-  on_command_type: "brightness"
-  brightness_value_template: "{{value_json.Dimmer}}"
-  color_temp_command_topic: "cmnd/bulb4/CT"
-  color_temp_state_topic: "tele/bulb4/STATE"
-  color_temp_value_template: "{{value_json.CT}}"
-  payload_on: "ON"
-  payload_off: "OFF"
-  payload_available: "Online"
-  payload_not_available: "Offline"
-  qos: 1
-  retain: false
-
-- platform: mqtt
-  name: Pantry Light
-  command_topic: "cmnd/bulb3/POWER"
-  state_topic: "tele/bulb3/STATE"
-  state_value_template: "{{value_json.POWER}}"
-  availability_topic: "tele/bulb3/LWT"
-  brightness_command_topic: "cmnd/bulb3/Dimmer"
-  brightness_state_topic: "tele/bulb3/STATE"
-  brightness_scale: 100
-  on_command_type: "brightness"
-  brightness_value_template: "{{value_json.Dimmer}}"
-  color_temp_command_topic: "cmnd/bulb3/CT"
-  color_temp_state_topic: "tele/bulb3/STATE"
-  color_temp_value_template: "{{value_json.CT}}"
-  payload_on: "ON"
-  payload_off: "OFF"
-  payload_available: "Online"
-  payload_not_available: "Offline"
-  qos: 1
-  retain: false
-
 ### Arlec Switches ###
 - platform: switch
   name: Outdoor LED 1
@@ -118,3 +39,82 @@
   entities:
     - light.outdoor_led_1
     - light.outdoor_led_2
+
+### Mirabella Globes ###
+# - platform: mqtt
+#   name: Back Hallway
+#   command_topic: "cmnd/bulb1/POWER"
+#   state_topic: "tele/bulb1/STATE"
+#   state_value_template: "{{value_json.POWER}}"
+#   availability_topic: "tele/bulb1/LWT"
+#   brightness_command_topic: "cmnd/bulb1/Dimmer"
+#   brightness_state_topic: "tele/bulb1/STATE"
+#   brightness_scale: 100
+#   on_command_type: "brightness"
+#   brightness_value_template: "{{value_json.Dimmer}}"
+#   payload_on: "ON"
+#   payload_off: "OFF"
+#   payload_available: "Online"
+#   payload_not_available: "Offline"
+#   qos: 1
+#   retain: false
+
+# - platform: mqtt
+#   name: Front Porch
+#   command_topic: "cmnd/bulb2/POWER"
+#   state_topic: "tele/bulb2/STATE"
+#   state_value_template: "{{value_json.POWER}}"
+#   availability_topic: "tele/bulb2/LWT"
+#   brightness_command_topic: "cmnd/bulb2/Dimmer"
+#   brightness_state_topic: "tele/bulb2/STATE"
+#   brightness_scale: 100
+#   on_command_type: "brightness"
+#   brightness_value_template: "{{value_json.Dimmer}}"
+#   payload_on: "ON"
+#   payload_off: "OFF"
+#   payload_available: "Online"
+#   payload_not_available: "Offline"
+#   qos: 1
+#   retain: false
+
+# - platform: mqtt
+#   name: Guest Bedroom
+#   command_topic: "cmnd/bulb4/POWER"
+#   state_topic: "tele/bulb4/STATE"
+#   state_value_template: "{{value_json.POWER}}"
+#   availability_topic: "tele/bulb4/LWT"
+#   brightness_command_topic: "cmnd/bulb4/Dimmer"
+#   brightness_state_topic: "tele/bulb4/STATE"
+#   brightness_scale: 100
+#   on_command_type: "brightness"
+#   brightness_value_template: "{{value_json.Dimmer}}"
+#   color_temp_command_topic: "cmnd/bulb4/CT"
+#   color_temp_state_topic: "tele/bulb4/STATE"
+#   color_temp_value_template: "{{value_json.CT}}"
+#   payload_on: "ON"
+#   payload_off: "OFF"
+#   payload_available: "Online"
+#   payload_not_available: "Offline"
+#   qos: 1
+#   retain: false
+
+# - platform: mqtt
+#   name: Pantry Light
+#   command_topic: "cmnd/bulb3/POWER"
+#   state_topic: "tele/bulb3/STATE"
+#   state_value_template: "{{value_json.POWER}}"
+#   availability_topic: "tele/bulb3/LWT"
+#   brightness_command_topic: "cmnd/bulb3/Dimmer"
+#   brightness_state_topic: "tele/bulb3/STATE"
+#   brightness_scale: 100
+#   on_command_type: "brightness"
+#   brightness_value_template: "{{value_json.Dimmer}}"
+#   color_temp_command_topic: "cmnd/bulb3/CT"
+#   color_temp_state_topic: "tele/bulb3/STATE"
+#   color_temp_value_template: "{{value_json.CT}}"
+#   payload_on: "ON"
+#   payload_off: "OFF"
+#   payload_available: "Online"
+#   payload_not_available: "Offline"
+#   qos: 1
+#   retain: false
