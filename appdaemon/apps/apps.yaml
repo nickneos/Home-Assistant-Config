@@ -38,8 +38,14 @@ sunset:
     - light.kitchen
   away_on: 
     - light.hallway_2
-  fairy_lights:
-    - light.outdoor_led
+xmas_lights:
+  module: sun
+  class: Fairylights
+  dependencies: utils
+  lights:
+    - light.xmas_lights
+  sunrise offset: -60
+  sunset_offset: -15
 
 ### Google Home Volume Control ###    
 gh_main:

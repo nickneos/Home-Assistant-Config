@@ -17,7 +17,6 @@ class Sunset(hass.Hass):
         self.handle2 = None
         self.athome_on = self.args["athome_on"] if "athome_on" in self.args else []
         self.away_on = self.args["away_on"] if "away_on" in self.args else []
-        self.fairy_lights = self.args["fairy_lights"] if "fairy_lights" in self.args else []
 
         self.run_at_sunset(self.sunset_cb, offset = -30 * 60)
 
@@ -31,11 +30,6 @@ class Sunset(hass.Hass):
             devices = self.away_on if self.noone_home() else self.athome_on
             for dev in devices:
                 self.utils.on(dev)
-        
-        if self.utils.is_on("input_boolean.fairy_lights"):
-            for fl in self.fairy_lights:
-                self.utils.on(fl)
-                self.run_in(self.delayed_off, 4 * 60 * 60, device = fl)
 
     def delayed_off(self, kwargs):
         dev = kwargs["device"]
@@ -112,3 +106,22 @@ class Sunset(hass.Hass):
         elif kwargs["stage"] == 4:
             # Stage 4: Turn off all lights
             self.utils.off("group.all_lights")
+
+
+class Fairylights(hass.Hass):
+
+  def initialize(self):
+
+    delta1 = self.args["sunrise_offset"] if "sunrise_offset" in self.args else 0
+    delta2 = self.args["sunset_offset"] if "sunset_offset" in self.args else 0
+
+    self.run_at_sunrise(self.sunrise_cb, offset = delta1 * 60)
+    self.run_at_sunset(self.before_sunset_cb, offset = delta2 * 60)
+
+  def sunrise_cb(self, kwargs):
+    for x in self.args["lights"]:
+        self.utils.off(x)
+
+  def before_sunset_cb(self, kwargs):
+    for x in self.arg["lights"]:
+        self.utils.on(x)

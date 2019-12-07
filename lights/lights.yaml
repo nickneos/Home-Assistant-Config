@@ -27,18 +27,11 @@
 
 ### Arlec Switches ###
 - platform: switch
-  name: Outdoor LED 1
+  name: Outdoor LED
   entity_id: switch.arlec_1b
 - platform: switch
-  name: Outdoor LED 2
+  name: Xmas Lights
   entity_id: switch.arlec_1c
-
-### group lights ###
-- platform: group
-  name: Outdoor LED
-  entities:
-    - light.outdoor_led_1
-    - light.outdoor_led_2
 
 ### Mirabella Globes ###
 # - platform: mqtt
