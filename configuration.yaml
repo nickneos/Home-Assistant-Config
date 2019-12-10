@@ -25,6 +25,7 @@ http:
   # ssl_key: /ssl/privkey.pem
   # base_url: !secret url
 
+mobile_app:
 frontend:
 config:
 updater:
