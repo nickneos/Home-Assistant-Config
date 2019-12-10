@@ -8,12 +8,14 @@
   name: "Car Sensor"
   device_class: presence
   state_topic: "tele/garage1/SENSOR"
-  value_template: >
-    {% if states('value_json.SR04.Distance') | float >= 220 %}
+  value_template: >-
+    {% if value_json.SR04.Distance | float >= 220 -%}
       OFF
-    {% else %}
+    {%- else -%}
       ON
-    {% endif %}
+    {%- endif %}
+  json_attributes_topic: "tele/garage1/SENSOR"
+  json_attributes_template: "{{ value_json.SR04 | tojson }}"
   availability_topic: "tele/garage1/LWT"
   payload_available: "Online"
   payload_not_available: "Offline"

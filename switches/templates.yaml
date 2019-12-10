@@ -2,7 +2,7 @@
   switches:
     template_samsung_tv:
       friendly_name: 'Samsung TV'
-      value_template: "{{ not is_state('media_player.samsung_tv', 'off') }}"
+      value_template: "{{ is_state('media_player.samsung_tv', 'on') }}"
       turn_on:
         - service: switch.turn_on
           entity_id: switch.samsung_tv_power
@@ -13,22 +13,31 @@
   switches:
     template_soniq_tv:
       friendly_name: 'Bedroom TV'
-      value_template: "{% if states.media_player.chromecast_bedroom == none or is_state('media_player.chromecast_bedroom', 'unavailable') %}False{% else %}True{% endif %}"
+      value_template: >-
+        {% if states.media_player.chromecast_bedroom == none or is_state('media_player.chromecast_bedroom', 'unavailable') %}
+          False
+        {% else %}
+          True
+        {% endif %}
       turn_on:
         - service: script.soniq_tv_power
       turn_off:
         - service: script.soniq_tv_power
-# - platform: template
-#   switches:
-#     template_home_server:
-#       friendly_name: 'Home Server'
-#       value_template: "{{ is_state('sensor.hp_ilo_server_power', 'ON') or is_state('sensor.hp_ilo_server_power', 'on') }}"
-#       turn_on:
-#         - service: switch.turn_on
-#           entity_id: switch.home_server
-#       turn_off:
-#         - service: switch.turn_off
-#           entity_id: switch.home_server
+- platform: template
+  switches:
+    template_home_server:
+      friendly_name: 'Home Server'
+      value_template: >- 
+        {{ is_state('sensor.hp_ilo_server_power', 'ON')
+        or is_state('sensor.hp_ilo_server_power', 'on')
+        or is_state('sensor.home_server', 'ON')
+        or is_state('sensor.home_server', 'on') }}
+      turn_on:
+        - service: switch.turn_on
+          entity_id: switch.home_server
+      turn_off:
+        - service: switch.turn_off
+          entity_id: switch.home_server
 
 ########## Harmony Activity Switches ##########
 - platform: template
