@@ -110,18 +110,19 @@ class Sunset(hass.Hass):
 
 class Fairylights(hass.Hass):
 
-  def initialize(self):
+    def initialize(self):
+        self.utils = self.get_app("utils")
+        self.lights = self.args["lights"] if "lights" in self.args else []
+        delta1 = self.args["sunrise_offset"] if "sunrise_offset" in self.args else 0
+        delta2 = self.args["sunset_offset"] if "sunset_offset" in self.args else 0
 
-    delta1 = self.args["sunrise_offset"] if "sunrise_offset" in self.args else 0
-    delta2 = self.args["sunset_offset"] if "sunset_offset" in self.args else 0
+        self.run_at_sunrise(self.sunrise_cb, offset = delta1 * 60)
+        self.run_at_sunset(self.sunset_cb, offset = delta2 * 60)
 
-    self.run_at_sunrise(self.sunrise_cb, offset = delta1 * 60)
-    self.run_at_sunset(self.before_sunset_cb, offset = delta2 * 60)
+    def sunrise_cb(self, kwargs):
+        for x in self.lights:
+            self.utils.off(x)
 
-  def sunrise_cb(self, kwargs):
-    for x in self.args["lights"]:
-        self.utils.off(x)
-
-  def before_sunset_cb(self, kwargs):
-    for x in self.arg["lights"]:
-        self.utils.on(x)
+    def sunset_cb(self, kwargs):
+        for x in self.lights:
+            self.utils.on(x)

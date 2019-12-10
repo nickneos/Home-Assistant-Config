@@ -120,10 +120,12 @@ binary_sensor.xiaomi_door_2:
 binary_sensor.car_sensor:
   icon: mdi:car-side
 person.nick:
-  entity_picture: "/local/nick.jpg"
+  entity_picture: /local/nick.jpg
 person.ashlei:
-  entity_picture: "/local/ashlei.jpg"
+  entity_picture: /local/ashlei.jpg
 person.liza:
-  entity_picture: "/local/liza.jpg"
+  entity_picture: /local/liza.jpg
 person.maryann:
-  entity_picture: "/local/mary.jpg"
+  entity_picture: /local/mary.jpg
+switch.tp_link_1:
+  icon: mdi:pine-tree

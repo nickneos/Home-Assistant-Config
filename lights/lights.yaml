@@ -29,9 +29,6 @@
 - platform: switch
   name: Outdoor LED
   entity_id: switch.arlec_1b
-- platform: switch
-  name: Xmas Lights
-  entity_id: switch.arlec_1c
 
 ### Mirabella Globes ###
 # - platform: mqtt

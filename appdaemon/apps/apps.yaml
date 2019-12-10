@@ -43,8 +43,8 @@ xmas_lights:
   class: Fairylights
   dependencies: utils
   lights:
-    - light.xmas_lights
-  sunrise offset: -60
+    - switch.tp_link_1
+  sunrise_offset: -60
   sunset_offset: -15
 
 ### Google Home Volume Control ###    
