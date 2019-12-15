@@ -14,7 +14,7 @@ vacuum_hallway:
       data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         repeats: 1
-        zone: [[6987,25014,12387,26614],[12371,24987,15321,26387]]
+        zone: [[7045,25011,12145,26811],[12156,25275,16656,26175]]
 
 vacuum_spare_rooms:
   alias: "Vacuum Spare Rooms"

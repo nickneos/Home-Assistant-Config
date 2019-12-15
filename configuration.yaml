@@ -162,7 +162,6 @@ ifttt:
 
 ############ Shell ############
 shell_command:
-  test: "pwd && ls -al"
   server_shutdown: !secret ssh_server
   reboot_router: !secret ssh_router
 
