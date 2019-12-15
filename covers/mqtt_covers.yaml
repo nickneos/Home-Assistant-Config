@@ -1,27 +1,28 @@
 - platform: mqtt
-  name: Garage Main
-  state_topic: "stat/garage01/DOOR"
-  command_topic: "cmnd/garage01/POWER"
-  availability_topic: "tele/garage01/LWT"
+  name: Garage Front
+  state_topic: "cmnd/garage1_state/POWER2"
+  command_topic: "cmnd/garage1/POWER"
+  availability_topic: "tele/garage1/LWT"
   payload_open: "ON"
   payload_close: "ON"
   payload_stop: "ON"
-  state_open: 0
-  state_closed: 1
+  state_open: "OFF"
+  state_closed: "ON"
   payload_available: "Online"
   payload_not_available: "Offline"
   optimistic: false
+  device_class: garage
 
 - platform: mqtt
   name: Garage Rear
-  state_topic: "stat/garage02/DOOR"
-  command_topic: "cmnd/garage02/POWER"
-  availability_topic: "tele/garage02/LWT"
+  state_topic: "cmnd/garage2_state/POWER2"
+  command_topic: "cmnd/garage2/POWER"
+  availability_topic: "tele/garage2/LWT"
   payload_open: "ON"
   payload_close: "ON"
   payload_stop: "ON"
-  state_open: 0
-  state_closed: 1
+  state_open: "OFF"
+  state_closed: "ON"
   payload_available: "Online"
   payload_not_available: "Offline"
-  optimistic: false
+  device_class: garage

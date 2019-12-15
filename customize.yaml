@@ -109,10 +109,6 @@ switch.template_alarm:
   icon: mdi:shield-key
 light.table_lamp:
   icon: mdi:lamp
-cover.garage_main:
-  device_class: garage
-cover.garage_rear:
-  device_class: garage
 binary_sensor.xiaomi_door_1:
   device_class: door
 binary_sensor.xiaomi_door_2:

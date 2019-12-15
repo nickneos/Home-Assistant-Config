@@ -40,7 +40,7 @@ entity_config:
     aliases: 
     - TV
     - Sony TV
-  cover.garage_main:
+  cover.garage_rear:
     expose: true
     name: Garage Door
     aliases: 
