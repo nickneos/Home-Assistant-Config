@@ -20,14 +20,14 @@
   action:
     - service: mqtt.publish
       data:
-        topic: "cmnd/sonoffs/state"
+        topic: "cmnd/tasmotas/state"
         payload: ""
     - service: mqtt.publish
       data:
-        topic: cmnd/sonoffs/POWER
-    - service: mqtt.publish
-      data:
-        topic: cmnd/sonoffs/POWER2
-    - service: mqtt.publish
-      data:
-        topic: cmnd/sonoffs/POWER3 
+        topic: "cmnd/tasmotas/POWER"
+    # - service: mqtt.publish
+    #   data:
+    #     topic: cmnd/tasmotas/POWER2
+    # - service: mqtt.publish
+    #   data:
+    #     topic: cmnd/tasmotas/POWER3 

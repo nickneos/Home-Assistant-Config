@@ -127,5 +127,4 @@ person.liza:
   entity_picture: /local/liza.jpg
 person.maryann:
   entity_picture: /local/mary.jpg
-switch.tp_link_1:
-  icon: mdi:pine-tree
+  

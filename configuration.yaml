@@ -42,6 +42,7 @@ logger:
     # homeassistant.components.konnected: debug
     # pyharmony: debug
     # homeassistant.components.switch: debug
+    homeassistant.components.shell_command: debug
 # introduction:
 sun:
 tts:
@@ -161,7 +162,9 @@ ifttt:
 
 ############ Shell ############
 shell_command:
-  server_shutdown: !secret server_shutdown
+  test: "pwd && ls -al"
+  server_shutdown: !secret ssh_server
+  reboot_router: !secret ssh_router
 
 
 ############ Weather ############
@@ -170,68 +173,26 @@ weather:
     station: !secret bom_station
 
 
-############ Climate ############
-smartir:
-  update_branch: master
-
-climate:
-  - platform: smartir
-    name: Bedroom
-    unique_id: bedroom
-    device_code: 1022
-    controller_data: !secret broadlink_host1
-    temperature_sensor: sensor.xiaomi_temp_1
-    humidity_sensor: sensor.xiaomi_humidity_1
-  - platform: harmony_ac
-    name: Living Room
-    remote_entity: remote.living_room
-    device_id: 58354062
-    min_temp: 18
-    max_temp: 30
-    target_temp: 20
-    target_temp_step: 1
-    temp_sensor: sensor.xiaomi_temp_2
-    customize:
-      operations:
-        - cool
-        - dry
-        - heat
-      fan_modes:
-        - auto
-        - low
-        - med
-        - high
-
-
-############ Covers ############
-cover:
+############ Fan ############
+fan:
   - platform: mqtt
-    name: Garage Main
-    state_topic: "cmnd/garage1_state/POWER2"
-    command_topic: "cmnd/garage1/POWER"
-    availability_topic: "tele/garage1/LWT"
-    payload_open: "ON"
-    payload_close: "ON"
-    payload_stop: "ON"
-    state_open: "OFF"
-    state_closed: "ON"
+    name: "Diffuser"
+    availability_topic: "tele/diffuser01/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    optimistic: false
+    state_topic: "stat/diffuser01/POWER"
+    command_topic: "cmnd/diffuser01/POWER"
+    speed_state_topic: "stat/diffuser01/FAN"
+    payload_low_speed: low
+    payload_high_speed: high
+    speed_command_topic: "cmnd/diffuser01/Event"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    speeds:
+      - low
+      - high
 
-  - platform: mqtt
-    name: Garage Rear
-    state_topic: "cmnd/garage2_state/POWER2"
-    command_topic: "cmnd/garage2/POWER"
-    availability_topic: "tele/garage2/LWT"
-    payload_open: "ON"
-    payload_close: "ON"
-    payload_stop: "ON"
-    state_open: "OFF"
-    state_closed: "ON"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    optimistic: false
 
 ############ Zones ############
 zone:
@@ -298,11 +259,8 @@ speedtestdotnet:
     - download
     - upload
 
-
-tuya:
-  username: !secret tuya_user
-  password: !secret tuya_pw
-  country_code: !secret tuya_country
+smartir:
+  update_branch: master
 
 
 ############ Merged Files ############
@@ -310,6 +268,8 @@ sensor: !include_dir_merge_list sensors/
 binary_sensor: !include_dir_merge_list binary_sensors/
 switch: !include_dir_merge_list switches/
 light: !include_dir_merge_list lights/
+cover: !include_dir_merge_list covers/
+climate: !include_dir_merge_list climate/ 
 script: !include_dir_merge_named scripts/
 input_number: !include input/input_number.yaml
 input_boolean: !include input/input_boolean.yaml
@@ -317,13 +277,3 @@ input_datetime: !include input/input_datetime.yaml
 automation: !include automations.yaml
 group: !include groups.yaml
 
-
-# panel_iframe:
-#   tasmota:
-#     title: TasmoAdmin
-#     icon: mdi:power-socket-au
-#     url: 'https://192.168.1.19:9541/devices'
-#   log:
-#     title: Log Viewer
-#     icon: mdi:book-open
-#     url: 'https://192.168.1.19:4277'

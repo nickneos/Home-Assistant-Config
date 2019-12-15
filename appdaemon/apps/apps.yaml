@@ -43,7 +43,7 @@ xmas_lights:
   class: Fairylights
   dependencies: utils
   lights:
-    - switch.tp_link_1
+    - switch.xmas_lights
   sunrise_offset: -60
   sunset_offset: -15
 
