@@ -10,6 +10,7 @@ class sensor_light(hass.Hass):
         self.light = self.args["light"]
         self.sensor = self.args["sensor"]
         self.duration = self.args["duration"]
+        self.seconds = self.utils.get_sec(self.duration)
         self.toggle = self.args["toggle"] if "toggle" in self.args else None
 
         tripped = self.utils.tripped_name(self.sensor)
@@ -34,8 +35,8 @@ class sensor_light(hass.Hass):
             self.cancel_timer(self.handle)
 
         self.counter = self.counter + 1
-        self.log(f"{self.light} set to turn off in {self.duration} seconds")
-        self.handle = self.run_in(self.end_timer, self.duration)
+        self.log(f"{self.light} set to turn off in {self.seconds} seconds")
+        self.handle = self.run_in(self.end_timer, self.seconds)
 
     def end_timer(self, kwargs):
 
@@ -54,6 +55,11 @@ class Notifications(hass.Hass):
         self.notify_when_home = self.args["notify_when_home"] if "notify_when_home" in self.args else False
         self.duration = self.args["duration"] if "duration" in self.args else 0
         self.toggle = self.args["toggle"] if "toggle" in self.args else None
+
+        if self.duration == 0:
+            self.seconds = 0
+        else:        
+            self.seconds = self.utils.get_sec(self.duration)
         
         sensors = self.args["sensors"]
 
@@ -62,10 +68,10 @@ class Notifications(hass.Hass):
             s_type = self.get_state(sensor, attribute="device_class")
             tripped = self.utils.tripped_name(sensor)
 
-            if s_type == "garage" and self.duration == 0:
-                    sec = 5
+            if s_type == "garage" and self.seconds == 0:
+                sec = 5
             else:
-                sec = self.duration
+                sec = self.seconds
             
             self.listen_state(self.cb_alarm_trigger, sensor, new = tripped, 
                                 duration = sec, sensor_name = s_name, 
@@ -89,8 +95,8 @@ class Notifications(hass.Hass):
             self.notify(msg, name = "html5")
 
         elif sensor_type in ("door", "garage"):
-            if self.duration >= 60:
-                duration = round(self.duration / 60)
+            if self.seconds >= 60:
+                duration = round(self.seconds / 60)
                 msg = f"{t}: {sensor_name} has been open for {duration} minutes"
             else:
                 msg = f"{t}: {sensor_name} opened"

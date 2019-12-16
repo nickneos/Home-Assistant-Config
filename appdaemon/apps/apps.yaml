@@ -178,7 +178,7 @@ pantry_motion_light:
   constrain_presence: anyone
   light: light.pantry_light
   sensor: binary_sensor.xiaomi_motion_1
-  duration: 300
+  duration: "00:05:00"
   toggle: input_boolean.pantry_sensor_light
 hallway_motion_light:
   module: sensor
@@ -189,7 +189,7 @@ hallway_motion_light:
   constrain_presence: anyone
   light: light.hallway_2
   sensor: binary_sensor.konnected_zone_3
-  duration: 120
+  duration: "00:02:00"
   toggle: input_boolean.main_hallway_sensor_light
 back_hallway_motion_light:
   module: sensor
@@ -200,7 +200,7 @@ back_hallway_motion_light:
   constrain_presence: anyone
   light: light.back_hallway
   sensor: binary_sensor.konnected_zone_4
-  duration: 120
+  duration: "00:02:00"
   toggle: input_boolean.back_hallway_sensor_light
 backyard_door_light:
   module: sensor
@@ -210,7 +210,7 @@ backyard_door_light:
   constrain_end_time: sunrise
   light: light.outdoor_led
   sensor: binary_sensor.xiaomi_door_2
-  duration: 180
+  duration: "00:03:00"
   toggle: input_boolean.sliding_door_light
 front_door_light:
   module: sensor
@@ -220,7 +220,7 @@ front_door_light:
   constrain_end_time: sunrise
   light: light.front_porch
   sensor: binary_sensor.xiaomi_door_1
-  duration: 180
+  duration: "00:03:00"
   toggle: input_boolean.front_door_light
 garage_open_light_1:
   module: sensor
@@ -230,7 +230,7 @@ garage_open_light_1:
   constrain_end_time: sunrise
   light: light.front_porch
   sensor: cover.garage_main
-  duration: 180
+  duration: "00:03:00"
   toggle: input_boolean.main_garage_door_light
 garage_open_light_2:
   module: sensor
@@ -240,7 +240,7 @@ garage_open_light_2:
   constrain_end_time: sunrise
   light: light.outdoor_led
   sensor: cover.garage_rear
-  duration: 180
+  duration: "00:03:00"
   toggle: input_boolean.rear_garage_door_light
 
   
@@ -275,7 +275,7 @@ garage:
   class: Notifications
   dependencies: utils
   notify_when_home: True
-  duration: 1200
+  duration: "00:20:00"
   sensors:
     - cover.garage_main
     - cover.garage_rear
