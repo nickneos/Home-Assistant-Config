@@ -1,0 +1,3 @@
+reboot_router:
+  sequence:
+    - service: shell_command.reboot_router

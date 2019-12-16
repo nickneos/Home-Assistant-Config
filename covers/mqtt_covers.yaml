@@ -1,5 +1,5 @@
 - platform: mqtt
-  name: Garage Front
+  name: Garage Main
   state_topic: "cmnd/garage1_state/POWER2"
   command_topic: "cmnd/garage1/POWER"
   availability_topic: "tele/garage1/LWT"

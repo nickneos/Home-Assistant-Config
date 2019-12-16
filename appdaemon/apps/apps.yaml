@@ -229,7 +229,7 @@ garage_open_light_1:
   constrain_start_time: sunset
   constrain_end_time: sunrise
   light: light.front_porch
-  sensor: cover.garage_front
+  sensor: cover.garage_main
   duration: 180
   toggle: input_boolean.main_garage_door_light
 garage_open_light_2:
@@ -259,7 +259,7 @@ alarm:
     - binary_sensor.xiaomi_motion_1
     - binary_sensor.xiaomi_door_1
     - binary_sensor.xiaomi_door_2
-    - cover.garage_front
+    - cover.garage_main
     - cover.garage_rear
 water_sensors:
   module: sensor
@@ -277,7 +277,7 @@ garage:
   notify_when_home: True
   duration: 1200
   sensors:
-    - cover.garage_front
+    - cover.garage_main
     - cover.garage_rear
 
 ### Timers ###
@@ -310,3 +310,11 @@ timer_main_tv:
   input: input_number.timer_main_tv
   units: minutes
 
+### Reboot Router ###
+reboot_router:
+  module: other
+  class: internet_down
+  dependencies: utils
+  sensor: binary_sensor.online
+  duration: "01:00:00"
+  
