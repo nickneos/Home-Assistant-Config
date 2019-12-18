@@ -14,8 +14,8 @@
     {%- else -%}
       ON
     {%- endif %}
-  json_attributes_topic: "tele/garage1/SENSOR"
-  json_attributes_template: "{{ value_json.SR04 | tojson }}"
   availability_topic: "tele/garage1/LWT"
   payload_available: "Online"
   payload_not_available: "Offline"
+  json_attributes_topic: "tele/garage1/SENSOR"
+  json_attributes_template: "{{ value_json.SR04 | tojson }}"

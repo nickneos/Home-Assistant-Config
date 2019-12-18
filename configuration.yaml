@@ -17,7 +17,6 @@ homeassistant:
   whitelist_external_dirs:
     - /tmp
     - /share
-
 http:
   # api_password: !secret http_pw
   # commented out below since using NGINX reverse proxy
@@ -25,6 +24,8 @@ http:
   # ssl_key: /ssl/privkey.pem
   # base_url: !secret url
 
+system_health:
+map:
 mobile_app:
 frontend:
 config:
@@ -64,7 +65,7 @@ device_tracker:
       track_new_devices: False
       hide_if_away: False
 # gpslogger:
-person:
+# person:
 
 ############ Remotes ############
 remote:
@@ -191,7 +192,7 @@ fan:
     speeds:
       - low
       - high
-
+      
 
 ############ Zones ############
 zone:
