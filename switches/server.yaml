@@ -1,6 +1,6 @@
 ### Server ###
 - platform: wake_on_lan
-  mac_address: !secret wol_mac
+  mac: !secret wol_mac
   name: Home Server
   host: !secret wol_ip
   turn_off:
