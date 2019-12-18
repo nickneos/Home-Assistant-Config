@@ -19,6 +19,7 @@ presence:
     - group.all_lights
     - remote.living_room
     - switch.template_samsung_tv
+    - fan.diffuser
   radio:
     device: media_player.google_home_office
     url: 'https://abc.ihrcast.arn.com.au/iHRabc01?'
@@ -107,23 +108,11 @@ bedroom_buttons:
       service: toggle
     - click_type: long_click_press
       type: standard
-      target_dev: switch.master_switch
+      target_dev: 
+        - group.all_lights
+        - remote.living_room
+        - fan.diffuser
       service: turn_off
-guest_bedroom__button:
-  module: xiaomi
-  class: Button
-  dependencies: utils
-  buttons:
-    - binary_sensor.xiaomi_switch_6
-  actions:
-    - click_type: single
-      type: dimmer
-      dim_step: 4
-      target_dev: light.guest_bedroom
-    - click_type: long_click_press
-      type: standard
-      target_dev: light.guest_bedroom
-      service: toggle
 outside_button:
   module: xiaomi
   class: Button

@@ -23,26 +23,32 @@ class Button(hass.Hass):
         self.log(f"{button}: {action}")       
         
         button_type = action["type"] if "type" in action else "standard"
-        tgt_dev = action["target_dev"] if "target_dev" in action else None
+        tgt_devs = action["target_dev"] if "target_dev" in action else []
+        tgt_devs = self.utils.to_list(tgt_devs)
 
-        if button_type == "standard":
-            device, entity = self.split_entity(tgt_dev)
-            service = action["service"] 
-            self.call_service(f"{device}/{service}", entity_id = tgt_dev)
-        
-        elif button_type == "dimmer":
-            if self.utils.is_off(tgt_dev):
-                self.call_service("light/turn_on", entity_id = tgt_dev)
-            else:
-                dim_step = action["dim_step"] if "dim_step" in action else 3
-                dim_step_pct = round(100 / dim_step)
-                brightness = self.get_state(tgt_dev, attribute = "brightness")
-                if brightness:
-                    brightness = self.utils.bound_to_100(brightness)
-                    brightness = brightness + dim_step_pct
-                    if brightness > 100:
-                        brightness = dim_step_pct
-                    self.call_service("light/turn_on", entity_id = tgt_dev, brightness_pct = brightness)
+        for dev in tgt_devs:
+            if button_type == "standard":
+                s = action["service"] 
+                if s == "turn_on":
+                    self.utils.on(dev)
+                elif s == "turn_off":
+                    self.utils.off(dev)
+                elif s == "toggle":
+                    self.utils.toggle(dev)
+            
+            elif button_type == "dimmer":
+                if self.utils.is_off(dev):
+                    self.call_service("light/turn_on", entity_id = dev)
+                else:
+                    dim_step = action["dim_step"] if "dim_step" in action else 3
+                    dim_step_pct = round(100 / dim_step)
+                    brightness = self.get_state(dev, attribute = "brightness")
+                    if brightness:
+                        brightness = self.utils.bound_to_100(brightness)
+                        brightness = brightness + dim_step_pct
+                        if brightness > 100:
+                            brightness = dim_step_pct
+                        self.call_service("light/turn_on", entity_id = dev, brightness_pct = brightness)
         
 
 class Doorbell(hass.Hass):

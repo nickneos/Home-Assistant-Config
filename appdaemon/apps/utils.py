@@ -225,6 +225,13 @@ class utils(hass.Hass):
         self.log(f"Turning off {device}")
         self.turn_off(device)
 
+    def toggle(self, device):
+        """
+        """
+        self.log(f"Toggle {device}")
+        self.toggle(device)
+
+
     def anyone_home(self):
         """
         """
@@ -282,8 +289,15 @@ class utils(hass.Hass):
         else:
             return False
 
-    def get_sec(self, time_str):
-        """Get Seconds from time."""
-        h, m, s = time_str.split(':')
+    def get_sec(self, hhmmss):
+        """
+        Get Seconds from time.
+        """
+        h, m, s = hhmmss.split(':')
         return int(h) * 3600 + int(m) * 60 + int(s)
     
+    def to_list(self, x):
+        """
+        convert variable to list if not list
+        """
+        return x if type(x) is list else [x]
