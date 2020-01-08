@@ -9,4 +9,4 @@ appdaemon:
     HASS:
       type: hass
       ha_url: http://hassio/homeassistant
-      token: 6062a4623a2c33ce703cf2d81dcdf97c6b2f38d9dcb368024453e73dc7b2f9dee78340ffb84acdba6caf842d50aebcb19793155203a427d6
+      token: ec4ef3f71581052c8b28d36ed130bf9b45f6fea49d4e46f192df93584188b65d75b43e15a3babee0e7d1faecd1ced826017e46fbf6c2c20a

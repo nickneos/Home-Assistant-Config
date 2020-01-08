@@ -225,7 +225,7 @@ class utils(hass.Hass):
         self.log(f"Turning off {device}")
         self.turn_off(device)
 
-    def toggle(self, device):
+    def my_toggle(self, device):
         """
         """
         self.log(f"Toggle {device}")
@@ -301,3 +301,18 @@ class utils(hass.Hass):
         convert variable to list if not list
         """
         return x if type(x) is list else [x]
+    
+    def flash_bulb(self, dev, sec):
+        """
+        """
+        self.turn_on(dev, flash = "long")
+        self.run_in(self.cb_delayed_off, sec, device = dev)
+
+    def cb_delayed_off(self, kwargs):
+        """
+        """
+        dev = kwargs["device"]
+        self.turn_off(dev)
+
+
+                

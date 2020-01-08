@@ -53,9 +53,6 @@ entity_config:
     aliases: 
     - Rear Garage
     - Garage Rear
-  switch.xmas_lights:
-    expose: true
-    name: Christmas Lights
   fan.diffuser:
     expose: true
     name: diffuser

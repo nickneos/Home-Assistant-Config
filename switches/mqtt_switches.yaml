@@ -1,15 +1,12 @@
 - platform: mqtt
-  name: "Xmas Lights"
-  state_topic: "stat/brilliant01/RESULT"  
+  name: "Milk Warmer"
+  state_topic: "stat/brilliant03/RESULT"  
   value_template: "{{ value_json.POWER }}"
-  command_topic: "cmnd/brilliant01/POWER"
+  command_topic: "cmnd/brilliant03/POWER"
   payload_on: "ON"
   payload_off: "OFF"
-  availability_topic: "tele/brilliant01/LWT"
+  availability_topic: "tele/brilliant03/LWT"
   payload_available: "Online"
   payload_not_available: "Offline"
   qos: 1
   retain: false
-  json_attributes_topic: "tele/brilliant01/STATE"
-  json_attributes_template: "{{ value_json | tojson }}"
-  icon: mdi:pine-tree

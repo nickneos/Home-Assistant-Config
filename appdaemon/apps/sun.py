@@ -31,10 +31,6 @@ class Sunset(hass.Hass):
             for dev in devices:
                 self.utils.on(dev)
 
-    def delayed_off(self, kwargs):
-        dev = kwargs["device"]
-        self.utils.off(dev)
-
     def holiday_mode(self, kwargs):
         """
         Callback function for holiday mode:

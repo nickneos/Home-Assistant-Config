@@ -30,11 +30,8 @@ class Timer(hass.Hass):
             self.cancel_timer(self.handle)
             self.log(f"Cancelling {self.handle}")
 
-        self.handle = self.run_in(self.power_off, sec)
+        self.handle = self.run_in(self.utils.cb_delayed_off, sec, device = self.device)
         t, i, k  = self.info_timer(self.handle)
         time_str = t.strftime("%Y-%m-%d %H:%M:%S")
         self.log(f"Turning off {dev} in {round(float(new))} {self.units} ({time_str})")
         
-    def power_off(self, kwargs):
-        dev = self.device
-        self.utils.off(dev)

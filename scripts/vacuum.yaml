@@ -1,7 +1,7 @@
 vacuum_main:
   alias: "Vacuum Family Area"
   sequence:
-    - service: vacuum.xiaomi_clean_zone
+    - service: xiaomi_miio.vacuum_clean_zone
       data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         repeats: 1
@@ -10,7 +10,7 @@ vacuum_main:
 vacuum_hallway:
   alias: "Vacuum Hallway"
   sequence:
-    - service: vacuum.xiaomi_clean_zone
+    - service: xiaomi_miio.vacuum_clean_zone
       data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         repeats: 1
@@ -19,7 +19,7 @@ vacuum_hallway:
 vacuum_spare_rooms:
   alias: "Vacuum Spare Rooms"
   sequence:
-    - service: vacuum.xiaomi_clean_zone
+    - service: xiaomi_miio.vacuum_clean_zone
       data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         repeats: 1
@@ -28,7 +28,7 @@ vacuum_spare_rooms:
 vacuum_master_bedroom:
   alias: "Vacuum Master Bedroom"
   sequence:
-    - service: vacuum.xiaomi_clean_zone
+    - service: xiaomi_miio.vacuum_clean_zone
       data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         repeats: 3
@@ -37,7 +37,7 @@ vacuum_master_bedroom:
 vacuum_bedroom_2:
   alias: "Vacuum Nursery"
   sequence:
-    - service: vacuum.xiaomi_clean_zone
+    - service: xiaomi_miio.vacuum_clean_zone
       data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         repeats: 1
@@ -46,7 +46,7 @@ vacuum_bedroom_2:
 vacuum_bedroom_3:
   alias: "Vacuum Guest Bedroom"
   sequence:
-    - service: vacuum.xiaomi_clean_zone
+    - service: xiaomi_miio.vacuum_clean_zone
       data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         repeats: 1

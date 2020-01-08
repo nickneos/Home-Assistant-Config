@@ -7,4 +7,25 @@
   availability_topic: "tele/garage1/LWT"
   payload_available: "Online"
   payload_not_available: "Offline"
- 
+  
+- platform: mqtt
+  name: "Main Garage Counter"
+  state_topic: "stat/garage1/CYCLES"
+  value_template: "{{ value_json.count }}"
+  availability_topic: "tele/garage1/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  json_attributes_topic: "stat/garage1/CYCLES"
+  json_attributes_template: "{{ value_json | tojson }}"
+  unit_of_measurement: ""
+
+- platform: mqtt
+  name: "Rear Garage Counter"
+  state_topic: "stat/garage2/CYCLES"
+  value_template: "{{ value_json.count }}"
+  availability_topic: "tele/garage2/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  json_attributes_topic: "stat/garage2/CYCLES"
+  json_attributes_template: "{{ value_json | tojson }}"
+  unit_of_measurement: ""

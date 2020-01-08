@@ -39,14 +39,6 @@ sunset:
     - light.kitchen
   away_on: 
     - light.hallway_2
-xmas_lights:
-  module: sun
-  class: Fairylights
-  dependencies: utils
-  lights:
-    - switch.xmas_lights
-  sunrise_offset: -60
-  sunset_offset: -15
 
 ### Google Home Volume Control ###    
 gh_main:
@@ -112,6 +104,7 @@ bedroom_buttons:
         - group.all_lights
         - remote.living_room
         - fan.diffuser
+        - switch.template_samsung_tv
       service: turn_off
 outside_button:
   module: xiaomi
@@ -152,12 +145,12 @@ doorbell:
   courtesy_light: 
     entity_id: light.front_porch
     timer: 180
-  # flash:
-  #   - light.study
-  #   - light.spare_room
-  #   - light.kitchen
-  #   - light.dining
-  #   - light.living_room
+  flash:
+    - light.study
+    - light.play_room
+    - light.kitchen
+    - light.dining
+    - light.living_room
 
 ### Sensor Lights ###
 pantry_motion_light:
@@ -276,14 +269,14 @@ timer_main_ac:
   dependencies: utils
   device: climate.living_room
   input: input_number.timer_main_ac
-  units: hours
+  units: minutes
 timer_bedroom_ac:
   module: timer
   class: Timer
   dependencies: utils
   device: climate.bedroom
   input: input_number.timer_bedroom_ac
-  units: hours
+  units: minutes
 timer_bedroom_tv:
   module: timer
   class: Timer
@@ -305,5 +298,12 @@ reboot_router:
   class: internet_down
   dependencies: utils
   sensor: binary_sensor.online
-  duration: "01:00:00"
-  
+  duration: "00:30:00"
+
+milk_warmer:
+  module: other
+  class: milk_warmer
+  dependencies: utils
+  device: switch.milk_warmer
+  duration: "00:05:00"
+  gh_devices: media_player.google_home_main

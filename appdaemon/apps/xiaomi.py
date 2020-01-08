@@ -34,7 +34,7 @@ class Button(hass.Hass):
                 elif s == "turn_off":
                     self.utils.off(dev)
                 elif s == "toggle":
-                    self.utils.toggle(dev)
+                    self.utils.my_toggle(dev)
             
             elif button_type == "dimmer":
                 if self.utils.is_off(dev):
@@ -85,18 +85,16 @@ class Doorbell(hass.Hass):
         if self.anyone_home():
             vol = self.get_state(self.vol_slider)
             vol = float(vol)
-            self.call_service("xiaomi_aqara/play_ringtone", 
-                               gw_mac = self.gw_mac,
-                               ringtone_id = self.ringtone_id,
-                               ringtone_vol = vol)
+            if vol > 0:
+                self.call_service("xiaomi_aqara/play_ringtone", 
+                                gw_mac = self.gw_mac,
+                                ringtone_id = self.ringtone_id,
+                                ringtone_vol = vol)
         
         if self.flash:
             lights = self.flash
-            for x in lights: ###### this needs to be reviewed ###########
-                self.call_service("light/lifx_effect_pulse", 
-                                    entity_id = x, 
-                                    brightness = "255", color_name = "green", 
-                                    period = "0.5", cycles = "10")
+            for x in lights: 
+                self.utils.flash_bulb(x, 3)
 
         if self.gh_devices and self.anyone_home():
             msg = ("There's someone at the door")
@@ -113,15 +111,13 @@ class Doorbell(hass.Hass):
 
     def start_timer(self):
         timer = self.courtesy_light["timer"] if "timer" in self.courtesy_light else 60
-        self.handle = self.run_in(self.end_timer, timer)
-
-    def end_timer(self, kwargs):
-        self.turn_off(self.courtesy_light["entity_id"])
+        self.handle = self.run_in(self.utils.cb_delayed_off, timer, device = self.courtesy_light["entity_id"])
     
     def doorbell_slider_change(self, entity, attribute, old, new, kwargs):
         vol = float(new)
-        self.call_service("xiaomi_aqara/play_ringtone", 
-                            gw_mac = self.gw_mac,
-                            ringtone_id = self.ringtone_id, 
-                            ringtone_vol = vol)
+        if vol > 0:
+            self.call_service("xiaomi_aqara/play_ringtone", 
+                                gw_mac = self.gw_mac,
+                                ringtone_id = self.ringtone_id, 
+                                ringtone_vol = vol)
         

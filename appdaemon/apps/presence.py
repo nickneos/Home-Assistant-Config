@@ -63,7 +63,7 @@ class Presence(hass.Hass):
             if d1 == "light":
                 n = 5
                 self.log(f"Turning off {device} in {n} minutes")
-                self.run_in(self.delayed_off, n * 60, device = device)
+                self.run_in(self.utils.cb_delayed_off, n * 60, device = device)
             else:
                 self.utils.off(device) 
 
@@ -104,11 +104,6 @@ class Presence(hass.Hass):
             r_url = self.radio["url"]
             self.log(f"Streaming {r_url} on {r_dev}")
             self.call_service("media_player/play_media", entity_id = r_dev, media_content_id = r_url, media_content_type = "music")
-
-
-    def delayed_off(self, kwargs):
-        dev = kwargs["device"]
-        self.utils.off(dev)
 
 
     def people_notification(self, entity, attribute, old, new, kwargs):
