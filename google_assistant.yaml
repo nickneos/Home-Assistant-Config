@@ -6,9 +6,6 @@ entity_config:
   light.outdoor_led:
     expose: true
     name: Outdoor LED
-  light.floor_lamp:
-    expose: true
-    name: Floor Lamp
   climate.bedroom:
     expose: true
     name: Bedroom Air Conditioner
@@ -31,15 +28,6 @@ entity_config:
     - Bedroom TV
     - Soniq TV
     - TV
-  switch.template_harmony_fetch:
-    expose: true
-    name: Fetch
-  switch.template_harmony_tvsurround:
-    expose: true
-    name: Main TV
-    aliases: 
-    - TV
-    - Sony TV
   cover.garage_main:
     expose: true
     name: Garage Door

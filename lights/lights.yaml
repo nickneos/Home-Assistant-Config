@@ -1,20 +1,5 @@
 ### Sonoff Rleays ###
 - platform: mqtt
-  name: Floor Lamp
-  state_topic: "tele/lamp_01/STATE"
-  value_template: "{{ value_json.POWER }}"
-  command_topic: "cmnd/lamp_01/POWER"
-  availability_topic: "tele/lamp_01/LWT"
-  qos: 1
-  payload_on: "ON"
-  payload_off: "OFF"
-  payload_available: "Online"
-  payload_not_available: "Offline"
-  retain: false
-  json_attributes_topic: "tele/lamp_01/STATE"
-  json_attributes_template: "{{ value_json | tojson }}"
-
-- platform: mqtt
   name: "Outdoor LED"
   state_topic: "stat/brilliant02/RESULT"  
   value_template: "{{ value_json.POWER }}"
