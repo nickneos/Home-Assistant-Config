@@ -163,8 +163,8 @@ ifttt:
 
 ############ Shell ############
 shell_command:
-  server_shutdown: !secret ssh_server
-  reboot_router: !secret ssh_router
+  server_shutdown: !secret shell_server
+  reboot_router: !secret shell_router
 
 
 ############ Weather ############
