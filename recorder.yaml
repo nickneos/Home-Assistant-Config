@@ -176,5 +176,7 @@ exclude:
     - sensor.dark_sky_wind_speed_3
     - sensor.dark_sky_wind_speed_4
     - sensor.dark_sky_wind_speed_5
+  event_types:
+    - themes_updated
 
 
