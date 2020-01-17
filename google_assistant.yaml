@@ -1,5 +1,5 @@
 project_id: !secret ga_proj
-api_key: !secret ga_api
+service_account: !include google_service_account.json
 expose_by_default: false
 secure_devices_pin: !secret GA_pin
 entity_config:
