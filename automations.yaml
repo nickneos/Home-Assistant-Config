@@ -1,5 +1,5 @@
 - alias: 'IFTTT'
-  id: 0001
+  id: a0001
   hide_entity: true
   initial_state: true
   trigger:
@@ -13,7 +13,7 @@
       entity_id: '{{ trigger.event.data.entity_id }}'
 
 - alias: "Power state on HA start-up"
-  id: 0002
+  id: a0002
   trigger:
     platform: homeassistant
     event: start
@@ -32,17 +32,17 @@
     #   data:
     #     topic: cmnd/tasmotas/POWER3 
 
-- alias: "Create Groups"
-  id: 0003
-  trigger:
-    platform: homeassistant
-    event: start
-  action:
-    - service: group.set
-      data_template:
-        object_id: "all_lights"
-        entities: "{{ states.light |  map(attribute='entity_id') | join(',') }}"
-    - service: group.set
-      data_template:
-        object_id: "all_devices"
-        entities: "{{ states.device_tracker |  map(attribute='entity_id') | join(',') }}"
+# - alias: "Create Groups"
+#   id: a0003
+#   trigger:
+#     platform: homeassistant
+#     event: start
+#   action:
+#     - service: group.set
+#       data_template:
+#         object_id: "all_lights"
+#         entities: "{{ states.light |  map(attribute='entity_id') | join(',') }}"
+#     - service: group.set
+#       data_template:
+#         object_id: "all_devices"
+#         entities: "{{ states.device_tracker |  map(attribute='entity_id') | join(',') }}"

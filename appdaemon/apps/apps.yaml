@@ -315,6 +315,21 @@ reboot_router:
   sensor: binary_sensor.online
   duration: "00:30:00"
 
+### group.all_*
+group_all_devices:
+  module: other
+  class: groups
+  dependencies: utils
+  group: all_devices
+  domain: device_tracker
+
+group_all_lights:
+  module: other
+  class: groups
+  dependencies: utils
+  group: all_lights
+  domain: light
+
 milk_warmer:
   module: other
   class: milk_warmer

@@ -59,3 +59,4 @@ entity_registry.yaml
 python-lovelace/
 
 # End of https://www.gitignore.io/api/homeassistant
+appdaemon/appdaemon.yaml

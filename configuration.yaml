@@ -275,5 +275,4 @@ input_number: !include input/input_number.yaml
 input_boolean: !include input/input_boolean.yaml
 input_datetime: !include input/input_datetime.yaml
 automation: !include automations.yaml
-group: !include groups.yaml
 

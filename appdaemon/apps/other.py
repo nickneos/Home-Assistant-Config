@@ -61,3 +61,17 @@ class milk_warmer(hass.Hass):
                 # if self.get_state(gh) == "off": 
                 self.call_service("tts/google_translate_say", entity_id = gh, message = msg)
 
+class groups(hass.Hass):
+
+    def initialize(self):
+        group = self.args["group"]
+        domain = self.args["domain"]
+        entities = []
+
+        for dev in self.get_state(domain):
+            entities.append(dev)
+
+        self.log(f"Creating group.{group} for {entities}")
+        self.call_service("group/set", object_id=group, entities=entities)
+
+        

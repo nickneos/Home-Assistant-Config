@@ -18,8 +18,8 @@ class Presence(hass.Hass):
         self.residents = self.args["residents"] if "residents" in self.args else []
 
         # listeners for group.all_devices - home and not_home
-        self.listen_state(self.someones_arrived, "group.all_devices", new = "home", duration = 6)
-        self.listen_state(self.everyones_left, "group.all_devices", old = "home", duration = 60)
+        self.listen_state(self.someones_arrived, "group.all_devices", old='not_home', new="home", duration = 6)
+        self.listen_state(self.everyones_left, "group.all_devices", old="home", new="not_home", duration = 6)
         
         # listeners for specific people - home and not_home
         for tracker in self.people_notifications:
