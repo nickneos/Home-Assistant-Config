@@ -123,4 +123,9 @@ person.liza:
   entity_picture: /local/liza.jpg
 person.maryann:
   entity_picture: /local/mary.jpg
-  
+device_tracker.gps_nick:
+  image: /local/people/nick.jpg
+device_tracker.gps_ash:
+  image: /local/people/ashlei.jpg
+script.reboot_router:
+  icon: mdi:router-wireless
