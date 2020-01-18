@@ -16,17 +16,21 @@ class Presence(hass.Hass):
         self.radio = self.args["radio"] if "radio" in self.args else None
         self.people_notifications = self.args["people_notifications"] if "people_notifications" in self.args else []
         self.residents = self.args["residents"] if "residents" in self.args else []
+        
+        debounce = self.args["debounce"] if "debounce" in self.args else []
+        duration_h = debounce["home"] if "home" in debounce else 5
+        duration_nh = debounce["not_home"] if "not_home" in debounce else 5
 
         # listeners for group.all_devices - home and not_home
-        self.listen_state(self.someones_arrived, "group.all_devices", old='not_home', new="home", duration = 6)
-        self.listen_state(self.everyones_left, "group.all_devices", old="home", new="not_home", duration = 6)
+        self.listen_state(self.cb_home, "group.all_devices", old='not_home', new="home", duration=duration_h)
+        self.listen_state(self.cb_not_home, "group.all_devices", old="home", new="not_home", duration=duration_nh)
         
         # listeners for specific people - home and not_home
         for tracker in self.people_notifications:
             self.log("Setting up people-notification listener for {}".format(tracker))
             self.listen_state(self.people_notification, tracker)
 
-    def someones_arrived(self, entity, attribute, old, new, kwargs):
+    def cb_home(self, entity, attribute, old, new, kwargs):
 
         if self.get_state("input_boolean.people_automations") == "off":
             return
@@ -73,7 +77,7 @@ class Presence(hass.Hass):
             self.utils.off(r_dev)
         
 
-    def everyones_left(self, entity, attribute, old, new, kwargs):
+    def cb_not_home(self, entity, attribute, old, new, kwargs):
 
         if self.get_state("input_boolean.people_automations") == "off":
             return

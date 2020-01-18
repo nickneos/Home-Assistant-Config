@@ -2,11 +2,24 @@ utils:
   module: utils
   class: utils
 
+### group.all_*
+group_all_star:
+  module: bbgax
+  class: group_all_x
+  domains: 
+    - device_tracker
+    - light
+
 ### People Presence Automations
 presence:
   module: presence
   class: Presence
-  dependencies: utils
+  dependencies: 
+    - utils
+    - group_all_star
+  debounce:
+    home: 6
+    not_home: 60
   arrival_on:
     - light.floor_lamp
     - light.kitchen
@@ -85,7 +98,9 @@ gh_bedroom:
 bedroom_buttons:
   module: xiaomi
   class: Button
-  dependencies: utils
+  dependencies: 
+    - utils
+    - group_all_star
   buttons:
     - binary_sensor.xiaomi_switch_1
     - binary_sensor.xiaomi_switch_2
@@ -315,25 +330,11 @@ reboot_router:
   sensor: binary_sensor.online
   duration: "00:30:00"
 
-### group.all_*
-group_all_devices:
-  module: other
-  class: groups
-  dependencies: utils
-  group: all_devices
-  domain: device_tracker
-
-group_all_lights:
-  module: other
-  class: groups
-  dependencies: utils
-  group: all_lights
-  domain: light
-
 milk_warmer:
   module: other
   class: milk_warmer
   dependencies: utils
+  priority: 2
   device: switch.milk_warmer
   duration: "00:05:00"
   gh_devices: media_player.google_home_main
