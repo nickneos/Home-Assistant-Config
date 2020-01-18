@@ -262,6 +262,12 @@ speedtestdotnet:
 smartir:
   update_branch: master
 
+hue:
+  bridges:
+    - host: !secret hue_ip
+      allow_unreachable: false
+      allow_hue_groups: false
+
 
 ############ Merged Files ############
 sensor: !include_dir_merge_list sensors/
