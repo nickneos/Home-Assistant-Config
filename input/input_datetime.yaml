@@ -1,4 +1,0 @@
-timer_off:
-  name: Time to turn off
-  has_date: true
-  has_time: true
