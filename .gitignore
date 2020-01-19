@@ -57,6 +57,8 @@ entity_registry.yaml
 !/.gitattributes
 !/.travis.yml
 python-lovelace/
+appdaemon/appdaemon.yaml
+themes/
 
 # End of https://www.gitignore.io/api/homeassistant
-appdaemon/appdaemon.yaml
+
