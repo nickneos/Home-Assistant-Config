@@ -88,9 +88,11 @@ script.vacuum_main:
   icon: mdi:broom
 script.vacuum_hallway:
   icon: mdi:broom
-script.vacuum_spare_rooms:
+script.vacuum_play_room:
   icon: mdi:broom
-script.vacuum_master_bedroom:
+script.vacuum_study:
+  icon: mdi:broom
+script.vacuum_bedroom_1:
   icon: mdi:broom
 script.vacuum_bedroom_2:
   icon: mdi:broom
