@@ -9,6 +9,7 @@ group_all_star:
   domains: 
     - device_tracker
     - light
+    - person
 
 ### People Presence Automations
 presence:
@@ -96,82 +97,69 @@ gh_bedroom:
 
 ### Xiaomi Buttons ###
 bedroom_buttons:
-  module: xiaomi
+  module: xiaomi_button
   class: Button
-  dependencies: 
-    - utils
+  dependencies:
     - group_all_star
   buttons:
     - binary_sensor.xiaomi_switch_1
     - binary_sensor.xiaomi_switch_2
   actions:
     - click_type: single
-      type: standard
-      target_dev: light.bedroom
-      service: toggle
+      target_device: light.bedroom
+      action_type: toggle
     - click_type: double
-      type: standard
-      target_dev: switch.template_soniq_tv
-      service: toggle
+      target_device: switch.template_soniq_tv
+      action_type: toggle
     - click_type: long_click_press
-      type: standard
-      target_dev: 
+      target_device: 
         - group.all_lights
         - remote.living_room
         - fan.diffuser
         - switch.template_samsung_tv
-      service: turn_off
+      action_type: turn_off
 outside_button:
-  module: xiaomi
+  module: xiaomi_button
   class: Button
-  dependencies: utils
-  buttons:
-    - binary_sensor.xiaomi_switch_4
+  buttons: binary_sensor.xiaomi_switch_4
   actions:
     - click_type: single
-      type: standard
-      target_dev: light.outdoor_led
-      service: toggle
-study_button:
-  module: xiaomi
+      target_device: light.outdoor_led
+      action_type: toggle
+lamp_button:
+  module: xiaomi_button
   class: Button
-  dependencies: utils
-  buttons:
-    - binary_sensor.xiaomi_switch_5
+  buttons: binary_sensor.xiaomi_switch_5
   actions:
     - click_type: single
-      type: dimmer
-      dim_step: 4
-      target_dev: light.floor_lamp
+      target_device: light.floor_lamp
+      action_type: dim_step
+      dim_step_value: 4
     - click_type: long_click_press
-      type: standard
-      target_dev: light.floor_lamp
-      service: toggle
-study_button:
-  module: xiaomi
+      target_device: light.floor_lamp
+      action_type: turn_off
+nursery_button:
+  module: xiaomi_button
   class: Button
-  dependencies: utils
-  buttons:
-    - binary_sensor.xiaomi_switch_6
+  buttons: binary_sensor.xiaomi_switch_6
   actions:
     - click_type: single
-      type: dimmer
-      dim_step: 5
-      target_dev: light.nursery
+      target_device: light.nursery
+      action_type: dim_step
+      dim_step_value: 5
     - click_type: long_click_press
-      type: standard
-      target_dev: light.nursery
-      service: toggle
+      target_device: light.nursery
+      action_type: turn_off
+
+### Xiaomi Doorbell ###
 doorbell:
-  module: xiaomi
+  module: xiaomi_doorbell
   class: Doorbell
-  dependencies: utils
-  buttons:
-    - binary_sensor.xiaomi_switch_3
-  click_type: single
+  button: binary_sensor.xiaomi_switch_3
   gw_mac: !secret xiaomi_mac
   ringtone_id: 10001
-  vol_slider: input_number.doorbell_volume 
+  volume_slider: input_number.doorbell_volume 
+  notify_html5: true
   courtesy_light: 
     entity_id: light.front_porch
     timer: 180
