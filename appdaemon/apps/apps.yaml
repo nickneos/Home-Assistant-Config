@@ -42,6 +42,8 @@ presence:
   residents:
     - device_tracker.nicks_note8
     - device_tracker.ashs_s10
+    - device_tracker.gps_nick
+    - device_tracker.gps_ash
 
 ### Time Based Automations ###
 sunset:
@@ -286,28 +288,32 @@ timer_main_ac:
   class: Timer
   dependencies: utils
   device: climate.living_room
-  input: input_number.timer_main_ac
+  input_id: input_number.timer_main_ac
+  timer_id: timer.main_ac
   units: minutes
 timer_bedroom_ac:
   module: timer
   class: Timer
   dependencies: utils
   device: climate.bedroom
-  input: input_number.timer_bedroom_ac
+  input_id: input_number.timer_bedroom_ac
+  timer_id: timer.bedroom_ac
   units: minutes
 timer_bedroom_tv:
   module: timer
   class: Timer
   dependencies: utils
   device: switch.template_soniq_tv
-  input: input_number.timer_bedroom_tv
+  input_id: input_number.timer_bedroom_tv
+  timer_id: timer.bedroom_tv
   units: minutes
 timer_main_tv:
   module: timer
   class: Timer
   dependencies: utils
   device: remote.living_room
-  input: input_number.timer_main_tv
+  input_id: input_number.timer_main_tv
+  timer_id: timer.main_tv
   units: minutes
 
 ### Reboot Router ###

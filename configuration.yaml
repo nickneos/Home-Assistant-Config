@@ -253,14 +253,11 @@ konnected:
 
 speedtestdotnet:
   scan_interval:
-    minutes: 23
+    minutes: 30
   monitored_conditions:
     - ping
     - download
     - upload
-
-smartir:
-  update_branch: master
 
 hue:
   bridges:
@@ -270,6 +267,14 @@ hue:
 
 breaking_changes:
   scan_interval: 600
+
+python_script:
+
+timer:
+  main_ac:
+  main_tv:
+  bedroom_ac:
+  bedroom_tv:
   
 ############ Merged Files ############
 sensor: !include_dir_merge_list sensors/

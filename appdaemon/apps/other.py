@@ -4,12 +4,16 @@ import time
 class internet_down(hass.Hass):
 
     def initialize(self):
+        self.handle = None
         self.utils = self.get_app("utils")
         self.sensor = self.args["sensor"]
         duration = self.args["duration"]
         self.sec = self.utils.get_sec(duration)
 
-        self.listen_state(self.offline_cb, self.sensor, new = "off", duration = self.sec)
+        if self.sec < 600:
+            self.sec = 600
+
+        self.listen_state(self.offline_cb, self.sensor, old = "on", new = "off", duration = self.sec)
 
     def offline_cb(self, entity, attribute, old, new, kwargs):
         t = time.strftime("%d-%b-%Y %H:%M:%S")
@@ -22,8 +26,14 @@ class internet_down(hass.Hass):
         self.reboot_router()
 
     def reboot_router(self):
+        if self.get_state(self.sensor) == "on":
+            return
+
+        if self.handle != None:
+            self.cancel_timer(self.handle)
+
         self.call_service("shell_command/reboot_router")
-        self.run_in(self.recheck_cb, 10*60)
+        self.handle = self.run_in(self.recheck_cb, self.sec)
 
     def recheck_cb(self, kwargs):
         if self.get_state(self.sensor) == "off":

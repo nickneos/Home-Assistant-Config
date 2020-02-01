@@ -62,11 +62,11 @@ switch.template_home_server:
 switch.home_server:
   icon: mdi:server-network
 switch.template_harmony_fetch:
-  icon: mdi:television-box
+  icon: mdi:alpha-f-box
 switch.template_harmony_tvsurround:
-  icon: mdi:television-classic
+  icon: mdi:television-box
 switch.template_harmony_ps4:
-  icon: mdi:gamepad
+  icon: mdi:playstation
 switch.template_harmony_netflix:
   icon: mdi:netflix
 switch.template_harmony_power:
