@@ -3,15 +3,21 @@ service_account: !include google_service_account.json
 expose_by_default: false
 secure_devices_pin: !secret GA_pin
 entity_config:
+
+  ### Lights
   light.outdoor_led:
     expose: true
     name: Outdoor LED
+  
+  ### Air Conditioning
   climate.bedroom:
     expose: true
     name: Bedroom Air Conditioner
   climate.living_room:
     expose: true
     name: Main Air Conditioner
+
+  ### Switches
   switch.template_home_server:
     expose: true
     name: Server
@@ -28,6 +34,8 @@ entity_config:
     - Bedroom TV
     - Soniq TV
     - TV
+  
+  ### Garage
   cover.garage_main:
     expose: true
     name: Garage Door
@@ -41,6 +49,31 @@ entity_config:
     aliases: 
     - Rear Garage
     - Garage Rear
+
+  ### Diffuser
   fan.diffuser:
     expose: true
     name: diffuser
+
+  ### Vacuum scripts
+  script.vacuum_main:
+    expose: true
+    name: Vacuum Living Room
+  script.vacuum_hallway:
+    expose: true
+    name: Vacuum Hallway
+  script.vacuum_play_room:
+    expose: true
+    name: Vacuum Play Room
+  script.vacuum_study:
+    expose: true
+    name: Vacuum Study
+  script.vacuum_bedroom_1:
+    expose: true
+    name: Vacuum Bedroom
+  script.vacuum_bedroom_2:
+    expose: true
+    name: Vacuum Nursery
+  script.vacuum_bedroom_3:
+    expose: true
+    name: Vacuum Guest Bedroom
