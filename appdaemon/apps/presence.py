@@ -1,25 +1,28 @@
+"""
+Automations based on people presence
+"""
+
 import appdaemon.plugins.hass.hassapi as hass
 import time
 
-#
-# Presence App
-#
+# default values
+DEFAULT_DEBOUNCE = 5
 
 class Presence(hass.Hass):
 
     def initialize(self):
         self.utils = self.get_app("utils")
-        self.arrival_on = self.args["arrival_on"] if "arrival_on" in self.args else []
-        self.arrival_off = self.args["arrival_off"] if "arrival_off" in self.args else []
-        self.away_on = self.args["away_on"] if "away_on" in self.args else []
-        self.away_off = self.args["away_off"] if "away_off" in self.args else []
-        self.radio = self.args["radio"] if "radio" in self.args else None
-        self.people_notifications = self.args["people_notifications"] if "people_notifications" in self.args else []
-        self.residents = self.args["residents"] if "residents" in self.args else []
+        self.arrival_on = self.args.get("arrival_on", [])
+        self.arrival_off = self.args.get("arrival_off", [])
+        self.away_on = self.args.get("away_on", [])
+        self.away_off = self.args.get("away_off", [])
+        self.radio = self.args.get("radio")
+        self.people_notifications = self.args.get("people_notifications", [])
+        self.residents = self.args.get("residents", [])
         
-        debounce = self.args["debounce"] if "debounce" in self.args else []
-        duration_h = debounce["home"] if "home" in debounce else 5
-        duration_nh = debounce["not_home"] if "not_home" in debounce else 5
+        debounce = self.args.get("debounce", [])
+        duration_h = debounce.get("home", DEFAULT_DEBOUNCE)
+        duration_nh = debounce.get("not_home", DEFAULT_DEBOUNCE)
 
         # listeners for group.all_devices - home and not_home
         self.listen_state(self.cb_home, "group.all_devices", old='not_home', new="home", duration=duration_h)
@@ -38,6 +41,21 @@ class Presence(hass.Hass):
         self.log("*** Someone's Arrived ***")
         is_night = self.now_is_between("sunset - 00:30:00", "sunrise + 00:10:00")
 
+        # devices to turn off
+        for device in self.arrival_off:
+            d1, d2 = self.split_entity(device)
+            if d1 == "light":
+                n = 5
+                self.log(f"Turning off {device} in {n} minutes")
+                self.run_in(self.utils.cb_delayed_off, n * 60, device = device)
+            else:
+                self.utils.off(device) 
+
+        # turn off radio
+        if self.radio:
+            r_dev = self.radio["device"]
+            self.utils.off(r_dev)
+
         # devices to turn on
         for device in self.arrival_on:
             d1, d2 = self.split_entity(device)
@@ -53,29 +71,14 @@ class Presence(hass.Hass):
                 else:
                     self.turn_on(device)
             # turn on harmony only for Nick or Ash
-            elif device == "switch.template_harmony_fetch":
+            elif d1 == "remote":
                 for person in self.residents:
                     if self.get_tracker_state(person) == "home":
                         self.utils.on(device)
                         break
             else:
                 self.utils.on(device)
-
-        # devices to turn off
-        for device in self.arrival_off:
-            d1, d2 = self.split_entity(device)
-            if d1 == "light":
-                n = 5
-                self.log(f"Turning off {device} in {n} minutes")
-                self.run_in(self.utils.cb_delayed_off, n * 60, device = device)
-            else:
-                self.utils.off(device) 
-
-        # turn off radio
-        if self.radio:
-            r_dev = self.radio["device"]
-            self.utils.off(r_dev)
-        
+                
 
     def cb_not_home(self, entity, attribute, old, new, kwargs):
 
@@ -90,6 +93,13 @@ class Presence(hass.Hass):
         for device in self.away_off:
             self.utils.off(device)
 
+        # turn on news on google home office
+        if self.radio:
+            r_dev = self.radio["device"]
+            r_url = self.radio["url"]
+            self.log(f"Streaming {r_url} on {r_dev}")
+            self.call_service("media_player/play_media", entity_id = r_dev, media_content_id = r_url, media_content_type = "music")
+
         # devices to turn on
         for device in self.away_on:
             d1, d2 = self.split_entity(device)
@@ -101,13 +111,6 @@ class Presence(hass.Hass):
             else:
                 self.log(f"Turning on {device}")
                 self.turn_on(device)
-
-        # turn on news on google home office
-        if self.radio:
-            r_dev = self.radio["device"]
-            r_url = self.radio["url"]
-            self.log(f"Streaming {r_url} on {r_dev}")
-            self.call_service("media_player/play_media", entity_id = r_dev, media_content_id = r_url, media_content_type = "music")
 
 
     def people_notification(self, entity, attribute, old, new, kwargs):

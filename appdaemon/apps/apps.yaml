@@ -24,7 +24,7 @@ presence:
   arrival_on:
     - light.floor_lamp
     - light.kitchen
-    - switch.template_harmony_fetch
+    - remote.living_room
   arrival_off:
     - light.hallway_2
   away_on:
