@@ -1,6 +1,5 @@
 - alias: 'IFTTT'
   id: a0001
-  hide_entity: true
   initial_state: true
   trigger:
     platform: event

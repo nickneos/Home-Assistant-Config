@@ -64,7 +64,6 @@ device_tracker:
     consider_home: 180
     new_device_defaults:
       track_new_devices: False
-      hide_if_away: False
 person:
 
 ############ Remotes ############
@@ -77,10 +76,6 @@ remote:
 
 ############ Media Players ############
 media_player:
-  - platform: samsungtv
-    host: !secret samsungtv_ip
-    name: Samsung TV
-    mac: !secret samsungtv_mac
   - platform: braviatv
     host: !secret bravia_host
 cast:
