@@ -23,21 +23,6 @@
         - service: script.soniq_tv_power
       turn_off:
         - service: script.soniq_tv_power
-- platform: template
-  switches:
-    template_home_server:
-      friendly_name: 'Home Server'
-      value_template: >- 
-        {{ is_state('sensor.hp_ilo_server_power', 'ON')
-        or is_state('sensor.hp_ilo_server_power', 'on')
-        or is_state('sensor.home_server', 'ON')
-        or is_state('sensor.home_server', 'on') }}
-      turn_on:
-        - service: switch.turn_on
-          entity_id: switch.home_server
-      turn_off:
-        - service: switch.turn_off
-          entity_id: switch.home_server
 
 ########## Harmony Activity Switches ##########
 - platform: template

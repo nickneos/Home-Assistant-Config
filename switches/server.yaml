@@ -1,8 +1,15 @@
 ### Server ###
-- platform: wake_on_lan
-  mac: !secret wol_mac
-  name: Home Server
-  host: !secret wol_ip
-  turn_off:
-    service: shell_command.server_shutdown
+
+- platform: template
+  switches:
+    template_home_server:
+      friendly_name: 'Home Server'
+      value_template: >- 
+        {{ is_state('sensor.hp_ilo_server_power', 'ON')
+        or is_state('sensor.hp_ilo_server_power', 'On')
+        or is_state('sensor.hp_ilo_server_power', 'on') }}
+      turn_on:
+        - service: shell_command.server_on
+      turn_off:
+        - service: shell_command.server_off
   

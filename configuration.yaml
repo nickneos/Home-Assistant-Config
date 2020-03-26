@@ -17,42 +17,40 @@ homeassistant:
   whitelist_external_dirs:
     - /tmp
     - /share
-http:
-  # api_password: !secret http_pw
-  # commented out below since using NGINX reverse proxy
-  # ssl_certificate: /ssl/fullchain.pem
-  # ssl_key: /ssl/privkey.pem
-  # base_url: !secret url
 
 system_health:
 map:
 mobile_app:
-frontend:
-  themes: !include_dir_merge_named themes/
 config:
 updater:
 hassio:
-conversation:
 history:
 logbook:
-logger:
-  default: warning
-  logs:
-    # custom_components.smartir.climate: debug
-    custom_components.harmony_ac.climate: debug
-    # custom_components.remote: debug
-    # homeassistant.components.konnected: debug
-    # pyharmony: debug
-    # homeassistant.components.switch: debug
-    homeassistant.components.shell_command: debug
-# introduction:
 sun:
 tts:
   platform: google_translate
+frontend:
+  themes: !include_dir_merge_named themes/
+logger:
+  default: warning
+  logs:
+    custom_components.harmony_ac.climate: debug
+    homeassistant.components.shell_command: debug
 
 
-############ DB Recorder ############
+############ Merged Files ############
 recorder: !include recorder.yaml
+sensor: !include_dir_merge_list sensors/
+binary_sensor: !include_dir_merge_list binary_sensors/
+switch: !include_dir_merge_list switches/
+light: !include_dir_merge_list lights/
+cover: !include_dir_merge_list covers/
+climate: !include_dir_merge_list climate/ 
+script: !include_dir_merge_named scripts/
+input_number: !include input/input_number.yaml
+input_boolean: !include input/input_boolean.yaml
+automation: !include automations.yaml
+google_assistant: !include google_assistant.yaml
 
 
 ############ Device Trackers ############
@@ -65,6 +63,7 @@ device_tracker:
     new_device_defaults:
       track_new_devices: False
 person:
+
 
 ############ Remotes ############
 remote:
@@ -81,10 +80,6 @@ media_player:
 cast:
 
 
-############ Google Assistant ############
-google_assistant: !include google_assistant.yaml
-
-
 ############ Xiaomi Gateway ############
 xiaomi_aqara:
   discovery_retry: 5
@@ -96,7 +91,6 @@ xiaomi_aqara:
 
 ############ Cameras ############
 camera:
-  ## xiaomi
   - platform: ffmpeg
     input: !secret cam1
     name: Study
@@ -112,22 +106,6 @@ camera:
   - platform: ffmpeg
     input: !secret cam5
     name: dafang2
-  ## swann/reolink
-  # - platform: ffmpeg
-  #   input: !secret reolink1
-  #   name: Front 1
-  # - platform: ffmpeg
-  #   input: !secret reolink2
-  #   name: Front 2
-  # - platform: ffmpeg
-  #   input: !secret reolink3
-  #   name: Deck
-  # - platform: ffmpeg
-  #   input: !secret reolink4
-  #   name: Side
-  # - platform: ffmpeg
-  #   input: !secret reolink5
-  #   name: Backyard
 
 
 ############ Notifications ############
@@ -158,8 +136,9 @@ ifttt:
 
 ############ Shell ############
 shell_command:
-  server_shutdown: !secret shell_server
   reboot_router: !secret shell_router
+  server_on: !secret shell_server_on
+  server_off: !secret shell_server_off
 
 
 ############ Weather ############
@@ -271,15 +250,3 @@ timer:
   bedroom_ac:
   bedroom_tv:
   
-############ Merged Files ############
-sensor: !include_dir_merge_list sensors/
-binary_sensor: !include_dir_merge_list binary_sensors/
-switch: !include_dir_merge_list switches/
-light: !include_dir_merge_list lights/
-cover: !include_dir_merge_list covers/
-climate: !include_dir_merge_list climate/ 
-script: !include_dir_merge_named scripts/
-input_number: !include input/input_number.yaml
-input_boolean: !include input/input_boolean.yaml
-automation: !include automations.yaml
-
