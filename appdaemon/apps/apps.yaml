@@ -2,22 +2,12 @@ utils:
   module: utils
   class: utils
 
-### group.all_*
-group_all_star:
-  module: bbgax
-  class: group_all_x
-  domains: 
-    - device_tracker
-    - light
-    - person
-
 ### People Presence Automations
 presence:
   module: presence
   class: Presence
   dependencies: 
     - utils
-    - group_all_star
   debounce:
     home: 6
     not_home: 60
@@ -30,7 +20,7 @@ presence:
   away_on:
     - light.hallway_2
   away_off:
-    - group.all_lights
+    - lights
     - remote.living_room
     - switch.template_samsung_tv
     - fan.diffuser
@@ -101,8 +91,6 @@ gh_bedroom:
 bedroom_buttons:
   module: xiaomi_button
   class: Button
-  dependencies:
-    - group_all_star
   buttons:
     - binary_sensor.xiaomi_switch_1
     - binary_sensor.xiaomi_switch_2
@@ -115,7 +103,7 @@ bedroom_buttons:
       action_type: toggle
     - click_type: long_click_press
       target_device: 
-        - group.all_lights
+        - lights
         - remote.living_room
         - fan.diffuser
         - switch.template_samsung_tv

@@ -70,6 +70,12 @@ class Button(hass.Hass):
     def turn_on_action(self, device):
         """ turns on device """
 
+        if device == "lights":
+            for entity_id in self.get_state('light'):
+                if self.get_state(entity_id) == "off":
+                    self.turn_on(entity_id)
+            return
+            
         if self.get_state(device) == "on":
             self.log(f"{device} already on")
             return
@@ -80,6 +86,12 @@ class Button(hass.Hass):
     def turn_off_action(self, device):
         """ turns off device """
 
+        if device == "lights":
+            for entity_id in self.get_state('light'):
+                if self.get_state(entity_id) == "on":
+                    self.turn_off(entity_id)
+            return
+            
         if self.get_state(device) == "off":
             self.log(f"{device} already off")
             return

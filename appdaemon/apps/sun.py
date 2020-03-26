@@ -80,8 +80,7 @@ class Sunset(hass.Hass):
                 self.cancel_timer(self.handle1)
 
             # Turn off all lights
-            dev = "group.all_lights"
-            self.utils.off(dev)
+            self.utils.turn_off_all_lights()
 
             # Generate Stage 3 delay and schedule
             s_delay = random.randint(10, 60)
@@ -101,7 +100,7 @@ class Sunset(hass.Hass):
         
         elif kwargs["stage"] == 4:
             # Stage 4: Turn off all lights
-            self.utils.off("group.all_lights")
+            self.utils.turn_off_all_lights()
 
 
 class Fairylights(hass.Hass):
