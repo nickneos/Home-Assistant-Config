@@ -25,7 +25,7 @@ presence:
     - switch.template_samsung_tv
     - fan.diffuser
   radio:
-    device: media_player.google_home_office
+    device: media_player.google_home_playroom
     url: 'https://abc.ihrcast.arn.com.au/iHRabc01?'
   # people_notifications:
   #   - device_tracker.mums_lg_g4
@@ -47,45 +47,45 @@ sunset:
     - light.hallway_2
 
 ### Google Home Volume Control ###    
-gh_main:
-  module: google_home
-  class: Quiet_Mode
-  dependencies: utils
-  device: media_player.google_home_main
-  night_mode:
-    hour: 23
-    min: 5
-    vol: 0.3
-  day_mode: 
-    hour: 5
-    min: 59
-    vol: 0.55
-gh_office:
-  module: google_home
-  class: Quiet_Mode
-  dependencies: utils
-  device: media_player.google_home_office
-  night_mode:
-    hour: 23
-    min: 5
-    vol: 0.2
-  day_mode: 
-    hour: 6
-    min: 55
-    vol: 0.4
-gh_bedroom:
-  module: google_home
-  class: Quiet_Mode
-  dependencies: utils
-  device: media_player.google_home_bedroom
-  night_mode:
-    hour: 21
-    min: 55
-    vol: 0.2
-  day_mode: 
-    hour: 6
-    min: 55
-    vol: 0.4
+# gh_main:
+#   module: google_home
+#   class: Quiet_Mode
+#   dependencies: utils
+#   device: media_player.google_home_main
+#   night_mode:
+#     hour: 23
+#     min: 5
+#     vol: 0.3
+#   day_mode: 
+#     hour: 5
+#     min: 59
+#     vol: 0.55
+# gh_office:
+#   module: google_home
+#   class: Quiet_Mode
+#   dependencies: utils
+#   device: media_player.google_home_playroom
+#   night_mode:
+#     hour: 23
+#     min: 5
+#     vol: 0.2
+#   day_mode: 
+#     hour: 6
+#     min: 55
+#     vol: 0.4
+# gh_bedroom:
+#   module: google_home
+#   class: Quiet_Mode
+#   dependencies: utils
+#   device: media_player.google_home_bedroom
+#   night_mode:
+#     hour: 21
+#     min: 55
+#     vol: 0.2
+#   day_mode: 
+#     hour: 6
+#     min: 55
+#     vol: 0.4
 
 ### Xiaomi Buttons ###
 bedroom_buttons:
@@ -312,11 +312,11 @@ reboot_router:
   sensor: binary_sensor.online
   duration: "00:30:00"
 
-milk_warmer:
-  module: other
-  class: milk_warmer
-  dependencies: utils
-  priority: 2
-  device: switch.milk_warmer
-  duration: "00:05:00"
-  gh_devices: media_player.google_home_main
+# milk_warmer:
+#   module: other
+#   class: milk_warmer
+#   dependencies: utils
+#   priority: 2
+#   device: switch.milk_warmer
+#   duration: "00:05:00"
+#   gh_devices: media_player.google_home_main

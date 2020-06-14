@@ -8,6 +8,9 @@ entity_config:
   light.outdoor_led:
     expose: true
     name: Outdoor LED
+  light.play_room_lamp:
+    expose: true
+    name: Play Room Lamp
   
   ### Air Conditioning
   climate.bedroom:

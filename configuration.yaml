@@ -198,31 +198,31 @@ vacuum:
 
 
 ############ Alarm ############
-konnected:
-  access_token: !secret konnected_token
-  api_host: !secret hass_url
-  devices:
-    - id: !secret konnected_mac
-      host: !secret konnected_host
-      port: !secret konnected_port
-      discovery: False
-      binary_sensors:
-        - zone: 1
-          type: motion
-        - zone: 2
-          type: motion
-        - zone: 3
-          type: motion
-        - zone: 4
-          type: motion
-        - zone: 5
-          type: motion
-        - zone: 6
-          type: lock
-      switches:
-        - zone: out
-          momentary: 500
-          name: Alarm Toggle
+# konnected:
+#   access_token: !secret konnected_token
+#   api_host: !secret hass_url
+#   devices:
+#     - id: !secret konnected_mac
+#       host: !secret konnected_host
+#       port: !secret konnected_port
+#       discovery: False
+#       binary_sensors:
+#         - zone: 1
+#           type: motion
+#         - zone: 2
+#           type: motion
+#         - zone: 3
+#           type: motion
+#         - zone: 4
+#           type: motion
+#         - zone: 5
+#           type: motion
+#         - zone: 6
+#           type: lock
+#       switches:
+#         - zone: out
+#           momentary: 500
+#           name: Alarm Toggle
 
 
 speedtestdotnet:

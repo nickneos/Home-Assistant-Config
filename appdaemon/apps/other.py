@@ -70,6 +70,3 @@ class milk_warmer(hass.Hass):
             for gh in gh_devices:
                 # if self.get_state(gh) == "off": 
                 self.call_service("tts/google_translate_say", entity_id = gh, message = msg)
-
-
-        

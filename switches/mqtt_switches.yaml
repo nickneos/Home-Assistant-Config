@@ -1,12 +1,12 @@
-- platform: mqtt
-  name: "Milk Warmer"
-  state_topic: "stat/brilliant03/RESULT"  
-  value_template: "{{ value_json.POWER }}"
-  command_topic: "cmnd/brilliant03/POWER"
-  payload_on: "ON"
-  payload_off: "OFF"
-  availability_topic: "tele/brilliant03/LWT"
-  payload_available: "Online"
-  payload_not_available: "Offline"
-  qos: 1
-  retain: false
+# - platform: mqtt
+#   name: "Milk Warmer"
+#   state_topic: "stat/brilliant03/RESULT"  
+#   value_template: "{{ value_json.POWER }}"
+#   command_topic: "cmnd/brilliant03/POWER"
+#   payload_on: "ON"
+#   payload_off: "OFF"
+#   availability_topic: "tele/brilliant03/LWT"
+#   payload_available: "Online"
+#   payload_not_available: "Offline"
+#   qos: 1
+#   retain: false

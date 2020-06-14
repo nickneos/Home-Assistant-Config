@@ -14,20 +14,20 @@
   json_attributes_topic: "tele/brilliant02/STATE"
   json_attributes_template: "{{ value_json | tojson }}"
 
-# - platform: mqtt
-#   name: "Wall Lamp"
-#   state_topic: "stat/brilliant01/RESULT"  
-#   value_template: "{{ value_json.POWER }}"
-#   command_topic: "cmnd/brilliant01/POWER"
-#   payload_on: "ON"
-#   payload_off: "OFF"
-#   availability_topic: "tele/brilliant01/LWT"
-#   payload_available: "Online"
-#   payload_not_available: "Offline"
-#   qos: 1
-#   retain: false
-#   json_attributes_topic: "tele/brilliant01/STATE"
-#   json_attributes_template: "{{ value_json | tojson }}"
+- platform: mqtt
+  name: "Play Room Lamp"
+  state_topic: "stat/brilliant03/RESULT"  
+  value_template: "{{ value_json.POWER }}"
+  command_topic: "cmnd/brilliant03/POWER"
+  payload_on: "ON"
+  payload_off: "OFF"
+  availability_topic: "tele/brilliant03/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  qos: 1
+  retain: false
+  json_attributes_topic: "tele/brilliant03/STATE"
+  json_attributes_template: "{{ value_json | tojson }}"
 
 ### Mirabella Globes ###
 # - platform: mqtt
