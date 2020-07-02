@@ -141,15 +141,15 @@ nursery_button:
       target_device: light.nursery
       action_type: turn_off
 
-### Xiaomi Doorbell ###
+### Ring Doorbell ###
 doorbell:
-  module: xiaomi_doorbell
+  module: ring_doorbell
   class: Doorbell
-  button: binary_sensor.xiaomi_switch_3
+  button: binary_sensor.front_door_ding
   gw_mac: !secret xiaomi_mac
   ringtone_id: 10001
   volume_slider: input_number.doorbell_volume 
-  notify_html5: true
+  notify_html5: false
   courtesy_light: 
     entity_id: light.front_porch
     timer: 180
@@ -212,6 +212,16 @@ front_door_light:
   sensor: binary_sensor.xiaomi_door_1
   duration: "00:03:00"
   toggle: input_boolean.front_door_light
+front_door_motion_light:
+  module: sensor
+  class: sensor_light
+  dependencies: utils
+  constrain_start_time: sunset
+  constrain_end_time: sunrise
+  light: light.front_porch
+  sensor: binary_sensor.front_door_motion
+  duration: "00:10:00"
+  # toggle: input_boolean.front_door_light
 garage_open_light_1:
   module: sensor
   class: sensor_light
