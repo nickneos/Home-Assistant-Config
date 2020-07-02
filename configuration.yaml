@@ -65,30 +65,6 @@ device_tracker:
 person:
 
 
-############ Remotes ############
-remote:
-  - platform: harmony
-    name: Living Room
-    host: !secret harmony_ip
-    activity: 13474528
-
-
-############ Media Players ############
-media_player:
-  - platform: braviatv
-    host: !secret bravia_host
-cast:
-
-
-############ Xiaomi Gateway ############
-xiaomi_aqara:
-  discovery_retry: 5
-  gateways:
-    - host: !secret aqara_ip
-      mac: !secret aqara_mac
-      key: !secret aqara_key
-
-
 ############ Cameras ############
 camera:
   - platform: ffmpeg
@@ -127,11 +103,6 @@ notify:
     recipient:
       - !secret smtp_recipient1
     sender_name: My Home Assistant
-
-
-############ IFTTT ############
-ifttt:
-  key: !secret ifttt_key
 
 
 ############ Shell ############
@@ -197,47 +168,6 @@ vacuum:
     token: !secret vacuum_token
 
 
-############ Alarm ############
-# konnected:
-#   access_token: !secret konnected_token
-#   api_host: !secret hass_url
-#   devices:
-#     - id: !secret konnected_mac
-#       host: !secret konnected_host
-#       port: !secret konnected_port
-#       discovery: False
-#       binary_sensors:
-#         - zone: 1
-#           type: motion
-#         - zone: 2
-#           type: motion
-#         - zone: 3
-#           type: motion
-#         - zone: 4
-#           type: motion
-#         - zone: 5
-#           type: motion
-#         - zone: 6
-#           type: lock
-#       switches:
-#         - zone: out
-#           momentary: 500
-#           name: Alarm Toggle
-
-
-speedtestdotnet:
-  scan_interval:
-    minutes: 30
-  monitored_conditions:
-    - ping
-    - download
-    - upload
-
-hue:
-  bridges:
-    - host: !secret hue_ip
-      allow_unreachable: false
-      allow_hue_groups: false
 
 breaking_changes:
   scan_interval: 600
