@@ -1,11 +1,4 @@
-############################################################
-# Title:    Home Assistant Configuration                   #
-# Author:   so3n                                           #
-#                                                          #
-############################################################
 
-
-############ Basic Setup ############
 homeassistant:
   name: !secret name
   latitude: !secret lat
@@ -14,21 +7,14 @@ homeassistant:
   unit_system: metric
   time_zone: !secret timezone
   customize: !include customize.yaml
-  whitelist_external_dirs:
-    - /tmp
-    - /share
 
-system_health:
-map:
-mobile_app:
-config:
-updater:
-hassio:
-history:
-logbook:
-sun:
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
 tts:
-  platform: google_translate
+  - platform: google_translate
+
 frontend:
   themes: !include_dir_merge_named themes/
 logger:
@@ -39,18 +25,18 @@ logger:
 
 
 ############ Merged Files ############
-recorder: !include recorder.yaml
-sensor: !include_dir_merge_list sensors/
-binary_sensor: !include_dir_merge_list binary_sensors/
-switch: !include_dir_merge_list switches/
-light: !include_dir_merge_list lights/
-cover: !include_dir_merge_list covers/
-climate: !include_dir_merge_list climate/ 
-script: !include_dir_merge_named scripts/
-input_number: !include input/input_number.yaml
-input_boolean: !include input/input_boolean.yaml
 automation: !include automations.yaml
-google_assistant: !include google_assistant.yaml
+recorder: !include extra_config/recorder.yaml
+sensor: !include_dir_merge_list extra_config/sensors/
+binary_sensor: !include_dir_merge_list extra_config/binary_sensors/
+switch: !include_dir_merge_list extra_config/switches/
+light: !include_dir_merge_list extra_config/lights/
+cover: !include_dir_merge_list extra_config/covers/
+climate: !include_dir_merge_list extra_config/climate/ 
+script: !include_dir_merge_named extra_config/scripts/
+input_number: !include extra_config/input/input_number.yaml
+input_boolean: !include extra_config/input/input_boolean.yaml
+# google_assistant: !include extra_config/google_assistant.yaml
 
 
 ############ Device Trackers ############
@@ -62,7 +48,7 @@ device_tracker:
     consider_home: 180
     new_device_defaults:
       track_new_devices: False
-person:
+# person:
 
 
 ############ Cameras ############
@@ -167,10 +153,6 @@ vacuum:
     host: !secret vacuum_ip
     token: !secret vacuum_token
 
-
-
-breaking_changes:
-  scan_interval: 600
 
 python_script:
 

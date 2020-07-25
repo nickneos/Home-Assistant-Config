@@ -32,8 +32,6 @@ class Doorbell(hass.Hass):
         if self.volume_slider:
             self.listen_state(self.doorbell_slider_change, self.volume_slider)
 
-        self.flash_bulb("light.play_room", 3)
-
     def cb_doorbell(self, entity, attribute, old, new, kwargs):
         """ Callback function when doorbell button is pressed"""
 
