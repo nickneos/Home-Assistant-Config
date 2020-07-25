@@ -32,6 +32,8 @@ class Doorbell(hass.Hass):
         if self.volume_slider:
             self.listen_state(self.doorbell_slider_change, self.volume_slider)
 
+        self.flash_bulb("light.play_room", 3)
+
     def cb_doorbell(self, entity, attribute, old, new, kwargs):
         """ Callback function when doorbell button is pressed"""
 
@@ -103,10 +105,22 @@ class Doorbell(hass.Hass):
 
         device = kwargs["device"]
         self.turn_off(device)
+    
+    def cb_delayed_on(self, kwargs):
+        """ Callback function to use with self.run_in() to turn on a device """
+
+        device = kwargs["device"]
+        self.turn_on(device)
 
     def flash_bulb(self, light, seconds):
-        """ Flash light for given number of seconds """
-        
+        """ Flash light for given number of seconds """        
+        light_state = self.get_state(light)
+
         self.turn_on(light, flash = "long")
-        self.run_in(self.cb_delayed_off, seconds, device = light)
+
+        if light_state == "on":
+            self.run_in(self.cb_delayed_on, seconds, device = light)
+        else:
+            self.run_in(self.cb_delayed_off, seconds, device = light)
+            
         

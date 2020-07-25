@@ -116,17 +116,17 @@ outside_button:
     - click_type: single
       target_device: light.outdoor_led
       action_type: toggle
-lamp_button:
+study_button:
   module: xiaomi_button
   class: Button
   buttons: binary_sensor.xiaomi_switch_5
   actions:
     - click_type: single
-      target_device: light.floor_lamp
+      target_device: light.study
       action_type: dim_step
       dim_step_value: 4
     - click_type: long_click_press
-      target_device: light.floor_lamp
+      target_device: light.study
       action_type: turn_off
 nursery_button:
   module: xiaomi_button
