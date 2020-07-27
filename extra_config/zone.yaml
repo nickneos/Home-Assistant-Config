@@ -1,0 +1,18 @@
+- name: Work
+  latitude: !secret lat1
+  longitude: !secret long1
+  icon: mdi:briefcase
+- name: Work
+  latitude: !secret lat2
+  longitude: !secret long2
+  icon: mdi:briefcase
+- name: Gym
+  latitude: !secret lat3
+  longitude: !secret long3
+  icon: mdi:dumbbell
+  radius: 50
+- name: Gym
+  latitude: !secret lat4
+  longitude: !secret long4
+  icon: mdi:dumbbell
+  radius: 50
