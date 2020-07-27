@@ -1,0 +1,15 @@
+- platform: ffmpeg
+  input: !secret cam1
+  name: Study
+- platform: ffmpeg
+  input: !secret cam2
+  name: Nursery
+- platform: ffmpeg
+  input: !secret cam3
+  name: Kitchen
+- platform: ffmpeg
+  input: !secret cam4
+  name: dafang1
+- platform: ffmpeg
+  input: !secret cam5
+  name: dafang2

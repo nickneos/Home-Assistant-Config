@@ -1,0 +1,17 @@
+- platform: mqtt
+  name: "Diffuser"
+  availability_topic: "tele/diffuser01/LWT"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  state_topic: "stat/diffuser01/POWER"
+  command_topic: "cmnd/diffuser01/POWER"
+  speed_state_topic: "stat/diffuser01/FAN"
+  payload_low_speed: low
+  payload_high_speed: high
+  speed_command_topic: "cmnd/diffuser01/Event"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  speeds:
+    - low
+    - high

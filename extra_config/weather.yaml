@@ -1,0 +1,2 @@
+- platform: bom
+  station: !secret bom_station

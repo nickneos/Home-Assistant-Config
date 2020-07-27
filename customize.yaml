@@ -66,7 +66,7 @@ switch.template_harmony_fetch:
 switch.template_harmony_tvsurround:
   icon: mdi:television-box
 switch.template_harmony_ps4:
-  icon: mdi:playstation
+  icon: mdi:sony-playstation
 switch.template_harmony_netflix:
   icon: mdi:netflix
 switch.template_harmony_power:

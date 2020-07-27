@@ -1,11 +1,4 @@
-############################################################
-# Title:    Home Assistant Configuration                   #
-# Author:   so3n                                           #
-#                                                          #
-############################################################
 
-
-############ Basic Setup ############
 homeassistant:
   name: !secret name
   latitude: !secret lat
@@ -14,169 +7,47 @@ homeassistant:
   unit_system: metric
   time_zone: !secret timezone
   customize: !include customize.yaml
-  whitelist_external_dirs:
-    - /tmp
-    - /share
 
-system_health:
-map:
-mobile_app:
-config:
-updater:
-hassio:
-history:
-logbook:
-sun:
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
 tts:
-  platform: google_translate
+  - platform: google_translate
+
+# themes for frontend
 frontend:
   themes: !include_dir_merge_named themes/
+
+# logging
 logger:
   default: warning
   logs:
     custom_components.harmony_ac.climate: debug
     homeassistant.components.shell_command: debug
 
+# Merged Folders
+script: !include_dir_merge_named extra_config/scripts/
+sensor: !include_dir_merge_list extra_config/sensors/
+switch: !include_dir_merge_list extra_config/switches/
 
-############ Merged Files ############
-recorder: !include recorder.yaml
-sensor: !include_dir_merge_list sensors/
-binary_sensor: !include_dir_merge_list binary_sensors/
-switch: !include_dir_merge_list switches/
-light: !include_dir_merge_list lights/
-cover: !include_dir_merge_list covers/
-climate: !include_dir_merge_list climate/ 
-script: !include_dir_merge_named scripts/
-input_number: !include input/input_number.yaml
-input_boolean: !include input/input_boolean.yaml
+# Merged Files
 automation: !include automations.yaml
-google_assistant: !include google_assistant.yaml
+binary_sensor: !include extra_config/binary_sensor.yaml
+camera: !include extra_config/camera.yaml
+climate: !include extra_config/climate.yaml
+cover: !include extra_config/cover.yaml
+device_tracker: !include extra_config/device_tracker.yaml
+fan: !include extra_config/fan.yaml
+google_assistant: !include extra_config/google_assistant.yaml
+input_boolean: !include extra_config/input_boolean.yaml
+input_number: !include extra_config/input_number.yaml
+light: !include extra_config/light.yaml
+notify: !include extra_config/notify.yaml
+recorder: !include extra_config/recorder.yaml
+shell_command: !include extra_config/shell.yaml
+timer: !include extra_config/timer.yaml
+vacuum: !include extra_config/vacuum.yaml
+weather: !include extra_config/weather.yaml
+zone: !include extra_config/zone.yaml
 
-
-############ Device Trackers ############
-device_tracker:
-  - platform: unifi_direct
-    host: !secret unifi_ip
-    username: !secret unifi_user
-    password: !secret unifi_pw
-    consider_home: 180
-    new_device_defaults:
-      track_new_devices: False
-person:
-
-
-############ Cameras ############
-camera:
-  - platform: ffmpeg
-    input: !secret cam1
-    name: Study
-  - platform: ffmpeg
-    input: !secret cam2
-    name: Nursery
-  - platform: ffmpeg
-    input: !secret cam3
-    name: Kitchen
-  - platform: ffmpeg
-    input: !secret cam4
-    name: dafang1
-  - platform: ffmpeg
-    input: !secret cam5
-    name: dafang2
-
-
-############ Notifications ############
-notify:
-  - name: html5
-    platform: html5
-    vapid_pub_key: !secret vapid_pub_key
-    vapid_prv_key: !secret vapid_prv_key
-    vapid_email: !secret vapid_email
-  - name: gmail
-    platform: smtp
-    server: smtp.gmail.com
-    port: 587
-    timeout: 15
-    sender: !secret smtp_email
-    encryption: starttls
-    username: !secret smtp_email
-    password: !secret smtp_pw
-    recipient:
-      - !secret smtp_recipient1
-    sender_name: My Home Assistant
-
-
-############ Shell ############
-shell_command:
-  reboot_router: !secret shell_router
-  server_on: !secret shell_server_on
-  server_off: !secret shell_server_off
-
-
-############ Weather ############
-weather:
-  - platform: bom
-    station: !secret bom_station
-
-
-############ Fan ############
-fan:
-  - platform: mqtt
-    name: "Diffuser"
-    availability_topic: "tele/diffuser01/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    state_topic: "stat/diffuser01/POWER"
-    command_topic: "cmnd/diffuser01/POWER"
-    speed_state_topic: "stat/diffuser01/FAN"
-    payload_low_speed: low
-    payload_high_speed: high
-    speed_command_topic: "cmnd/diffuser01/Event"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    speeds:
-      - low
-      - high
-      
-
-############ Zones ############
-zone:
-  - name: Work
-    latitude: !secret lat1
-    longitude: !secret long1
-    icon: mdi:briefcase
-  - name: Work
-    latitude: !secret lat2
-    longitude: !secret long2
-    icon: mdi:briefcase
-  - name: Gym
-    latitude: !secret lat3
-    longitude: !secret long3
-    icon: mdi:dumbbell
-    radius: 50
-  - name: Gym
-    latitude: !secret lat4
-    longitude: !secret long4
-    icon: mdi:dumbbell
-    radius: 50
-
-
-############ Vacuum ############
-vacuum:
-  - platform: xiaomi_miio
-    host: !secret vacuum_ip
-    token: !secret vacuum_token
-
-
-
-breaking_changes:
-  scan_interval: 600
-
-python_script:
-
-timer:
-  main_ac:
-  main_tv:
-  bedroom_ac:
-  bedroom_tv:
-  
