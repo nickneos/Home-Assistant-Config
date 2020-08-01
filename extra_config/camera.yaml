@@ -13,3 +13,18 @@
 - platform: ffmpeg
   input: !secret cam5
   name: dafang2
+- platform: ffmpeg
+  input: !secret reolink1
+  name: Front 1
+- platform: ffmpeg
+  input: !secret reolink2
+  name: Front 2
+- platform: ffmpeg
+  input: !secret reolink3
+  name: Deck
+- platform: ffmpeg
+  input: !secret reolink4
+  name: Side
+- platform: ffmpeg
+  input: !secret reolink5
+  name: Backyard

@@ -15,17 +15,17 @@ http:
   url: !secret appdaemon_url
 admin:
 api:
-# logs:
-  # main_log:
-    # filename: /conf/logs/appdaemon.log
-    # log_generations: 1
-  # access_log:
-    # filename: /conf/logs/access.log
-    # log_generations: 1
-  # error_log:
-    # filename: /conf/logs/appdaemon.log
-    # log_generations: 1
-  # diag_log:
-    # filename: /conf/logs/diag.log
-    # log_generations: 1
+logs:
+  main_log:
+    filename: /conf/logs/appdaemon.log
+    log_generations: 1
+  access_log:
+    filename: /conf/logs/access.log
+    log_generations: 1
+  error_log:
+    filename: /conf/logs/appdaemon.log
+    log_generations: 1
+  diag_log:
+    filename: /conf/logs/diag.log
+    log_generations: 1
 

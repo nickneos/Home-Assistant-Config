@@ -27,7 +27,7 @@ class Sunset(hass.Hass):
         if self.utils.is_on("input_boolean.holiday_mode"):
             self.run_in(self.holiday_mode, 1, stage = 0)
         else:
-            devices = self.away_on if self.noone_home() else self.athome_on
+            devices = self.away_on if self.noone_home(person=True) else self.athome_on
             for dev in devices:
                 self.utils.on(dev)
 

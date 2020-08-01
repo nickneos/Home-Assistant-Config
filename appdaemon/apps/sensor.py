@@ -82,7 +82,7 @@ class Notifications(hass.Hass):
         sensor_name = kwargs["sensor_name"]
         sensor_type = kwargs["sensor_type"] 
 
-        if self.notify_when_home == False and self.anyone_home():
+        if self.notify_when_home == False and self.anyone_home(person=True):
             return
         
         if self.toggle:

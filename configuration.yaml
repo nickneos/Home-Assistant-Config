@@ -37,7 +37,7 @@ binary_sensor: !include extra_config/binary_sensor.yaml
 camera: !include extra_config/camera.yaml
 climate: !include extra_config/climate.yaml
 cover: !include extra_config/cover.yaml
-device_tracker: !include extra_config/device_tracker.yaml
+# device_tracker: !include extra_config/device_tracker.yaml
 fan: !include extra_config/fan.yaml
 google_assistant: !include extra_config/google_assistant.yaml
 input_boolean: !include extra_config/input_boolean.yaml

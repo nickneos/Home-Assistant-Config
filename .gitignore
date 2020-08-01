@@ -16,6 +16,7 @@ home-assistant_v2.db-*
 html5_push_registrations.conf
 ip_bans.yaml
 known_devices.yaml
+known_devices.yaml*
 phue.conf
 plex.conf
 pyozw.sqlite

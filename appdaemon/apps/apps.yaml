@@ -28,12 +28,10 @@ presence:
     device: media_player.google_home_playroom
     url: 'https://abc.ihrcast.arn.com.au/iHRabc01?'
   # people_notifications:
-  #   - device_tracker.mums_lg_g4
+  #   - person.liza
   residents:
-    - device_tracker.nicks_note8
-    - device_tracker.ashs_s10
-    - device_tracker.gps_nick
-    - device_tracker.gps_ash
+    - person.nick
+    - person.ashlei
 
 ### Time Based Automations ###
 sunset:

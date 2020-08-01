@@ -20,8 +20,8 @@ class Presence(hass.Hass):
         self.people_notifications = self.args.get("people_notifications", [])
         self.residents = self.args.get("residents", [])
 
-        self.flg_noone_home = self.noone_home()
-        self.flg_anyone_home = self.anyone_home()
+        self.flg_noone_home = self.noone_home(person=True)
+        self.flg_anyone_home = self.anyone_home(person=True)
         self.log(f"No One Home: {self.flg_noone_home} | Anyone Home: {self.flg_anyone_home}")
 
         debounce = self.args.get("debounce", [])
@@ -29,13 +29,13 @@ class Presence(hass.Hass):
         duration_nh = debounce.get("not_home", DEFAULT_DEBOUNCE)
 
         # listeners for device trackers - home and not_home
-        self.listen_state(self.cb_home, "device_tracker", old='not_home', new="home", duration=duration_h)
-        self.listen_state(self.cb_not_home, "device_tracker", old="home", new="not_home", duration=duration_nh)
+        self.listen_state(self.cb_home, "person", old='not_home', new="home", duration=duration_h)
+        self.listen_state(self.cb_not_home, "person", old="home", new="not_home", duration=duration_nh)
         
         # listeners for specific people - home and not_home
-        for tracker in self.people_notifications:
-            self.log("Setting up people-notification listener for {}".format(tracker))
-            self.listen_state(self.people_notification, tracker)
+        for i in self.people_notifications:
+            self.log("Setting up people-notification listener for {}".format(i))
+            self.listen_state(self.people_notification, i)
 
     def cb_home(self, entity, attribute, old, new, kwargs):
 
@@ -49,8 +49,8 @@ class Presence(hass.Hass):
             return
             
         is_night = self.now_is_between("sunset - 00:30:00", "sunrise + 00:10:00")
-        self.flg_noone_home = self.noone_home()
-        self.flg_anyone_home = self.anyone_home()
+        self.flg_noone_home = self.noone_home(person=True)
+        self.flg_anyone_home = self.anyone_home(person=True)
         self.log(f"No One Home: {self.flg_noone_home} | Anyone Home: {self.flg_anyone_home}")
 
         # devices to turn off
@@ -85,8 +85,8 @@ class Presence(hass.Hass):
                     self.turn_on(device)
             # turn on harmony only for Nick or Ash
             elif d1 == "remote":
-                for person in self.residents:
-                    if self.get_tracker_state(person) == "home":
+                for i in self.residents:
+                    if self.get_tracker_state(i) == "home":
                         self.utils.on(device)
                         break
             else:
@@ -100,13 +100,13 @@ class Presence(hass.Hass):
         if self.get_state("input_boolean.people_automations") == "off":
             return
         
-        if self.anyone_home():
+        if self.anyone_home(person=True):
             self.log("Not running cb_not_home as there is someone home")
             return
 
         is_night = self.now_is_between("sunset - 00:30:00", "sunrise + 00:10:00")
-        self.flg_noone_home = self.noone_home()
-        self.flg_anyone_home = self.anyone_home()
+        self.flg_noone_home = self.noone_home(person=True)
+        self.flg_anyone_home = self.anyone_home(person=True)
         self.log(f"No One Home: {self.flg_noone_home} | Anyone Home: {self.flg_anyone_home}")      
         
         # devices to turn off

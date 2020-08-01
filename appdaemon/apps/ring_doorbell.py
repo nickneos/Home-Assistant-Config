@@ -47,7 +47,7 @@ class Doorbell(hass.Hass):
                         device = light)
 
         # Play alert if someone is home
-        if self.anyone_home():
+        if self.anyone_home(person=True):
             if self.volume_slider:
                 vol = float(self.get_state(self.volume_slider))
             else:
@@ -70,7 +70,7 @@ class Doorbell(hass.Hass):
                 self.flash_bulb(x, 3)
 
         # Google Home voice prompt if enabled
-        if self.gh_devices and self.anyone_home():
+        if self.gh_devices and self.anyone_home(person=True):
             if type(self.gh_devices) is list:
                 ggl_homes = self.gh_devices
             else:

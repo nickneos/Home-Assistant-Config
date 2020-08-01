@@ -72,7 +72,7 @@ switch.template_harmony_netflix:
 switch.template_harmony_power:
   icon: mdi:power
 climate.bedroom:
-  icon: mdi:air-conditioner
+  icon: mdi:home-thermometer-outline
   unit_of_measurement: °C
 script.fetch2_ch_down:
   icon: mdi:arrow-down-drop-circle-outline
@@ -101,7 +101,7 @@ script.vacuum_bedroom_3:
 input_boolean.cast_visible:
   icon: mdi:cast
 climate.living_room:
-  icon: mdi:air-conditioner
+  icon: mdi:home-thermometer-outline
   unit_of_measurement: °C
 sensor.hassio_db_size:
   icon: mdi:database
@@ -118,16 +118,16 @@ binary_sensor.xiaomi_door_2:
 binary_sensor.car_sensor:
   icon: mdi:car-side
 person.nick:
-  entity_picture: /local/nick.jpg
+  entity_picture: /local/people/nick.jpg
 person.ashlei:
-  entity_picture: /local/ashlei.jpg
+  entity_picture: /local/people/ashlei.jpg
 person.liza:
-  entity_picture: /local/liza.jpg
+  entity_picture: /local/people.liza.jpg
 person.maryann:
-  entity_picture: /local/mary.jpg
-device_tracker.gps_nick:
-  image: /local/people/nick.jpg
-device_tracker.gps_ash:
-  image: /local/people/ashlei.jpg
+  entity_picture: /local/people/mary.jpg
 script.reboot_router:
   icon: mdi:router-wireless
+light.play_room_lamp:
+  icon: mdi:floor-lamp
+light.outdoor_led:
+  icon: mdi:led-strip

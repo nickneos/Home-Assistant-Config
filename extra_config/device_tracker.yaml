@@ -1,7 +1,7 @@
-- platform: unifi_direct
-  host: !secret unifi_ip
-  username: !secret unifi_user
-  password: !secret unifi_pw
-  consider_home: 180
-  new_device_defaults:
-    track_new_devices: False
+# - platform: unifi_direct
+#   host: !secret unifi_ip
+#   username: !secret unifi_user
+#   password: !secret unifi_pw
+#   consider_home: 180
+#   new_device_defaults:
+#     track_new_devices: False
