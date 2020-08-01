@@ -40,6 +40,7 @@ cover: !include extra_config/cover.yaml
 # device_tracker: !include extra_config/device_tracker.yaml
 fan: !include extra_config/fan.yaml
 google_assistant: !include extra_config/google_assistant.yaml
+group: !include extra_config/groups.yaml
 input_boolean: !include extra_config/input_boolean.yaml
 input_number: !include extra_config/input_number.yaml
 light: !include extra_config/light.yaml
@@ -50,4 +51,3 @@ timer: !include extra_config/timer.yaml
 vacuum: !include extra_config/vacuum.yaml
 weather: !include extra_config/weather.yaml
 zone: !include extra_config/zone.yaml
-
