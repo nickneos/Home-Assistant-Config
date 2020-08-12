@@ -317,9 +317,4 @@ class utils(hass.Hass):
     def turn_off_all_lights(self):
         """ turns off all lights """
 
-        for entity_id in self.get_state('light'):
-            if self.get_state(entity_id) == "on":
-                self.turn_off(entity_id)
-
-
-                
+        self.call_service("light/turn_off", entity_id = "all")

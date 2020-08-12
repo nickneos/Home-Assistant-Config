@@ -2,3 +2,4 @@ reboot_router: !secret shell_router
 # server_on: !secret shell_server_on
 # server_off: !secret shell_server_off
 test: "pwd && ls -al && ls -al /"
+nodered_ha_start: !secret nodered_ha_start

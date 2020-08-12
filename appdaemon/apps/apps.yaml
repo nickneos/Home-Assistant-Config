@@ -2,36 +2,43 @@ utils:
   module: utils
   class: utils
 
+# bbgax:
+#   module: bbgax
+#   class: group_all_x
+#   domains: 
+#     - person
+#     - light
+  
 ### People Presence Automations
-presence:
-  module: presence
-  class: Presence
-  dependencies: 
-    - utils
-  debounce:
-    home: 6
-    not_home: 60
-  arrival_on:
-    - light.floor_lamp
-    - light.kitchen
-    - remote.living_room
-  arrival_off:
-    - light.hallway_2
-  away_on:
-    - light.hallway_2
-  away_off:
-    - lights
-    - remote.living_room
-    - switch.template_samsung_tv
-    - fan.diffuser
-  radio:
-    device: media_player.google_home_playroom
-    url: 'https://abc.ihrcast.arn.com.au/iHRabc01?'
-  # people_notifications:
-  #   - person.liza
-  residents:
-    - person.nick
-    - person.ashlei
+# presence:
+#   module: presence
+#   class: Presence
+#   dependencies: 
+#     - utils
+#   debounce:
+#     home: 6
+#     not_home: 60
+#   arrival_on:
+#     - light.floor_lamp
+#     - light.kitchen
+#     - remote.living_room
+#   arrival_off:
+#     - light.hallway_2
+#   away_on:
+#     - light.hallway_2
+#   away_off:
+#     - lights
+#     - remote.living_room
+#     - switch.template_samsung_tv
+#     - fan.diffuser
+#   radio:
+#     device: media_player.google_home_playroom
+#     url: 'https://abc.ihrcast.arn.com.au/iHRabc01?'
+#   # people_notifications:
+#   #   - person.liza
+#   residents:
+#     - person.nick
+#     - person.ashlei
 
 ### Time Based Automations ###
 sunset:
@@ -140,23 +147,23 @@ nursery_button:
       action_type: turn_off
 
 ### Ring Doorbell ###
-doorbell:
-  module: ring_doorbell
-  class: Doorbell
-  button: binary_sensor.front_door_ding
-  gw_mac: !secret xiaomi_mac
-  ringtone_id: 10001
-  volume_slider: input_number.doorbell_volume 
-  notify_html5: false
-  courtesy_light: 
-    entity_id: light.front_porch
-    timer: 180
-  flash:
-    - light.study
-    - light.play_room
-    - light.kitchen
-    - light.dining
-    - light.living_room
+# doorbell:
+#   module: ring_doorbell
+#   class: Doorbell
+#   button: binary_sensor.front_door_ding
+#   gw_mac: !secret xiaomi_mac
+#   ringtone_id: 10001
+#   volume_slider: input_number.doorbell_volume 
+#   notify_html5: false
+#   courtesy_light: 
+#     entity_id: light.front_porch
+#     timer: 180
+#   flash:
+#     - light.study
+#     - light.play_room
+#     - light.kitchen
+#     - light.dining
+#     - light.living_room
 
 ### Sensor Lights ###
 pantry_motion_light:
@@ -328,3 +335,4 @@ reboot_router:
 #   device: switch.milk_warmer
 #   duration: "00:05:00"
 #   gh_devices: media_player.google_home_main
+
