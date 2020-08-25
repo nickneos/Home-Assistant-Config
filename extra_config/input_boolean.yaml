@@ -2,6 +2,10 @@ holiday_mode:
   name: Holiday Mode
   # initial: off
   icon: mdi:airplane
+sunset_automations:
+  name: Sunset Automations
+  # initial: off
+  icon: mdi:white-balance-sunny
 cast_visible:
   name: Cast Visible
   initial: on

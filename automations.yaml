@@ -1,41 +1,46 @@
-- alias: 'IFTTT'
-  id: f525a9bfd05a4eb0f349a244180852f3
-  initial_state: true
+- id: '1598356733032'
+  alias: MQTT States on HA Boot
+  description: ''
   trigger:
-    platform: event
-    event_type: ifttt_webhook_received
-    event_data:
+  - event: start
+    platform: homeassistant
+  condition: []
+  action:
+  - data:
+      payload: ''
+      topic: cmnd/tasmotas/state
+    service: mqtt.publish
+  - data:
+      topic: cmnd/tasmotas/POWER
+    service: mqtt.publish
+  - data:
+      topic: cmnd/tasmotas/POWER2
+    service: mqtt.publish
+  - data:
+      topic: cmnd/tasmotas/POWER3
+    service: mqtt.publish
+  mode: single
+- id: '1598357187344'
+  alias: IFTTT
+  description: ''
+  trigger:
+  - event_data:
       action: call_service
+    event_type: ifttt_webhook_received
+    platform: event
+  condition: []
   action:
-    service_template: '{{ trigger.event.data.service }}'
-    data_template:
+  - data_template:
       entity_id: '{{ trigger.event.data.entity_id }}'
-
-- alias: "Power state on HA start-up"
-  id: 039cd491d53e09a030f7e1121687c30b
+    service_template: '{{ trigger.event.data.service }}'
+  mode: single
+- id: '1598357531622'
+  alias: Node Red Start Up
+  description: ''
   trigger:
+  - event: start
     platform: homeassistant
-    event: start
+  condition: []
   action:
-    - service: mqtt.publish
-      data:
-        topic: "cmnd/tasmotas/state"
-        payload: ""
-    - service: mqtt.publish
-      data:
-        topic: "cmnd/tasmotas/POWER"
-    - service: mqtt.publish
-      data:
-        topic: cmnd/tasmotas/POWER2
-    - service: mqtt.publish
-      data:
-        topic: cmnd/tasmotas/POWER3 
-
-- alias: "Node Red HA Start"
-  id: 990487fab743563b2ae361f72a30a34b
-  trigger:
-    platform: homeassistant
-    event: start
-  action:
-    - service: shell_command.nodered_ha_start
-      
+  - service: shell_command.nodered_ha_start
+  mode: single
