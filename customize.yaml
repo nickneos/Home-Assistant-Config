@@ -113,16 +113,6 @@ light.table_lamp:
   icon: mdi:lamp
 binary_sensor.car_sensor:
   icon: mdi:car-side
-person.nick:
-  entity_picture: /local/people/nick.jpg
-person.ashlei:
-  entity_picture: /local/people/ashlei.jpg
-person.liza:
-  entity_picture: /local/people/liza.jpg
-person.maryann:
-  entity_picture: /local/people/mary.jpg
-person.cath:
-  entity_picture: /local/people/cath.jpg
 script.reboot_router:
   icon: mdi:router-wireless
 light.play_room_lamp:

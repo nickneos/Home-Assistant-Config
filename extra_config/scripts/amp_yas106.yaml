@@ -1,119 +1,119 @@
 amp_yas106_power:
   alias: Yamaha Sound Bar Power
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: !secret broadlink_host2
-        packet: 
-          - 'JgBYAAABJZQSExITERQRORE4ETkROBITEjgROBI4ERQRFBEUERQROBEUERQRORE4ERQRFBE5ETgRORE4ERQRFBE5ETgRFBEUEQAFCAABJUsRAAw6AAElSxEADQU='       
+        entity_id: remote.play_room_remote
+        command: 
+          - 'b64:JgBYAAABJZQSExITERQRORE4ETkROBITEjgROBI4ERQRFBEUERQROBEUERQRORE4ERQRFBE5ETgRORE4ERQRFBE5ETgRFBEUEQAFCAABJUsRAAw6AAElSxEADQU='       
 amp_yas106_mute:
   alias: Yamaha Sound Bar Mute
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: !secret broadlink_host2
-        packet: 
-          - 'JgBQAAABJZQSExEUERQRORE4ETkROBEUETkROBE5ERQRExITEhMSOBEUERQROBE5ETgRFBEUETkROBE5ERQRFBETEjgROBITEgAFBwABJUsRAA0FAAAAAAAAAAA='
+        entity_id: remote.play_room_remote
+        command: 
+          - 'b64:JgBQAAABJZQSExEUERQRORE4ETkROBEUETkROBE5ERQRExITEhMSOBEUERQROBE5ETgRFBEUETkROBE5ERQRFBETEjgROBITEgAFBwABJUsRAA0FAAAAAAAAAAA='
 amp_yas106_vol_up:
   alias: Yamaha Sound Bar Volume Up
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: !secret broadlink_host2
-        packet: 
-          - 'JgBQAAABJZQRFBEUERQROBI4ETkROBEUETkROBE5ERQRFBETEhMSOBEUETgSOBE4EjgRFBEUERQROBITEhMRFBEUETkROBE5EQAFCAABJUsRAA0FAAAAAAAAAAA='
+        entity_id: remote.play_room_remote
+        command: 
+          - 'b64:JgBQAAABJZQRFBEUERQROBI4ETkROBEUETkROBE5ERQRFBETEhMSOBEUETgSOBE4EjgRFBEUERQROBITEhMRFBEUETkROBE5EQAFCAABJUsRAA0FAAAAAAAAAAA='
 amp_yas106_vol_down:
   alias: Yamaha Sound Volume Down
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: !secret broadlink_host2
-        packet: 
-          - 'JgBQAAABJZQRFBEUERQROBI4ETkROBEUETgSOBE5ERQRExITEhMSOBE4EjgRORE4ETkRFBEUERMSExITEhMRFBEUETkROBE5EQAFCAABJUsRAA0FAAAAAAAAAAA='
+        entity_id: remote.play_room_remote
+        command: 
+          - 'b64:JgBQAAABJZQRFBEUERQROBI4ETkROBEUETgSOBE5ERQRExITEhMSOBE4EjgRORE4ETkRFBEUERMSExITEhMRFBEUETkROBE5EQAFCAABJUsRAA0FAAAAAAAAAAA='
 amp_yas106_input_hdmi:
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: !secret broadlink_host2
-        packet: 
-          - 'JgBQAAABJZQSExITEhMSOBE4EjgROBITEjgRORE4ERQRFBEUERQROBITEjgRFBE4EhMRFBE5ERQROBEUETkRFBE4ETkRFBE4EQAFCAABJUsSAA0FAAAAAAAAAAA='
+        entity_id: remote.play_room_remote
+        command: 
+          - 'b64:JgBQAAABJZQSExITEhMSOBE4EjgROBITEjgRORE4ERQRFBEUERQROBITEjgRFBE4EhMRFBE5ERQROBEUETkRFBE4ETkRFBE4EQAFCAABJUsSAA0FAAAAAAAAAAA='
 amp_yas106_input_tv:
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: !secret broadlink_host2
-        packet: 
-          - 'JgBYAAABJZQRFBEUERQRORE4ETkROBEUETkROBE5ERQRFBEUERQROBE5ETgRORE4EjgRFBE4EjgRFBEUERQRFBEUETgRFBEUEQAFCAABJUsRAAw6AAElSxEADQU='
+        entity_id: remote.play_room_remote
+        command: 
+          - 'b64:JgBYAAABJZQRFBEUERQRORE4ETkROBEUETkROBE5ERQRFBEUERQROBE5ETgRORE4EjgRFBE4EjgRFBEUERQRFBEUETgRFBEUEQAFCAABJUsRAAw6AAElSxEADQU='
 amp_yas106_input_analog:
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: !secret broadlink_host2
-        packet: 
-          - 'JgBYAAABJZQSExITERQRORE4ETkROBITETkROBI4ERQRFBEUERQROBE5ERQRExITEjgRFBE4EjgRFBE4EjgRORETEjgRFBEUEQAFCAABJUsRAAw5AAEmShIADQU='
+        entity_id: remote.play_room_remote
+        command: 
+          - 'b64:JgBYAAABJZQSExITERQRORE4ETkROBITETkROBI4ERQRFBEUERQROBE5ERQRExITEjgRFBE4EjgRFBE4EjgRORETEjgRFBEUEQAFCAABJUsRAAw5AAEmShIADQU='
 amp_yas106_input_bluetooth:
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: !secret broadlink_host2
-        packet: 
-          - 'JgBYAAABJZURFBEUERMSOBE5ETgROREUETgRORE4ERQRFBEUERQRORE4ERQRFBE4EhMSOBEUERQRFBE4ETkRFBE4EhMRORE4EQAFCQABJUsRAAw5AAEmShIADQU='
+        entity_id: remote.play_room_remote
+        command: 
+          - 'b64:JgBYAAABJZURFBEUERMSOBE5ETgROREUETgRORE4ERQRFBEUERQRORE4ERQRFBE4EhMSOBEUERQRFBE4ETkRFBE4EhMRORE4EQAFCQABJUsRAAw5AAEmShIADQU='
 amp_yas106_surround:
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: !secret broadlink_host2
-        packet: 
-          - 'JgBYAAABJpQRFBEUERQROBE5ETgROREUETgRORE4EhMSExEUERQROREUERQROBEUETkROBEUETkROBE5ERQROBEUERQRORETEgAFCAABJUsRAAw6AAElSxEADQU='
+        entity_id: remote.play_room_remote
+        command: 
+          - 'b64:JgBYAAABJpQRFBEUERQROBE5ETgROREUETgRORE4EhMSExEUERQROREUERQROBEUETkROBEUETkROBE5ERQROBEUERQRORETEgAFCAABJUsRAAw6AAElSxEADQU='
 amp_yas106_stereo:
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: !secret broadlink_host2
-        packet: 
-          - 'JgBYAAABJZURFBETEhMSOBE4EjgROREUETgRORE4ERQRFBEUERQROREUERMSExITEjgRFBE4ERQRORE4EjgROBITEjgRFBE4EQAFCQABJUsRAAw6AAElSxEADQU='
+        entity_id: remote.play_room_remote
+        command: 
+          - 'b64:JgBYAAABJZURFBETEhMSOBE4EjgROREUETgRORE4ERQRFBEUERQROREUERMSExITEjgRFBE4ERQRORE4EjgROBITEjgRFBE4EQAFCQABJUsRAAw6AAElSxEADQU='
 amp_yas106_clear_voice:
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: !secret broadlink_host2
-        packet: 
-          - 'JgBYAAABJZURFBEUERQROBE5ETgROREUETgRORE4EhMSExEUERQROREUERQROBE5ETgRFBE5ERQROBE5ERQRFBETEjgRFBE4EgAFCAABJUsRAAw5AAElSxEADQU='
+        entity_id: remote.play_room_remote
+        command: 
+          - 'b64:JgBYAAABJZURFBEUERQROBE5ETgROREUETgRORE4EhMSExEUERQROREUERQROBE5ETgRFBE5ERQROBE5ERQRFBETEjgRFBE4EgAFCAABJUsRAAw5AAElSxEADQU='
 amp_yas106_bass_extension:
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: !secret broadlink_host2
-        packet: 
-          - 'JgBYAAABJZQSExEUERQRORE4ETkROBITETkROBI4ERQRFBEUERQROBE5ETgRFBE5ERQRFBETEjgRFBEUETgSExI4ETgSOBEUEQAFCAABJUsSAAw6AAElSxEADQU='
+        entity_id: remote.play_room_remote
+        command: 
+          - 'b64:JgBYAAABJZQSExEUERQRORE4ETkROBITETkROBI4ERQRFBEUERQROBE5ETgRFBE5ERQRFBETEjgRFBEUETgSExI4ETgSOBEUEQAFCAABJUsSAAw6AAElSxEADQU='
 amp_yas106_bluetooth_standby:
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: !secret broadlink_host2
-        packet: 
-          - 'JgBYAAABJZQRFBEUERQROBI4ETgSOBEUETkROBE5ERQRFBEUERMSOBEUERQROBITEjgROBITEhMSOBE4EhMSOBEUERQROBI4EQAFCAABJUsSAAw6AAElSxEADQU='
+        entity_id: remote.play_room_remote
+        command: 
+          - 'b64:JgBYAAABJZQRFBEUERQROBI4ETgSOBEUETkROBE5ERQRFBEUERMSOBEUERQROBITEjgROBITEhMSOBE4EhMSOBEUERQROBI4EQAFCAABJUsSAAw6AAElSxEADQU='
 amp_yas106_dimmer:
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: !secret broadlink_host2
-        packet: 
-          - 'JgBYAAABJZQSExITERQRORE4EjgROBITEjgROBI4ERQRFBEUERQROBITEjgRFBE4EjgROBITEjgRORETEjgRFBEUERQROBITEQAFCQABJUsRAAw7AAElSxEADQU='
+        entity_id: remote.play_room_remote
+        command: 
+          - 'b64:JgBYAAABJZQSExITERQRORE4EjgROBITEjgROBI4ERQRFBEUERQROBITEjgRFBE4EjgROBITEjgRORETEjgRFBEUERQROBITEQAFCQABJUsRAAw7AAElSxEADQU='
 amp_yas106_subwoofer_up:
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: !secret broadlink_host2
-        packet: 
-          - 'JgBQAAABJZURFBEUERQROBE5ETgROREUETgRORE4EhMSExITERQROREUERQROBE5ERQRFBE4ERQRORE4EhMRFBE5ETgSExE5EQAFCQABJUsRAA0FAAAAAAAAAAA='
+        entity_id: remote.play_room_remote
+        command: 
+          - 'b64:JgBQAAABJZURFBEUERQROBE5ETgROREUETgRORE4EhMSExITERQROREUERQROBE5ERQRFBE4ERQRORE4EhMRFBE5ETgSExE5EQAFCQABJUsRAA0FAAAAAAAAAAA='
 amp_yas106_subwoofer_down:
   sequence:
-    - service: broadlink.send
+    - service: remote.send_command
       data:
-        host: !secret broadlink_host2
-        packet: 
-          - 'JgBQAAABJZURFBEUERQROBE5ETgSOBEUETgSOBE5ERQRExITEhMSOBE5ERQROBE5ERQRFBE4ERQRFBE5ERQRExI4ETkRFBE4EQAFCQABJUsRAA0FAAAAAAAAAAA='   
+        entity_id: remote.play_room_remote
+        command: 
+          - 'b64:JgBQAAABJZURFBEUERQROBE5ETgSOBEUETgSOBE5ERQRExITEhMSOBE5ERQROBE5ERQRFBE4ERQRFBE5ERQRExI4ETkRFBE4EQAFCQABJUsRAA0FAAAAAAAAAAA='   
     
     
 

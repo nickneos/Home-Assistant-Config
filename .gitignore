@@ -60,6 +60,7 @@ entity_registry.yaml
 !/.travis.yml
 python-lovelace/
 themes/
+image/
 
 # End of https://www.gitignore.io/api/homeassistant
 

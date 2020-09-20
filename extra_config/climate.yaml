@@ -2,7 +2,7 @@
   name: Bedroom
   unique_id: bedroom
   device_code: 1022
-  controller_data: !secret broadlink_host1
+  controller_data: remote.bedroom_remote
   temperature_sensor: sensor.xiaomi_temp_bedroom
   humidity_sensor: sensor.xiaomi_humidity_bedroom
   
