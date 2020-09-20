@@ -35,11 +35,17 @@ sliding_door_light:
 front_door_light:
   name: Front Porch Light
   icon: mdi:lightbulb-on-outline
+front_porch_motion:
+  name: Front Porch Motion Light
+  icon: mdi:walk
 main_garage_door_light:
   name: Main Garage Door Light
   icon: mdi:lightbulb-on-outline
 rear_garage_door_light:
   name: Rear Garage Door Light
   icon: mdi:lightbulb-on-outline
+reboot_router_enable:
+  name: Reboot Router If Internet Down
+  icon: mdi:router
 
   

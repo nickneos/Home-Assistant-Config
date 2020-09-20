@@ -111,10 +111,6 @@ switch.template_alarm:
   icon: mdi:shield-key
 light.table_lamp:
   icon: mdi:lamp
-binary_sensor.xiaomi_door_1:
-  device_class: door
-binary_sensor.xiaomi_door_2:
-  device_class: door
 binary_sensor.car_sensor:
   icon: mdi:car-side
 person.nick:

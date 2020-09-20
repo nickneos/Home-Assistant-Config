@@ -1,8 +1,6 @@
-# Nick's Home Assistant Configuration
+I have been using [Home Assistant](https://www.home-assistant.io) for several years to control and automate numerous devices within my home.
 
-This is my Home Assistant configuration for my smart home setup. 
-
-I have installed [Home Assistant](https://www.home-assistant.io/hassio/) as a docker container on a HP Microserver Gen8 running Debian 10.
+I am currently running [Home Assistant Core](https://www.home-assistant.io/faq/ha-vs-hassio/) within docker on a [HP Microserver Gen8](https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-c03793258) with [Debian 10](https://wiki.debian.org/DebianBuster).
 
 Within my house I am controlling various smart devices via Home Assistant such as:
 * [Philips Hue Lights](https://www.philips-hue.com)
@@ -10,3 +8,4 @@ Within my house I am controlling various smart devices via Home Assistant such a
 * [Broadlink RM Wifi + IR + RF Remote Controller](http://www.ibroadlink.com/rm/)
 * [Xiaomi Aqara Gateway](https://www.home-assistant.io/components/xiaomi_aqara/)
 * [Tasmota Devices](https://tasmota.github.io/docs/)
+

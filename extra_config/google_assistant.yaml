@@ -1,17 +1,11 @@
 project_id: !secret ga_proj
 service_account: !include google_service_account.json
-expose_by_default: false
 secure_devices_pin: !secret GA_pin
-entity_config:
+# expose_by_default: false
+exposed_domains:
+  - light
+entity_config:  
 
-  ### Lights
-  light.outdoor_led:
-    expose: true
-    name: Outdoor LED
-  light.play_room_lamp:
-    expose: true
-    name: Play Room Lamp
-  
   ### Air Conditioning
   climate.bedroom:
     expose: true
@@ -37,7 +31,7 @@ entity_config:
     - Bedroom TV
     - Soniq TV
     - TV
-  
+
   ### Garage
   cover.garage_main:
     expose: true

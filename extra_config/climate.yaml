@@ -3,8 +3,8 @@
   unique_id: bedroom
   device_code: 1022
   controller_data: !secret broadlink_host1
-  temperature_sensor: sensor.xiaomi_temp_1
-  humidity_sensor: sensor.xiaomi_humidity_1
+  temperature_sensor: sensor.xiaomi_temp_bedroom
+  humidity_sensor: sensor.xiaomi_humidity_bedroom
   
 - platform: harmony_ac
   name: Living Room
@@ -14,7 +14,7 @@
   max_temp: 30
   target_temp: 20
   target_temp_step: 1
-  temp_sensor: sensor.xiaomi_temp_2
+  temp_sensor: sensor.xiaomi_temp_main
   customize:
     operations:
       - cool
